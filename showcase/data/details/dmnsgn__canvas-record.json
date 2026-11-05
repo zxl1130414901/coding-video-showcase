@@ -1,0 +1,74 @@
+{
+  "id": "dmnsgn__canvas-record",
+  "taglineZh": "一个 Recorder 七种编码器：把 canvas 录成 MP4、MKV、GIF 或图片序列的模块化库",
+  "summaryZh": "浏览器端的 Canvas 录制库，用 WebCodecs 为主、Wasm 编码器为备，把 2D/WebGL/WebGPU canvas 逐帧录成 mp4、webm、mkv、mov、gif 或 png/jpg 序列。它的设计是「编码器可热换」：同一个 Recorder 只换 encoderOptions 就能改容器，WebCodecs 比 H264MP4Encoder 快 5–10 倍、比 FFmpeg wasm 快约 20 倍。与 ccapture.js 相比格式覆盖更全、类型更完整，但编码吞吐慢一个量级，而且是裸 ES 模块，页面必须配 import-map 才能跑。实测 720p 120 帧 29.5 秒。它还能用 File System Access 边录边写本地文件，不把整段视频堆在内存里；TypeScript 类型完整，适合需要长期维护的工程项目。",
+  "whatItMakes": [
+    {"type": "WebGL/WebGPU 生成艺术", "exampleZh": "Three.js 或 WebGPU 场景逐帧 step() 录制，换编码器即可改容器", "strength": "核心能力"},
+    {"type": "多格式交付", "exampleZh": "同一段动画出 mp4、webm、mkv、mov、gif 与图片序列", "strength": "核心能力"},
+    {"type": "图片序列给后期", "exampleZh": "Frame 编码器输出 png/jpg 或 zip，交给 AE/ffmpeg 精修", "strength": "核心能力"},
+    {"type": "GIF 动图", "exampleZh": "GIF 编码器直出循环动图，适合文档与网页", "strength": "可用"},
+    {"type": "4K/8K 高分辨率导出", "exampleZh": "超 AVC 帧上限时改用 Frame 编码器，再用 ffmpeg CLI 合成", "strength": "受限"},
+    {"type": "实时屏幕录制", "exampleZh": "MediaCapture 编码器按 1x 实时录 canvas 流", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "Three.js 作品导出视频", "whoZh": "前端 3D 开发者、创意工作室", "whyZh": "作品已在浏览器，Recorder 逐帧推进即可录，不必改动画逻辑", "deliverableZh": "4 秒 1280×720 30fps MP4，约 2.45MB", "fit": "高度契合"},
+    {"scenarioZh": "产品 demo 加录制按钮", "whoZh": "SaaS 前端团队", "whyZh": "模块化 API 易嵌进现有应用，格式可按用户需求切换", "deliverableZh": "GIF 或 mp4 分享文件", "fit": "适合"},
+    {"scenarioZh": "教学 canvas 动画转 GIF", "whoZh": "教师、课程制作者", "whyZh": "GIF 编码器直出，无需外部转码", "deliverableZh": "3–8 秒教学 GIF", "fit": "适合"},
+    {"scenarioZh": "4K/8K 高分辨率交付", "whoZh": "广告与影视外包", "whyZh": "AVC 帧上限约 4K 16:9，超大尺寸必须走图片序列", "deliverableZh": "8K png 序列 + ffmpeg 合成", "fit": "勉强"},
+    {"scenarioZh": "CI 自动出片", "whoZh": "工具链维护者", "whyZh": "无 CLI，需要宿主页与 Playwright，且编码慢", "deliverableZh": "自动化产出的 mp4", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "WebCodecs 与 FFmpeg 的 AVC 单帧上限 9437184 像素，约 4K 16:9@30；4K 方形或 8K 需改用 Frame 编码器再外部合成",
+    "maxFpsZh": "由 step() 调用频率与编码器吞吐决定；实测 720p 约 4.1fps 编码吞吐",
+    "durationZh": "无硬上限，受内存与编码队列约束；可边录边写文件系统（File System Access）",
+    "effectsZh": ["无内置特效，只负责录制", "支持 2D / WebGL / WebGPU canvas", "7 种编码器可热换", "可写浏览器或本地文件系统"],
+    "audioZh": "本次未确认音轨 API；README 的编码器表未提供音频说明",
+    "interactivityZh": "纯 JS API，无编辑器；需自己实现录制按钮与状态 UI",
+    "automationZh": "无 CLI；需宿主页 + Playwright，本次实测即用固定 step 次数（RecorderStatus 未导出导致状态判断失效）",
+    "assetsZh": "无内置素材；输入就是一块 canvas，输出交给浏览器下载或文件系统",
+    "exportFormatsZh": ["mp4（WebCodecs、MP4Wasm、H264MP4、FFmpeg）", "webm", "mkv", "mov", "gif", "png/jpg 序列与 zip"],
+    "realtimePreviewZh": "录制时页面照常渲染；MediaCapture 编码器可 1x 实时录流",
+    "ciFriendlyZh": "中等：Chromium 可用，但无封装命令且编码慢"
+  },
+  "ceilingZh": "格式覆盖是它最强的一档：同一段动画换 7 种编码器就能出 mp4/webm/mkv/mov/gif/图片序列，还能直接写本地文件系统绕开浏览器内存。速度对照 README 的官方结论：WebCodecs 比 H264MP4Encoder 快 5–10 倍、比 FFmpeg wasm 快约 20 倍；但实测 720p 120 帧仍要 29.5 秒（4.1fps），比 ccapture.js 慢约 8.5 倍，一分钟 30fps 片子接近 12 分钟。分辨率硬上限是 AVC 单帧 9437184 像素（约 4K 16:9），4K 方形或 8K 必须换 Frame 编码器再跑 ffmpeg CLI，官方给了现成命令。边界：无音轨与字幕管线、无时间轴、无 CLI；RecorderStatus 未从入口导出，按状态判断容易只录 1 帧，本次只能固定 step 次数。如果只是把一段 720p 动画发到群里，它并不是最省时的选择：格式多换来的是成倍的时间成本。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "npm install canvas-record；页面需配 import-map 解析裸模块，否则报解析失败", "effortZh": "约 10 分钟"},
+    {"stepZh": "准备画布", "detailZh": "用 canvas-context 或现有 renderer 拿到 2D/WebGL/WebGPU context", "effortZh": "约 15 分钟"},
+    {"stepZh": "配置 Recorder", "detailZh": "new Recorder(context, {name, encoderOptions:{codec}})，按需换 encoder 决定容器", "effortZh": "约 20 分钟"},
+    {"stepZh": "逐帧推进", "detailZh": "start() 后循环 render() + await step()，固定次数循环最稳", "effortZh": "约 20 分钟"},
+    {"stepZh": "落盘", "detailZh": "stop() 拿 Blob 触发下载，或用 File System Access 直接写文件", "effortZh": "约 10 分钟"}
+  ],
+  "differentiators": [
+    "编码器与容器解耦，7 种编码器可热换而不改录制逻辑",
+    "支持 WebGPU canvas 并可直接写本地文件系统",
+    "4K/8K 有官方绕法：Frame 编码器 + ffmpeg CLI 现成命令",
+    "WebCodecs 主路径比 Wasm 编码器快 5–20 倍"
+  ],
+  "limits": [
+    "实测仅 4.1fps（720p），长片编码极慢",
+    "裸 ES 模块，不配 import-map 直接报错",
+    "无音轨、字幕与时间轴，不是剪辑工具",
+    "RecorderStatus 未导出，官方 demo 的状态判断容易失效"
+  ],
+  "compareTips": [
+    {"vs": "spite__ccapture.js", "adviceZh": "要 mkv/mov/图片序列、WebGPU 与类型提示选 canvas-record；只求快、求老项目兼容，ccapture 实测快约 8 倍"},
+    {"vs": "wx4766__html-to-video", "adviceZh": "要录整页 DOM 与 CSS 动画选 html-to-video；只录 canvas 内容选 canvas-record"},
+    {"vs": "ybouane__VideoFlow", "adviceZh": "要声明式时间轴与多层合成选 VideoFlow；已有 canvas 只要录制选 canvas-record"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①WebGL 场景用 WebCodecs 编码器录 mp4；②同一段换 GIF 编码器出动图；③演示 Frame 编码器输出 png 序列并给出 8K 合成命令；④对比 WebCodecs 与 FFmpeg wasm 的耗时差",
+    "featureCallouts": [
+      {"titleZh": "七种编码器", "descZh": "WebCodecs / MP4Wasm / H264MP4 / FFmpeg / GIF / Frame / MediaCapture"},
+      {"titleZh": "WebGPU 支持", "descZh": "WebGPU canvas 可直接被录制"},
+      {"titleZh": "写本地文件", "descZh": "File System Access 绕开下载与内存限制"},
+      {"titleZh": "超 4K 方案", "descZh": "Frame 编码器 + ffmpeg CLI 拼回视频"},
+      {"titleZh": "录制换容器", "descZh": "只换 encoder 与扩展名即可改输出格式"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L13", "noteZh": "原文声明录制 2D/WebGL/WebGPU canvas，输出 MP4/WebM/MKV/MOV/GIF/图片序列"},
+    {"field": "capabilities.exportFormatsZh", "source": "README.md#L92-L103", "noteZh": "编码器与扩展名、所用 Web API、速度对照表"},
+    {"field": "ceilingZh", "source": "README.md#L107-L108", "noteZh": "WebCodecs 快 5–10 倍 / 20 倍；AVC 单帧上限 9437184 像素与 8K 绕法"},
+    {"field": "limits 第 1 条", "source": "_samples/dmnsgn__canvas-record/meta.json", "noteZh": "实测 720p/120 帧耗时 29526ms，约 4.1fps"}
+  ]
+}

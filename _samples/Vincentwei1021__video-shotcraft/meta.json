@@ -1,0 +1,51 @@
+{
+  "repo": "Vincentwei1021/video-shotcraft",
+  "category": "Agent/LLM 代码视频工作流（边缘）",
+  "status": "success",
+  "render_ms": 407870,
+  "total_ms": 478000,
+  "cmd": "npx remotion render src/index.ts AiflPromo ...",
+  "ffprobe": {
+    "width": 1920,
+    "height": 1080,
+    "duration_s": 36.224,
+    "nb_frames": 1085,
+    "codec": "h264",
+    "pix_fmt": "yuvj420p",
+    "fps": "30/1",
+    "size_bytes": 20825626
+  },
+  "notes_zh": "仓库为 Claude Skill，取其 template/ 官方 Remotion 模板完整渲染 1085 帧",
+  "preview": {
+    "at_s": 18.112,
+    "mean_rgb": [
+      245.52,
+      242.43,
+      237.24
+    ],
+    "stddev_rgb": [
+      18.58,
+      18.82,
+      18.92
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "nb_frames": 1077,
+      "codec": "h264",
+      "pix_fmt": "yuv420p",
+      "duration_s": 35.9,
+      "size_bytes": 15333256
+    },
+    "render_ms": 0,
+    "segments": 3,
+    "callouts": 6,
+    "pipeline": "official",
+    "methodZh": "复用仓库既有 Remotion 成片（36.2s 1920x1080@30），按 12s 三分段重切，poster.py 归一化并烧入中文标注",
+    "generatedAt": "2026-11-05T16:05:36+08:00"
+  }
+}

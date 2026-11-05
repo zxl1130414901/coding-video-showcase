@@ -1,0 +1,59 @@
+{
+  "repo": "alchaincyf/huashu-motion",
+  "category": "HTML 动效/连续镜头",
+  "status": "success",
+  "render_ms": 620000,
+  "total_ms": 626000,
+  "cmd": "OM_CHROME=<chrome-headless-shell路径> node cli/om.js render examples/showcase --out out/showcase_raw.mp4 --fps 30",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 14.33,
+    "nb_frames": 430,
+    "codec": "h264",
+    "pix_fmt": "yuv420p",
+    "fps": "30/1",
+    "size_bytes": 9938224
+  },
+  "notes_zh": "修复点：Chrome 全量浏览器在本机启动即静默退出（Chrome exited 0），改用 Playwright 的 chrome-headless-shell（OM_CHROME 指向）后官方 om render 正常出片，14.37s/1080p30",
+  "preview": {
+    "at_s": 7.17,
+    "mean_rgb": [
+      125.78,
+      114.3,
+      138.15
+    ],
+    "stddev_rgb": [
+      55.53,
+      43.7,
+      67.3
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 22.3,
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 6,
+    "render_ms": 300000,
+    "pipeline": "native",
+    "build": "om new --template keynote-ui/kurzgesagt/whiteboard 生成三个 10s 工程，om render --workers 1 用本机 chrome-headless-shell 逐帧渲染，各裁 7.5s 后 concat + drawtext 烧中文标注；裁掉尾部 1.2s 同时避开免费版角标",
+    "ffprobe": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "frames": 669,
+      "duration": 22.3,
+      "codec": "h264",
+      "size_bytes": 8745430
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 14.33s",
+    "known_limits_zh": [
+      "三个模板都保留自带中文示例文案，未做逐字改写；只裁时长与拼接",
+      "免费版会在最后 1.2s 烧 “Made with huashu-motion” 角标，本次裁掉片尾规避",
+      "单 worker 渲染 10s 约 2–4 分钟，1080p 输出需要本机 Chrome/Chromium"
+    ]
+  }
+}

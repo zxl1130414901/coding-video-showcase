@@ -1,0 +1,69 @@
+{
+  "id": "remotion-dev__template-three",
+  "durationSec": 29.9,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 9.967,
+      "capabilityZh": "视频帧贴到 3D 物体",
+      "proofZh": "onVideoFrame → OffscreenCanvas → CanvasTexture 逐帧更新"
+    },
+    {
+      "start": 9.967,
+      "end": 19.934,
+      "capabilityZh": "多层平面与相机推进",
+      "proofZh": "同一纹理复用 5 张错层平面，相机由帧号插值推进"
+    },
+    {
+      "start": 19.934,
+      "end": 29.901,
+      "capabilityZh": "PBR 材质与三点布光",
+      "proofZh": "torusKnot + clearcoat 材质，三盏点光 + 地面网格"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.4,
+      "dur": 3.8,
+      "titleZh": "视频当纹理用",
+      "descZh": "<Video> 每帧画进 OffscreenCanvas，再贴到 3D 屏幕"
+    },
+    {
+      "t": 4.4,
+      "dur": 3.6,
+      "titleZh": "帧驱动的入场",
+      "descZh": "spring 弹入 + interpolate 连续旋转，全部由帧号决定"
+    },
+    {
+      "t": 10.4,
+      "dur": 3.8,
+      "titleZh": "同一纹理多层复用",
+      "descZh": "5 张平面共享 CanvasTexture，只解码一次视频"
+    },
+    {
+      "t": 14.4,
+      "dur": 3.4,
+      "titleZh": "相机沿 Z 轴推进",
+      "descZh": "相机位置按帧号插值，穿过多层平面"
+    },
+    {
+      "t": 20.4,
+      "dur": 3.8,
+      "titleZh": "PBR 清漆材质",
+      "descZh": "metalness 0.65 + clearcoat 1，金属高光随视角变化"
+    },
+    {
+      "t": 25.2,
+      "dur": 3.6,
+      "titleZh": "三点布光",
+      "descZh": "白/蓝/粉三盏点光勾边，地面网格给出空间参照"
+    }
+  ],
+  "renderMs": 330000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "模板自带 phone.mp4 为占位素材，第一幕屏幕内容本身是占位动画",
+    "未做 bloom/景深等后处理，只有原生 R3F 光照",
+    "场景全部为程序化几何体，未加载外部 GLTF 模型"
+  ]
+}

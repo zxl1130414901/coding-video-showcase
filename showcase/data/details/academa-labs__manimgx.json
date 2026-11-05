@@ -1,0 +1,73 @@
+{
+  "id": "academa-labs__manimgx",
+  "taglineZh": "Manim 的 Rust 加速替身：同一套 Python API，1080p60 出片快 90 倍，免装 LaTeX 环境",
+  "summaryZh": "ManimGX 是兼容 Manim CE API 的 2D/3D 动画引擎，用 Rust + wgpu 重写渲染核心：Scene、ThreeDScene、m.Cube、Create 等写法基本不变，渲染、排版与编码都在原生层完成，pip 安装即带字体与视频编码。官方基准称同一批 1080p60 场景比 ManimCE 快 90.6 倍、比 ManimGL 快 11.5 倍；还能通过 npm 在浏览器里用 Pyodide + WebGPU 跑同一份场景。与 Manim 最本质的区别是同 API、不同内核，代价是兼容仍是子集、版本很新。同 API 意味着现有 Manim 脚本大多能直接跑，但自定义 Mobject 常要改代码。",
+  "whatItMakes": [
+    {"type": "数学推导动画", "exampleZh": "配方公式、导数切线、傅里叶级数、复数映射，公式逐项变形", "strength": "核心能力"},
+    {"type": "3D 几何与拓扑", "exampleZh": "3D 曲面、环面、Hopf 纤维化、螺旋面变悬链面，带环境相机旋转", "strength": "核心能力"},
+    {"type": "物理/动力系统可视化", "exampleZh": "洛伦兹吸引子、重陀螺进动，轨迹与相机一起运动", "strength": "可用"},
+    {"type": "带讲解语音的教学片", "exampleZh": "self.say() 把动画节点对齐到语音，音画同步", "strength": "可用"},
+    {"type": "网页内嵌 3D 场景", "exampleZh": "npm 包 + Pyodide + WebGPU，无渲染服务器嵌入网页", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "大学数学/物理课件", "whoZh": "教师、课程制作团队", "whyZh": "Manim 语法迁移成本低，3D 曲面与相机镜头不用另学 Blender", "deliverableZh": "1080p60 MP4，单条 3–10 分钟", "fit": "高度契合"},
+    {"scenarioZh": "3D 概念科普", "whoZh": "科普创作者", "whyZh": "Hopf 纤维化、洛伦兹吸引子这类镜头可直接出片", "deliverableZh": "1080p60 的 1–5 分钟短片", "fit": "高度契合"},
+    {"scenarioZh": "Agent 自动生成教学片", "whoZh": "用 Claude Code/Codex 的团队", "whyZh": "llms.txt + inspect 让模型能按布局反馈迭代", "deliverableZh": "模板化 2–5 分钟课程片段", "fit": "适合"},
+    {"scenarioZh": "网页交互式教材", "whoZh": "教育产品团队", "whyZh": "npm 包在浏览器跑 Python 场景，无需后端渲染", "deliverableZh": "可嵌入网页的 3D 场景", "fit": "适合"},
+    {"scenarioZh": "极致画质宣传片", "whoZh": "需要 4K 的团队", "whyZh": "1080p60 稳定，4K 未在文档声明且显存开销更大", "deliverableZh": "4K 需自行压测", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "默认 1080p；文档未见 4K 明确支持，实测 1920×1080 稳定",
+    "maxFpsZh": "默认 60fps（实测 60/1），高于 ManimCE 常用的 30/60",
+    "durationZh": "无硬限制；官方基准五场景合计 36.2 秒",
+    "effectsZh": ["2D 矢量与公式排版（LaTeX/Typst，无需本地 LaTeX）", "3D 曲面、网格与移动相机", "环境相机旋转与光照", "语音对齐 self.say()"],
+    "audioZh": "支持 self.say() 将动画与语音对齐；是否内置 TTS、能否替换外部音轨未确认",
+    "interactivityZh": "离线渲染为主；浏览器版可嵌入网页运行，不是逐帧交互编辑器",
+    "automationZh": "CLI 可脚本化：manimgx render scene.py、manimgx inspect",
+    "assetsZh": "pip 包内置字体、排版与视频编码；3D 模型/贴图支持范围未确认",
+    "exportFormatsZh": ["MP4"],
+    "realtimePreviewZh": "部分：浏览器 WebGPU 运行；桌面预览能力未确认",
+    "ciFriendlyZh": "可进 CI：pip wheel 即装即用，wgpu 可软件回退但建议 GPU"
+  },
+  "ceilingZh": "官方基准给了很具体的上限：五个场景、合计 36.2 秒的 1080p60 视频，在 Apple M4 Pro 上 3.08 秒渲完，对比 ManimCE 278.83 秒、ManimGL 35.28 秒、Blender EEVEE 601.4 秒；也就是从启动到成品 MP4 的端到端差距约 90 倍。能力上它把 2D 公式、3D 曲面/网格、移动相机和语音对齐放在同一个 Scene 里，官方示例覆盖 Hopf 纤维化、悬链面、重陀螺、洛伦兹吸引子，说明复杂 3D 教学镜头是主战场。边界：刚发布 0.1.x，Manim CE 兼容是子集，冷门 API 与自定义 Mobject 可能缺失；默认 1080p60，4K 未声明；浏览器版依赖 WebGPU，老设备会退回软件渲染；音频只看到 self.say()，多轨混音与外部音轨未见文档。它还没有 Windows 预编译包，本机验证要靠源码构建。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "Python 3.13+ 执行 pip install manimgx；浏览器路线用 npm install manimgx", "effortZh": "约 2 分钟"},
+    {"stepZh": "写场景", "detailZh": "沿用 Manim CE 写法：class X(m.ThreeDScene)，m.Cube/Create/相机旋转", "effortZh": "已有 Manim 工程可平移"},
+    {"stepZh": "自检", "detailZh": "manimgx inspect 出分镜与 2D 布局检查，按报告改文字出界与遮挡", "effortZh": "约 1 分钟/轮"},
+    {"stepZh": "渲染", "detailZh": "manimgx render scene.py，默认输出 1080p60 MP4", "effortZh": "27 秒片约 42 秒"},
+    {"stepZh": "可选上网页", "detailZh": "npm 包 + Pyodide + WebGPU，把同一场景嵌进网页", "effortZh": "半天"}
+  ],
+  "differentiators": [
+    "同一套 Manim CE Python API，内核换成 Rust/wgpu，迁移几乎不用改代码",
+    "1080p60 端到端比 ManimCE 快约 90 倍，官方基准与脚本全部公开",
+    "2D 公式与 3D 曲面/相机在同一场景，不必在 Manim 与 Blender 之间切换",
+    "内置字体与编码、LaTeX/Typst 免安装，pip 一步到位"
+  ],
+  "limits": [
+    "版本很新（0.1.x），Manim CE 兼容只是子集，冷门 API 可能缺失",
+    "默认 1080p60，4K 与更高帧率未在文档声明",
+    "浏览器路线依赖 WebGPU，无硬件加速时体验下降",
+    "音频能力只见 self.say()，多轨混音/外部音轨支持未确认"
+  ],
+  "compareTips": [
+    {"vs": "ManimCommunity__manim", "adviceZh": "要最全 API、插件生态与稳定行为选 Manim；要 3D、高帧率和 90 倍速度、且能接受兼容子集选 ManimGX"},
+    {"vs": "AzurIce__ranim", "adviceZh": "要 Python 生态与现成 Manim 代码选 ManimGX；要纯 Rust 工程、自己掌控渲染循环选 Ranim"},
+    {"vs": "yongkyuns__noon", "adviceZh": "要 2D 交互式网页课件选 Noon；要 3D 场景与开箱 MP4 高帧率选 ManimGX"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①derivative.py 切线沿曲线滑动；②3D 相机环绕立方体；③Hopf 纤维化或悬链面展示复杂曲面；④manimgx inspect 的分镜/布局报告与 1080p60 成片参数",
+    "featureCallouts": [
+      {"titleZh": "Manim API 兼容", "descZh": "现有 Python 场景直接跑"},
+      {"titleZh": "Rust/wgpu 内核", "descZh": "实测基准比 ManimCE 快约 90 倍"},
+      {"titleZh": "真 3D 相机", "descZh": "曲面/网格与镜头运动"},
+      {"titleZh": "1080p60 默认", "descZh": "不用手动调质量档"},
+      {"titleZh": "免装 LaTeX", "descZh": "公式用 LaTeX/Typst 内置排版"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L11-L14", "noteZh": "自述 Manim CE API 兼容、Rust + wgpu、pip/npm 安装、浏览器运行"},
+    {"field": "ceilingZh", "source": "README.md#L45-L53", "noteZh": "官方基准 36.2 秒 1080p60 视频 3.08 秒渲完，对比 ManimCE 278.83s"},
+    {"field": "capabilities.effectsZh", "source": "README.md#L120-L129", "noteZh": "2D/3D 混合、LaTeX/Typst、self.say() 语音同步"},
+    {"field": "ceilingZh", "source": "_samples/academa-labs__manimgx/meta.json", "noteZh": "实测 1920×1080/60fps/1507 帧/27.4s，render 41.7s，pip wheel 0.1.1"}
+  ]
+}

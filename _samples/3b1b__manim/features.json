@@ -1,0 +1,63 @@
+{
+  "id": "3b1b__manim",
+  "durationSec": 25.8,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.4,
+      "capabilityZh": "彩色 Text 布局 + 逐条入场",
+      "proofZh": "多行彩色标签依次 FadeIn，字体与颜色可分别指定"
+    },
+    {
+      "start": 6.4,
+      "end": 13.0,
+      "capabilityZh": "Transform 链：三角→方→圆",
+      "proofZh": "同一对象连续两次 Transform，拓扑连续变形"
+    },
+    {
+      "start": 13.0,
+      "end": 19.6,
+      "capabilityZh": "Axes + FunctionGraph + MoveAlongPath",
+      "proofZh": "函数曲线 ShowCreation 后，圆点沿曲线运动"
+    },
+    {
+      "start": 19.6,
+      "end": 25.8,
+      "capabilityZh": "相机取景框推拉",
+      "proofZh": "camera.frame 缩放/移动，画面构图实时变化"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.4,
+      "dur": 4.0,
+      "titleZh": "① 彩色 Text 逐条入场",
+      "descZh": "多行彩色标签连续 FadeIn，颜色/字号可分别设置"
+    },
+    {
+      "t": 6.8,
+      "dur": 4.0,
+      "titleZh": "② Transform 链变形",
+      "descZh": "三角→方→圆连续变形，同一对象拓扑不变"
+    },
+    {
+      "t": 13.4,
+      "dur": 4.0,
+      "titleZh": "③ 坐标轴上的函数曲线",
+      "descZh": "Axes + FunctionGraph 绘制曲线，圆点沿路径移动"
+    },
+    {
+      "t": 19.8,
+      "dur": 4.0,
+      "titleZh": "④ 相机取景框推拉",
+      "descZh": "camera.frame 缩放 + 位移，构图实时变化"
+    }
+  ],
+  "renderMs": 132000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "ManimGL 在 1080p raw pipe 下报 OSError Errno 22，只能 720p",
+    "OpenGL 渲染需要设置 self.camera.fps，否则默认 60fps",
+    "ManimGL 用 ShowCreation，Manim CE 的 Create 不可用"
+  ]
+}

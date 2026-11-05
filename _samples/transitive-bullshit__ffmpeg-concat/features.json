@@ -1,0 +1,63 @@
+{
+  "id": "transitive-bullshit__ffmpeg-concat",
+  "durationSec": 18.417,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.5,
+      "capabilityZh": "首段素材 + 帧初始化",
+      "proofZh": "clip1 5.5s 720p30，165 帧 raw RGBA 抽帧"
+    },
+    {
+      "start": 5.5,
+      "end": 9.8,
+      "capabilityZh": "circleopen 圆形开孔转场",
+      "proofZh": "1.2s GL 着色器转场，圆形遮罩扩张到全屏"
+    },
+    {
+      "start": 9.8,
+      "end": 14.1,
+      "capabilityZh": "directionalwarp 方向扭曲转场",
+      "proofZh": "1.2s 扭曲位移过渡，支持自定义方向参数"
+    },
+    {
+      "start": 14.1,
+      "end": 18.4,
+      "capabilityZh": "fadegrays 灰度渐变转场 + 音频拼接",
+      "proofZh": "1.2s 灰阶过渡，输出 18.4s / 720p30 并保留音轨"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.3,
+      "dur": 3.4,
+      "titleZh": "① 4 段素材进 GL 合成管线",
+      "descZh": "每段 5.5s 720p30，先抽成 raw RGBA 帧，交给 GPU 逐帧处理"
+    },
+    {
+      "t": 5.7,
+      "dur": 3.4,
+      "titleZh": "② circleopen 圆形开孔",
+      "descZh": "1.2s gl-transition，圆形遮罩从中心扩张，非普通叠化"
+    },
+    {
+      "t": 10.0,
+      "dur": 3.4,
+      "titleZh": "③ directionalwarp 方向扭曲",
+      "descZh": "1.2s 扭曲位移过渡，参数化方向，画面像被推向一侧"
+    },
+    {
+      "t": 14.3,
+      "dur": 3.4,
+      "titleZh": "④ fadegrays 灰度过渡 + 音轨",
+      "descZh": "1.2s 灰阶过渡，成片 18.4s，音频随片段拼成一条轨"
+    }
+  ],
+  "renderMs": 676000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "ffmpeg 7 的三位能力标志位导致 fluent-ffmpeg 误判 concat 格式不可用，样例脚本关闭了能力预校验",
+    "raw RGBA 抽帧写入 F 盘约 2fps，4 段 720p 全流程约 11 分钟；1080p 会成倍变慢",
+    "180° 以上方向扭曲不支持，转场时长超过素材时长会截断"
+  ]
+}

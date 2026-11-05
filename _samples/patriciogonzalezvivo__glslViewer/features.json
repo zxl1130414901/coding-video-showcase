@@ -1,0 +1,69 @@
+{
+  "id": "patriciogonzalezvivo__glslViewer",
+  "durationSec": 23.9,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.967,
+      "capabilityZh": "SDF 光线步进",
+      "proofZh": "96 步 raymarch + 中心差分法线，全屏实时"
+    },
+    {
+      "start": 7.967,
+      "end": 15.934,
+      "capabilityZh": "双缓冲反馈",
+      "proofZh": "u_doubleBuffer0 读上一帧衰减后叠加，轨迹帧间累积"
+    },
+    {
+      "start": 15.934,
+      "end": 23.901,
+      "capabilityZh": "域扭曲 FBM 流体",
+      "proofZh": "5 层 fbm + 2 层域扭曲，纯片元着色生成"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.4,
+      "dur": 3.8,
+      "titleZh": "一个 frag 就是一个视频",
+      "descZh": "只给 .frag，glslViewer 按 u_time 逐帧重算整幅画面"
+    },
+    {
+      "t": 4.2,
+      "dur": 3.4,
+      "titleZh": "96 步 raymarch",
+      "descZh": "720p 全屏每帧 96 次循环求交，仍是实时"
+    },
+    {
+      "t": 8.4,
+      "dur": 3.8,
+      "titleZh": "双缓冲 ping-pong",
+      "descZh": "读取 u_doubleBuffer0 上一帧，衰减后叠加本帧"
+    },
+    {
+      "t": 12.2,
+      "dur": 3.4,
+      "titleZh": "轨迹靠帧间累积",
+      "descZh": "彗星与旋转三叶线自然拖出光轨，不是预先画的"
+    },
+    {
+      "t": 16.4,
+      "dur": 3.8,
+      "titleZh": "域扭曲 FBM",
+      "descZh": "5 层噪声 + 2 层域扭曲，生成式流体质感"
+    },
+    {
+      "t": 20.4,
+      "dur": 3.4,
+      "titleZh": "headless 可批处理",
+      "descZh": "命令行录制固定时长与帧率，可脚本化批量出片"
+    }
+  ],
+  "renderMs": 240000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "三段 shader 为演示自写，仓库 examples 仅覆盖语法自检",
+    "headless 下视频纹理 u_tex0 绑定失败，未做视频后处理段",
+    "多 shader 串联实测无差异，未采用"
+  ]
+}

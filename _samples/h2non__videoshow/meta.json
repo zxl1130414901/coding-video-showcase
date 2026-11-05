@@ -1,0 +1,48 @@
+{
+  "repo": "h2non/videoshow",
+  "category": "编程式视频合成/FFmpeg",
+  "status": "success",
+  "render_ms": 14781,
+  "total_ms": 14991,
+  "cmd": "node _samples\\h2non__videoshow\\sample_run.js（videoshow API 合成 5 张图）",
+  "artifact": "F:\\coding视频\\_samples\\h2non__videoshow\\sample.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 10.0,
+    "fps": 30.0,
+    "nb_frames": 300,
+    "codec": "h264",
+    "size_kb": 2456.9
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\h2non__videoshow\\preview.png",
+    "pixel_std": 45.97,
+    "unique_colors": 47261
+  },
+  "notes_zh": "用仓库自带 test/fixtures 5 张 PNG 合成 1280x720/30fps 幻灯片，带 0.5s 淡入淡出。fluent-ffmpeg 2.1.2 与 ffmpeg 7 的能力解析不兼容，样例脚本里关掉了能力预校验（未改仓库源码）。",
+  "sample_v2": {
+    "spec": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "duration_sec": 23.6
+    },
+    "render_ms": 24000,
+    "ffprobe": {
+      "duration_sec": 23.6,
+      "codec": "h264",
+      "nb_frames": 708,
+      "has_audio": false,
+      "size_kb": 2890.6,
+      "stddev_10_50_90": {
+        "0.10": 52.154,
+        "0.50": 52.417,
+        "0.90": 28.331
+      }
+    },
+    "generator": "videoshow（Node/fluent-ffmpeg），3 段各自渲染（5 图转场 / SRT 字幕+音频 / ASS 字幕），ffmpeg concat 拼接，1280x720/30fps；ffmpeg drawtext 烧录中文标注",
+    "segments_count": 3,
+    "pipeline": "official"
+  }
+}

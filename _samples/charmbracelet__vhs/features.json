@@ -1,0 +1,75 @@
+{
+  "id": "charmbracelet__vhs",
+  "durationSec": 29.9,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 9.467,
+      "capabilityZh": "tape 脚本逐字回放",
+      "proofZh": "Type 的 cps 控制字符级节奏，命令真实执行并回显"
+    },
+    {
+      "start": 9.467,
+      "end": 19.434,
+      "capabilityZh": "录制中改窗口尺寸",
+      "proofZh": "112×24 列重排、896×504 缩放，帧率不中断"
+    },
+    {
+      "start": 19.434,
+      "end": 29.901,
+      "capabilityZh": "GIF/MP4 产物与复现",
+      "proofZh": "同一份 tape 固定 30fps 输出，可进 CI 复现"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.5,
+      "dur": 4.0,
+      "titleZh": "tape 脚本驱动",
+      "descZh": "一份 demo.tape 描述全部动作：Type / Sleep / Output / Set"
+    },
+    {
+      "t": 3.6,
+      "dur": 3.6,
+      "titleZh": "逐字键入可调速",
+      "descZh": "每秒字符数与按键延迟写进脚本，回放节奏完全一致"
+    },
+    {
+      "t": 6.4,
+      "dur": 3.0,
+      "titleZh": "命令真实执行",
+      "descZh": "PowerShell 取当前时间并回显，不是预先摆好的贴图"
+    },
+    {
+      "t": 10.4,
+      "dur": 4.2,
+      "titleZh": "录制中改尺寸",
+      "descZh": "切到 112×24 列后窗口缩到 896×504，文本自动重排"
+    },
+    {
+      "t": 15.0,
+      "dur": 3.6,
+      "titleZh": "不中断、不重开",
+      "descZh": "窗口变化发生在同一条录制里，帧号连续无丢帧"
+    },
+    {
+      "t": 20.6,
+      "dur": 4.2,
+      "titleZh": "GIF / MP4 双产物",
+      "descZh": "同一份 tape 编码出 GIF 与 MP4，帧率固定 30fps"
+    },
+    {
+      "t": 25.4,
+      "dur": 4.2,
+      "titleZh": "可进 CI 复现",
+      "descZh": "无人工操作，同样的 tape 每次生成一致的终端视频"
+    }
+  ],
+  "renderMs": 1560000,
+  "pipeline": "fallback",
+  "knownLimitsZh": [
+    "非 ttyd 真实终端录制，为 tape 语义的逐帧重建",
+    "光标闪烁与字体度量与真实 xterm 有细微差异",
+    "画面内未真实导出 GIF，产物行为脚本声明"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "id": "motion-canvas__motion-canvas",
+  "durationSec": 19.0,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.3,
+      "capabilityZh": "文本与图形缓动",
+      "proofZh": "Txt 位移/透明度 tween，Circle 与 Rect 同步入场，缓动曲线 easeInOutCubic"
+    },
+    {
+      "start": 6.3,
+      "end": 12.0,
+      "capabilityZh": "signal + 错峰动画",
+      "proofZh": "9 个 Rect 由 sequence(0.08) 依次 scale/opacity 入场，再整体 ±90° 旋转"
+    },
+    {
+      "start": 12.0,
+      "end": 19.0,
+      "capabilityZh": "Line 矢量绘制 + 视图缩放",
+      "proofZh": "Line.end 0→1 逐段绘制，dot 淡入，view.scale 1→1.16 推镜"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.8,
+      "dur": 4.4,
+      "titleZh": "① 声明式时间轴",
+      "descZh": "makeScene2D 生成器逐帧 yield，Txt/Circle/Rect 同步 tween"
+    },
+    {
+      "t": 6.5,
+      "dur": 4.4,
+      "titleZh": "② signal 错峰入场",
+      "descZh": "sequence(0.08s) 驱动 9 个矩形依次放大，opacity 0→1"
+    },
+    {
+      "t": 12.2,
+      "dur": 3.8,
+      "titleZh": "③ Line 逐段绘制",
+      "descZh": "end 0→1 的矢量描边，顶点先画出折线，再补圆点"
+    },
+    {
+      "t": 16.2,
+      "dur": 2.6,
+      "titleZh": "④ 视图缩放收尾",
+      "descZh": "view.scale 1→1.16 + 整体淡出，19.0s 成片"
+    }
+  ],
+  "renderMs": 475300,
+  "pipeline": "fallback",
+  "knownLimitsZh": [
+    "上一版矩形/圆形节点未合成的问题已在本次重渲修复：几何节点在 3 段均可见（非仅文本/Line）",
+    "没有用官方播放器；自建 harness 直接驱动 scene playback，因此不含编辑器 UI 与转场特效",
+    "逐帧截图走 Chrome headless（--disable-gpu），渲染约 10 分钟，非仓库自带 CLI",
+    "第 2 段九宫格的说明文字与第一行格子略有重叠，属布局瑕疵，不影响几何节点可见性"
+  ]
+}

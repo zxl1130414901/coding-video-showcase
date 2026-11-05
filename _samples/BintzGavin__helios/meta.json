@@ -1,0 +1,48 @@
+{
+  "repo": "BintzGavin/helios",
+  "category": "代码驱动/声明式框架",
+  "status": "success",
+  "render_ms": 91158,
+  "total_ms": 91158,
+  "cmd": "python capture_helios.py（Playwright+系统Chrome, --use-angle=vulkan, 写 window.__HELIOS_VIRTUAL_TIME__ 逐帧推进, ffmpeg libx264 合成）",
+  "artifact": "F:\\coding视频\\_samples\\BintzGavin__helios\\sample.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 5.0,
+    "fps": 30.0,
+    "nb_frames": 150,
+    "codec": "h264",
+    "size_kb": 75.4
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\BintzGavin__helios\\preview.png",
+    "pixel_std": 16.41,
+    "unique_colors": 1785
+  },
+  "notes_zh": "重跑成功：不依赖 @helios-project/cli，直接用 Playwright 打开 examples/simple-canvas-animation 的 dist/composition.html（http 服务），每帧写入 window.__HELIOS_VIRTUAL_TIME__ 毫秒值驱动 Helios 重绘；WebGL 检测到 ANGLE/Vulkan NVIDIA RTX 4060 Laptop；canvas 末帧像素 std=15.2，非纯色",
+  "sample_v2": {
+    "spec": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "duration_sec": 18.0
+    },
+    "render_ms": 293307,
+    "ffprobe": {
+      "duration_sec": 18.0,
+      "codec": "h264",
+      "nb_frames": 540,
+      "has_audio": false,
+      "size_kb": 433.3,
+      "stddev_10_50_90": {
+        "0.10": 33.087,
+        "0.50": 19.67,
+        "0.90": 21.304
+      }
+    },
+    "generator": "Playwright + Chrome 直开各 example 的 dist/composition.html；用 window.__HELIOS_VIRTUAL_TIME__ 注入虚拟时间，逐帧 rAF 后截图；ffmpeg 720p30 合成 3 段再拼接，drawtext 烧中文标注",
+    "segments_count": 3,
+    "pipeline": "fallback"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "repo": "LBEILC/Multiplane",
+  "category": "HTML/浏览器渲染转视频",
+  "status": "success",
+  "render_ms": 258562,
+  "total_ms": 384245,
+  "cmd": "npx multiplane render examples/animation.html --out F:\\coding视频\\_samples\\LBEILC__Multiplane\\sample.mp4 --duration 2 --fps 30 --scale 2 --workers 2 --encoder nvenc-h264",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration": 2.0,
+    "frames": 60,
+    "fps": 30,
+    "codec": "h264",
+    "size_bytes": 59102
+  },
+  "notes_zh": "直接渲染仓库自带 examples/animation.html，NVENC 出 MP4。并发受本机 8GB 显存限制：默认 workers 会开 6 个并行 Chromium 导致显存/CPU 抖动，改为 --workers 2（报告内 workersSource=option，峰值内存 2.25GB）。job status.json 记录 elapsedMs=258562（纯渲染+编码），进程总耗时 384245ms（含 npm 启动与收尾）。画面为浅色背景的动效层，preview mean=234/std=15.9，非纯色。",
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 19.9,
+    "resolution": "1280x720",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 5,
+    "render_ms": 604600,
+    "pipeline": "native",
+    "build": "multiplane render shots-v2/*.html --scale 1 --workers 1 --encoder nvenc-h264；三段 concat 后 ffmpeg drawtext 烧中文标注",
+    "ffprobe": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "frames": 597,
+      "duration": 19.9,
+      "codec": "h264",
+      "size_bytes": 2897299
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 2.0s",
+    "known_limits_zh": [
+      "1920x1080 需 2.25 倍时间，本机 8GB 显存 + 逐帧截图成本限制，交付 1280x720",
+      "render_ms 只统计本轮新渲染的第 2/3 段（345s + 259s）；第 1 段运动模糊为上一轮产物",
+      "three-cards.html（3D 卡片 + 累积景深）需要可选依赖 three，本机未安装，未收录该镜头",
+      "运动模糊镜头 4 采样约 4.6s/帧，第一段压到 5.4s（162 帧）以控总时长"
+    ]
+  }
+}

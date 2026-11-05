@@ -1,0 +1,59 @@
+{
+  "repo": "feitangyuan/onetake",
+  "category": "HTML 动效/连续镜头",
+  "status": "success",
+  "render_ms": 1500000,
+  "total_ms": 1520000,
+  "cmd": "python scripts/render.py templates/comp.html --out out/template.mp4 --fps 30 --workers 1（渲染至 300+ 帧后截断编码）",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 10.1,
+    "nb_frames": 303,
+    "codec": "h264",
+    "pix_fmt": "yuv420p",
+    "fps": "30/1",
+    "size_bytes": 264763
+  },
+  "notes_zh": "官方 templates/comp.html（一镜到底模板，window.__seek 逐帧抓图）渲染 0–303 帧（1920×1080@30fps），因逐帧耗时过长截取前 ~10s，由 ffmpeg 编码后缩到 720p 入库",
+  "preview": {
+    "at_s": 5.05,
+    "mean_rgb": [
+      248.22,
+      248.22,
+      245.83
+    ],
+    "stddev_rgb": [
+      10.22,
+      10.22,
+      10.5
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 21.8,
+    "resolution": "1280x720",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 6,
+    "render_ms": 300000,
+    "pipeline": "native",
+    "build": "scripts/render.py（Playwright + window.__seek 逐帧截图）渲染 comp.html 三个 look 变体：paper 段 shutter 180°/4 采样、dusk 与 ultramarine 段 shutter 0；1920x1080 抓帧后缩到 1280x720，concat + drawtext 烧中文标注",
+    "ffprobe": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "frames": 654,
+      "duration": 21.8,
+      "codec": "h264",
+      "size_bytes": 1406930
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 10.10s",
+    "known_limits_zh": [
+      "仓库未随附 footage 片段，4 个镜头素材 404，画面只保留文字/卡片层，属于本地占位",
+      "合成页是 15s 模板，本次按能力切成三段拼成 21.8s，不是一条完整叙事片",
+      "逐帧截图渲染，1080p 下约 5s/帧（快门 4 采样），不适合长片"
+    ]
+  }
+}

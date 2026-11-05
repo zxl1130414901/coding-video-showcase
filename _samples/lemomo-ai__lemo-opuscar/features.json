@@ -1,0 +1,69 @@
+{
+  "id": "lemomo-ai__lemo-opuscar",
+  "durationSec": 20.2,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.73,
+      "capabilityZh": "风格即插件",
+      "proofZh": "styles/ 下 57 套风格各有 demo，openDemo 直接加载并暴露 window.DUR / window.render(t)"
+    },
+    {
+      "start": 6.73,
+      "end": 13.47,
+      "capabilityZh": "字符画 CRT 风",
+      "proofZh": "ascii-crt：59.8s 长片任取 6.8s，等宽字符 + 扫描线 + 荧光余晖"
+    },
+    {
+      "start": 13.47,
+      "end": 20.2,
+      "capabilityZh": "剪纸与工程图风",
+      "proofZh": "papercut-red 纸片分层/朱红配色，blueprint 网格纸+标注线，同一 30fps 驱动不变"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.2,
+      "dur": 3.3,
+      "titleZh": "① 风格即插件",
+      "descZh": "styles/ 下 57 套风格，openDemo 直接逐帧渲染"
+    },
+    {
+      "t": 3.6,
+      "dur": 3.3,
+      "titleZh": "② ascii-crt 字符画",
+      "descZh": "59.8s 长片任取 6.8s，等宽字符 + CRT 扫描线"
+    },
+    {
+      "t": 7.0,
+      "dur": 3.4,
+      "titleZh": "③ papercut-red 剪纸",
+      "descZh": "纸片分层 + 朱红配色，层叠投影"
+    },
+    {
+      "t": 10.5,
+      "dur": 3.2,
+      "titleZh": "④ 同一时间轴",
+      "descZh": "window.render(t) 固定 30fps 步进，换风格不换驱动"
+    },
+    {
+      "t": 13.8,
+      "dur": 3.3,
+      "titleZh": "⑤ blueprint 工程图",
+      "descZh": "网格底 + 标注线 + 尺寸箭头，46.7s 素材"
+    },
+    {
+      "t": 17.2,
+      "dur": 3.0,
+      "titleZh": "⑥ 三段成片 20.2s",
+      "descZh": "6.8s × 3，720p30 一次拼接"
+    }
+  ],
+  "renderMs": 180000,
+  "pipeline": "native",
+  "knownLimitsZh": [
+    "仓库只附了 ascii-crt 的 VT323 字体，papercut-red / blueprint 用本机微软雅黑顶替，字形与原设计不同",
+    "hologram-hud 实测卡在页面字体/渲染阶段（WebGL），本次换成 blueprint 作第三风格",
+    "逐帧截图 720p 约 0.1–0.6s/帧，1080p 会成倍变慢，因此成片保持 720p"
+  ]
+}

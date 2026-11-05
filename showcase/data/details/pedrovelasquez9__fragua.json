@@ -1,0 +1,127 @@
+{
+  "id": "pedrovelasquez9__fragua",
+  "taglineZh": "一条命令把竖屏口播剪干净：去静默、切段、烧字幕",
+  "summaryZh": "fragua 是面向竖屏口播的自动化剪辑技能：用 Whisper 得时间码，FFmpeg 去静默与切段，Remotion 渲卡片式字幕，最后合成 9:16 成片。仓库带 setup 脚本（安装 ffmpeg/whisper 与模型），对本地环境依赖较重。",
+  "whatItMakes": [
+    {
+      "type": "竖屏口播精剪",
+      "exampleZh": "去静默 + 跳剪 + 字幕卡片",
+      "strength": "适合 Reels/Shorts"
+    },
+    {
+      "type": "字幕卡片",
+      "exampleZh": "Remotion 渲样式化字幕",
+      "strength": "视觉统一"
+    },
+    {
+      "type": "本地处理",
+      "exampleZh": "Whisper 本地转录，不依赖云",
+      "strength": "隐私好"
+    }
+  ],
+  "useCases": [
+    {
+      "scenarioZh": "竖屏口播",
+      "whoZh": "个人创作者",
+      "whyZh": "批量去停顿",
+      "deliverableZh": "9:16 短视频",
+      "fit": "中"
+    }
+  ],
+  "capabilities": {
+    "maxResolutionZh": "9:16 竖屏（模板）",
+    "maxFpsZh": "跟随源",
+    "durationZh": "按素材",
+    "effectsZh": [
+      "跳剪",
+      "字幕卡片",
+      "音量归一"
+    ],
+    "audioZh": "去静默/音量处理",
+    "interactivityZh": "无",
+    "automationZh": "强（脚本）",
+    "assetsZh": "源素材 + 字体",
+    "exportFormatsZh": [
+      "mp4"
+    ],
+    "realtimePreviewZh": "无",
+    "ciFriendlyZh": "未验证"
+  },
+  "ceilingZh": "面向“口播清理”这一件事，能力边界清晰；不适合创意型画面生成。",
+  "workflow": [
+    {
+      "stepZh": "安装",
+      "detailZh": "跑 setup：装 ffmpeg/whisper、下模型（约 1.6GB）",
+      "effortZh": "高"
+    },
+    {
+      "stepZh": "转录",
+      "detailZh": "Whisper 生成时间码",
+      "effortZh": "中"
+    },
+    {
+      "stepZh": "剪辑",
+      "detailZh": "按静默阈值切段",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "字幕合成",
+      "detailZh": "Remotion 渲卡片 + FFmpeg 合成",
+      "effortZh": "中"
+    }
+  ],
+  "differentiators": [
+    "专注竖屏口播的端到端流水线",
+    "本地 Whisper，不依赖云服务",
+    "卡片式字幕有专门模板"
+  ],
+  "limits": [
+    "安装脚本会拉 1.6GB 模型并调用系统包管理，本轮未执行（skipped）",
+    "星标极少（13），成熟度与文档覆盖有限",
+    "Windows 兼容性未验证"
+  ],
+  "compareTips": [
+    {
+      "vs": "vs video-use",
+      "adviceZh": "video-use 用云转录 + Agent 决策；fragua 本地 Whisper + 固定规则"
+    },
+    {
+      "vs": "vs cutloupe",
+      "adviceZh": "cutloupe 给人机协同时间线；fragua 全自动竖屏清理"
+    }
+  ],
+  "showcase": {
+    "demoBriefZh": "演示重点：1) 去静默前后时长对比；2) 卡片字幕样式；3) 9:16 输出适配。",
+    "featureCallouts": [
+      {
+        "titleZh": "去静默",
+        "descZh": "按音频阈值切段"
+      },
+      {
+        "titleZh": "本地转录",
+        "descZh": "Whisper 离线"
+      },
+      {
+        "titleZh": "竖屏字幕",
+        "descZh": "卡片式排版"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "field": "stars",
+      "source": "GitHub API",
+      "noteZh": "13 stars / 0 forks"
+    },
+    {
+      "field": "结构",
+      "source": "本地实测",
+      "noteZh": "scripts/ + remotion/，安装脚本依赖较重"
+    },
+    {
+      "field": "样例",
+      "source": "本地实测",
+      "noteZh": "安装需 1.6GB 模型与系统包管理，本轮未出片（skipped）"
+    }
+  ]
+}

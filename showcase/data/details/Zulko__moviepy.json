@@ -1,0 +1,74 @@
+{
+  "id": "Zulko__moviepy",
+  "taglineZh": "Python 里最常用的视频剪辑库：每一帧都是 numpy 数组，想怎么改就怎么改",
+  "summaryZh": "15k stars 的 Python 剪辑库（v2.2.0）：把视频、音频、图片读成 Clip 对象，帧数据落到 numpy 数组，于是剪切、拼接、叠加、转场、调色、字幕都能用普通 Python 写；输出交给 ffmpeg 封装成 mp4/gif/webm。它的价值是生态与可控性，代价是纯 CPU 逐帧处理——实测 720p 只有 2.5fps。2.x 是不兼容大改版：旧教程大量失效，社区里「照着教程跑不通」多半是这个原因。它适合批量后期，不适合从零画动画。GIF、webm 与音频输出共用同一套 Clip API。它仍是 Python 剪辑生态里教程与问答最多的一档。",
+  "whatItMakes": [
+    {"type": "批量剪辑与拼接", "exampleZh": "按目录批量裁头尾、统一分辨率、拼接成合集", "strength": "核心能力"},
+    {"type": "字幕与标题叠加", "exampleZh": "TextClip 烧字幕，支持字体、位置、逐段显示", "strength": "核心能力"},
+    {"type": "逐像素特效", "exampleZh": "自定义 fl 函数做调色、遮罩、扫描线、故障风", "strength": "核心能力"},
+    {"type": "转场与多层合成", "exampleZh": "CrossFadeIn、CompositeVideoClip 多层叠加", "strength": "核心能力"},
+    {"type": "音频处理", "exampleZh": "音量包络、混音、AudioClip 与视频对齐", "strength": "可用"},
+    {"type": "从零绘制动画", "exampleZh": "没有矢量/时间轴/缓动体系，画动画要自己写帧函数", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "课程视频批处理", "whoZh": "教研团队、课程运营", "whyZh": "批量加水印、加片头片尾、统一分辨率与字幕，一套脚本跑整季", "deliverableZh": "每集 1080p MP4，单集 10–60 分钟（建议分段处理）", "fit": "高度契合"},
+    {"scenarioZh": "素材自动剪辑", "whoZh": "运维、影视外包助理", "whyZh": "按时间码裁切、去抖、拼监控片段，用 Python 串进现有流水线", "deliverableZh": "按规则产出的片段合集", "fit": "适合"},
+    {"scenarioZh": "数据视频合成", "whoZh": "科研人员、数据分析师", "whyZh": "把 matplotlib 帧拼成动画，再叠字幕与音频", "deliverableZh": "30 秒–3 分钟 MP4/GIF", "fit": "适合"},
+    {"scenarioZh": "短视频批量生产", "whoZh": "内容运营", "whyZh": "模板化换文案可用，但 2.5fps 的吞吐让大规模出片成本很高", "deliverableZh": "每天数十条 720p 短视频", "fit": "勉强"},
+    {"scenarioZh": "精细动效设计", "whoZh": "动效设计师", "whyZh": "缺少时间轴与缓动系统，做复杂动效要手写每一帧", "deliverableZh": "不推荐", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由输入素材与 ffmpeg 决定，实测 1280×720；4K 可用但内存与耗时显著上升",
+    "maxFpsZh": "可任意设定，由写出时 fps 参数决定；实测 30fps",
+    "durationZh": "无硬上限，受内存限制；长片建议分段处理后再拼接",
+    "effectsZh": ["内置 fx 全量（调色、模糊、裁剪、旋转、变速、镜像）", "CrossFadeIn/Out 转场", "CompositeVideoClip 多层合成", "自定义 fl 逐像素函数", "TextClip 字幕标题"],
+    "audioZh": "完整：AudioFileClip、音量包络、音频拼接、与视频对齐；无 TTS（需外部生成音频）",
+    "interactivityZh": "有 preview() 弹窗预览，无时间轴编辑器",
+    "automationZh": "纯 Python API，天然可批量与并行；无官方 CLI",
+    "assetsZh": "视频/图片/音频文件、字体文件、ImageMagick 或 PIL 生成的文字图",
+    "exportFormatsZh": ["mp4（ffmpeg 编码）", "gif", "webm", "音频 wav/mp3"],
+    "realtimePreviewZh": "有 preview()，但实时性一般",
+    "ciFriendlyZh": "中等：只需 Python + ffmpeg，可容器化；长片耗时高"
+  },
+  "ceilingZh": "能力上限由 numpy 决定：任何逐像素效果都能写，多轨合成、遮罩、音频包络都不受框架限制，1080p 长片也能做。但速度是硬边界：实测 720p 90 帧用 36.2 秒，约 2.5fps，一分钟 30fps 片子接近 12 分钟，4K 会更慢；渲染是单机 CPU，官方也没有 GPU 路径。最复杂的用法是 CompositeVideoClip 多层 + 逐帧 mask + 音量包络组合，能做出接近 AE 的效果，但代码量很大。边界：README 自述比 ffmpeg 慢、内存占用高；2.x 与 1.x API 断裂，网上教程大面积过时；TextClip 依赖 ImageMagick 或 PIL，中文字体要手动指定，否则出方框。另一个隐性成本是预览：preview() 逐帧渲染，长片调试很费时间，通常先用低分辨率小样确认节奏。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "pip install moviepy；另装 ffmpeg 并确保在 PATH（Windows 需手动加）", "effortZh": "约 15 分钟"},
+    {"stepZh": "读素材", "detailZh": "VideoFileClip / ImageClip / AudioFileClip 载入，先确认时长与分辨率", "effortZh": "约 10 分钟"},
+    {"stepZh": "组合与特效", "detailZh": "subclipped 裁切、concatenate 拼接、CompositeVideoClip 叠加，fx 调色与转场", "effortZh": "首个脚本 1–2 小时"},
+    {"stepZh": "音频对齐", "detailZh": "with_audio 或 set_audio，注意采样率与时长一致", "effortZh": "约 20 分钟"},
+    {"stepZh": "写出", "detailZh": "write_videofile(path, fps=30, codec='libx264', audio_codec='aac')", "effortZh": "实测 3 秒片 36 秒"}
+  ],
+  "differentiators": [
+    "帧即 numpy 数组，逐像素改画面没有框架限制",
+    "音视频一体，音量包络与混音能力完整",
+    "文档与社区体量最大，遇到问题几乎都能搜到答案",
+    "纯 Python，容易嵌入现有数据处理流水线"
+  ],
+  "limits": [
+    "纯 CPU 逐帧，实测 2.5fps，长片与 4K 极慢",
+    "2.x 破坏性改版，旧教程与旧代码大量失效",
+    "没有时间轴、缓动与矢量系统，不适合做动效设计",
+    "TextClip 中文字体需手动配置，否则显示异常"
+  ],
+  "compareTips": [
+    {"vs": "mowshon__moviego", "adviceZh": "要 Go 部署、单二进制、速度优先选 moviego；要 Python 生态与逐像素控制选 moviepy"},
+    {"vs": "mifi__editly", "adviceZh": "要声明式 JSON 剪辑与 GL 转场选 editly；要程序化逐帧控制选 moviepy"},
+    {"vs": "h2non__videoshow", "adviceZh": "只做图片幻灯片用 videoshow 更省事；要有视频输入与多层合成，moviepy 更完整"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①批量裁切 + 拼接三段时间线；②TextClip 烧中文字幕并指定字体；③两层 CompositeVideoClip + 逐像素调色遮罩；④CrossFadeIn 转场并演示音量包络",
+    "featureCallouts": [
+      {"titleZh": "Clip 模型", "descZh": "视频/音频/图片统一为 Clip，可裁切拼接"},
+      {"titleZh": "numpy 帧级控制", "descZh": "fl 函数逐像素改写画面"},
+      {"titleZh": "多层合成", "descZh": "CompositeVideoClip 叠加与遮罩"},
+      {"titleZh": "音频包络", "descZh": "音量曲线、混音、与视频对齐"},
+      {"titleZh": "preview()", "descZh": "脚本内快速弹窗预览"}
+    ]
+  },
+  "evidence": [
+    {"field": "summaryZh", "source": "README.md#L9-L12", "noteZh": "自述为 Python 视频编辑库，可读写常见音视频格式（含 GIF），跨三平台"},
+    {"field": "limits 第 1 条", "source": "README.md#L44-L50", "noteZh": "README 说明其比 ffmpeg 慢、内存占用高，并解释了原因"},
+    {"field": "limits 第 2 条", "source": "README.md#L6-L7", "noteZh": "v2 为不兼容更新，旧代码需迁移"},
+    {"field": "ceilingZh", "source": "_samples/Zulko__moviepy/meta.json", "noteZh": "实测 1280×720/30fps/90 帧耗时 36219ms，约 2.5fps"}
+  ]
+}

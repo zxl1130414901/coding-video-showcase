@@ -1,0 +1,74 @@
+{
+  "id": "codedbytahir__motionforge",
+  "taglineZh": "带可视化时间轴的 Next.js 视频工作台，动画组件复用 Remotion，天然能拍电影感",
+  "summaryZh": "一个 Web 视频编辑器原型：Next.js + React 19 + Prisma 做工程与界面，渲染与时间轴跑在 Remotion 上，v2.0 又加了一套「Cinematic Suite」——动力学排版、液态文字、3D 文字堆叠、景深画廊、Perlin 噪声转场、抖动效果、FLIP 图片展开、圆形遮罩。它想解决的是「写代码太慢、拖时间轴又太弱」，于是把两者放进同一个浏览器应用。但它没有导出 CLI：本次靠自建 Vite 宿主 + Playwright 逐帧截图才拿到 880×532 的 10 秒成片，装依赖拉了 1001 个包，两次都超时。它的价值在组件库，而不是工程完整性。",
+  "whatItMakes": [
+    {"type": "电影感动效标题", "exampleZh": "KineticTypography 速度驱动的字距错位、LiquidText 液态填充标题", "strength": "核心能力"},
+    {"type": "3D 场景与景深", "exampleZh": "DepthGallery3D 的雾化景深画廊、TextStack3D 多层透视文字", "strength": "核心能力"},
+    {"type": "Shader 转场", "exampleZh": "Perlin 噪声阈值揭示、Ordered/Floyd-Steinberg 抖动", "strength": "可用"},
+    {"type": "图片展开/遮罩", "exampleZh": "FLIP 缩略图到全屏、圆形 SVG 遮罩聚焦", "strength": "可用"},
+    {"type": "可视化时间轴剪辑", "exampleZh": "浏览器内多轨预览、拖拽调整图层顺序与时长", "strength": "可用"},
+    {"type": "批量长片生产", "exampleZh": "无导出 CLI、无队列，实测 300 帧要 40 分钟", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "团队自建 Web 剪辑器", "whoZh": "SaaS 产品团队", "whyZh": "已有编辑器 UI + Remotion 渲染 + 组件库，是最接近产品化的开源底子", "deliverableZh": "可运行的编辑器应用，导出需自接", "fit": "高度契合"},
+    {"scenarioZh": "动效模板演示片", "whoZh": "视觉设计师、创意开发", "whyZh": "Cinematic 组件成套，改文案即可产出高级感片段", "deliverableZh": "10 秒 880×532 MP4（实测尺寸）", "fit": "适合"},
+    {"scenarioZh": "内部营销短片", "whoZh": "内容团队", "whyZh": "浏览器里拖时间轴比写代码快，但缺少稳定导出链路", "deliverableZh": "需自建导出脚本", "fit": "勉强"},
+    {"scenarioZh": "组件二次开发", "whoZh": "前端开发者", "whyZh": "9 个 Cinematic 组件源码可读，可抽出来单独用", "deliverableZh": "定制组件与 Composition", "fit": "适合"},
+    {"scenarioZh": "CI 自动批量出片", "whoZh": "工具链团队", "whyZh": "安装 1001 个包、无 CLI、渲染 8 秒/帧，不适合自动化", "deliverableZh": "不适用", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由宿主 Composition 决定；实测 880×532，Remotion 理论可到 4K，但组件内固定像素参数需逐个改",
+    "maxFpsZh": "实测 30fps；由 Remotion Composition 配置，可改 60",
+    "durationZh": "由时间轴决定；实测 10 秒 300 帧。无硬上限，但渲染时间线性增长",
+    "effectsZh": ["KineticTypography 速度驱动排版", "LiquidText 液态填充", "TextStack3D 3D 文字", "DepthGallery3D 景深画廊", "ShaderImageReveal Perlin 转场", "DitheringEffect 抖动", "FlipImageReveal FLIP 展开", "CardExpansionMask 遮罩"],
+    "audioZh": "编辑器带媒体面板，但音频混流未确认；导出链路以截帧为主，不保证音轨",
+    "interactivityZh": "强：可视化时间轴、图层拖拽、实时预览，是面向人工剪辑的界面",
+    "automationZh": "弱：无官方导出 CLI；本次自建 Vite + Playwright 逐帧截图后才出片",
+    "assetsZh": "媒体面板支持本地上传图片/视频；无内置素材库与 TTS",
+    "exportFormatsZh": ["mp4（经 Remotion 或截帧合成）", "png 帧序列"],
+    "realtimePreviewZh": "有，编辑器内 Remotion 预览",
+    "ciFriendlyZh": "弱：依赖数据库与 1001 个包，安装两次均超时"
+  },
+  "ceilingZh": "从设计看它的上限不低：9 个 Cinematic 组件覆盖排版、3D、shader、FLIP、遮罩，配 Remotion 可做真正有电影感的 10–30 秒片。但实测把上限压得很低：本次 880×532、300 帧、10 秒的片子走了 40 分钟，约 8 秒/帧，批量出片基本不可能；4K 未验证，组件内写死的像素参数还要逐个适配。最复杂的效果是 DepthGallery3D（Three.js 景深 + 雾）与 Perlin 噪声转场叠加。边界：没有导出 CLI，必须自己接 Remotion 或截图管线；pnpm 安装 1001 个包两次超时；README 无在线 demo，97 stars 的社区几乎无处提问；Prisma 数据库是启动前置条件。另外它的组件依赖 Three.js 与 Remotion 运行时，想单独复用要先拆掉编辑器与数据库那层。短片段、单人制作、本机预览是它目前唯一能跑通的范围。",
+  "workflow": [
+    {"stepZh": "安装依赖", "detailZh": "pnpm install；实测 1001 个包两次均超时，建议加长超时或分步装", "effortZh": "20–60 分钟"},
+    {"stepZh": "配数据库", "detailZh": "按 README 配 Prisma 与 .env，否则应用起不来", "effortZh": "约 20 分钟"},
+    {"stepZh": "启动编辑器", "detailZh": "pnpm dev 打开浏览器，新建工程并拖入媒体", "effortZh": "首编译约数分钟"},
+    {"stepZh": "编排时间轴", "detailZh": "在时间轴上放 Cinematic 组件，调时长、图层顺序与参数", "effortZh": "按片长而定"},
+    {"stepZh": "导出", "detailZh": "无官方 CLI；本次用自建 Vite 宿主 + Playwright 逐帧截图，再 ffmpeg 合成", "effortZh": "300 帧约 40 分钟"}
+  ],
+  "differentiators": [
+    "编辑器与代码双模：可视化时间轴 + Remotion 组件，兼顾拖拽与编程",
+    "Cinematic Suite 九个成品组件，省掉 shader 与 3D 的底层实现",
+    "Next.js + Prisma 的完整应用骨架，接近可直接商用的剪辑 SaaS 底子",
+    "FLIP 展开与 SVG 遮罩这类细节组件在开源里少见"
+  ],
+  "limits": [
+    "没有官方导出 CLI，成片链路要自己搭",
+    "安装极重（1001 包，两次超时），启动还依赖数据库",
+    "实测约 8 秒/帧，10 秒片要 40 分钟，无法批量",
+    "文档缺在线 demo，社区小，问题基本无处查"
+  ],
+  "compareTips": [
+    {"vs": "openvideodev__react-video-editor", "adviceZh": "要纯浏览器 Pixi + WebCodecs 的编辑器选 react-video-editor；要多轨 + Remotion 组件生态选 motionforge，但两者导出链路都不完整"},
+    {"vs": "remotion-dev__remotion", "adviceZh": "Remotion 是可靠引擎但无编辑器；motionforge 提供编辑器与组件，稳定性差很多，适合做原型不适合量产"},
+    {"vs": "motion-canvas__motion-canvas", "adviceZh": "Motion Canvas 有成熟的代码 + 编辑器工作流；motionforge 更偏 Next.js 应用与 Cinematic 组件"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①编辑器时间轴上放 KineticTypography 标题，拖时长看实时预览；②DepthGallery3D 景深画廊 + 相机推进；③ShaderImageReveal 的 Perlin 转场与抖动效果对比；④展示导出流程：自建宿主、逐帧截图、ffmpeg 合成，并标注 8 秒/帧的耗时",
+    "featureCallouts": [
+      {"titleZh": "KineticTypography", "descZh": "速度驱动的字符错位与有机运动"},
+      {"titleZh": "DepthGallery3D", "descZh": "距离雾 + 景深的 3D 画廊"},
+      {"titleZh": "ShaderImageReveal", "descZh": "Perlin 噪声阈值揭示转场"},
+      {"titleZh": "FlipImageReveal", "descZh": "FLIP 缩略图到全屏的无缝展开"},
+      {"titleZh": "可视化时间轴", "descZh": "浏览器内拖拽图层与时长"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L9", "noteZh": "自述为 React/Next.js/WebGL 的程序化视频框架，确定性逐帧渲染"},
+    {"field": "capabilities.effectsZh", "source": "README.md#L13-L31", "noteZh": "v2.0 Cinematic Suite 九个组件的完整清单"},
+    {"field": "limits 第 3 条", "source": "_samples/codedbytahir__motionforge/meta.json", "noteZh": "实测 300 帧 880×532，耗时 40 分钟，约 8 秒/帧"},
+    {"field": "limits 第 1 条", "source": "README.md#L36-L44", "noteZh": "README 只给 create-motionforge 与组件用法，未提供导出 CLI 说明"}
+  ]
+}

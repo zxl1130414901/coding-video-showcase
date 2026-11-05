@@ -1,0 +1,128 @@
+{
+  "id": "kaomei__stickman-video-director",
+  "taglineZh": "用本地 canvas 画火柴人讲解片，配音字幕都走脚本，不依赖 GPU",
+  "summaryZh": "stickman-video-director 是一个技能 + 本地运行时：project.json 定义画布/字幕/分镜，scripts/autopilot-render.mjs 用 @napi-rs/canvas 逐帧画火柴人，FFmpeg 编码并混音。仓库带 examples/b1（1280×720@30fps，含旁白与字幕），doctor 全绿即可跑。",
+  "whatItMakes": [
+    {
+      "type": "火柴人讲解片",
+      "exampleZh": "examples/b1：720p30，旁白 + 逐句字幕",
+      "strength": "原生 720p，无 GPU"
+    },
+    {
+      "type": "分镜/场景",
+      "exampleZh": "project.json 定义 shots/layers/keys",
+      "strength": "结构化可改"
+    },
+    {
+      "type": "质检流程",
+      "exampleZh": "validate/preview/approve/render 四段式",
+      "strength": "先预览后成片"
+    }
+  ],
+  "useCases": [
+    {
+      "scenarioZh": "科普/教育讲解",
+      "whoZh": "知识博主",
+      "whyZh": "低配机器也能批量出片",
+      "deliverableZh": "3–8 分钟讲解",
+      "fit": "高"
+    }
+  ],
+  "capabilities": {
+    "maxResolutionZh": "project.json 指定（b1 为 1280×720）",
+    "maxFpsZh": "project.json 指定（30）",
+    "durationZh": "由字幕/旁白决定",
+    "effectsZh": [
+      "火柴人动作",
+      "图层位移/缩放",
+      "字幕高亮",
+      "转场"
+    ],
+    "audioZh": "旁白 + SFX 混音",
+    "interactivityZh": "preview 片段",
+    "automationZh": "doctor/preview/render CLI",
+    "assetsZh": "字体 + 旁白音频",
+    "exportFormatsZh": [
+      "mp4"
+    ],
+    "realtimePreviewZh": "preview 命令",
+    "ciFriendlyZh": "可脚本化"
+  },
+  "ceilingZh": "风格锁定在火柴人；胜在零 GPU、720p 原生、流程完整，适合大批量讲解内容。",
+  "workflow": [
+    {
+      "stepZh": "装依赖",
+      "detailZh": "npm i（仅 @napi-rs/canvas）",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "写 project",
+      "detailZh": "按 b1 结构写画布/字幕/分镜",
+      "effortZh": "中"
+    },
+    {
+      "stepZh": "预览",
+      "detailZh": "autopilot preview <proj> --seconds N",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "成片",
+      "detailZh": "approve 后 render",
+      "effortZh": "低"
+    }
+  ],
+  "differentiators": [
+    "纯 CPU canvas 渲染，不占 GPU，可与其他任务并行",
+    "720p30 原生输出，不用降采样",
+    "带 validate/preview/approve 审核流"
+  ],
+  "limits": [
+    "本次实测：doctor 全绿，但 preview 报 EISDIR（读取输出目录当成文件），未出片",
+    "preview 需要先 approve 才能 render，流程较严",
+    "风格单一（火柴人)"
+  ],
+  "compareTips": [
+    {
+      "vs": "vs explainroo",
+      "adviceZh": "explainroo 用 HTML 场景 + 本地 TTS；stickman 用 canvas 绘制，无需 TTS 模型"
+    },
+    {
+      "vs": "vs sweety",
+      "adviceZh": "sweety 要真实手绘图层；stickman 纯矢量火柴人"
+    }
+  ],
+  "showcase": {
+    "demoBriefZh": "演示重点：1) 720p30 原生画质；2) 字幕逐句高亮；3) 纯 CPU 批量渲染。",
+    "featureCallouts": [
+      {
+        "titleZh": "零 GPU",
+        "descZh": "canvas 逐帧，不吃显卡"
+      },
+      {
+        "titleZh": "720p 原生",
+        "descZh": "无需降采样"
+      },
+      {
+        "titleZh": "审核流",
+        "descZh": "validate→preview→approve"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "field": "stars",
+      "source": "GitHub API",
+      "noteZh": "4,299 stars"
+    },
+    {
+      "field": "doctor",
+      "source": "本地实测",
+      "noteZh": "node/ffmpeg/ffprobe/canvas/fonts 全绿"
+    },
+    {
+      "field": "渲染",
+      "source": "本地实测",
+      "noteZh": "preview 报 EISDIR，未出片"
+    }
+  ]
+}

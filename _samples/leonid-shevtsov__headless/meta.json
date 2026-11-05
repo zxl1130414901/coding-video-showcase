@@ -1,0 +1,10 @@
+{
+  "repo": "leonid-shevtsov/headless",
+  "category": "终端录制转视频/GIF",
+  "status": "skip",
+  "render_ms": 0,
+  "total_ms": 0,
+  "cmd": "",
+  "ffprobe": null,
+  "notes_zh": "Ruby gem，录制端依赖 Linux/macOS 的终端与 Xvfb（headless 浏览器 + xterm.js 抓屏），Windows 没有对应二进制与 PTY 实现；仓库也不提供预编译发行版。按规则先评估 Windows 替代：无 Xvfb/PTY 等价物，WSL 亦需额外发行版环境，故记 skip。根因关键词：Ruby + Xvfb + Unix PTY。"
+}

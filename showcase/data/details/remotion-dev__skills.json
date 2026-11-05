@@ -1,0 +1,115 @@
+{
+  "id": "remotion-dev__skills",
+  "taglineZh": "Remotion 官方出的 Agent 技能包：让模型按官方约定写视频组件",
+  "summaryZh": "remotion-dev/skills 是 Remotion 官方的技能集合：用 SKILL/规则文档约束 Agent 如何写 Remotion 组件、如何组织工程与渲染。仓库本身不含示例工程，需要配合 remotion 主包使用。",
+  "whatItMakes": [
+    {
+      "type": "组件规范",
+      "exampleZh": "约束 Agent 写 Composition/Sequence 的方式",
+      "strength": "减少跑偏"
+    },
+    {
+      "type": "渲染指引",
+      "exampleZh": "如何调用 Remotion CLI 出片",
+      "strength": "流程统一"
+    }
+  ],
+  "useCases": [
+    {
+      "scenarioZh": "React 视频工程",
+      "whoZh": "前端团队",
+      "whyZh": "已有 Remotion 项目",
+      "deliverableZh": "组件化视频",
+      "fit": "中"
+    }
+  ],
+  "capabilities": {
+    "maxResolutionZh": "取决于 Remotion 工程",
+    "maxFpsZh": "取决于工程",
+    "durationZh": "取决于工程",
+    "effectsZh": [
+      "React 组件动画"
+    ],
+    "audioZh": "Remotion 音频组件",
+    "interactivityZh": "Remotion Studio",
+    "automationZh": "CLI",
+    "assetsZh": "工程资产",
+    "exportFormatsZh": [
+      "mp4"
+    ],
+    "realtimePreviewZh": "Remotion Studio",
+    "ciFriendlyZh": "可"
+  },
+  "ceilingZh": "只是技能文档层；画面能力完全继承 Remotion。",
+  "workflow": [
+    {
+      "stepZh": "接入",
+      "detailZh": "把技能挂到 Agent 环境",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "写组件",
+      "detailZh": "按官方规范写 Composition",
+      "effortZh": "中"
+    },
+    {
+      "stepZh": "渲染",
+      "detailZh": "remotion render",
+      "effortZh": "低"
+    }
+  ],
+  "differentiators": [
+    "官方维护，和 Remotion 版本同步",
+    "规则文档化，便于团队统一",
+    "与现有 Remotion 工程零冲突"
+  ],
+  "limits": [
+    "仓库不含可运行示例工程，本轮未出片（skipped）",
+    "许可未声明（license=None）",
+    "必须已有 Remotion 环境"
+  ],
+  "compareTips": [
+    {
+      "vs": "vs hyperframes",
+      "adviceZh": "Remotion 是 React 组件化路线；HyperFrames 是原生 HTML 路线"
+    },
+    {
+      "vs": "vs huashu-motion",
+      "adviceZh": "huashu 自带模板与 CLI，官方 skills 只给规范"
+    }
+  ],
+  "showcase": {
+    "demoBriefZh": "演示重点：1) 官方组件写法；2) 与 remotion 主包的配合；3) 规则如何约束 Agent。",
+    "featureCallouts": [
+      {
+        "titleZh": "官方",
+        "descZh": "与 Remotion 版本同步"
+      },
+      {
+        "titleZh": "规范",
+        "descZh": "把经验写成规则"
+      },
+      {
+        "titleZh": "无侵入",
+        "descZh": "不绑定具体工程"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "field": "stars",
+      "source": "GitHub API",
+      "noteZh": "6,373 stars"
+    },
+    {
+      "field": "内容",
+      "source": "本地实测",
+      "noteZh": "以技能文档为主，无示例工程"
+    },
+    {
+      "field": "样例",
+      "source": "本地实测",
+      "noteZh": "无渲染入口，skipped"
+    }
+  ]
+}

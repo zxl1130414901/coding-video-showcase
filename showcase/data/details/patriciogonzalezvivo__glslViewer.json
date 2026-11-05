@@ -1,0 +1,73 @@
+{
+  "id": "patriciogonzalezvivo__glslViewer",
+  "taglineZh": "本地 GLSL 实时画布：加载着色器、模型与视频，按秒数直接录成 MP4",
+  "summaryZh": "glslViewer 是一个 C++ 写的实时 GLSL 沙盒与播放器：把 .frag/.vert 着色器、3D 模型、纹理、视频、相机轨迹 CSV 丢进去，就能在窗口里实时调参，键盘鼠标控制视角，还能通过命令行/OSC 发指令。它解决的是“写着色器时反复改、反复看”的循环，以及把着色器画面录成片的需求：--headless 配合 -E record,file,A,B,fps 可在无窗口模式下把第 A 到 B 秒录成 MP4。与 Shadertoy 相比它能本地加载资产、支持 3D 和视频纹理；与 Blender 相比它没有场景编辑器、材质系统和灯光，一切靠 GLSL 代码。",
+  "whatItMakes": [
+    {"type": "着色器视觉短片", "exampleZh": "raymarching、噪声流场、液体金属、分形，逐秒录制", "strength": "核心能力"},
+    {"type": "3D 模型/材质演示", "exampleZh": "加载 OBJ/GLTF，套自定义 vert/frag 着色器旋转展示", "strength": "可用"},
+    {"type": "视频纹理合成", "exampleZh": "把视频当纹理喂进 shader，做反馈、置换、故障效果", "strength": "可用"},
+    {"type": "相机轨迹录制", "exampleZh": "用 camera CSV 预设机位，headless 录出固定运镜", "strength": "可用"},
+    {"type": "PNG 序列导出", "exampleZh": "sequence/frames 命令按帧存 PNG，交给外部合成", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "生成艺术/视觉背景", "whoZh": "新媒体艺术家、VJ", "whyZh": "实时窗口调参，满意后按秒录制，无需合成软件", "deliverableZh": "720p/1080p 的 5–30 秒 MP4", "fit": "高度契合"},
+    {"scenarioZh": "产品视觉包装", "whoZh": "动效/视觉设计师", "whyZh": "着色器背景可叠在片头或 UI 演示上", "deliverableZh": "循环背景 10–20 秒，PNG 序列可合成", "fit": "适合"},
+    {"scenarioZh": "图形学教学演示", "whoZh": "图形学讲师", "whyZh": "边改 shader 边看结果，能把光照/噪声原理讲透", "deliverableZh": "课堂实时演示 + 录屏", "fit": "高度契合"},
+    {"scenarioZh": "无窗口批渲染", "whoZh": "工程团队", "whyZh": "headless 加 -E 命令可脚本化，适合 CI 出固定镜头", "deliverableZh": "固定参数的短片/序列帧", "fit": "适合"},
+    {"scenarioZh": "完整叙事视频", "whoZh": "课程制作团队", "whyZh": "没有时间轴、字幕、音频与转场系统，叙事片要另配工具", "deliverableZh": "需与其他工具拼接", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由 -w/-h 或窗口尺寸决定，未声明上限；实测 1280×720，4K 取决于 GPU 与显存",
+    "maxFpsZh": "由 --fps 与显示器刷新率决定，实测 30fps；可 fullFps 解除按需重绘",
+    "durationZh": "record 需指定 A/B 秒，单次录制无硬限制；长片受磁盘与内存队列限制",
+    "effectsZh": ["任意 GLSL 片段/顶点着色器", "3D 模型、纹理、视频纹理", "相机 CSV 轨迹与鼠标轨道控制", "着色器热重载与错误屏幕"],
+    "audioZh": "文档未见音频输入或音轨合成能力，成片默认无声",
+    "interactivityZh": "核心是实时交互：窗口内鼠标/键盘控制、控制台与 OSC 指令",
+    "automationZh": "CLI 可脚本化：--headless 加 -E record/sequence/screenshot，可进 CI",
+    "assetsZh": "支持 .frag/.vert、OBJ/GLTF 等模型、图片/视频纹理、相机 CSV；无内置素材库",
+    "exportFormatsZh": ["MP4", "PNG 序列", "单帧 PNG"],
+    "realtimePreviewZh": "有：窗口实时渲染与热重载",
+    "ciFriendlyZh": "可进 CI（headless + -E），但需要可用的 OpenGL/EGL 上下文"
+  },
+  "ceilingZh": "它的上限取决于显卡与着色器复杂度：窗口里能实时跑 60fps 的 raymarching，就能按 30fps 录成 720p/1080p；实测 5 秒 720p30 的录制只用 11.7 秒，接近实时，说明录制开销主要是编码而非渲染。配合相机 CSV、视频纹理和 3D 模型，可以做出接近成品级的视觉镜头。边界很硬：没有时间轴、字幕、音频、转场和图层系统，它只产出“一段着色器画面”；record 必须给起止秒数，不能直接按场景名渲染；Windows 官方发行包缺 FFmpeg 共享 DLL，实测要补 ffmpeg 8.1 shared 才能跑；headless 依赖可用的 GL/EGL 上下文，纯服务器无显卡时要额外配置；许可证为 BSD 风格，商用友好。它适合做视觉背景与生成艺术，不适合完整叙事片。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "下载对应平台发行包或源码编译；Windows 需补齐 FFmpeg 共享 DLL 到 PATH", "effortZh": "10–30 分钟"},
+    {"stepZh": "写着色器", "detailZh": "准备 .frag/.vert 与可选模型/纹理，窗口里运行 glslViewer scene.frag", "effortZh": "首个 shader 1–2 小时"},
+    {"stepZh": "实时调参", "detailZh": "用控制台命令改 uniform、fps、相机，鼠标拖拽检查 3D 视角", "effortZh": "随改随看"},
+    {"stepZh": "录制", "detailZh": "glslViewer scene.frag --headless -w 1280 -h 720 -E record,out.mp4,0,5,30", "effortZh": "5 秒 720p 约 12 秒"},
+    {"stepZh": "后期", "detailZh": "需要配乐/字幕时把 MP4 或 PNG 序列送进剪辑软件", "effortZh": "另计"}
+  ],
+  "differentiators": [
+    "着色器热重载 + 实时窗口，调参循环比 Shadertoy 之外的大多数工具短",
+    "支持本地 3D 模型、视频纹理与相机 CSV，不局限于全屏 quad",
+    "一套命令行/OSC 指令系统，headless 也能精确按秒录制",
+    "跨 macOS/Linux/Windows/树莓派，BSD 风格许可商用友好"
+  ],
+  "limits": [
+    "没有时间轴、图层、字幕、音频与转场，做不了完整叙事片",
+    "录制按秒指定区间，不能按镜头/场景名组织",
+    "Windows 官方包缺 FFmpeg DLL，实测需手动补 shared 库",
+    "纯 GLSL 工作流，学习曲线陡，非图形背景难以上手"
+  ],
+  "compareTips": [
+    {"vs": "dmtrKovalenko__fframes", "adviceZh": "要 SVG 信息图与时间轴叙事选 fframes；要实时着色器与 3D 材质实验选 glslViewer"},
+    {"vs": "LBEILC__Multiplane", "adviceZh": "要 HTML/CSS 排版与镜头合成选 Multiplane；要像素级 GLSL 与视频纹理选 glslViewer"},
+    {"vs": "charmbracelet__vhs", "adviceZh": "录终端选 VHS；录着色器画面选 glslViewer，两者解决完全不同的画面"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①窗口里热重载一个 raymarching shader；②加载 3D 模型并套自定义材质；③用相机 CSV 走一段固定运镜；④headless 录制 5 秒 720p30 MP4 并展示 ffprobe",
+    "featureCallouts": [
+      {"titleZh": "GLSL 热重载", "descZh": "改一行立即看到结果"},
+      {"titleZh": "3D 模型与材质", "descZh": "OBJ、GLTF 模型直接套 shader"},
+      {"titleZh": "视频当纹理", "descZh": "做反馈与置换效果"},
+      {"titleZh": "相机 CSV", "descZh": "固定机位轨迹可复现"},
+      {"titleZh": "按秒录制", "descZh": "headless 模式出 MP4 与 PNG 序列"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "ARGUMENTS.md#L4-L20", "noteZh": "输入按扩展名解析 frag/vert、3D geometry、纹理、视频、相机 CSV、命令表"},
+    {"field": "capabilities.exportFormatsZh", "source": "COMMANDS.md#L38-L43", "noteZh": "screenshot/sequence/secs/frames/record 的导出命令与默认 24fps"},
+    {"field": "capabilities.automationZh", "source": "ARGUMENTS.md#L55-L84", "noteZh": "--fps、--headless、-e/-E 命令执行"},
+    {"field": "ceilingZh", "source": "_samples/patriciogonzalezvivo__glslViewer/meta.json", "noteZh": "实测 720p30/5s 录制 11.7s；官方 win64 包缺 FFmpeg DLL，补 shared 库后成功"}
+  ]
+}

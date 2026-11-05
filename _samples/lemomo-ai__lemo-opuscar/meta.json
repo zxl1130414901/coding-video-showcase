@@ -1,0 +1,59 @@
+{
+  "repo": "lemomo-ai/lemo-opuscar",
+  "category": "Canvas/WebGL 风格片",
+  "status": "success",
+  "render_ms": 240000,
+  "total_ms": 246000,
+  "cmd": "node _tmp/article/lemo_min.mjs（openDemo → render(t) 120 帧 → ffmpeg）",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 4.97,
+    "nb_frames": 149,
+    "codec": "h264",
+    "pix_fmt": "yuv420p",
+    "fps": "30/1",
+    "size_bytes": 1175731
+  },
+  "notes_zh": "仓库无示例工程，自写最小调用脚本（官方 core/render/page.mjs openDemo + 逐帧截图 + ffmpeg 合片），取 styles/ascii-crt/demo 前 5s；缺失字体按 fetch.sh 的做法本地补 VT323 后跑通",
+  "preview": {
+    "at_s": 4.2,
+    "mean_rgb": [
+      30.57,
+      24.64,
+      7.04
+    ],
+    "stddev_rgb": [
+      58.3,
+      53.64,
+      11.97
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 20.2,
+    "resolution": "1280x720",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 6,
+    "render_ms": 180000,
+    "pipeline": "native",
+    "build": "core/render/page.mjs 的 openDemo + window.render(t) 逐帧截图：ascii-crt / papercut-red / blueprint 各 6.8s@30fps 1280x720，再用 ffmpeg 拼接并 drawtext 烧中文标注",
+    "ffprobe": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "frames": 606,
+      "duration": 20.2,
+      "codec": "h264",
+      "size_bytes": 4927853
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 4.97s",
+    "known_limits_zh": [
+      "仓库只附了 ascii-crt 的 VT323 字体，papercut-red / blueprint 用本机微软雅黑顶替，字形与原设计不同",
+      "hologram-hud 实测卡在页面字体/渲染阶段（WebGL），本次换成 blueprint 作第三风格",
+      "逐帧截图 720p 约 0.1–0.6s/帧，1080p 会成倍变慢，因此成片保持 720p"
+    ]
+  }
+}

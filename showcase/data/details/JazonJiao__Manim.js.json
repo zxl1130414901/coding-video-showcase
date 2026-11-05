@@ -1,0 +1,74 @@
+{
+  "id": "JazonJiao__Manim.js",
+  "taglineZh": "2018 年用 p5.js 复刻 Manim 的实验项目，浏览器打开即看的算法图解集",
+  "summaryZh": "2018 年的实验项目：用 p5.js 在 canvas 上模仿 3b1b 的数学动画，作者因当时装不上 manim 而自己写了一套，还拿到 Grant Sanderson 的命名许可。仓库里有 Graph、Tree 等数据结构类和 util 动画基类，按示例组织（算法、图论、数学），打开 HTML 就能播；它不是可安装的库，没有 npm 包与 CLI，API 也与现代 Manim 无关。优点是零 Python 环境、实时播放即录制，实测 325 帧 10.8 秒只用 9 秒抓完；缺点是不掉帧才算运气，机器卡就丢帧。源码量小，适合通读一遍再自己改。",
+  "whatItMakes": [
+    {"type": "算法过程图解", "exampleZh": "排序、最短路、遍历的逐步高亮与连线动画", "strength": "核心能力"},
+    {"type": "图与树结构动画", "exampleZh": "Graph_U/D、Tree 类，节点与边按帧出现", "strength": "核心能力"},
+    {"type": "数学函数可视化", "exampleZh": "坐标系、函数曲线、向量，用 util 动画基类串帧", "strength": "可用"},
+    {"type": "浏览器内即时演示", "exampleZh": "本地 http 打开 HTML 即播，无需安装渲染器", "strength": "可用"},
+    {"type": "高质量教学长片", "exampleZh": "无时间轴、无相机、无 LaTeX，画面精细度有限", "strength": "受限"},
+    {"type": "命令行批量出片", "exampleZh": "无 CLI，录制靠外部工具或实时抓屏", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "算法课现场演示", "whoZh": "中学/大学教师、训练营讲师", "whyZh": "浏览器直接播，讲到哪一步就跳到哪一帧，适合课堂互动", "deliverableZh": "1200×675 30fps 的现场演示页", "fit": "高度契合"},
+    {"scenarioZh": "前端开发者参考 canvas 动画", "whoZh": "Web 开发者", "whyZh": "源码短、结构清楚，适合读p5.js 动画的组织方式", "deliverableZh": "可复用的小型动画类", "fit": "适合"},
+    {"scenarioZh": "刷题讲解短视频", "whoZh": "面试辅导、算法博主", "whyZh": "图算法示例改数据即可用，录屏后配音发布", "deliverableZh": "1–3 分钟录屏 MP4", "fit": "适合"},
+    {"scenarioZh": "学生自学 Manim 原理", "whoZh": "学生、自学者", "whyZh": "用 JS 实现轻量版，能直观理解「帧 + 补间」的思路", "deliverableZh": "可改可跑的示例", "fit": "适合"},
+    {"scenarioZh": "正式课程成片", "whoZh": "课程制作团队", "whyZh": "缺 LaTeX 公式、相机与稳定录制链路，画质与排版不足", "deliverableZh": "不推荐直接交付", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "默认 1200×675，改 globals.js 可调；实测输出 720p",
+    "maxFpsZh": "固定 30fps（README 注释说明 setup2D 设置帧率），实时播放即录制",
+    "durationZh": "无上限，但实时录制下时长等于真实等待时间",
+    "effectsZh": ["图/树/向量等数据结构类", "按帧补间的 util 动画基类", "全局配色常量", "字体预加载"],
+    "audioZh": "无音频能力",
+    "interactivityZh": "浏览器页面可交互，示例带播放控制；无编辑器",
+    "automationZh": "无 CLI 与 npm 包，录制需 Playwright 或录屏工具",
+    "assetsZh": "自带 times.ttf 字体；图片与数据在示例内硬编码",
+    "exportFormatsZh": ["mp4（经外部录制）", "png 帧（经截图）"],
+    "realtimePreviewZh": "本质就是实时预览，p5.js 逐帧绘制",
+    "ciFriendlyZh": "弱：无构建、无 CLI，只能靠浏览器自动化抓帧"
+  },
+  "ceilingZh": "上限是「简洁示例集」：图算法、树遍历、函数图像这几类能做到接近 3b1b 的观感，配色与字体都调过；实测 325 帧 10.8 秒用 9 秒实时抓完，约 36fps，说明录制速度不是瓶颈。但画面复杂度有限：没有相机、没有 3D、没有 LaTeX 公式排版，复杂推导只能靠手绘线条。边界：仓库是示例集合而非库，没有 npm 包、没有 CLI、没有版本发布；必须起本地 http，file:// 打开会被 CORS 拦掉字体加载；实时录制意味着掉帧就丢帧，机器一卡成片就缺画面；2019 年后基本停更，与现代 Manim 生态完全脱节。示例之间还共用全局常量，改一个颜色可能影响别的页面；没有构建流程，代码复用靠手动拷文件。",
+  "workflow": [
+    {"stepZh": "起本地服务", "detailZh": "在仓库根目录跑任意静态服务器（http-server / python -m http.server），不能直接双击 HTML", "effortZh": "约 5 分钟"},
+    {"stepZh": "选示例", "detailZh": "打开 Graph Algorithms/graph.html 等示例页，确认字体与动画正常", "effortZh": "约 5 分钟"},
+    {"stepZh": "改数据与配色", "detailZh": "改 V/E 坐标、颜色常量与 globals.js 的尺寸帧率", "effortZh": "约 20 分钟"},
+    {"stepZh": "录制", "detailZh": "Playwright 打开页面并逐帧截图，或直接录屏后转 mp4", "effortZh": "10 秒片约 1 分钟"},
+    {"stepZh": "转码发布", "detailZh": "ffmpeg 把截图序列或录屏转成 30fps mp4", "effortZh": "约 5 分钟"}
+  ],
+  "differentiators": [
+    "纯浏览器零依赖，不需要 Python/LaTeX/ffmpeg 环境",
+    "示例即教程，改数据就能出自己主题的图解",
+    "实时播放与录制合一，所见即所得",
+    "有 3b1b 本人的命名许可与推荐背景，历史价值独特"
+  ],
+  "limits": [
+    "不是库：无 npm 包、无 CLI、无构建流程",
+    "必须本地 http，file:// 打开会被 CORS 拦",
+    "实时录制，掉帧即丢帧，成片稳定性靠机器",
+    "2019 年后基本停更，无 3D、相机与 LaTeX"
+  ],
+  "compareTips": [
+    {"vs": "3b1b__manim", "adviceZh": "要 3D、LaTeX 与成片级画质选 ManimGL；只要浏览器里快速做算法图解，Manim.js 更轻"},
+    {"vs": "ybouane__VideoFlow", "adviceZh": "VideoFlow 有时间轴与多渲染器、可出 4K；Manim.js 胜在零环境与实时演示"},
+    {"vs": "motion-canvas__motion-canvas", "adviceZh": "要现代 TS 工程与编辑器选 Motion Canvas；要 2018 年那种极简 p5 写法选本项目"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①Graph Algorithms 示例实时播放；②改 V/E 数据换一张图，展示「数据即动画」；③树遍历示例，看节点逐帧出现；④Playwright 抓帧合成 30fps MP4，对比实时录制与成片的帧数",
+    "featureCallouts": [
+      {"titleZh": "Graph/Tree 类", "descZh": "节点边坐标与出现顺序由数据决定"},
+      {"titleZh": "setup2D", "descZh": "一行设置 1200×675 画布与 30fps"},
+      {"titleZh": "util 动画基类", "descZh": "按帧补间的通用动画封装"},
+      {"titleZh": "全局配色常量", "descZh": "Yellow 等 3b1b 风格色板"},
+      {"titleZh": "浏览器即录", "descZh": "实时播放就是最终画面"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L4", "noteZh": "用 p5.js 复刻 3b1b 风格数学动画的目标"},
+    {"field": "capabilities.maxResolutionZh", "source": "README.md#L28-L29", "noteZh": "setup2D 默认 30fps、1200×675 画布，可在 globals.js 调整"},
+    {"field": "limits 第 1 条", "source": "README.md#L10", "noteZh": "使用方式是把源码与其他文件直接引到 HTML，不是安装依赖"},
+    {"field": "ceilingZh", "source": "_samples/JazonJiao__Manim.js/meta.json", "noteZh": "实测 1200×675/30fps/325 帧，9s 抓完，成片 10.8s"}
+  ]
+}

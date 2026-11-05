@@ -1,0 +1,51 @@
+{
+  "repo": "academa-labs/manimgx",
+  "category": "数学/代码动画（Manim 系）",
+  "status": "success",
+  "render_ms": 41700,
+  "total_ms": 415000,
+  "cmd": "python -m manimgx render derivative.py",
+  "ffprobe": {
+    "width": 1920,
+    "height": 1080,
+    "duration_s": 27.417,
+    "nb_frames": 1507,
+    "codec": "h264",
+    "pix_fmt": "yuv420p",
+    "fps": "60/1",
+    "size_bytes": 1092970
+  },
+  "notes_zh": "pip 安装 manimgx 0.1.1 预编译 wheel（Rust wgpu 核心），渲染仓库自带 examples/derivative.py（DerivativeSlope）",
+  "preview": {
+    "at_s": 13.709,
+    "mean_rgb": [
+      1.97,
+      2.77,
+      2.8
+    ],
+    "stddev_rgb": [
+      16.76,
+      22.25,
+      22.64
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "nb_frames": 898,
+      "codec": "h264",
+      "pix_fmt": "yuv420p",
+      "duration_s": 29.933,
+      "size_bytes": 4690016
+    },
+    "render_ms": 723000,
+    "segments": 3,
+    "callouts": 6,
+    "pipeline": "official",
+    "methodZh": "python -m manimgx render 三个自带示例（euler_identity / derivative / clifford_torus），720p30 单进程渲染，poster.py 统一 1080p30 并烧入中文标注",
+    "generatedAt": "2026-11-05T15:12:11+08:00"
+  }
+}

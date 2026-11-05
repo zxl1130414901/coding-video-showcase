@@ -1,0 +1,51 @@
+{
+  "repo": "ManimCommunity/manim",
+  "category": "数学/代码动画（Manim 系）",
+  "status": "success",
+  "render_ms": 73089,
+  "total_ms": 350000,
+  "cmd": "python -m manim -qm --media_dir F:\\coding视频\\_samples\\ManimCommunity__manim\\media basic.py SquareToCircle",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 3.0,
+    "nb_frames": 90,
+    "codec": "h264",
+    "pix_fmt": "yuv420p",
+    "fps": "30/1",
+    "size_bytes": 53525
+  },
+  "notes_zh": "仓库 example_scenes/basic.py 的 SquareToCircle，pip 安装 manim 0.22.1 后渲染，产物从 media/ 复制到 sample.mp4",
+  "preview": {
+    "at_s": 1.5,
+    "mean_rgb": [
+      0.48,
+      0.34,
+      0.37
+    ],
+    "stddev_rgb": [
+      9.41,
+      7.02,
+      7.37
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "nb_frames": 786,
+      "codec": "h264",
+      "pix_fmt": "yuv420p",
+      "duration_s": 26.2,
+      "size_bytes": 2392265
+    },
+    "render_ms": 404417,
+    "segments": 3,
+    "callouts": 6,
+    "pipeline": "official",
+    "methodZh": "python -m manim -qm 渲染自写三幕场景，poster.py 归一化 1080p30 并烧入中文标注",
+    "generatedAt": "2026-11-05T14:34:34+08:00"
+  }
+}

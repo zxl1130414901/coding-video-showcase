@@ -1,0 +1,51 @@
+{
+  "repo": "wx4766/html-to-video",
+  "category": "HTML/浏览器渲染转视频",
+  "status": "success",
+  "render_ms": 54177,
+  "total_ms": 60000,
+  "cmd": "node scripts/render-video-seek.js docs/demo-hero.html --duration=6 --fps=30 --width=1280 --height=720 --out=...",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 6.0,
+    "nb_frames": 180,
+    "codec": "h264",
+    "pix_fmt": "yuv420p",
+    "fps": "30/1",
+    "size_bytes": 168098
+  },
+  "notes_zh": "仓库自带 demo-hero 页面，seek 逐帧截图 + 4 worker 并行，CPU 合成（该仓库设计上不需要 GPU）",
+  "preview": {
+    "at_s": 3.0,
+    "mean_rgb": [
+      16.2,
+      17.4,
+      23.17
+    ],
+    "stddev_rgb": [
+      37.95,
+      31.53,
+      26.3
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "nb_frames": 717,
+      "codec": "h264",
+      "pix_fmt": "yuv420p",
+      "duration_s": 23.9,
+      "size_bytes": 1463783
+    },
+    "render_ms": 540000,
+    "segments": 3,
+    "callouts": 6,
+    "pipeline": "official",
+    "methodZh": "自写 24s Canvas 三幕 HTML，render-video-seek.js 冻结时钟逐帧 seek（Playwright + ffmpeg）",
+    "generatedAt": "2026-11-05T14:50:19+08:00"
+  }
+}

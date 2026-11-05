@@ -1,0 +1,125 @@
+{
+  "id": "alchaincyf__huashu-art-motion",
+  "taglineZh": "把分镜写成 spec，引擎按语法渲出 Kurzgesagt/Vox 味的讲解动画",
+  "summaryZh": "huashu-art-motion 自带渲染引擎（scripts/engine/render.py）：读 spec JSON（grammar/duration/fps/width/height/cues），起本地 HTTP 服务、无头 Chromium 逐帧调用 window.renderFrame(t)，读 canvas 像素后送 FFmpeg 编码，支持 --alpha 出透明 ProRes。仓库附带 7 个可运行示例与 8 套版式演示。",
+  "whatItMakes": [
+    {
+      "type": "讲解动画片段",
+      "exampleZh": "examples/t1_3b1b.json 数学讲解 10s，版式/转场/相机自带",
+      "strength": "可复现、可直接渲"
+    },
+    {
+      "type": "风格版式库",
+      "exampleZh": "demos/y1_kurzgesagt、y3_whiteboard、y5_kinetic_type 等 8 套",
+      "strength": "风格切换成本低"
+    },
+    {
+      "type": "透明素材导出",
+      "exampleZh": "--alpha 输出 ProRes 4444，可叠到实拍/口播上",
+      "strength": "后期友好"
+    }
+  ],
+  "useCases": [
+    {
+      "scenarioZh": "知识/科普讲解",
+      "whoZh": "内容团队",
+      "whyZh": "需要稳重版式与清晰层级",
+      "deliverableZh": "带透明通道的叠加层",
+      "fit": "高"
+    }
+  ],
+  "capabilities": {
+    "maxResolutionZh": "spec 指定，本次 1920×1080",
+    "maxFpsZh": "spec 指定，本次 30（也可 60）",
+    "durationZh": "spec.duration 严格控制帧数",
+    "effectsZh": [
+      "版式动画",
+      "图表/数据可视化",
+      "相机运动",
+      "转场",
+      "白板手绘"
+    ],
+    "audioZh": "可 --audio 混入音轨",
+    "interactivityZh": "浏览器预览",
+    "automationZh": "命令行 + spec 文件，可批量",
+    "assetsZh": "examples/assets 图片 + 自带字体",
+    "exportFormatsZh": [
+      "mp4",
+      "mov(ProRes 4444)"
+    ],
+    "realtimePreviewZh": "浏览器打开 index.html",
+    "ciFriendlyZh": "Python + Playwright"
+  },
+  "ceilingZh": "能覆盖“讲解/白板/数据”三类主流语法，复杂 3D 与实拍合成不在其射程；风格偏欧美科普。",
+  "workflow": [
+    {
+      "stepZh": "写 spec",
+      "detailZh": "按 references/09 契约写 grammar/cues/duration",
+      "effortZh": "中"
+    },
+    {
+      "stepZh": "渲染",
+      "detailZh": "python scripts/engine/render.py --spec x.json --out y.mp4",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "检查",
+      "detailZh": "渲染中若有 pageerror/字体缺失会非零退出",
+      "effortZh": "低"
+    }
+  ],
+  "differentiators": [
+    "spec 是强契约：时长严格等于 duration×fps，便于流水线拼接",
+    "示例与版式演示数量多且可直接跑",
+    "支持透明通道导出"
+  ],
+  "limits": [
+    "画风偏欧美科普，中文排版需自行调字体",
+    "需要 Python + Playwright + FFmpeg 三件套",
+    "无 GUI，改片靠改 JSON/页面"
+  ],
+  "compareTips": [
+    {
+      "vs": "vs huashu-motion",
+      "adviceZh": "art-motion 走 spec+引擎，适合批量与拼接；motion 走模板+CLI，适合快速出片"
+    },
+    {
+      "vs": "vs Manim",
+      "adviceZh": "Manim 用 Python 场景类；art-motion 用 Web canvas + JSON 分镜"
+    }
+  ],
+  "showcase": {
+    "demoBriefZh": "演示重点：1) t1_3b1b 数学讲解版式；2) y5 kinetic type 文字节奏；3) --alpha 透明导出用于叠加。",
+    "featureCallouts": [
+      {
+        "titleZh": "版式语法",
+        "descZh": "grammar 决定画面结构，cues 决定节拍"
+      },
+      {
+        "titleZh": "严格时长",
+        "descZh": "帧数=round(duration×fps)，流水线可拼"
+      },
+      {
+        "titleZh": "透明导出",
+        "descZh": "ProRes 4444 直接进后期"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "field": "stars",
+      "source": "GitHub API",
+      "noteZh": "6,260 stars（文中记 5,418）"
+    },
+    {
+      "field": "实测出片",
+      "source": "本地实测",
+      "noteZh": "_samples/alchaincyf__huashu-art-motion/meta.json：10s 1280×720@30fps"
+    },
+    {
+      "field": "示例",
+      "source": "本地实测",
+      "noteZh": "examples/t1_3b1b.json 直接渲染成功，渲染器提示 10s 超过 8s 单镜建议"
+    }
+  ]
+}

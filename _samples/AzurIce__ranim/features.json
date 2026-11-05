@@ -1,0 +1,69 @@
+{
+  "id": "AzurIce__ranim",
+  "durationSec": 21.0,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "capabilityZh": "形状 morph 与书写动画",
+      "proofZh": "hello_ranim 300 帧：方块 smooth morph 成红色圆，再 write/unwrite/fade_out 收尾，渲染 36.6s"
+    },
+    {
+      "start": 5.0,
+      "end": 13.0,
+      "capabilityZh": "Typst 排版文本",
+      "proofZh": "text_item 1081 帧：Typst 直接排版英文长句并随时间展开，渲染 6.7s"
+    },
+    {
+      "start": 13.0,
+      "end": 21.0,
+      "capabilityZh": "3D 相机与轨道运动",
+      "proofZh": "solar_system 720 帧：8 条行星轨道同心排布，土星/木星等带标签公转，渲染 4.6s"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.6,
+      "dur": 4.0,
+      "titleZh": "① 形状 morph",
+      "descZh": "方块按 smooth 缓动变形为圆，轮廓点一一对应"
+    },
+    {
+      "t": 4.4,
+      "dur": 2.2,
+      "titleZh": "② 书写 / 擦除",
+      "descZh": "write / unwrite 逐段描边，是 Manim 系经典手法"
+    },
+    {
+      "t": 5.6,
+      "dur": 3.6,
+      "titleZh": "③ Typst 排版直接进场",
+      "descZh": "文本由 Typst 引擎排版，非手写坐标"
+    },
+    {
+      "t": 9.4,
+      "dur": 3.0,
+      "titleZh": "④ 原生 wgpu 渲染",
+      "descZh": "1920x1080@60fps 直出，再降到 720p30 交付"
+    },
+    {
+      "t": 13.6,
+      "dur": 3.4,
+      "titleZh": "⑤ 3D 相机轨道",
+      "descZh": "八条轨道在同一相机空间内，行星按周期公转"
+    },
+    {
+      "t": 17.4,
+      "dur": 3.2,
+      "titleZh": "⑥ 21 秒三场景",
+      "descZh": "总渲染 79.1s（编译 46m42s 复用 cargo target 增量完成）"
+    }
+  ],
+  "renderMs": 79124,
+  "pipeline": "native",
+  "knownLimitsZh": [
+    "整仓首次编译 902 crate 需 6596s；本轮复用 F 盘 CARGO_TARGET_DIR 增量补齐示例，仍耗时 46m42s（含 ranim 库重编）",
+    "示例 #[output] 固定 1920x1080@60fps，交付时统一降到 1280x720@30fps",
+    "hello_ranim 场景本身只有 5s，短于 6s 指标，故三段为 5s + 8s + 8s"
+  ]
+}

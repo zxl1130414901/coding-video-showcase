@@ -1,0 +1,10 @@
+{
+  "repo": "3b1b/videos",
+  "category": "数学/代码动画（Manim 系）",
+  "status": "skip",
+  "render_ms": 0,
+  "total_ms": 0,
+  "cmd": "",
+  "ffprobe": null,
+  "notes_zh": "非框架，属内容仓库：仓库是 3Blue1Brown 视频的 manimgl 场景源码集合（每个 .py 对应具体视频章节），依赖 manimgl（OpenGL 上下文）+ LaTeX 全套 + 专用字体与音频资产，Windows 上 manimgl 需 GLFW/OpenGL 且 LaTeX 体积巨大；单个场景还引用跨文件常量与音频。按规则尝试最短可行路径成本过高，记 skip，不伪造产物。"
+}

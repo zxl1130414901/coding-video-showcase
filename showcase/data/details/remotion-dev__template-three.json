@@ -1,0 +1,70 @@
+{
+  "id": "remotion-dev__template-three",
+  "taglineZh": "Remotion 官方 Three.js 模板：在 React 时间轴里摆 3D 场景、相机与材质",
+  "summaryZh": "这是 Remotion 官方的 Three.js 集成模板：Composition 里挂一个 Three.js 场景，用 useCurrentFrame 驱动相机、物体旋转与材质参数，再由 Remotion 逐帧截图编码。它解决“3D 镜头与 2D 排版如何共用一条时间轴”的问题——3D 场景是 React 树里的组件，可以和文字、图表、Logo 叠加。与 Blender 相比它没有建模、材质编辑器与全局光照，只负责把已有几何体编排成镜头。代价是它只是模板，资产管线与灯光都要自己补。模板代码要自己扩成工程，模型与贴图也不含在内。",
+  "whatItMakes": [
+    {"type": "3D 产品展示", "exampleZh": "几何体/模型旋转、材质渐变、相机环绕", "strength": "核心能力"},
+    {"type": "3D 与 2D 混排", "exampleZh": "3D 物件上叠标题、参数标签、UI 卡片", "strength": "可用"},
+    {"type": "抽象几何动画", "exampleZh": "多物体阵列、缩放、位移与相机推拉", "strength": "可用"},
+    {"type": "着色器/材质实验", "exampleZh": "Three.js 材质参数逐帧变化，做金属/玻璃质感", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "SaaS/硬件产品片", "whoZh": "产品市场团队", "whyZh": "3D 物件与 2D 文案在同一 React 工程，改文案不用重做 3D", "deliverableZh": "1080p30 的 15–60 秒 MP4", "fit": "适合"},
+    {"scenarioZh": "技术概念可视化", "whoZh": "科普作者", "whyZh": "用几何体表达抽象结构，相机运动可控", "deliverableZh": "1–3 分钟讲解片段", "fit": "适合"},
+    {"scenarioZh": "3D 图标/Logo 动效", "whoZh": "品牌设计师", "whyZh": "可编程材质与光照，比 AE 插件更可控", "deliverableZh": "5–15 秒品牌镜头", "fit": "适合"},
+    {"scenarioZh": "写实级产品渲染", "whoZh": "三维视觉团队", "whyZh": "没有 PBR 资产管线、GI 与后期，写实度不如 Blender", "deliverableZh": "需换工具", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由 Composition 决定；实测 1280×720，可改到 1080p/4K 但渲染更慢",
+    "maxFpsZh": "由 Composition 决定，实测 30fps",
+    "durationZh": "由 Composition 决定，实测 5 秒；长片按帧线性增长",
+    "effectsZh": ["Three.js 几何体、材质与灯光", "相机运动与透视", "WebGL 着色器", "3D 上叠 2D React 元素"],
+    "audioZh": "模板未配置音频，需自行加 <Audio>",
+    "interactivityZh": "仅 Remotion Studio 预览；成片离线",
+    "automationZh": "npx remotion render src/index.ts Scene，走 Remotion CLI",
+    "assetsZh": "几何体可代码生成，GLTF/贴图放 public/；无内置模型库",
+    "exportFormatsZh": ["MP4", "PNG 静帧"],
+    "realtimePreviewZh": "有：Remotion Studio（WebGL 实时预览）",
+    "ciFriendlyZh": "可进 CI，需 Chromium 与可用 WebGL/GPU"
+  },
+  "ceilingZh": "它的能力边界等于“Three.js 能实时画什么，它就能逐帧录什么”：实测 5 秒、1280×720、30fps（150 帧）渲染 46.8 秒，总耗时 666 秒（含 npm 安装），画面是 WebGL 实时渲染后逐帧截取。可以做相机环绕、材质变化、几何阵列，也能把 3D 物件和 2D 标题叠在一个 Composition 里。上限受 Chromium 的 WebGL 与显存约束：高面数模型、复杂 PBR、体积光会明显掉帧；4K 需要更大显存与更长渲染时间。边界还包括：它只是模板，不含模型资产、UV、烘焙与后期；没有 Blender 的 GI 与合成器；模板代码需要自己扩展成工程。实测 720p 的 150 帧渲染 46.8 秒，4K 会明显更久；没有模型压缩与贴图优化，大资产要自己处理。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "模板目录 npm install，Node ≥16", "effortZh": "约 5–10 分钟"},
+    {"stepZh": "搭场景", "detailZh": "在 Composition 里创建 Three.js scene/camera/renderer，挂到 React 组件", "effortZh": "首个场景 2–4 小时"},
+    {"stepZh": "绑时间轴", "detailZh": "用 useCurrentFrame 驱动相机位置、物体旋转与材质 uniform", "effortZh": "随改随看"},
+    {"stepZh": "预览", "detailZh": "npx remotion studio 检查构图、材质与帧间连续性", "effortZh": "随改随看"},
+    {"stepZh": "渲染", "detailZh": "npx remotion render src/index.ts Scene --gl=vulkan --frames=0-149", "effortZh": "5 秒 720p 约 47 秒"}
+  ],
+  "differentiators": [
+    "3D 场景就是 React 组件，能与文字、图表、UI 共享同一条时间轴",
+    "Three.js 生态的材质、着色器与几何体可直接复用",
+    "Remotion Studio 里实时看 WebGL 画面，调相机不用盲猜",
+    "官方模板给出可运行的相机/材质绑定范式，改造成本低"
+  ],
+  "limits": [
+    "只是模板，不含模型资产、UV、烘焙、GI 与后期合成",
+    "依赖 Chromium WebGL，高面数/复杂材质会掉帧，Windows 需指定 GL 后端",
+    "没有 Blender 级写实渲染，产品级静帧质感不足",
+    "没有音频与字幕编排，长片要自己组织 Series"
+  ],
+  "compareTips": [
+    {"vs": "remotion-dev__template-code-hike", "adviceZh": "讲代码选 code-hike；讲 3D 物件与镜头选 template-three，两者可同工程共存"},
+    {"vs": "0xS4N4TG__kinetograph", "adviceZh": "要无浏览器原生合成与硬件编码选 Kinetograph；要 Three.js 生态与 React 混排选此模板"},
+    {"vs": "SkyeShark__eidoverse-video", "adviceZh": "要角色、物理、天气与电影级场景选 Eidoverse；要轻量 3D 产品镜头选 template-three"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①Three.js 场景在 Studio 实时预览；②相机环绕几何体；③材质参数逐帧变化；④3D 物件上叠 2D 标题，渲染 720p30/150 帧 MP4",
+    "featureCallouts": [
+      {"titleZh": "React 里的 3D", "descZh": "场景即组件，时间轴统一"},
+      {"titleZh": "相机运动", "descZh": "按帧驱动环绕与推拉"},
+      {"titleZh": "材质动画", "descZh": "金属/玻璃随帧变化"},
+      {"titleZh": "3D+2D 混排", "descZh": "标题与标签叠在物件上"},
+      {"titleZh": "Studio 实时预览", "descZh": "WebGL 画面改完即时可看"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L1-L20", "noteZh": "官方 Three.js 模板，Composition 驱动 3D 场景"},
+    {"field": "capabilities.automationZh", "source": "package.json#L1-L30", "noteZh": "Remotion 工程脚本与依赖，渲染走 @remotion/cli"},
+    {"field": "ceilingZh", "source": "_samples/remotion-dev__template-three/meta.json", "noteZh": "实测 720p30/150 帧/5s，render 46.8s，总 666s，--gl=vulkan"}
+  ]
+}

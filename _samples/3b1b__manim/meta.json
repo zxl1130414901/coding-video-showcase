@@ -1,0 +1,48 @@
+{
+  "repo": "3b1b/manim",
+  "category": "数学动画（ManimGL / OpenGL 渲染器）",
+  "status": "success",
+  "render_ms": 56600,
+  "total_ms": 56710,
+  "cmd": "manimgl example_scenes.py TextExample -w -m --video_dir _samples\\3b1b__manim --file_name sample.mp4",
+  "artifact": "F:\\coding视频\\_samples\\3b1b__manim\\sample.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 12.0,
+    "fps": 30.0,
+    "nb_frames": 360,
+    "codec": "h264",
+    "size_kb": 160.6
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\3b1b__manim\\preview.png",
+    "pixel_std": 23.89,
+    "unique_colors": 2759
+  },
+  "notes_zh": "ManimGL 1.7.2 独立 venv 安装，OpenGL(moderngl-window) 实时渲染 + ffmpeg 合成；选 TextExample（纯 Text，不触发 LaTeX，本机无 LaTeX）。需补 audioop-lts 与 setuptools<81（py3.13 下 pyaudioop/pkg_resources 缺失）。",
+  "sample_v2": {
+    "spec": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "duration_sec": 25.8
+    },
+    "render_ms": 132000,
+    "ffprobe": {
+      "duration_sec": 25.8,
+      "codec": "h264",
+      "nb_frames": 774,
+      "has_audio": false,
+      "size_kb": 843.9,
+      "stddev_10_50_90": {
+        "0.10": 23.966,
+        "0.50": 13.601,
+        "0.90": 28.599
+      }
+    },
+    "generator": "ManimGL 1.7.2（OpenGL 实时渲染，独立 venv _env\\pygl），self.camera.fps=30，-m 720p30 输出；ffmpeg drawtext 烧录中文标注",
+    "segments_count": 4,
+    "pipeline": "official"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "repo": "openvideodev/react-video-editor",
+  "category": "Web 视频编辑器（Next.js + Pixi + WebCodecs）",
+  "status": "fail",
+  "render_ms": 0,
+  "total_ms": 9600000,
+  "cmd": "pnpm install（627 包）→ node node_modules/next/dist/bin/next dev -p 3010 → Playwright 打开 http://127.0.0.1:3010/",
+  "ffprobe": null,
+  "notes_zh": "安装成功（pnpm 10.19，huaweicloud 源，26m50s；npmmirror 两次在 @aws-crypto / @alloc 等 tarball 上 socket timeout）。Next 16 Turbopack dev server 首次请求编译极慢（F: 盘被 Turbopack 判定 Slow filesystem），约 7 分钟后才返回 200/72KB。页面能挂载编辑器 UI（Home/Menu/Export、Timeline、媒体面板都在），但 CanvasPanel 始终不调用 onReady，加载遮罩一直停在 'Initializing Studio...'：其初始化是 Promise.all([fontManager.loadFonts(editorFont), studio.ready])，editorFont 指向 https://cdn.designcombo.dev/fonts/Geist-SemiBold.ttf（外网不可达，会永久挂起）；用 Playwright route 用本机系统字体替换该 URL 后仍不 ready（说明 pixi Studio.ready 也未收敛），headless 与 headful 均一致，控制台除 HMR WebSocket 失败外无任何报错，canvas 始终保持 300x150 默认尺寸。另外仓库 layout.tsx 使用 next/font/google，会阻塞首屏渲染，已用本地字体栈临时替换验证（验证后已还原源码）。结论：编辑器在此网络/环境下无法进入可用状态，无产物，不伪造。",
+  "evidence": [
+    "src/components/editor/editor.tsx: loading 遮罩由 CanvasPanel.onReady 关闭",
+    "src/components/editor/canvas-panel.tsx:87-107: Promise.all([loadFonts, studio.ready]) 才 onReady",
+    "src/components/editor/constants.ts:1: SECONDARY_FONT_URL = https://cdn.designcombo.dev/fonts/Geist-SemiBold.ttf"
+  ]

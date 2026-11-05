@@ -1,0 +1,73 @@
+{
+  "id": "asciinema__asciinema",
+  "taglineZh": "把终端会话录成可回放的 .cast：不是视频，而是可搜索、可嵌入的终端时间线",
+  "summaryZh": "asciinema 是终端会话录制与回放工具：记录终端输出事件流与时间戳，存成轻量的 .cast（asciicast v2 JSON），再用播放器按原始节奏重放，支持网页嵌入与发布到 asciinema.org 或自建服务器。它解决“终端演示要传视频、体积大、不能复制文本”的问题——.cast 是文本，可 diff、可搜索、可嵌网页、可再转 GIF/MP4。与 VHS 的声明式重演不同，它录的是真实会话；与屏幕录制不同，它不产像素视频，画面由播放器字体渲染。硬伤是官方不支持 Windows，本身不出视频。",
+  "whatItMakes": [
+    {"type": "可回放的终端会话", "exampleZh": "真实命令执行、彩色输出、光标移动按原速重放", "strength": "核心能力"},
+    {"type": "网页嵌入演示", "exampleZh": "用 asciinema player 嵌进博客/文档，可暂停、拖进度、复制文本", "strength": "核心能力"},
+    {"type": "远程教学素材", "exampleZh": "学生本地按节奏回看，不受视频清晰度影响", "strength": "可用"},
+    {"type": "转 GIF/MP4 的中间产物", "exampleZh": ".cast 交给 agg 转 GIF，再 ffmpeg 转 MP4", "strength": "可用"},
+    {"type": "终端直播", "exampleZh": "asciinema stream 把会话实时推给观众", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "文档里的终端演示", "whoZh": "技术作者、开源维护者", "whyZh": ".cast 体积极小，可嵌网页且能复制命令", "deliverableZh": "嵌入页面的 asciicast 播放器", "fit": "高度契合"},
+    {"scenarioZh": "Linux 教学与培训", "whoZh": "讲师、运维培训师", "whyZh": "录一次可在多节课回放，节奏真实", "deliverableZh": ".cast 文件 + 在线回放链接", "fit": "高度契合"},
+    {"scenarioZh": "CI 里记录安装过程", "whoZh": "工程团队", "whyZh": "命令行录制可脚本化，便于排查环境问题", "deliverableZh": "构建日志式 .cast", "fit": "适合"},
+    {"scenarioZh": "要交付 MP4 的场合", "whoZh": "市场/课程团队", "whyZh": "它不产视频，必须再接 agg 与 ffmpeg", "deliverableZh": "需二次转换", "fit": "勉强"},
+    {"scenarioZh": "Windows 本地录制", "whoZh": "Windows 用户", "whyZh": "官方明确不支持 Windows，建议改用 PowerSession", "deliverableZh": "需替代工具", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "按终端列×行记录，像素尺寸由播放器字体决定；实测转出 1008×780",
+    "maxFpsZh": "记录事件时间戳而非固定帧率；转视频时由 agg/ffmpeg 决定，实测 100fps 时间基",
+    "durationZh": "无硬限制，取决于会话长度",
+    "effectsZh": ["ANSI 颜色与光标控制", "真实打字节奏与停顿", "终端尺寸变化", "播放器倍速/暂停/拖动"],
+    "audioZh": "不支持音频",
+    "interactivityZh": "播放器支持暂停、拖动、复制文本；录制端为实时交互",
+    "automationZh": "CLI 可脚本化：asciinema rec / play / cat / stream",
+    "assetsZh": "无素材概念，只记录终端事件流；字体由播放器决定",
+    "exportFormatsZh": [".cast（asciicast v2/v3）", "经 agg 转 GIF", "经 ffmpeg 转 MP4"],
+    "realtimePreviewZh": "有：播放器即回放；录制时可实时观看",
+    "ciFriendlyZh": "可进 CI（Linux PTY），但 Windows 不支持"
+  },
+  "ceilingZh": "它的上限是“真实终端的完整还原”：任意 TUI、彩色输出、光标定位、窗口尺寸变化都能按原始时间轴回放，.cast 还是纯文本，能嵌网页、能搜索、能被程序解析。实测把一段真实 PowerShell 输出写成 cast v2，再经 agg 与 ffmpeg 转成 11.53 秒、1008×780 的 MP4，说明“cast → 视频”链路可行，但要多接两个工具。边界很清楚：它不产出视频，像素画面完全取决于播放器字体与主题；不支持音频；不支持 Windows（官方原文 Windows is currently not supported，依赖 Unix PTY），实测 Windows 上只能用 PowerSession 或手写 cast 绕过；直播需要服务器与网络；.cast 的“帧率”不是固定值，转视频时容易因事件稀疏而出现节奏问题。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "Linux/macOS 用包管理器或 pipx 安装 asciinema；Windows 需改用 PowerSession", "effortZh": "约 3 分钟"},
+    {"stepZh": "录制", "detailZh": "asciinema rec demo.cast，执行命令后 Ctrl-D 结束", "effortZh": "按会话时长"},
+    {"stepZh": "回放检查", "detailZh": "asciinema play demo.cast，检查节奏与输出是否完整", "effortZh": "同上"},
+    {"stepZh": "发布/嵌入", "detailZh": "asciinema upload，或把 .cast 与 player 放进网页", "effortZh": "约 10 分钟"},
+    {"stepZh": "转视频", "detailZh": "agg demo.cast demo.gif，再用 ffmpeg 转 MP4", "effortZh": "约 1 分钟"}
+  ],
+  "differentiators": [
+    "记录的是真实终端事件流，.cast 是文本，可搜索、可 diff、可程序处理",
+    "网页播放器支持暂停、拖动与复制命令，体验优于视频",
+    "体积极小，一小时会话通常只有几百 KB",
+    "支持实时直播与自建服务器，不依赖第三方平台"
+  ],
+  "limits": [
+    "不产出视频，要 MP4 必须再接 agg 与 ffmpeg",
+    "官方不支持 Windows，依赖 Unix PTY",
+    "不支持音频，也没有镜头/字幕/转场",
+    "像素画质取决于播放器字体与主题，不适合高颜值宣传片"
+  ],
+  "compareTips": [
+    {"vs": "charmbracelet__vhs", "adviceZh": "要真实会话与网页回放选 asciinema；要确定性重演与品牌化 GIF 选 VHS"},
+    {"vs": "asciinema__agg", "adviceZh": "agg 是它的下游转换器；只想要 GIF 可以不装录制端，直接处理现成 cast"},
+    {"vs": "simonw__shot-scraper", "adviceZh": "录终端选 asciinema；录网页操作与滚动选 shot-scraper"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①asciinema rec 录制一段真实命令；②播放器按原速回放并拖动进度；③网页嵌入播放器展示可复制文本；④cast 经 agg + ffmpeg 转成 MP4 的链路",
+    "featureCallouts": [
+      {"titleZh": "真实终端事件流", "descZh": "不是脚本重演，是真实实录"},
+      {"titleZh": ".cast 纯文本", "descZh": "小体积、可搜索、可 diff"},
+      {"titleZh": "网页播放器", "descZh": "暂停拖动复制命令"},
+      {"titleZh": "直播能力", "descZh": "stream 子命令实时推流"},
+      {"titleZh": "可转 GIF/MP4", "descZh": "再接 agg 与 ffmpeg 转视频"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L6-L23", "noteZh": "终端录制/直播，.cast 格式，支持回放、嵌入与发布"},
+    {"field": "limits", "source": "README.md#L137-L139", "noteZh": "明确 Windows is currently not supported，建议 PowerSession"},
+    {"field": "capabilities.exportFormatsZh", "source": "_samples/asciinema__asciinema/meta.json", "noteZh": "手写 cast v2 → agg GIF → ffmpeg MP4，产物 1008×780/11.53s"},
+    {"field": "ceilingZh", "source": "LICENSE#L1-L4", "noteZh": "GPLv3"}
+  ]
+}

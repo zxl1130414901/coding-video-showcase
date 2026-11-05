@@ -1,0 +1,63 @@
+{
+  "id": "mifi__editly",
+  "durationSec": 18.602,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.8,
+      "capabilityZh": "多图层同帧叠加",
+      "proofZh": "title-background（线性渐变）+ image-overlay（logo 推近 0.08）+ title 三层同时合成"
+    },
+    {
+      "start": 5.8,
+      "end": 11.6,
+      "capabilityZh": "GL 转场 + 视频图层",
+      "proofZh": "circleopen / directionalwipe 转场 1.2s，bg1.mp4 以 cover 裁切进 720p"
+    },
+    {
+      "start": 11.6,
+      "end": 18.6,
+      "capabilityZh": "中文字幕 + 全局音轨",
+      "proofZh": "Microsoft YaHei 字幕两行自动换行；music.m4a 全片混流，成片 18.6s"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.5,
+      "dur": 4.6,
+      "titleZh": "① 三图层同帧叠加",
+      "descZh": "渐变标题背景 + logo 浮层 + 标题文案，一份 JSON 同时合成"
+    },
+    {
+      "t": 6.2,
+      "dur": 4.6,
+      "titleZh": "② GL 转场 directionalwipe",
+      "descZh": "两段 clip 重叠 1.2s，headless-gl 做 180° 方向擦除"
+    },
+    {
+      "t": 8.9,
+      "dur": 3.6,
+      "titleZh": "③ 视频层 cover 裁切",
+      "descZh": "bg1.mp4 1080p → 720p cover，浮层 zoomAmount 0.06 推近"
+    },
+    {
+      "t": 12.0,
+      "dur": 4.0,
+      "titleZh": "④ 中文字幕层",
+      "descZh": "Canvas 生成两行字幕，Microsoft YaHei 字体，底部半透明衬底"
+    },
+    {
+      "t": 16.2,
+      "dur": 2.3,
+      "titleZh": "⑤ 全局音轨 + 单时间轴",
+      "descZh": "music.m4a 混流；3×7s − 2×1.2s 转场 = 18.6s 成片"
+    }
+  ],
+  "renderMs": 143000,
+  "pipeline": "fallback",
+  "knownLimitsZh": [
+    "仓库自带的 canvas 原生二进制 canvas.node 损坏，未重装成功；改为在 node_modules\\canvas\\index.js 转发 @napi-rs/canvas（预编译 N-API），未改仓库源码",
+    "字幕层用 fabric Textbox 固定底部锚点，第三段改用纯渐变背景，避免字幕与素材自带文字重叠",
+    "3 段 7s 经两次 1.2s 转场重叠，成片 18.6s（不是 21s）"
+  ]
+}

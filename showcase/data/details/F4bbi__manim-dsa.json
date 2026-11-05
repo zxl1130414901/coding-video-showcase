@@ -1,0 +1,74 @@
+{
+  "id": "F4bbi__manim-dsa",
+  "taglineZh": "Manim 数据结构插件：数组、栈、图三类对象开箱即用，专做算法过程动画",
+  "summaryZh": "约 91 stars 的 Manim 插件（v0.4.0）：把教学里最常画的三样东西——数组、栈、图——封装成 Manim 对象，带索引标注、标签、配色风格（BLUE/GREEN/PURPLE），`pip install manim-dsa` 后 `from manim_dsa import *` 就能用。它的定位很窄：不是算法仿真引擎，而是把「数据结构长什么样、指针指到哪」画得整齐。实测 162 帧 720p 用 21 秒（约 7.7fps），比 ManimCE 默认略快。注意仓库 README 挂了 MIT badge，但根目录没有 LICENSE 文件，商用前需确认。对象都支持 scale/move_to 等 Manim 原生操作，排版省心。它适合把课堂板书的「一步步画出来」，不适合复杂 3D。",
+  "whatItMakes": [
+    {"type": "数组/栈结构动画", "exampleZh": "MArray 带索引、MStack 逐层压入弹出，配 BLUE/GREEN 风格", "strength": "核心能力"},
+    {"type": "图算法演示", "exampleZh": "MGraph 按给定坐标布点，边权值与高亮可逐帧出现", "strength": "核心能力"},
+    {"type": "指针/索引标注", "exampleZh": "add_indexes 与 add_label，让「当前指针」位置一目了然", "strength": "核心能力"},
+    {"type": "数据结构课件", "exampleZh": "与 Manim 文字、箭头、公式混排，拼成完整讲解", "strength": "可用"},
+    {"type": "复杂 3D 算法可视化", "exampleZh": "无 3D 支持，也没有队列/堆/链表/树对象", "strength": "受限"},
+    {"type": "算法逐步仿真", "exampleZh": "不负责执行算法逻辑，步骤要自己写", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "中学/大学算法课", "whoZh": "教师、助教", "whyZh": "数组与栈的压入弹出、图的遍历过程，比 PPT 箭头清楚得多", "deliverableZh": "720p/1080p 30fps MP4，单段 10–60 秒", "fit": "高度契合"},
+    {"scenarioZh": "刷题讲解视频", "whoZh": "算法博主、面试辅导", "whyZh": "MGraph 改节点数据即可复用，配色统一，录制快", "deliverableZh": "1–3 分钟竖屏或横屏 MP4", "fit": "高度契合"},
+    {"scenarioZh": "数据结构课件", "whoZh": "课程制作团队", "whyZh": "三类结构覆盖课件里最常见的画面，省掉自己搭图元", "deliverableZh": "整章 5–15 分钟，分段渲染拼接", "fit": "适合"},
+    {"scenarioZh": "编程训练营直播", "whoZh": "讲师", "whyZh": "改一行数据重渲即可，适合现场改例子", "deliverableZh": "短片段 GIF/MP4", "fit": "适合"},
+    {"scenarioZh": "商用付费课程", "whoZh": "商业教育机构", "whyZh": "README 标 MIT 但仓库缺 LICENSE 文件，商用授权需核实", "deliverableZh": "需先确认许可证", "fit": "勉强"}
+    ],
+  "capabilities": {
+    "maxResolutionZh": "由 ManimCE 配置决定，实测 720p，可配 1080p/4K（未验证 4K）",
+    "maxFpsZh": "ManimCE 可配 15/30/60，实测 30fps",
+    "durationZh": "单场景不限；长片按章节拆分多个 Scene",
+    "effectsZh": ["MArray 数组对象与索引", "MStack 栈对象", "MGraph 带权图与坐标布点", "三种风格枚举与标签"],
+    "audioZh": "无配音与字幕，可另装 manim-voiceover",
+    "interactivityZh": "无交互，CLI 渲染",
+    "automationZh": "Manim CLI 可脚本批量，无自带队列",
+    "assetsZh": "系统字体（默认字体在 Windows 可能缺字，实测改用 Consolas）",
+    "exportFormatsZh": ["mp4", "gif", "png"],
+    "realtimePreviewZh": "无实时预览",
+    "ciFriendlyZh": "中等：Python 依赖轻，但需完整 Manim 与 LaTeX 环境"
+  },
+  "ceilingZh": "它能把「教学里最常画的三样」画得又快又整齐：数组带索引、栈的压入弹出、带权图的遍历，配合三种配色与标签，10 秒级片段几行代码就能出。实测 162 帧 720p30 用 21 秒，约 7.7fps，批量做几十个片段完全可行；分辨率随 Manim 到 1080p，帧率可到 60。上限也被对象库锁死：没有队列、堆、链表、树、哈希表，更没有 3D；算法步骤本身不含仿真逻辑，遍历顺序、指针移动都要自己写 `self.play`。边界：版本与 Manim 0.19 强耦合；README 声明 MIT 却无 LICENSE 文件，商用有风险；文档站自述 in progress，多数用法只能读 README 示例；默认字体在 Windows 上可能缺字。它没有配套的讲义模板，课程结构仍要自己搭。",
+  "workflow": [
+    {"stepZh": "装 Manim", "detailZh": "按 ManimCE 官方指南装好 Python 3.9+、ffmpeg 与 LaTeX", "effortZh": "约 30 分钟"},
+    {"stepZh": "装插件", "detailZh": "pip install manim-dsa，确认 manim>=0.19.0", "effortZh": "约 5 分钟"},
+    {"stepZh": "写场景", "detailZh": "from manim_dsa import *，用 MArray/MStack/MGraph 建对象并 add_indexes/add_label", "effortZh": "约 30 分钟"},
+    {"stepZh": "编排步骤", "detailZh": "自己写 self.play 串起压栈、出栈、遍历的每一步", "effortZh": "按算法复杂度"},
+    {"stepZh": "渲染", "detailZh": "manim -pqh scene.py Example 出 1080p mp4", "effortZh": "实测 5 秒片段约 21 秒"}
+  ],
+  "differentiators": [
+    "三类数据结构对象开箱即用，省掉搭数组/栈/图的时间",
+    "风格枚举统一切配色，多个片段拼在一起不花",
+    "索引与标签 API 简洁，指针位置表达清楚",
+    "依赖极轻，只要求 Manim 本身"
+  ],
+  "limits": [
+    "只有数组、栈、图三类，没有队列/堆/链表/树",
+    "不含算法仿真，步骤逻辑全要手写",
+    "README 标 MIT 但仓库无 LICENSE 文件",
+    "文档站仍 in progress，示例有限"
+  ],
+  "compareTips": [
+    {"vs": "ManimCommunity__manim", "adviceZh": "ManimCE 是底座；做算法结构画面时再叠加本插件，通用数学动画只用 CE"},
+    {"vs": "UnMolDeQuimica__manim-Chemistry", "adviceZh": "同样是小体量专用组件：化学分子选 manim-Chemistry，算法结构选 manim-dsa"},
+    {"vs": "3b1b__manim", "adviceZh": "要 3D、相机与电影感镜头选 ManimGL；只要整齐的结构图与步骤高亮，本插件更省事"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①数组 + 索引从左到右出现；②栈的压入与弹出，配 GREEN 风格；③带权有向图按坐标布点，逐边高亮最短路径；④三种风格并排对比，展示配色差异",
+    "featureCallouts": [
+      {"titleZh": "MArray", "descZh": "数组对象，add_indexes 标下标"},
+      {"titleZh": "MStack", "descZh": "栈对象，层叠视觉与压弹动画"},
+      {"titleZh": "MGraph", "descZh": "带权图 + 自定义节点坐标"},
+      {"titleZh": "风格枚举", "descZh": "BLUE/GREEN/PURPLE 统一配色"},
+      {"titleZh": "标签 API", "descZh": "add_label 挂标题，便于拼版"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L12-L16", "noteZh": "自述为 Manim 插件，用于动画化常见数据结构与算法"},
+    {"field": "capabilities.effectsZh", "source": "README.md#L48-L94", "noteZh": "MArray/MStack/MGraph 与 MArrayStyle/MStackStyle/MGraphStyle 的实际用法"},
+    {"field": "limits 第 3 条", "source": "README.md#L6", "noteZh": "徽章标 MIT，但仓库根目录无 LICENSE 文件"},
+    {"field": "ceilingZh", "source": "_samples/F4bbi__manim-dsa/meta.json", "noteZh": "实测 720p/30fps/162 帧耗时 21s，约 7.7fps"}
+  ]
+}

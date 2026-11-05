@@ -1,0 +1,73 @@
+{
+  "id": "maloyan__manim-web",
+  "taglineZh": "把 Manim 搬进浏览器：TypeScript 重写、429 个 API 对齐，可网页导出 GIF 与视频",
+  "summaryZh": "manim-web 是 Manim 的 TypeScript 移植版：不装 Python、不装 LaTeX，从 CDN import 一个模块就在 canvas 里跑 Scene、Circle、Create、Transform。官方声称可移植的 429 个 ManimCE 0.22 公共符号全部对齐。它解决“想在网页里直接放数学动画、或让学生交互播放”的问题，自带播放器与浏览器内导出。与 ManimCE 相比不需要本地环境，但性能受浏览器与显存限制；实测 WebCodecs 导出 WebM 只写出 110B 空文件。它更适合嵌进网页课件，而不是当离线成片工具；缺少 3D 相机与批量渲染，复杂课程仍要回 ManimCE。",
+  "whatItMakes": [
+    {"type": "数学/几何教学动画", "exampleZh": "SquareToCircle 变换、坐标系、公式与图形入场", "strength": "核心能力"},
+    {"type": "网页内嵌动画组件", "exampleZh": "CDN import 后在页面 canvas 里播放，无需后端", "strength": "核心能力"},
+    {"type": "分子/化学/生物可视化", "exampleZh": "PDB/SMILES 分子、蛋白结合口袋、DNA 双螺旋、细胞", "strength": "可用"},
+    {"type": "地图/地理动画", "exampleZh": "Globe、分级设色地图、流向弧、GeoJSON/TopoJSON", "strength": "可用"},
+    {"type": "GIF 动图导出", "exampleZh": "scene.export('animation.gif', {fps:30, quality:10})", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "网页版数学教材", "whoZh": "教育产品团队", "whyZh": "场景直接嵌网页，学生可播放/拖动/分段回看", "deliverableZh": "可交互网页动画", "fit": "高度契合"},
+    {"scenarioZh": "教师快速做演示", "whoZh": "中学/大学教师", "whyZh": "免装 Python/LaTeX，浏览器里就能改代码看效果", "deliverableZh": "GIF 或网页演示", "fit": "适合"},
+    {"scenarioZh": "分子/化学科普", "whoZh": "生化课程作者", "whyZh": "内置分子与化学模块，ManimCE 没有", "deliverableZh": "720p/1080p 短片或网页组件", "fit": "适合"},
+    {"scenarioZh": "React/Vue 项目内嵌动画", "whoZh": "前端工程师", "whyZh": "提供 React、Vue、Web Component 与 notebook 入口", "deliverableZh": "页面内动画模块", "fit": "高度契合"},
+    {"scenarioZh": "高质量离线成片", "whoZh": "课程制作团队", "whyZh": "浏览器导出慢且 WebM 路径实测失败，批量成片仍建议用 Manim", "deliverableZh": "GIF 或逐帧合成", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "Scene 构造时可设 width/height，示例 500×300，实测 1280×720；无文档上限",
+    "maxFpsZh": "导出可设 fps，实测 30fps；播放帧率受浏览器刷新率影响",
+    "durationZh": "无硬限制，取决于动画与浏览器内存；实测 2.7 秒",
+    "effectsZh": ["ManimCE 风格 2D 矢量与 Transform", "内置播放器交互", "分子/化学/生物/地图模块", "GIF/WebCodecs 导出"],
+    "audioZh": "未见音频 API；Manim 的 add_sound 未确认移植",
+    "interactivityZh": "核心能力：网页内播放/暂停/拖动/分段导航",
+    "automationZh": "无 CLI；在 Node 侧用 Vite 构建或在页面里调用 JS API",
+    "assetsZh": "字体、GeoJSON/TopoJSON、PDB/SMILES 等由页面加载；无内置素材库",
+    "exportFormatsZh": ["GIF", "WebM/MP4（WebCodecs，实测 WebM 失败）", "页面实时渲染"],
+    "realtimePreviewZh": "有：浏览器内 canvas 实时播放",
+    "ciFriendlyZh": "可进 CI：vite build + Playwright 截图；导出需浏览器环境"
+  },
+  "ceilingZh": "它的上限是“浏览器里跑完整 Manim 场景”：429/429 可行 API 已移植，2D 矢量、Transform、坐标系都能用，还多了分子、化学、生物、地图四类原生模块，播放器支持拖动与分段，适合做可交互教材。实测 2.7 秒的 Circle→Square→Triangle 动画以 GIF 导出成功（1280×720，30fps），但整条链路耗时 43 秒；WebCodecs 导出 WebM 只得到 110B 空文件，说明视频导出路径在该 Windows 环境下不可用。边界：没有 3D 相机与曲面（Manim 的 OpenGL 3D 未覆盖）；LaTeX 公式依赖浏览器端排版方案，复杂公式能力未确认；没有 CLI/批量渲染；GIF 导出慢且体积大；页面性能受设备 GPU 限制。另外，GIF 导出在 720p 下 2.7 秒片子要 43 秒，长动画基本不可用。",
+  "workflow": [
+    {"stepZh": "引入", "detailZh": "页面里 import CDN 的 manim-web.browser.js，或 npm install manim-web", "effortZh": "约 2 分钟"},
+    {"stepZh": "写场景", "detailZh": "new Scene(container, {width, height})，用 Circle/Square/Create/Transform 组合", "effortZh": "首个场景 1–2 小时"},
+    {"stepZh": "预览", "detailZh": "浏览器直接播放，或用内置 player 拖动、分段检查", "effortZh": "即时"},
+    {"stepZh": "导出", "detailZh": "scene.export('animation.gif', {fps:30, quality:10})；WebCodecs 路径需先验证", "effortZh": "2.7 秒动画约 43 秒"},
+    {"stepZh": "嵌入", "detailZh": "用 React/Vue/Web Component 封装，接入现有课程页面", "effortZh": "约半天"}
+  ],
+  "differentiators": [
+    "唯一在浏览器客户端跑 Manim API 的实现，免 Python 与 LaTeX 安装",
+    "429 个可行 ManimCE 0.22 公共符号对齐，迁移成本低于重写",
+    "额外提供分子/化学/生物/地图模块，ManimCE 与 ManimGL 都没有",
+    "自带交互播放器与 React/Vue/Web Component 集成"
+  ],
+  "limits": [
+    "没有 3D 相机/曲面，做不了 Manim 的 OpenGL 3D 场景",
+    "WebCodecs 视频导出实测只写出 110B 空文件，GIF 是可靠路径但慢",
+    "无 CLI 与批量渲染，长片/多版本生产不现实",
+    "依赖浏览器环境，性能与显存受终端设备限制"
+  ],
+  "compareTips": [
+    {"vs": "ManimCommunity__manim", "adviceZh": "要 3D、LaTeX 与批量成片选 ManimCE；要网页内嵌与免安装交互选 manim-web"},
+    {"vs": "academa-labs__manimgx", "adviceZh": "要 3D 与高帧率成片选 ManimGX；要在浏览器里直接播放并嵌页面选 manim-web"},
+    {"vs": "yongkyuns__noon", "adviceZh": "要 Rust 引擎与音频设备控制选 Noon；要现成 Manim API 与播放器选 manim-web"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①CDN 引入后页面直接播放 SquareToCircle；②内置播放器拖动与分段；③分子或地图模块展示 ManimCE 没有的能力；④GIF 导出成功与 WebM 空文件的对比",
+    "featureCallouts": [
+      {"titleZh": "浏览器跑 Manim", "descZh": "完全无需安装 Python 与 LaTeX"},
+      {"titleZh": "429 API 对齐", "descZh": "429 个可行符号全部移植"},
+      {"titleZh": "交互播放器", "descZh": "播放暂停拖动分段"},
+      {"titleZh": "分子/地图模块", "descZh": "Manim 生态之外独有的扩展"},
+      {"titleZh": "GIF 直出", "descZh": "页面内可直接导出 GIF 动图"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L3-L9", "noteZh": "自述 Manim in the browser, No Python，TypeScript 移植 + 四类原生模块"},
+    {"field": "capabilities.maxResolutionZh", "source": "README.md#L47-L67", "noteZh": "Scene 构造可设 width/height，CDN 示例 500×300"},
+    {"field": "capabilities.effectsZh", "source": "README.md#L31-L41", "noteZh": "429/429 API parity、玩家、GIF/WebCodecs 导出、React/Vue 集成"},
+    {"field": "ceilingZh", "source": "_samples/maloyan__manim-web/meta.json", "noteZh": "实测 GIF 2.7s/720p30 导出 43s；WebM 导出仅 110B 空文件；vite build 47s"}
+  ]
+}

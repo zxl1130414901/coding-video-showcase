@@ -1,0 +1,74 @@
+{
+  "id": "openvideodev__react-video-editor",
+  "taglineZh": "Next.js + Pixi + WebCodecs 的浏览器剪辑器，本地导出 MP4、零服务端渲染成本",
+  "summaryZh": "面向「自建 Web 剪辑工具」的参考实现：多轨时间轴、可交互画布、素材管理、shader 特效与转场，渲染走 Pixi v8，导出用 WebCodecs 在浏览器本地编码 MP4，因此服务端不承担渲染成本。它把 Pexels 素材、Deepgram 转写、R2/S3 存储都接好了，是少见的「开箱即用剪辑 SaaS 骨架」。但本次实测没能出片：依赖外网字体 CDN，CanvasPanel 一直停在 Initializing，headless 与有头浏览器都白屏；商业许可对 3 人以上团队收费。它的代码结构可以直接拆用，但更像样板而非可发布产品。",
+  "whatItMakes": [
+    {"type": "Web 剪辑器原型", "exampleZh": "多轨时间轴 + 画布预览 + 素材库，直接可演进的编辑器骨架", "strength": "核心能力"},
+    {"type": "多轨时间轴编辑", "exampleZh": "视频/音频/文字轨并行，拖拽裁剪与层叠", "strength": "核心能力"},
+    {"type": "Shader 特效与转场", "exampleZh": "Pixi 滤镜、转场与自定义 shader 参数动画", "strength": "可用"},
+    {"type": "本地 MP4 导出", "exampleZh": "WebCodecs 浏览器内编码，不上传素材", "strength": "可用"},
+    {"type": "批量自动出片", "exampleZh": "无可用 CLI；cliHeadless 实测初始化失败", "strength": "受限"},
+    {"type": "影视级合成", "exampleZh": "无关键帧曲线、跟踪、粒子与调色台", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "自建剪辑 SaaS", "whoZh": "创业团队、产品部门", "whyZh": "完整编辑器 UI 与本地导出链路，省掉 1–2 个月架构搭建", "deliverableZh": "可上线的 Web 剪辑产品（3 人以上需商业授权）", "fit": "高度契合"},
+    {"scenarioZh": "研究 Pixi + WebCodecs 架构", "whoZh": "前端架构师", "whyZh": "能看到多轨时间轴如何映射到 Pixi 场景与逐帧编码", "deliverableZh": "架构参考与可运行 demo", "fit": "高度契合"},
+    {"scenarioZh": "企业内部素材剪辑", "whoZh": "市场团队的 IT 支持", "whyZh": "浏览器即用，素材可接自家 S3，不用装客户端", "deliverableZh": "本地导出的 MP4 成片", "fit": "适合"},
+    {"scenarioZh": "需要稳定出片的商业项目", "whoZh": "制作公司", "whyZh": "本次实测初始化失败、依赖外网字体，稳定性不足", "deliverableZh": "风险较高", "fit": "勉强"},
+    {"scenarioZh": "CI 自动化批量", "whoZh": "工具链团队", "whyZh": "无 CLI 导出，headless 初始化卡住，无法批处理", "deliverableZh": "不适用", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "未确认：画布是自适应视口，导出分辨率应可配，但本次未跑通",
+    "maxFpsZh": "未确认；取决于时间轴 fps 与 WebCodecs 编码能力",
+    "durationZh": "由时间轴长度决定；无硬上限，长片受浏览器内存约束",
+    "effectsZh": ["Pixi v8 shader 滤镜与转场", "拖拽/旋转/缩放变换", "多轨层叠与混合", "文字与图片图层"],
+    "audioZh": "支持多轨音频（README 列为首要能力之一），导出时混入；无 TTS",
+    "interactivityZh": "强：完整编辑器界面，时间轴、画布、素材面板、属性面板",
+    "automationZh": "弱：cliHeadless 标注为 partial，实测初始化失败，无可用批处理",
+    "assetsZh": "本地/云存储（R2/S3）、Pexels 在线素材、Deepgram 语音转写",
+    "exportFormatsZh": ["mp4（WebCodecs 本地编码）"],
+    "realtimePreviewZh": "有，Pixi 画布实时预览",
+    "ciFriendlyZh": "弱：需多个第三方 Key、字体 CDN 与外网，headless 实测不可用"
+  },
+  "ceilingZh": "设计上的上限是「零服务端成本的本地导出」：Pixi v8 负责合成、WebCodecs 硬件编码出 MP4，素材不出浏览器，长片也不必上传，这对 SaaS 是实打实的成本优势；编辑器侧做到多轨、变换、shader 转场、在线素材与转写，功能面接近 CapCut 网页版雏形。但实测边界很硬：字体 CDN 不可达时 CanvasPanel 永远停在 Initializing，headless 与有头浏览器都白屏，本次 0 产物，所有能力只能按 README 声明、标注未验证；Next 16 + Turbopack 首编译约 7 分钟，启动还依赖 R2/S3、Deepgram、Pexels 三套 Key。分辨率与帧率上限、长片稳定性均未确认。若要在内网离线环境使用，字体与 Pexels 素材都得本地化，这一步没有现成方案，也是本次白屏的直接诱因；它更适合当作 Pixi + WebCodecs 的代码参考，而不是装起来就能用的产品。",
+  "workflow": [
+    {"stepZh": "装依赖", "detailZh": "pnpm install；Next 16 + React 19，依赖体量较大", "effortZh": "10–20 分钟"},
+    {"stepZh": "配环境变量", "detailZh": "填 R2/S3、Deepgram、Pexels 的 Key，否则素材与转写功能不可用", "effortZh": "约 20 分钟"},
+    {"stepZh": "起服务", "detailZh": "pnpm dev，首次编译约 7 分钟；若字体 CDN 不通，画布会卡在初始化", "effortZh": "约 10 分钟"},
+    {"stepZh": "剪辑与导出", "detailZh": "时间轴拖入素材、调变换与转场，最后用本地导出出 MP4", "effortZh": "本次未跑通"},
+    {"stepZh": "商用授权", "detailZh": "3 人以上团队需购买商业许可，部署前确认", "effortZh": "按合同"}
+  ],
+  "differentiators": [
+    "完整编辑器 UI：多轨时间轴 + 画布 + 素材 + 属性面板",
+    "Pixi v8 渲染 + WebCodecs 本地编码，导出不走服务端",
+    "已接 Pexels 素材、Deepgram 转写与 R2/S3 存储",
+    "双许可模式：个人免费、3 人以上商业授权"
+  ],
+  "limits": [
+    "本次实测初始化失败，0 产物，能力未经验证",
+    "依赖外网字体 CDN，网络受限即白屏",
+    "需自备 R2/S3、Deepgram、Pexels 三套凭据",
+    "无可用 CLI 批处理，商业使用有授权门槛"
+  ],
+  "compareTips": [
+    {"vs": "codedbytahir__motionforge", "adviceZh": "两者都是 Web 编辑器原型；react-video-editor 走 Pixi + WebCodecs 本地导出，motionforge 走 Remotion 组件 + Cinematic 套件，但后者导出也要自建"},
+    {"vs": "motion-canvas__motion-canvas", "adviceZh": "要代码 + 编辑器双模的动画工具选 Motion Canvas；要面向终端用户的剪辑 SaaS 骨架选本项目"},
+    {"vs": "midrender__revideo", "adviceZh": "要脚本化批量出片选 Revideo；要浏览器内多轨剪辑界面选本项目，两者都不是开箱即用的产品"}
+  ],
+  "showcase": {
+    "demoBriefZh": "本批未出片（画布初始化卡死）。若跑通，建议四段：①三轨时间轴拖入视频/音频/文字；②画布内拖拽旋转缩放并加 shader 转场；③Pexels 素材搜索与 Deepgram 自动转写字幕；④本地导出 MP4 并展示无网络上传的请求面板",
+    "featureCallouts": [
+      {"titleZh": "多轨时间轴", "descZh": "视频/音频/文字分轨，可裁剪层叠"},
+      {"titleZh": "Pixi 画布", "descZh": "v8 渲染，实时预览变换"},
+      {"titleZh": "WebCodecs 导出", "descZh": "浏览器内编码 MP4，素材不出端"},
+      {"titleZh": "素材与转写", "descZh": "Pexels 搜索 + Deepgram 字幕"},
+      {"titleZh": "双许可", "descZh": "个人免费，3 人以上商业授权"}
+    ]
+  },
+  "evidence": [
+    {"field": "summaryZh", "source": "README.md#L26-L34", "noteZh": "自述核心功能：客户端硬件加速渲染、多轨时间轴、素材管理、shader 特效、本地导出 MP4"},
+    {"field": "limits 第 1 条", "source": "_samples/openvideodev__react-video-editor/meta.json", "noteZh": "实测 CanvasPanel 一直 Initializing，headless/headful 均白屏，无产物"},
+    {"field": "limits 第 4 条", "source": "README.md#L95-L98", "noteZh": "3 人以上团队需商业许可"},
+    {"field": "capabilities.assetsZh", "source": "README.md#L39-L48", "noteZh": "技术栈含 Next.js/React/Pixi/WebCodecs，素材与存储接 R2/S3、Pexels、Deepgram"}
+  ]
+}

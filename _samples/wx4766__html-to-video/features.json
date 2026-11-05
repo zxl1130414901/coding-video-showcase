@@ -1,0 +1,69 @@
+{
+  "id": "wx4766__html-to-video",
+  "durationSec": 23.9,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.967,
+      "capabilityZh": "纯 HTML/Canvas 动画",
+      "proofZh": "零框架 Canvas 2D 绘制，expoOut/inOut 缓动曲线求值"
+    },
+    {
+      "start": 7.967,
+      "end": 15.934,
+      "capabilityZh": "数据驱动图表",
+      "proofZh": "柱状与折线逐帧生长，坐标由时间函数推导"
+    },
+    {
+      "start": 15.934,
+      "end": 23.901,
+      "capabilityZh": "确定性 seek",
+      "proofZh": "冻结时钟 + window.__seek(t)，屏幕帧号与 t 严格对应"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.4,
+      "dur": 3.8,
+      "titleZh": "纯 HTML / Canvas",
+      "descZh": "零框架零依赖，Canvas 2D 直接绘制 1920×1080 画面"
+    },
+    {
+      "t": 4.4,
+      "dur": 3.4,
+      "titleZh": "缓动函数可视化",
+      "descZh": "expoOut / inOut / outCubic 都在时间 t 上求值，可精确复现"
+    },
+    {
+      "t": 8.4,
+      "dur": 3.8,
+      "titleZh": "数据驱动图表",
+      "descZh": "柱状与折线按帧生长，所有坐标由 t 推导而非录屏"
+    },
+    {
+      "t": 12.4,
+      "dur": 3.4,
+      "titleZh": "任意帧率",
+      "descZh": "逐帧 seek，30/60fps 由命令行指定，不受浏览器 25fps 限制"
+    },
+    {
+      "t": 16.4,
+      "dur": 3.8,
+      "titleZh": "确定性 seek",
+      "descZh": "冻结时钟 + window.__seek(t)，同一 t 永远同一帧"
+    },
+    {
+      "t": 20.4,
+      "dur": 3.4,
+      "titleZh": "CPU 逐帧合成",
+      "descZh": "Playwright 截帧 + ffmpeg 编码，不依赖 GPU，CI 可重跑"
+    }
+  ],
+  "renderMs": 540000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "只渲染了 16:9 一种比例，未演示多平台 preset",
+    "成片无音轨",
+    "源片 1080p30，逐帧 seek 截图后由 ffmpeg 编码"
+  ]
+}

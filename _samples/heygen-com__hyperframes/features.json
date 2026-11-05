@@ -1,0 +1,69 @@
+{
+  "id": "heygen-com__hyperframes",
+  "durationSec": 22.3,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.43,
+      "capabilityZh": "HTML→MP4 逐帧捕获",
+      "proofZh": "Chromium headless 把时间轴 seek 到每个时间点再截图，30fps 固定步进，不依赖实时录屏"
+    },
+    {
+      "start": 7.43,
+      "end": 14.87,
+      "capabilityZh": "数据竞赛与图表",
+      "proofZh": "bar-chart-race 的排序/柱长/Ticker 与 data-chart 的坐标轴/折线全由 GSAP 时间轴驱动"
+    },
+    {
+      "start": 14.87,
+      "end": 22.3,
+      "capabilityZh": "官方 Registry 块复用",
+      "proofZh": "三个片段都直接复用 registry/blocks 的官方 HTML（数据竞赛 / 数据图表 / 西班牙地图），零手写页面"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.3,
+      "dur": 3.6,
+      "titleZh": "① HTML→MP4 逐帧捕获",
+      "descZh": "浏览器 seek 到 t 再截图，不靠实时录屏"
+    },
+    {
+      "t": 4.2,
+      "dur": 3.2,
+      "titleZh": "② 数据竞赛动画",
+      "descZh": "排序、柱长、Ticker 全由 GSAP 时间轴驱动"
+    },
+    {
+      "t": 8.0,
+      "dur": 3.6,
+      "titleZh": "③ 图表绘制",
+      "descZh": "坐标轴/折线/标注按系列入场，SVG 1080p 不糊"
+    },
+    {
+      "t": 12.2,
+      "dur": 3.2,
+      "titleZh": "④ 官方 Registry 块",
+      "descZh": "直接复用 registry/blocks，不写页面也能出片"
+    },
+    {
+      "t": 15.8,
+      "dur": 3.4,
+      "titleZh": "⑤ 地图标注",
+      "descZh": "投影底图 + 城市点 + 引线，纯 HTML/SVG"
+    },
+    {
+      "t": 19.3,
+      "dur": 3.0,
+      "titleZh": "⑥ 三段 22.4s",
+      "descZh": "7.5s × 3，1920×1080@30fps，一次拼接"
+    }
+  ],
+  "renderMs": 330000,
+  "pipeline": "native",
+  "knownLimitsZh": [
+    "flowchart 与 thread-message-stack 两个官方块在本机渲染时报 timeline 未注册，本次改用 data-chart 作第二段",
+    "块内 GSAP 从 jsDelivr 拉取，离线环境需要本地镜像；本机联网正常",
+    "官方块自带英文文案，中文只出现在底部标注条，未改块内排版"
+  ]
+}

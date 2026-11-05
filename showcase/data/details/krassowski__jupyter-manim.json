@@ -1,0 +1,74 @@
+{
+  "id": "krassowski__jupyter-manim",
+  "taglineZh": "在 Jupyter 单元格里用 %%manim 魔法渲染 ManimCairo 动画并内嵌播放",
+  "summaryZh": "2019 年的 Jupyter 集成插件：在 notebook 单元格顶部写 `%%manim Shapes`，插件就把这个 cell 当作 manim 脚本执行，渲染完成后把视频以内嵌播放器显示在输出格里；还支持把 notebook 变量 pickle 进渲染进程，方便调参。它只兼容 3b1b 当年那套 cairo 后端的 manimlib，README 明确警告不支持 ManimCE 与 ManimGL。本次因本机没有 ManimCairo 后端直接跳过，无产物。定位是「教学 notebook 里即时看图」，不是出片工具。公式推导与参数试验可以放在同一页，适合教材与课堂。",
+  "whatItMakes": [
+    {"type": "Notebook 内即时渲染", "exampleZh": "一格代码 + 一个魔法命令，输出格里直接播放动画", "strength": "核心能力"},
+    {"type": "教学演示 notebook", "exampleZh": "把公式与动画写在同一页，学生改参数立即看结果", "strength": "可用"},
+    {"type": "变量驱动的试参", "exampleZh": "notebook 里定义参数，pickle 传给渲染进程", "strength": "可用"},
+    {"type": "Binder/Colab 在线演示", "exampleZh": "无需本地环境，打开 notebook 即可跑", "strength": "可用"},
+    {"type": "现代 Manim 工程", "exampleZh": "不支持 ManimCE / ManimGL，新版教程完全用不了", "strength": "受限"},
+    {"type": "成片级视频制作", "exampleZh": "无剪辑、配音、字幕、时间轴，只出 Manim 原始视频", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "仍在用 ManimCairo 的课程", "whoZh": "老项目维护者", "whyZh": "原有 notebook 教材可继续跑，不必重写", "deliverableZh": "内嵌播放的 mp4/png", "fit": "适合"},
+    {"scenarioZh": "Binder/Colab 教学 demo", "whoZh": "教师、助教", "whyZh": "学生零安装即可跑动画，适合作业与课堂演示", "deliverableZh": "可分享的 notebook", "fit": "高度契合"},
+    {"scenarioZh": "Manim 入门试手", "whoZh": "初学者", "whyZh": "不用配项目结构，改一格代码就能看效果（前提是装对旧版后端）", "deliverableZh": "短片段预览", "fit": "适合"},
+    {"scenarioZh": "Notebook 教材出版", "whoZh": "教材作者", "whyZh": "图文与动画同页，比 PDF 生动", "deliverableZh": "带输出的 ipynb", "fit": "适合"},
+    {"scenarioZh": "现代 Manim 项目", "whoZh": "任何用 ManimCE 的人", "whyZh": "插件只认 cairo 后端，装不上就用不了", "deliverableZh": "不适用", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "渲染参数透传 ManimCairo，可用 -r 指定 height,width；未声明上限",
+    "maxFpsZh": "由 ManimCairo 参数决定，通常 30/60；插件未单独限制",
+    "durationZh": "单场景，无硬上限",
+    "effectsZh": ["完全取决于 ManimCairo 的能力", "插件只增加内嵌播放与参数透传"],
+    "audioZh": "无音频、无字幕",
+    "interactivityZh": "单元格魔法 + 内嵌播放器控件；可导出变量到渲染进程",
+    "automationZh": "无 CLI，依赖 notebook 执行；可 nbconvert 批量跑",
+    "assetsZh": "notebook 变量（pickle）、Manim 字体与图片",
+    "exportFormatsZh": ["mp4", "png（ManimCairo 输出）", "base64 内嵌数据"],
+    "realtimePreviewZh": "渲染后在单元格内播放，不是真实时",
+    "ciFriendlyZh": "弱：依赖旧版 ManimCairo，安装链已难复现"
+  },
+  "ceilingZh": "它的上限受 ManimCairo 锁死：能用的是 2019 年那套 API，场景能力就是当年 manimlib 的全部；插件额外给的是 `%%manim` 参数透传（分辨率、画质、-r）、`--base64` 内嵌、`--no-autoplay` 控制播放，以及 notebook 变量进渲染进程。实测未出片：本机无 ManimCairo 后端，按规则跳过。边界很明确：README 直接警告不支持 ManimCE 与 ManimGL，而现代用户几乎都在用 CE；项目更新缓慢、无 Windows 验证；没有音频、字幕、剪辑任何环节，成片就是 Manim 原始输出；Jupyter 版本升级也可能导致魔法命令失效。此外插件渲染是同步阻塞的，长场景会卡住 notebook 内核；输出的视频文件落在 Manim 默认 media 目录，路径不直观。教学场景可以接受，生产环境基本不会选它。",
+  "workflow": [
+    {"stepZh": "装旧版 Manim", "detailZh": "需先装 cairo 后端的 manimlib（3b1b 2019 版），这一步在现代环境已很难复现", "effortZh": "数小时，易失败"},
+    {"stepZh": "装插件", "detailZh": "pip3 install jupyter-manim，并在 notebook 里 import jupyter_manim", "effortZh": "约 10 分钟"},
+    {"stepZh": "写单元格", "detailZh": "cell 首行 %%manim SceneName，可跟 -r 720,1280 等参数", "effortZh": "约 10 分钟"},
+    {"stepZh": "渲染播放", "detailZh": "执行单元格，输出格里出现内嵌播放器", "effortZh": "每段数十秒"},
+    {"stepZh": "导出复用", "detailZh": "需要变量时把参数 pickle 给渲染进程；成片从 Manim 输出目录取", "effortZh": "约 10 分钟"}
+  ],
+  "differentiators": [
+    "单元格即渲染，输出格里直接播，不用切文件夹找视频",
+    "notebook 变量可 pickle 进渲染进程，试参方便",
+    "可内嵌 base64 视频，notebook 分享即带画面",
+    "能在 Binder/Colab 里零安装演示"
+  ],
+  "limits": [
+    "只支持 ManimCairo，不兼容 ManimCE/ManimGL",
+    "依赖 2019 年旧环境，现代机器难装",
+    "无音频、字幕、剪辑，成片只是原始渲染",
+    "项目更新缓慢，Jupyter 升级可能失效"
+  ],
+  "compareTips": [
+    {"vs": "ManimCommunity__manim", "adviceZh": "ManimCE 的 %%manim 魔法已内置，现代项目不需要本插件"},
+    {"vs": "ManimCommunity__manim-voiceover", "adviceZh": "要旁白与字幕选 voiceover；只想 notebook 里快速看画面，本插件更轻（但要旧后端）"},
+    {"vs": "jeertmans__manim-slides", "adviceZh": "manim-slides 面向演示放映；jupyter-manim 面向 notebook 内联预览，均已不属于主流工作流"}
+  ],
+  "showcase": {
+    "demoBriefZh": "本批未出片（缺 ManimCairo 后端）。若演示，建议四段：①一格 %%manim 渲染简单图形；②-r 改分辨率再渲染，对比清晰度；③notebook 变量传参改颜色；④--base64 内嵌后分享 notebook，展示离线可播",
+    "featureCallouts": [
+      {"titleZh": "%%manim 魔法", "descZh": "单元格代码直接当 Manim 脚本执行"},
+      {"titleZh": "内嵌播放器", "descZh": "渲染结果显示在输出格里"},
+      {"titleZh": "参数透传", "descZh": "-r、画质等参数原样给 Manim"},
+      {"titleZh": "变量 pickle", "descZh": "notebook 参数送进渲染进程"},
+      {"titleZh": "base64 内嵌", "descZh": "视频写进 notebook 本体"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L8-L12", "noteZh": "定位为 ManimCairo 与 Jupyter 的集成，明确不支持 ManimCE/ManimGL"},
+    {"field": "capabilities.interactivityZh", "source": "README.md#L22-L30", "noteZh": "pip3 install jupyter-manim 后以 %%manim cell magic 调用，参数透传"},
+    {"field": "limits 第 1 条", "source": "README.md#L11-L12", "noteZh": "仅兼容 cairo 后端 manimlib"},
+    {"field": "ceilingZh", "source": "_samples/krassowski__jupyter-manim/meta.json", "noteZh": "未执行：本机缺 ManimCairo 后端，按规则跳过"}
+  ]
+}

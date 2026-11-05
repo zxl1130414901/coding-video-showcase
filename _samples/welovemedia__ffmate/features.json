@@ -1,0 +1,23 @@
+{
+  "id": "welovemedia__ffmate",
+  "durationSec": 22.0,
+  "segments": [
+    {"start": 0, "end": 8, "capabilityZh": "REST 提交的分形缩放渲染任务", "proofZh": "mandelbrot 240 帧 1080p30 + hue 渐变，由 ffmate 任务其 command 原样执行"},
+    {"start": 8, "end": 14, "capabilityZh": "队列串行调度 + 多源滤镜合成", "proofZh": "3 任务 priority 1200/900/600，max-concurrent=1 逐个执行，seg2 用 blend=screen 双源合成"},
+    {"start": 14, "end": 22, "capabilityZh": "多源转场任务 + 全链路状态回写", "proofZh": "testsrc2 × smptehdbars 双路 1080p 输入，xfade circleopen 2.5s 转场，任务状态 QUEUED→PROCESSING→DONE_SUCCESSFUL"}
+  ],
+  "callouts": [
+    {"t": 0.5, "dur": 4.0, "titleZh": "能力 1｜REST 任务队列", "descZh": "POST /api/v1/tasks 提交命令，priority 1200/900/600 控制顺序"},
+    {"t": 4.7, "dur": 3.2, "titleZh": "能力 2｜NVENC 硬件编码", "descZh": "单任务 8 秒 240 帧 1080p30，progress 百分比实时回写"},
+    {"t": 8.3, "dur": 4.3, "titleZh": "能力 3｜串行队列 + 双源合成", "descZh": "max-concurrent=1 三任务严格排队，blend=screen 叠加 life 元胞自动机"},
+    {"t": 14.3, "dur": 4.0, "titleZh": "能力 4｜音频可视化任务", "descZh": "sine 220Hz → showwaves 波形 + showspectrum 频谱，同一任务内完成"},
+    {"t": 18.6, "dur": 3.4, "titleZh": "实测｜3 任务全链路", "descZh": "提交→渲染→落盘 31.3 秒，三段 1080p30，3/3 DONE_SUCCESSFUL"}
+  ],
+  "renderMs": 53300,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "Windows 下 outputFile 含中文会被 ffmate 解码成 F:\\coding??，任务必须先写纯英文目录",
+    "无外网时默认遥测会在 telemetry.go:56 空指针 panic，必须具备 --send-telemetry=false",
+    "默认 sqlite 落在 %APPDATA%\\ffmate（C 盘），样例用 --database 重定向到工作目录"
+  ]
+}

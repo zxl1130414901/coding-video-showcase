@@ -1,0 +1,74 @@
+{
+  "id": "mowshon__moviego",
+  "taglineZh": "Go 写的脚本化剪辑库：用类型化 clip 图组合图层、字幕、音频，再交给 FFmpeg 出片",
+  "summaryZh": "MovieGo v2（约 303 stars，MIT）把 MoviePy 那套「时间→帧」模型搬到 Go：clip 图是强类型的，帧缓冲单所有权，帧率用有理数避免浮点误差，逐帧像素工作丢进 worker pool 并行；如果整条图能表达成一个 FFmpeg filtergraph，就直接走 FFmpeg-only 快路径，完全不碰 Go 像素。它能做裁剪、缩放、淡入、合成、拼接、文字字幕、音频混音、透明导出。实测 720p30 的 150 帧只用 4.6 秒（约 32.8fps），是本批最快的一档。MIT 许可，v2 已把核心功能与竞态测试补齐。代价是生态小，遇到问题只能读源码与测试。",
+  "whatItMakes": [
+    {"type": "画中画与图层合成", "exampleZh": "Composite 多层定位，视频/图片/文字叠在背景上", "strength": "核心能力"},
+    {"type": "图片/视频幻灯片", "exampleZh": "片段拼接 + 淡入淡出 + 统一尺寸与帧率", "strength": "核心能力"},
+    {"type": "字幕烧录", "exampleZh": "Text 与 Subtitles 支持样式、位置、时间区间", "strength": "核心能力"},
+    {"type": "音频混音", "exampleZh": "多音轨混合、音量与静音段处理后 mux 进视频", "strength": "可用"},
+    {"type": "透明通道导出", "exampleZh": "透明背景导出，便于叠到别的工程里", "strength": "可用"},
+    {"type": "复杂动效与 GL 转场", "exampleZh": "无 shader 转场体系，复杂效果要自己拼 filter 或逐帧画", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "服务端批量合成", "whoZh": "Go 后端团队", "whyZh": "单二进制 + ffmpeg，天然适合容器与高并发，模板化出片稳定", "deliverableZh": "1080p30 的 15–60 秒 MP4，按请求批量", "fit": "高度契合"},
+    {"scenarioZh": "电商商品视频", "whoZh": "电商运营、SaaS 服务商", "whyZh": "图片 + 文字 + 价格卡片 + 音乐，一天几千条的量级", "deliverableZh": "方形/竖屏 1080p MP4", "fit": "高度契合"},
+    {"scenarioZh": "社媒模板视频", "whoZh": "内容运营", "whyZh": "换文案换图即出片，FFmpeg 快路径让纯裁剪拼接几乎零成本", "deliverableZh": "15–30 秒多比例短视频", "fit": "适合"},
+    {"scenarioZh": "监控/素材拼接", "whoZh": "运维、安防集成商", "whyZh": "按时间段裁剪、拼接、加时间戳字幕，Go 服务直接调", "deliverableZh": "长时段合成 MP4", "fit": "适合"},
+    {"scenarioZh": "品牌创意短片", "whoZh": "创意工作室", "whyZh": "没有关键帧曲线、粒子、GL 转场，视觉自由度不如 JS/Python 方案", "deliverableZh": "不推荐", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由输入与 FFmpeg 决定，实测 720p；4K 可做但逐帧路径耗时上升，纯 filtergraph 路径仍快",
+    "maxFpsZh": "用有理数 Rate 表示，可配任意帧率；实测 30fps",
+    "durationZh": "无硬上限；长片建议走 FFmpeg-only 快路径以跳过 Go 像素",
+    "effectsZh": ["淡入淡出与透明度", "缩放/裁剪/位移变换", "画中画与多层合成", "文字与字幕样式", "颜色调整", "透明通道导出"],
+    "audioZh": "多音轨混合、音量处理、mux 进视频；无 TTS 与自动字幕识别",
+    "interactivityZh": "无交互，纯 Go API",
+    "automationZh": "强：Go 代码即脚本，可嵌进 HTTP 服务；并行渲染有 worker pool",
+    "assetsZh": "视频、图片、音频、字体文件；无内置模板",
+    "exportFormatsZh": ["mp4（默认）", "透明视频容器（按编码配置）"],
+    "realtimePreviewZh": "无预览，渲染后查看",
+    "ciFriendlyZh": "好：Go 单二进制 + ffmpeg，容器化简单，`go test -race` 保证并行与串行结果一致"
+  },
+  "ceilingZh": "吞吐是它的强项：实测 150 帧 720p30 用 4.6 秒，约 32.8fps；如果整条 clip 图能压成一个 FFmpeg filtergraph（纯裁剪、缩放、淡入、拼接），会走 fast path 完全不碰 Go 像素，速度接近原生 ffmpeg。能力上限是「模板化合成」：多轨画中画、字幕、音频混音、透明导出都覆盖，4K 也能做（慢一些）。最复杂的用法是逐帧像素特效叠加并行 worker，但项目没有 shader 转场与关键帧曲线。边界：时间轴必须写 Go 代码，没有声明式 DSL；复杂转场要自己拼 filter 串；社区小、示例以 README cookbook 为主；Windows 需自行准备 ffmpeg 与 ffprobe 在 PATH。另一个边界是时间精度：跨片段拼接仍可能出现半帧误差，需要手动对齐；字幕只支持文本样式，复杂排版要预渲染成图片。",
+  "workflow": [
+    {"stepZh": "装环境", "detailZh": "Go 1.25+，并把 ffmpeg 与 ffprobe 放进 PATH，先跑 ffmpeg -version 验证", "effortZh": "约 15 分钟"},
+    {"stepZh": "引入模块", "detailZh": "go get github.com/mowshon/moviego/v2，import mgo", "effortZh": "约 5 分钟"},
+    {"stepZh": "组 clip 图", "detailZh": "Open 素材后 Subclip/Resize/FadeIn，再 Composite 叠加文字与图片", "effortZh": "首个视频 1–2 小时"},
+    {"stepZh": "音轨与字幕", "detailZh": "Audio 混音后 set_audio，Subtitles 挂时间区间", "effortZh": "约 30 分钟"},
+    {"stepZh": "导出", "detailZh": "mgo.WriteVideo(ctx, out, \"out.mp4\", mgo.ExportOptions{})", "effortZh": "实测 5 秒片约 5 秒"}
+  ],
+  "differentiators": [
+    "Go 原生强类型 clip 图，适合放进后端服务与高并发",
+    "整图可压成 filtergraph 时走 FFmpeg 快路径，跳过逐帧像素",
+    "有理数帧率与单所有权帧缓冲，并行渲染结果与串行等价",
+    "覆盖字幕、混音、透明导出，模板化合成够用"
+  ],
+  "limits": [
+    "没有声明式时间轴，所有编排都要写 Go 代码",
+    "无 shader 转场、关键帧曲线与粒子，创意自由度有限",
+    "社区小，文档以 README cookbook 为主",
+    "Windows 需手动配 ffmpeg/ffprobe 到 PATH"
+  ],
+  "compareTips": [
+    {"vs": "Zulko__moviepy", "adviceZh": "要 Python 生态与逐像素自由选 moviepy；要 Go 部署、单二进制与 32.8fps 吞吐选 moviego"},
+    {"vs": "h2non__videoshow", "adviceZh": "只做图片幻灯片用 videoshow 更省事；要有视频输入、图层合成与音频混音，moviego 完整得多"},
+    {"vs": "mifi__editly", "adviceZh": "要 JSON 声明式剪辑与 GL 转场选 editly；要后端服务集成与稳定吞吐选 moviego"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①裁剪 + 缩放 + 淡入的基础片段；②画中画：视频上叠 logo 与价格卡；③字幕与多音轨混音后 mux；④透明导出叠到另一段视频上，展示 alpha 通道",
+    "featureCallouts": [
+      {"titleZh": "类型化 clip 图", "descZh": "Subclip/Resize/FadeIn 链式组合"},
+      {"titleZh": "FFmpeg 快路径", "descZh": "纯滤镜可表达时不碰 Go 像素"},
+      {"titleZh": "并行渲染", "descZh": "worker pool 分帧，结果与串行一致"},
+      {"titleZh": "字幕与混音", "descZh": "Subtitles 与 Audio 直接挂进时间线"},
+      {"titleZh": "透明导出", "descZh": "alpha 通道保留，便于叠加"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L5-L8", "noteZh": "自述为 Go 的脚本化剪辑，组合视频/图片/文字/音频 clip 后经 FFmpeg 导出"},
+    {"field": "capabilities.automationZh", "source": "README.md#L34-L36", "noteZh": "状态说明覆盖 open/trim/transform/composite/concat、字幕、音频混音、透明导出与并行管线"},
+    {"field": "differentiators 第 3 条", "source": "README.md#L73-L78", "noteZh": "有理数 Rate、单所有权帧缓冲、parallel==sequential 等价保证"},
+    {"field": "ceilingZh", "source": "_samples/mowshon__moviego/meta.json", "noteZh": "实测 1280×720/30fps/150 帧耗时 4.6s，约 32.8fps"}
+    ]
+}

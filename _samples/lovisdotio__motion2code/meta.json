@@ -1,0 +1,59 @@
+{
+  "repo": "lovisdotio/motion2code",
+  "category": "动效逆向/代码动画",
+  "status": "success",
+  "render_ms": 52320,
+  "total_ms": 52320,
+  "cmd": "python skills/motion2code/scripts/render_anim.py gallery/think-big/index.html -o out/raw.mp4 --fps 30 --width 1280 --root gallery",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 9.97,
+    "nb_frames": 299,
+    "codec": "h264",
+    "pix_fmt": "yuv420p",
+    "fps": "30/1",
+    "size_bytes": 361228
+  },
+  "notes_zh": "官方 gallery/think-big 示例页（window.anim.seek 逐帧截屏），300 帧 1920×1080@30fps，缩到 720p 后入库",
+  "preview": {
+    "at_s": 4.99,
+    "mean_rgb": [
+      44.7,
+      141.98,
+      219.85
+    ],
+    "stddev_rgb": [
+      95.5,
+      47.32,
+      48.53
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 23.8,
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 6,
+    "render_ms": 110000,
+    "pipeline": "native",
+    "build": "render_anim.py（Playwright + window.anim.seek 逐帧截图）分别为 think-big / eye / festival-map 各渲 8s@30fps 1920x1080，再用 ffmpeg 拼接并 drawtext 烧中文标注",
+    "ffprobe": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "frames": 714,
+      "duration": 23.8,
+      "codec": "h264",
+      "size_bytes": 7031793
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 9.97s",
+    "known_limits_zh": [
+      "本次只验证官方 gallery 三页的渲染链路，未跑“从任意视频反推代码”的完整分析流程",
+      "示例页依赖 gallery 目录结构与 ?external=1 参数，脱离该目录需改 root",
+      "渲染走本机 Chrome（channel=chrome），无 GPU 加速时单帧约 100ms"
+    ]
+  }
+}

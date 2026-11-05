@@ -1,0 +1,44 @@
+{
+  "repo": "maloyan/manim-web",
+  "category": "数学/代码动画（Manim 系）",
+  "status": "success",
+  "render_ms": 43237,
+  "total_ms": 43237,
+  "cmd": "npx vite build --config vite.browser.config.ts ; node F:\\coding视频\\_samples\\maloyan__manim-web\\capture.mjs  （页面 import dist/manim-web.browser.js，scene.export('animation.gif', {fps:30, quality:10})）",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration": 2.7,
+    "frames": 90,
+    "fps": "100/3 (~33)",
+    "codec": "gif",
+    "size_bytes": 412805
+  },
+  "notes_zh": "vite dev 在本机卡在 'bundling dependencies' 不返回（页面 DOMContentLoaded 超时），改为一次性 vite build 产出 dist/manim-web.browser.js（约 47s，未计入 render_ms），demo 页直接 import dist。WebM 导出只写出 110B 空文件，改用 scene.export('animation.gif', {fps:30, quality:10}) 成功导出 2.7s 动画（Circle→Square→Triangle 变换）。",
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 21.7,
+    "resolution": "1280x720",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 6,
+    "render_ms": 348889,
+    "pipeline": "official",
+    "build": "Playwright 打开自建 demo_v2.html，三幕分别 scene.seek(t) 定位后逐帧 JPEG 截图 654 帧（349s），ffmpeg NVENC 按幕编码 3 段；v2tool 拼接 + PIL 中文标注 overlay",
+    "ffprobe": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "frames": 651,
+      "duration": 21.7,
+      "codec": "h264",
+      "size_bytes": 4976707
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 2.7s",
+    "known_limits_zh": [
+      "Playwright 逐帧截图是瓶颈：3D 幕约 0.6s/帧，全片 654 帧耗时 349s",
+      "仓库未提供相机动画（MoveCamera），3D 运动用 Rotate 旋转物体而非绕场景运镜",
+      "输出 1280×720；web 端 Scene 画布在 1080p 下逐帧成本更高，本次取 720p 满足下限"
+    ]
+  }
+}

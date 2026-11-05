@@ -1,0 +1,69 @@
+{
+  "id": "academa-labs__manimgx",
+  "durationSec": 29.933,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 10.967,
+      "capabilityZh": "LaTeX 公式与复平面几何",
+      "proofZh": "级数公式由 LaTeX 排版，向量逐项首尾相接"
+    },
+    {
+      "start": 10.967,
+      "end": 20.967,
+      "capabilityZh": "函数曲线与导数定义",
+      "proofZh": "切点割线动画，df/dx 数值实时回填公式"
+    },
+    {
+      "start": 20.967,
+      "end": 29.934,
+      "capabilityZh": "三维曲面与深度着色",
+      "proofZh": "Clifford torus 内外分色、表面高光与参数曲线"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.4,
+      "dur": 3.8,
+      "titleZh": "真 LaTeX 排版",
+      "descZh": "级数公式由 LaTeX 引擎排版，上下标与求和号都不是贴图"
+    },
+    {
+      "t": 4.4,
+      "dur": 3.6,
+      "titleZh": "公式与几何同步",
+      "descZh": "每一项向量首尾相接，部分和逼近复平面上的圆弧"
+    },
+    {
+      "t": 11.4,
+      "dur": 3.8,
+      "titleZh": "数值驱动动画",
+      "descZh": "df/dx 与 dx 的数值随动画变化，实时回填到公式里"
+    },
+    {
+      "t": 15.4,
+      "dur": 3.4,
+      "titleZh": "切线与割线",
+      "descZh": "切点沿曲线移动，切线斜率就是导数定义的可视化"
+    },
+    {
+      "t": 21.4,
+      "dur": 4.0,
+      "titleZh": "真 3D 曲面渲染",
+      "descZh": "Rust/wgpu 内核渲染曲面，含深度排序与光照"
+    },
+    {
+      "t": 26.0,
+      "dur": 3.6,
+      "titleZh": "四维投影可解释",
+      "descZh": "内外两侧分色 + 参数曲线，四维旋转投影一目了然"
+    }
+  ],
+  "renderMs": 723000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "为控制单卡占用统一按 720p30 渲染，示例默认 1080p60",
+    "derivative 段复用仓库既有 1080p60 成片，其余两段为新渲染",
+    "torus 段为 3D 场景，manimgx 不做排版检查"
+  ]
+}

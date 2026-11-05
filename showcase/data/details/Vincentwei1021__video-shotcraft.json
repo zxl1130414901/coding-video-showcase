@@ -1,0 +1,73 @@
+{
+  "id": "Vincentwei1021__video-shotcraft",
+  "taglineZh": "给 coding agent 的整片制作技能包：截真实页面、选镜头、卡点配乐",
+  "summaryZh": "video-shotcraft 不是渲染器，而是一套装进 Claude Code / Codex 的制作流程 Skill：你只说“给我的产品做个宣传片”，agent 就抓取真实网页截图，从 124 张镜头配方卡（共 150 个镜头）里挑分镜，用 Remotion 写成动画，按音乐节拍剪辑，补音效与配乐，再逐帧 QA，交付可继续编辑的 MP4。它解决“产品宣传片拍不出真实质感、剪不出节奏”的问题——每帧都由代码从你的截图与文案绘制，清晰、与品牌一致、可改。代价是依附 agent 与 Remotion，风格受镜头库约束。",
+  "whatItMakes": [
+    {"type": "产品发布/宣传片", "exampleZh": "真实页面截图推拉、爆炸视图、标题遮罩、品牌收尾", "strength": "核心能力"},
+    {"type": "功能演示片", "exampleZh": "UI 入场、卡片堆叠、图表增长、交互高亮", "strength": "核心能力"},
+    {"type": "社媒竖屏切片", "exampleZh": "9:16 版式、字幕轨、卡点转场、音效", "strength": "可用"},
+    {"type": "开源项目介绍", "exampleZh": "仓库页面截图 + 数据卡 + Logo 收尾", "strength": "可用"},
+    {"type": "可继续编辑的成片", "exampleZh": "交付 MP4 + Motion Workbench 工程 + 剪映草稿", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "独立开发者产品发布", "whoZh": "Solo founder", "whyZh": "没有摄影与剪辑资源，用真实页面截图当天出片", "deliverableZh": "1080p30 的 30–60 秒 MP4", "fit": "高度契合"},
+    {"scenarioZh": "SaaS 功能更新视频", "whoZh": "产品市场团队", "whyZh": "每次发版重新抓页面、套镜头卡，节奏统一", "deliverableZh": "15–45 秒功能短片，可多尺寸", "fit": "高度契合"},
+    {"scenarioZh": "开源项目宣传", "whoZh": "开源作者", "whyZh": "从 README/仓库页抓素材，快速做发布片", "deliverableZh": "30–90 秒横屏视频", "fit": "适合"},
+    {"scenarioZh": "投放素材批量迭代", "whoZh": "增长/投放", "whyZh": "镜头可命名复用，改文案与截图即可多版本", "deliverableZh": "多版本 9:16/1:1 短片", "fit": "适合"},
+    {"scenarioZh": "无 agent 环境的批量生产", "whoZh": "传统剪辑团队", "whyZh": "流程依赖 Claude Code/Codex 与 Remotion，手工接入成本高", "deliverableZh": "需改造", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "模板与实测为 1920×1080；4K 未声明，可改 Remotion Composition 但未验证",
+    "maxFpsZh": "实测 30fps；Remotion 可调更高，未见项目声明",
+    "durationZh": "实测 36.2 秒 / 1085 帧；长片取决于镜头数量与渲染时间",
+    "effectsZh": ["真实页面截图与 3D 相机运动", "转场/排版/UI 入场/光效等 10 类镜头", "节拍卡点与音效设计", "字幕与品牌收尾"],
+    "audioZh": "含配乐与音效设计、按节拍对齐；旁白由姊妹项目 video-talkcraft 负责",
+    "interactivityZh": "成片离线；交付 Motion Workbench 浏览器编辑器可继续改",
+    "automationZh": "Agent 驱动 + npx remotion render；无独立 CLI 编排器",
+    "assetsZh": "真实网页截图、产品文案、Logo、字体；镜头卡在 references/shots/",
+    "exportFormatsZh": ["MP4", "剪映草稿", "Motion Workbench 工程"],
+    "realtimePreviewZh": "有：Gallery 与 Motion Workbench 预览",
+    "ciFriendlyZh": "需人工/agent 参与选镜头与 QA，不适合全自动 CI"
+  },
+  "ceilingZh": "它能交付一条“像花了钱做的”产品片：150 个镜头、124 张配方卡覆盖开篇、相机、转场、排版、UI 入场、交互、数据、光效、节奏与收尾，每张卡都有可运行的 Remotion 实现；实测官方模板完整渲染 1085 帧、1920×1080、30fps、36.2 秒，耗时 408 秒，总 478 秒，产物 19.86MB。上限还体现在交付形态：除 MP4 外还能出剪映草稿（分镜片段、原生字幕轨、独立音效/BGM 轨）与浏览器 Motion Workbench 工程，这是同类少有的“可继续编辑”。边界：必须有 Claude Code/Codex 与 Remotion 环境；镜头库决定审美上限，超出库的风格要自己写卡片；抓取真实页面依赖登录态与网络；帧级 QA 只能查技术问题，不保证创意；4K 与 60fps 未验证。",
+  "workflow": [
+    {"stepZh": "安装 Skill", "detailZh": "npx skills add Vincentwei1021/video-shotcraft，或 symlink 到 ~/.claude/skills", "effortZh": "约 5 分钟"},
+    {"stepZh": "描述片子", "detailZh": "对 agent 说“用 video-shotcraft 给我的产品做宣传片”，确认模板与镜头", "effortZh": "约 10 分钟"},
+    {"stepZh": "抓取与分镜", "detailZh": "agent 截取真实页面、选镜头卡、产出 storyboard 与时间轴", "effortZh": "半小时到 2 小时"},
+    {"stepZh": "Remotion 渲染", "detailZh": "npx remotion render src/index.ts AiflPromo，按节拍合成音效", "effortZh": "36 秒片约 7 分钟"},
+    {"stepZh": "QA 与交付", "detailZh": "逐帧检查后导出 MP4、剪映草稿或 Motion Workbench 工程", "effortZh": "约 30 分钟"}
+  ],
+  "differentiators": [
+    "从真实产品页截图出发，而不是凭空生成画面，品牌与文案不会跑偏",
+    "150 个镜头配方卡 + 10 类场景，覆盖宣传片从开篇到收尾的完整结构",
+    "交付不止 MP4：剪映草稿与浏览器编辑器让成片可继续改",
+    "把分镜、卡点、音效、QA 串成 agent 可执行的一条流程"
+  ],
+  "limits": [
+    "依附 Claude Code/Codex 与 Remotion，脱离 agent 环境难独立使用",
+    "风格受 150 个镜头库约束，想做库外审美要自己写卡片",
+    "抓取真实页面受登录态、反爬与网络影响，不总是稳定",
+    "帧级 QA 只覆盖技术缺陷，不判断创意与叙事好坏"
+  ],
+  "compareTips": [
+    {"vs": "shadcn-labs__snapcn", "adviceZh": "要从零搭品牌一致的 UI 动画组件选 SnapCN；要整片流程与真实页面截图选 video-shotcraft"},
+    {"vs": "Remocn__remocn", "adviceZh": "要把单段动效加进自己的 Remotion 工程选 Remocn；要一条完整宣传片交付选 video-shotcraft"},
+    {"vs": "remotion-dev__remotion", "adviceZh": "video-shotcraft 是上层工作流，底层仍是 Remotion；要完全掌控或云端批量，直接回到 Remotion"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①抓取真实产品页生成截图素材；②从镜头卡挑分镜并排时间轴；③Remotion 渲染中的卡点转场与音效；④交付 MP4、剪映草稿与 Motion Workbench 三种形态",
+    "featureCallouts": [
+      {"titleZh": "真实页面截图", "descZh": "画面来自你的产品而非生成"},
+      {"titleZh": "124 张镜头卡", "descZh": "10 类场景覆盖整片结构"},
+      {"titleZh": "节拍卡点", "descZh": "转场与音效对齐 BGM"},
+      {"titleZh": "帧级 QA", "descZh": "自动查出技术缺陷"},
+      {"titleZh": "可编辑交付", "descZh": "MP4/剪映草稿/网页工程"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L30-L38", "noteZh": "自述不是视频生成器，而是截图、分镜、Remotion、音画同步与帧级 QA 的流程"},
+    {"field": "whatItMakes", "source": "README.md#L131-L160", "noteZh": "124 cards / 150 shots，10 类镜头与 Remotion 实现目录"},
+    {"field": "capabilities.exportFormatsZh", "source": "README.md#L51-L57", "noteZh": "Motion Workbench 与剪映草稿导出，分镜/字幕/音效轨独立"},
+    {"field": "ceilingZh", "source": "_samples/Vincentwei1021__video-shotcraft/meta.json", "noteZh": "实测模板 1085 帧/1920×1080/30fps/36.2s，render 408s，产物 19.86MB"}
+  ]
+}

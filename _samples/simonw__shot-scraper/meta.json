@@ -1,0 +1,44 @@
+{
+  "repo": "simonw/shot-scraper",
+  "category": "HTML/浏览器渲染转视频",
+  "status": "success",
+  "render_ms": 131043,
+  "total_ms": 136114,
+  "cmd": "F:\\coding视频\\_env\\py\\Scripts\\python.exe -m shot_scraper storyboard storyboard.yml ; ffmpeg -i sample.webm -c:v h264_nvenc -preset p5 -cq 23 -pix_fmt yuv420p sample.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration": 10.2,
+    "frames": 255,
+    "fps": 25,
+    "codec": "h264",
+    "size_bytes": 257848
+  },
+  "notes_zh": "用仓库的 storyboard 子命令录制自建 demo.html（3 个场景：首页动效 → 点击换主题 → 点击卡片），Playwright 录制 131043ms 得 sample.webm（VP9 1280x720 25fps 10.2s，255 帧），再用 NVENC 转 sample.mp4（5071ms）。坑：Playwright 报缺 ffmpeg-win64.exe，需 python -m playwright install ffmpeg；storyboard 里的 fps: 字段在已装版本不被支持，删掉后用默认 25fps。",
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 20.333,
+    "resolution": "1280x720",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 5,
+    "render_ms": 24742,
+    "pipeline": "official",
+    "build": "shot-scraper video storyboard_v2.yml 单次录制（20.4s webm，24.7s），ffmpeg 切 3 段并转 30fps；v2tool 拼接 + PIL 中文标注 overlay + h264_nvenc",
+    "ffprobe": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "frames": 610,
+      "duration": 20.333,
+      "codec": "h264",
+      "size_bytes": 1918112
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 10.2s",
+    "known_limits_zh": [
+      "仓库 storyboard 录制固定 25fps，交付前用 ffmpeg 转 30fps（部分帧重复）",
+      "录制分辨率受 viewport 限制，本次为 1280×720（已满足 720p 下限，未上 1080p 以免录制时长翻倍）",
+      "本机安装的 shot-scraper 1.12 无 __main__.py，需用 python -c 'from shot_scraper.cli import cli; cli()' 且子命令名为 video"
+    ]
+  }
+}

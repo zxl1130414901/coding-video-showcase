@@ -1,0 +1,73 @@
+{
+  "id": "jeertmans__manim-slides",
+  "taglineZh": "把 Manim 动画切成可翻页的幻灯片，用 Qt、浏览器或 PPT 现场讲",
+  "summaryZh": "Manim Slides 不是渲染器，而是 Manim 生态的演示层：用 Slide/ThreeDSlide 替代 Scene，在需要停顿处调 self.next_slide()，渲染后得到可按页推进的演示文稿。它解决“Manim 动画只能整段播放、讲课时没法停下来提问”的问题——同一份动画既导出成片，也能课堂逐页暂停、循环某段、随时回退。render 只是转发给 manim/manimgl，present 用 Qt、RevealJS 或 PowerPoint 播放。它交付的是可交互讲义，不是固定时间轴的 MP4。它把讲义与成片统一到一份源码，减少课堂与录播两套素材。",
+  "whatItMakes": [
+    {"type": "可翻页的 Manim 讲义", "exampleZh": "动画按 next_slide 切页，讲课时逐页暂停与回退", "strength": "核心能力"},
+    {"type": "网页版演示", "exampleZh": "转成 RevealJS，任何浏览器打开即可放映", "strength": "核心能力"},
+    {"type": "PowerPoint/Qt 离线演示", "exampleZh": "导出 PPTX 或用 Qt 窗口放映，不依赖网络", "strength": "可用"},
+    {"type": "带循环段的教学动画", "exampleZh": "next_slide(loop=True) 让某段动画循环到用户继续", "strength": "核心能力"},
+    {"type": "Manim 动画成片", "exampleZh": "render 阶段仍产出各 Scene 的 MP4，可另行剪辑", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "大学课堂现场讲授", "whoZh": "数学/物理教师", "whyZh": "讲到关键处暂停、回退、循环演示，而不是放完一整条视频", "deliverableZh": "可翻页的 Manim 演示 + 各页动画", "fit": "高度契合"},
+    {"scenarioZh": "学术报告/答辩", "whoZh": "研究生、科研人员", "whyZh": "RevealJS 导出后任何浏览器都能放，不挑场地设备", "deliverableZh": "HTML 演示包", "fit": "高度契合"},
+    {"scenarioZh": "录课与课件双交付", "whoZh": "课程制作团队", "whyZh": "同一份代码既出 MP4 又出现场演示版", "deliverableZh": "MP4 + 可交互演示", "fit": "适合"},
+    {"scenarioZh": "ManimGL 用户的演示需求", "whoZh": "3b1b 风格创作者", "whyZh": "是少数同时支持 ManimGL 的演示工具", "deliverableZh": "ManimGL 场景演示", "fit": "适合"},
+    {"scenarioZh": "纯视频批量生产", "whoZh": "短视频团队", "whyZh": "它不是渲染器，convert 不支持 mp4 目标，批量出片应直接用 Manim", "deliverableZh": "不适用", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "继承 Manim 的 -ql/-qm/-qh/-qk 质量档；实测 -qm 为 1280×720",
+    "maxFpsZh": "继承 Manim 配置，常用 30/60；实测 30fps",
+    "durationZh": "无硬限制，按页组织；实测 4 秒示例",
+    "effectsZh": ["Manim 全部 2D/3D 动画能力", "按页暂停与循环段", "RevealJS 转场", "Qt 窗口放映"],
+    "audioZh": "继承 Manim 场景内的音频能力；演示层本身不做混音",
+    "interactivityZh": "核心就是交互：现场翻页、回退、循环，支持 Qt/浏览器/PPT",
+    "automationZh": "CLI 可脚本化：manim-slides render / manim-slides convert，但 convert 不支持 mp4 目标",
+    "assetsZh": "沿用 Manim 的媒体目录与素材；导出的 HTML 包自带播放资源",
+    "exportFormatsZh": ["MP4（Manim render 产物）", "HTML/RevealJS", "PPTX", "Qt 演示"],
+    "realtimePreviewZh": "有：现场放映本身就是实时预览",
+    "ciFriendlyZh": "可进 CI 生成 HTML/PPTX，但现场演示需人工"
+  },
+  "ceilingZh": "它最强的地方是“同一份 Manim 代码，既能出片又能讲”：一个 Scene 里可以插入任意多个 next_slide，关键动画还能 loop 到听众按继续；导出后可用 Qt 离线放映、用 RevealJS 在任何浏览器放映，或转成 PowerPoint。实测 example.py 的 BasicExample 用 -qm 渲出 4 秒 720p30 MP4，耗时 22 秒，说明它没有额外渲染开销，仍是 Manim 的速度。边界：它不是视频工具，convert 明确不支持 mp4 目标，想要成片只能取 render 阶段的 Scene MP4 再剪；页与页之间没有转场设计器，排版仍靠 Manim 代码；依赖 Manim 或 ManimGL 本体与 LaTeX；复杂 3D 场景的现场性能取决于本机 GPU。演示端依赖 Qt 或浏览器，投屏分辨率与字体要提前在本机确认；PPT 导出不含动画细节。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "先装 Manim 或 ManimGL，再 pip install manim-slides", "effortZh": "约 10 分钟"},
+    {"stepZh": "改场景", "detailZh": "把 Scene 换成 Slide/ThreeDSlide，在停顿处插入 self.next_slide()", "effortZh": "每场景 10–30 分钟"},
+    {"stepZh": "渲染", "detailZh": "manim-slides render example.py BasicExample -qm，或 --GL 走 ManimGL", "effortZh": "4 秒 720p 约 22 秒"},
+    {"stepZh": "选放映方式", "detailZh": "manim-slides convert 转 HTML/PPTX，或直接 manim-slides BasicExample 用 Qt 放映", "effortZh": "约 5 分钟"},
+    {"stepZh": "现场彩排", "detailZh": "检查翻页键、循环段与投影分辨率，必要时改 -qh 重渲", "effortZh": "约 15 分钟"}
+  ],
+  "differentiators": [
+    "把 Manim 动画切成可暂停/回退/循环的页，解决了课堂节奏问题",
+    "同时支持 ManimCE 与 ManimGL，自动识别当前环境",
+    "一次渲染可输出 Qt、RevealJS、PowerPoint 三种放映形态",
+    "只是薄封装，不改变 Manim 的渲染质量与 API"
+  ],
+  "limits": [
+    "不是渲染器：convert 不支持 mp4 目标，成片要另取 Manim render 产物",
+    "必须依赖 Manim/ManimGL 与 LaTeX，装环境仍是老大难",
+    "没有可视化排版与转场编辑器，一切靠代码",
+    "现场放映性能受本机 GPU 与投影分辨率限制"
+  ],
+  "compareTips": [
+    {"vs": "ManimCommunity__manim", "adviceZh": "只要成片视频直接用 Manim；要课堂逐页讲、循环演示某段，才加 Manim Slides"},
+    {"vs": "academa-labs__manimgx", "adviceZh": "要 3D 高帧率成片选 ManimGX；要现场可翻页的讲义选 Manim Slides，两者定位不同"},
+    {"vs": "maloyan__manim-web", "adviceZh": "要纯浏览器播放与导出选 manim-web；要成熟的现场放映生态（Qt/PPT/RevealJS）选 Manim Slides"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①同一 Scene 插入三次 next_slide 的代码；②Qt 放映窗口里逐页推进并回退；③loop=True 的动画循环到按键继续；④导出 RevealJS 后在浏览器放映，并展示 render 出的 720p30 MP4",
+    "featureCallouts": [
+      {"titleZh": "next_slide 分页", "descZh": "动画在任意点暂停"},
+      {"titleZh": "循环动画段", "descZh": "听众按继续才往下走"},
+      {"titleZh": "RevealJS 导出", "descZh": "任何浏览器都能放映"},
+      {"titleZh": "PPTX/Qt 离线", "descZh": "不联网也能现场完整放映"},
+      {"titleZh": "ManimGL 兼容", "descZh": "自动识别 ManimCE 与 ManimGL 两套 API"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L18-L23", "noteZh": "定位为现场演示工具，自动识别 Manim 或 ManimGL"},
+    {"field": "ceilingZh", "source": "README.md#L47-L58", "noteZh": "两步流程：用 Slide 基类渲染，再像 PPT 一样放映"},
+    {"field": "capabilities.interactivityZh", "source": "README.md#L60-L85", "noteZh": "next_slide 暂停/循环，命令行 render 与放映"},
+    {"field": "limits", "source": "_samples/jeertmans__manim-slides/meta.json", "noteZh": "实测 convert 不支持 mp4 目标，只能取 render 阶段 BasicExample.mp4（720p30/4s/22s）"}
+  ]
+}

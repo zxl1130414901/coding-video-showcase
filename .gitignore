@@ -1,0 +1,28 @@
+# 白名单策略：默认忽略全部，仅放行站点、样例与索引文件
+*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/manifest.json
+!/manifest.md
+
+# 站点源码与构建产物
+!/showcase/
+!/showcase/**
+/showcase/.npm-cache/
+/showcase/app/node_modules/
+/showcase/app/.vite/
+/showcase/app/dist/assets/
+
+# 样例：只放行指定文件（不含 node_modules / _env / 构建缓存）
+!/_samples/
+!/_samples/**/
+!/_samples/**/sample.mp4
+!/_samples/**/sample_basic.mp4
+!/_samples/**/*.gif
+!/_samples/**/preview.png
+!/_samples/**/caption-check.png
+!/_samples/**/thumb*.png
+!/_samples/**/features.json
+!/_samples/**/meta.json
+!/_samples/**/demo-brief.md

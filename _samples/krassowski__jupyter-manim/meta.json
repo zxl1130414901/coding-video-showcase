@@ -1,0 +1,11 @@
+{
+  "repo": "krassowski/jupyter-manim",
+  "category": "Jupyter 中的 Manim 渲染",
+  "status": "skip",
+  "render_ms": 0,
+  "total_ms": 0,
+  "cmd": "未执行（后端不兼容）",
+  "artifact": null,
+  "ffprobe": null,
+  "notes_zh": "README 明确声明只支持 3b1b 的 ManimCairo（cairo-backend 分支，API 为 manimlib.scene + ShowCreation），且“不适用于 ManimCE”。本机装的是 ManimCE 0.19 与 3b1b 的 ManimGL(OpenGL) 版本，均没有可用的 cairo-backend manimlib，属运行时后端缺失，无法出片。"
+}

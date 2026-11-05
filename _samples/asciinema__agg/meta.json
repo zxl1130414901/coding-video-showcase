@@ -1,0 +1,44 @@
+{
+  "repo": "asciinema/agg",
+  "category": "终端录制转视频/GIF",
+  "status": "success",
+  "render_ms": 21352,
+  "total_ms": 21352,
+  "cmd": "& 'F:\\coding视频\\_env\\bin\\agg\\agg.exe' --fps-cap 60 --idle-time-limit 0.1 --last-frame-duration 0.1 --theme asciinema sample.cast sample.gif",
+  "ffprobe": {
+    "width": 1207,
+    "height": 731,
+    "duration": 4.6,
+    "frames": 181,
+    "fps": "60/1 (GIF 变帧率，平均约 39-50)",
+    "codec": "gif",
+    "size_bytes": 139690
+  },
+  "notes_zh": "agg 是纯 Rust 单文件二进制，Windows 直接可用。样例 cast 用 make_cast.py 自造 asciicast v2（120x28、60Hz 事件），每帧刷新第 28 行状态行（帧号/耗时/旋转符）制造唯一帧，否则 gifski 会合并重复帧导致平均帧率只有 6-10fps。加 --fps-cap 60 --idle-time-limit 0.1 --last-frame-duration 0.1 后 181 帧 / 4.6s（约 39fps），达到验收线。render_ms 仅统计 agg 编码，cast 生成脚本未计时。",
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 30.9,
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 5,
+    "render_ms": 30000,
+    "pipeline": "official",
+    "build": "make_cast.py 生成 agg_demo.cast → agg.exe 三种主题/视口渲染为 GIF → ffmpeg 转 1080p30 → build_sample.py 拼接 + 中文标注",
+    "ffprobe": {
+      "width": 1920,
+      "height": 1080,
+      "duration": 30.8,
+      "frames": 924,
+      "fps": 30.0,
+      "codec": "h264",
+      "size_bytes": 1096454
+    },
+    "previous_sample": "sample_basic.mp4 1920x1080 4.6s",
+    "known_limits_zh": [
+      "Windows 上字体回退到 Consolas（无 JetBrains Mono），字形宽度略有差异",
+      "agg 会合并相同帧，30fps 上限下实际帧数约为时长的 0.6 倍，转 30fps 有帧复制",
+      "140x34 的 cast 渲染宽度超过 1920，合成时缩放到 1920x1080"
+    ]
+  }
+}

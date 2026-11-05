@@ -1,0 +1,69 @@
+{
+  "id": "yongkyuns__noon",
+  "durationSec": 19.467,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.5,
+      "capabilityZh": "基础图形创建与循环动画",
+      "proofZh": "Your first scene：圆与方块 create 入场后按周期循环位移，录制 109 帧 / 16.67fps"
+    },
+    {
+      "start": 6.5,
+      "end": 13.0,
+      "capabilityZh": "函数绘制与采样点对比",
+      "proofZh": "Functions and samples：平滑函数曲线 + 折线采样点双图层对比，108 帧连续录"
+    },
+    {
+      "start": 13.0,
+      "end": 19.47,
+      "capabilityZh": "矢量曲线与贝塞尔构造",
+      "proofZh": "Bend a vector curve：四个控制点生成一条 S 形矢量路径，端点带控制圆点"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.7,
+      "dur": 4.0,
+      "titleZh": "① Python 即场景",
+      "descZh": "playground 里直接写 Python，Pyodide 编译后实时出图"
+    },
+    {
+      "t": 4.9,
+      "dur": 1.4,
+      "titleZh": "② 实机运行，非离线渲染",
+      "descZh": "真实 WebGL2 画面按 16.67fps 录下，再转 30fps"
+    },
+    {
+      "t": 6.9,
+      "dur": 3.2,
+      "titleZh": "③ 函数与采样点双图层",
+      "descZh": "同一条函数既画平滑曲线，也画折线采样做对照"
+    },
+    {
+      "t": 10.4,
+      "dur": 2.2,
+      "titleZh": "④ 数学直接成图",
+      "descZh": "坐标轴、刻度、箭头全部由库内几何原语构成"
+    },
+    {
+      "t": 13.6,
+      "dur": 3.4,
+      "titleZh": "⑤ 四控制点成曲线",
+      "descZh": "四点生成一条矢量路径，端点圆点标注控制位置"
+    },
+    {
+      "t": 17.2,
+      "dur": 1.8,
+      "titleZh": "⑥ 19.5 秒三段实拍",
+      "descZh": "3 个示例各录 6.5s，总耗时 181s（含 Pyodide 重编译）"
+    }
+  ],
+  "renderMs": 181400,
+  "pipeline": "fallback",
+  "knownLimitsZh": [
+    "线上 playground 的 WebGL canvas 不能直接截屏（整页截图一次约 8s），改为页内 drawImage + toDataURL 抓帧",
+    "原生 canvas 尺寸 1240x696，上采样到 1280x720；录制 16.67fps 后转 30fps，运动略有重复帧",
+    "全程未点 Run，只切换示例，避免重建导致画面空白"
+  ]
+}

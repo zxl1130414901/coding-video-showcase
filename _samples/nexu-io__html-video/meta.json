@@ -1,0 +1,48 @@
+{
+  "repo": "nexu-io/html-video",
+  "category": "HTML/Web 动画转视频",
+  "status": "success",
+  "render_ms": 55000,
+  "total_ms": 56790,
+  "cmd": "node packages\\cli\\dist\\bin.js --cwd _samples\\nexu-io__html-video project-render proj_2ae81db3-c1f --output sample.mp4（模板 frame-product-promo-30s）",
+  "artifact": "F:\\coding视频\\_samples\\nexu-io__html-video\\sample.mp4",
+  "ffprobe": {
+    "width": 1920,
+    "height": 1080,
+    "duration_s": 28.167,
+    "fps": 60.0,
+    "nb_frames": 1690,
+    "codec": "h264",
+    "size_kb": 542.6
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\nexu-io__html-video\\preview.png",
+    "pixel_std": 36.45,
+    "unique_colors": 3694
+  },
+  "notes_zh": "pnpm 安装(10m)+pnpm -r --no-bail run build；Windows 下 cli 的 chmod 步骤失败但 tsc 产物可用。首次用 frame-bold-poster 只出 261B 空 MP4，换 frame-build-minimal 仅 0.28s，最终用 frame-product-promo-30s 得到完整成片。渲染链路：Playwright chromium 录制 webm → ffmpeg 转 mp4，浏览器目录指向 F 盘。",
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 60.0,
+      "duration_sec": 29.85
+    },
+    "render_ms": 55000,
+    "ffprobe": {
+      "duration_sec": 29.85,
+      "codec": "h264",
+      "nb_frames": 1791,
+      "has_audio": false,
+      "size_kb": 937.0,
+      "stddev_10_50_90": {
+        "0.10": 39.928,
+        "0.50": 41.106,
+        "0.90": 40.488
+      }
+    },
+    "generator": "node packages/cli/dist/bin.js project-render proj_2ae81db3-c1f --output（模板 frame-product-promo-30s，8 个 HTML composition），Playwright 录制 webm → ffmpeg 转 mp4，1920x1080/60fps；ffmpeg drawtext 烧录中文标注",
+    "segments_count": 4,
+    "pipeline": "official"
+  }
+}

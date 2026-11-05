@@ -1,0 +1,129 @@
+{
+  "id": "feitangyuan__onetake",
+  "taglineZh": "不切镜的 Web 动效片：每个节拍从上一拍长出来，渲染器按帧 seek 出片",
+  "summaryZh": "onetake 是一套“镜头连续运动”的 Web 动效片技能：模板 comp.html 定义时间轴与 seek(t)，scripts/render.py 用无头 Chromium 逐帧截图再由 FFmpeg 编码。仓库自带 templates/comp.html 与 lib/motion.js，可作为最小可渲染样例；案例成片源码不在仓库内。",
+  "whatItMakes": [
+    {
+      "type": "一镜到底动效片",
+      "exampleZh": "templates/comp.html + lib/motion.js，镜头连续推进不硬切",
+      "strength": "单镜头叙事，适合发布片"
+    },
+    {
+      "type": "逐帧 seek 渲染",
+      "exampleZh": "render.py 用 window.__seek(t) 逐帧抓图，支持 motion blur 采样",
+      "strength": "画面稳定、可复现"
+    },
+    {
+      "type": "成片校验脚本",
+      "exampleZh": "verify_promo.py / frame_diff.py / stills.py 辅助检查节奏与画面",
+      "strength": "带质检工具链"
+    }
+  ],
+  "useCases": [
+    {
+      "scenarioZh": "产品发布 8–15s 片",
+      "whoZh": "个人创作者/小团队",
+      "whyZh": "没有剪辑软件也能出连续镜头",
+      "deliverableZh": "竖屏或横屏发布片",
+      "fit": "中高"
+    }
+  ],
+  "capabilities": {
+    "maxResolutionZh": "参数可设（本次 1920×1080），--final 可到 3840×2160",
+    "maxFpsZh": "默认 30，--final 60",
+    "durationZh": "由 comp 时间轴决定（模板约 12s）",
+    "effectsZh": [
+      "镜头连续运动",
+      "形变/遮罩",
+      "运动模糊采样",
+      "文字排版"
+    ],
+    "audioZh": "支持 --sfx 音轨混入",
+    "interactivityZh": "页面内可带播放预览",
+    "automationZh": "渲染脚本可批量跑",
+    "assetsZh": "图片/字体随 comp 目录",
+    "exportFormatsZh": [
+      "mp4"
+    ],
+    "realtimePreviewZh": "浏览器打开 comp.html 可预览",
+    "ciFriendlyZh": "Python + Playwright，可脚本化"
+  },
+  "ceilingZh": "上限在镜头设计：引擎只保证逐帧一致与连续运动，叙事密度靠作者写时间轴；素材与音轨需自备。",
+  "workflow": [
+    {
+      "stepZh": "准备",
+      "detailZh": "把 lib/motion.js 复制到 comp.html 同目录（模板注释写明）",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "写 comp",
+      "detailZh": "按 window.__seek(t)/__ready 契约写时间轴与画面",
+      "effortZh": "中高"
+    },
+    {
+      "stepZh": "渲染",
+      "detailZh": "python scripts/render.py templates/comp.html --out out/x.mp4 --fps 30 --workers 1",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "校验",
+      "detailZh": "stills.py / frame_diff.py 抽查关键帧",
+      "effortZh": "低"
+    }
+  ],
+  "differentiators": [
+    "强制“不切镜”的连续镜头语法，与常规分镜模板区分明显",
+    "渲染器自带运动模糊采样（--samples/--gap）",
+    "仓库带成片质检脚本，不只渲染"
+  ],
+  "limits": [
+    "本次实测：模板缺 lib/motion.js 时 window.__seek 未定义、渲染直接报错，补齐后才出片",
+    "逐帧抓图极慢（约 4–8 帧/分钟，默认 shutter 180° 每帧多次采样），12s 模板未在预算内跑完，本次截前 10s 编码",
+    "案例成片源码不随仓库分发，商用需确认 PolyForm Noncommercial 许可",
+    "Playwright 需匹配版本的 Chromium，环境不齐会直接失败"
+  ],
+  "compareTips": [
+    {
+      "vs": "vs hyperframes",
+      "adviceZh": "HyperFrames 是通用 HTML→视频框架；onetake 专注单镜头连续叙事与发布片"
+    },
+    {
+      "vs": "vs remotion",
+      "adviceZh": "Remotion 走 React 组件；onetake 走原生 HTML + seek 契约"
+    }
+  ],
+  "showcase": {
+    "demoBriefZh": "演示重点：1) 一镜到底的镜头衔接；2) 运动模糊采样让快速运动不糊；3) 渲染器 + 质检脚本的闭环。",
+    "featureCallouts": [
+      {
+        "titleZh": "连续镜头",
+        "descZh": "所有镜头共享一条时间轴，节拍由上一拍生长"
+      },
+      {
+        "titleZh": "seek 契约",
+        "descZh": "window.__seek(t) 让任意帧可复现"
+      },
+      {
+        "titleZh": "质检脚本",
+        "descZh": "stills/frame_diff 用来验收节奏"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "field": "stars",
+      "source": "GitHub API",
+      "noteZh": "3,763 stars（2026-11-05）"
+    },
+    {
+      "field": "渲染验证",
+      "source": "本地实测",
+      "noteZh": "10.1s / 1280×720 / 30fps / 303 帧；官方 render.py 逐帧抓图（截前 10s）+ ffmpeg 编码，见 _samples/feitangyuan__onetake/meta.json"
+    },
+    {
+      "field": "许可",
+      "source": "GitHub API",
+      "noteZh": "NOASSERTION，文件头标注 PolyForm Noncommercial 1.0.0"
+    }
+  ]
+}

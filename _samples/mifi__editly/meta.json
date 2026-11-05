@@ -1,0 +1,48 @@
+{
+  "repo": "mifi/editly",
+  "category": "编程式视频合成（Node / GL 转场）",
+  "status": "success",
+  "render_ms": 0,
+  "total_ms": 1200000,
+  "cmd": "F:\\coding视频\\_env\\node20\\node.exe node_modules\\tsx\\dist\\cli.mjs src\\cli.ts examples\\gradients.json5 --out sample.mp4（node_modules/canvas 为 @napi-rs/canvas 转发层）",
+  "artifact": "F:\\coding视频\\_samples\\mifi__editly\\sample.mp4",
+  "ffprobe": {
+    "width": 640,
+    "height": 640,
+    "duration_s": 3.64,
+    "fps": 25.0,
+    "nb_frames": 91,
+    "codec": "h264",
+    "size_kb": 120.2
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\mifi__editly\\preview.png",
+    "pixel_std": 6.58,
+    "unique_colors": 98
+  },
+  "notes_zh": "根因绕过：canvas@2.11.2 无 Windows 预编译且无 MSVC → 在本地 node_modules/canvas 写转发层映射到 @napi-rs/canvas（N-API 预编译），不改仓库源码；gl 复用仓库已有 8.1.6 预编译 webgl.node（补齐 bindings/bit-twiddle/glsl-tokenizer）；jsdom 单独安装后合并；用 Node20 + tsx 直跑 src/cli.ts，成功渲染 gradients 示例",
+  "sample_v2": {
+    "spec": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "duration_sec": 18.602
+    },
+    "render_ms": 143000,
+    "ffprobe": {
+      "duration_sec": 18.602,
+      "codec": "h264",
+      "nb_frames": 558,
+      "has_audio": true,
+      "size_kb": 2118.7,
+      "stddev_10_50_90": {
+        "0.10": 29.959,
+        "0.50": 30.283,
+        "0.90": 23.327
+      }
+    },
+    "generator": "editly 0.0.15 + node20 + tsx 直跑 v3_runner.ts；node_modules\\canvas 入口转发 @napi-rs/canvas（N-API 预编译，绕开损坏的 canvas.node）；headless-gl 做 GL 转场；ffmpeg 后端合成 1280x720/30fps，再 drawtext 烧录中文标注",
+    "segments_count": 3,
+    "pipeline": "fallback"
+  }
+}

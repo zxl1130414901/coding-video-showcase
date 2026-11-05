@@ -1,0 +1,74 @@
+{
+  "id": "motion-canvas__motion-canvas",
+  "taglineZh": "TypeScript generator 写动画 + 实时预览编辑器，专做信息类矢量动效的框架",
+  "summaryZh": "约 19.6k stars 的 TS 动画框架：场景用 generator 写时间线（`yield* waitFor()`、`yield* all()`），场景图强类型，配一个可拖时间轴、实时预览的编辑器；官方定位是「信息类矢量动画 + 配音同步」，不是影视特效。它最大的价值是代码与可视化双模：改一行代码，编辑器里立刻看到效果。但本次实测官方编辑器 package 构建后缺失，只能自建最小工程 + Playwright 逐帧 `stage.render`，120 帧 540p 用了 900 秒（0.13fps），CLI 导出链路并不完整。改一个属性，编辑器里立即生效，不用等重渲。",
+  "whatItMakes": [
+    {"type": "信息图/数据动效", "exampleZh": "图表增长、指标卡切换、流程节点连线，强类型节点可算可画", "strength": "核心能力"},
+    {"type": "UI/产品演示动画", "exampleZh": "界面元素位移、缩放、遮罩揭示，接近真实交互观感", "strength": "核心能力"},
+    {"type": "配音同步讲解", "exampleZh": "时间线音轨与动画同步，官方定位就是 narrated explainer", "strength": "可用"},
+    {"type": "代码高亮/LaTeX 排版", "exampleZh": "插件支持代码块与公式，适合技术解说", "strength": "可用"},
+    {"type": "3D 与复杂特效", "exampleZh": "核心是 2D 矢量，3D 需自行接入 Three.js 且无官方封装", "strength": "受限"},
+    {"type": "批量长片生产", "exampleZh": "CLI 导出不完整，实测 0.13fps，一分钟片要数小时", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "技术解说视频", "whoZh": "前端团队、开发者关系", "whyZh": "代码场景 + 编辑器预览，改文案与数据比重渲快得多", "deliverableZh": "1080p30 的 1–3 分钟 MP4（需自建导出）", "fit": "适合"},
+    {"scenarioZh": "产品功能演示", "whoZh": "产品市场", "whyZh": "UI 元素动效自然，比录屏更干净可控", "deliverableZh": "30–90 秒演示片", "fit": "适合"},
+    {"scenarioZh": "报告/论文动画", "whoZh": "研究者、咨询分析师", "whyZh": "数据驱动的图形可用 TS 直接算，不用手工摆帧", "deliverableZh": "10–30 秒图表动画", "fit": "适合"},
+    {"scenarioZh": "教学可视化", "whoZh": "教师、课程团队", "whyZh": "配音同步是官方能力，但导出链路要自己补", "deliverableZh": "带旁白的 2–5 分钟课件", "fit": "勉强"},
+    {"scenarioZh": "批量营销出片", "whoZh": "内容工厂", "whyZh": "0.13fps 的实测吞吐与不完整的 CLI，无法支撑批量", "deliverableZh": "不推荐", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "项目配置决定，实测 960×540，可设 1080p/4K（未验证 4K）",
+    "maxFpsZh": "项目配置，实测 30fps，可设 60",
+    "durationZh": "由场景时长决定，无硬上限；长片渲染时间线性甚至超线性增长",
+    "effectsZh": ["2D 矢量场景图与缓动", "节点过渡与 Layout/Flow 布局", "代码高亮与 LaTeX 插件", "音轨与动画同步"],
+    "audioZh": "时间线支持音频与旁白同步，可混入导出；无 TTS 与自动字幕",
+    "interactivityZh": "强：官方编辑器可实时预览、拖时间轴、属性面板调参",
+    "automationZh": "有 CLI 与渲染队列，但本批构建缺失 FFmpegBridge 依赖，实测只能逐帧截图",
+    "assetsZh": "图片、视频、音频、字体均可作为节点；无模板市场",
+    "exportFormatsZh": ["mp4（需完整 CLI）", "png 帧序列（实测路径）"],
+    "realtimePreviewZh": "有，编辑器里实时渲染",
+    "ciFriendlyZh": "弱：编辑器与导出链路在无头环境不完整，本次 120 帧 900 秒"
+  },
+  "ceilingZh": "设计上限很高：强类型 scene graph + generator 时间线 + 编辑器，能做信息量很大的动态图表与 UI 动效，官方主打配音同步的长解释片。但实测把工程上限暴露得很清楚：120 帧 960×540 用了 900 秒，约 0.13fps，一分钟 30fps 片子接近 3.5 小时，4K 更不可行。最复杂的效果是 Layout/Flow 自动布局叠加缓动，以及代码块 + 公式的排版动画。边界：官方编辑器 package 构建后缺失，`FullSceneDescription` 还需补 onReplaced 回调；3.x 之后项目活动明显放缓（仓库最近推送在 2026 年中）；导出 CLI 依赖 UI 侧 FFmpegBridge，无头批处理基本不可用。另外信号系统学习曲线不低，团队协作时场景文件容易变成巨型 TS。它更适合 1–3 分钟的说明片，而不是长课程。",
+  "workflow": [
+    {"stepZh": "建工程", "detailZh": "npm create @motion-canvas@latest，或装编辑器后新建项目", "effortZh": "约 10 分钟"},
+    {"stepZh": "装依赖", "detailZh": "npm install；monorepo 开发需 npx lerna run build（实测构建缺包）", "effortZh": "20–40 分钟"},
+    {"stepZh": "写场景", "detailZh": "makeScene2D + generator：yield* waitFor(1)，yield* all(node().opacity(1, 0.5))", "effortZh": "首个场景 1–2 小时"},
+    {"stepZh": "编辑器预览", "detailZh": "在编辑器里拖时间轴、改属性，实时看效果", "effortZh": "约 10 分钟"},
+    {"stepZh": "导出", "detailZh": "官方渲染队列出 png/mp4；本次注入 stage 后逐帧 render，再 ffmpeg 合成", "effortZh": "实测 2 分钟片约 15 分钟"}
+  ],
+  "differentiators": [
+    "代码与可视化编辑器双模，改一行代码即时看到画面",
+    "强类型 scene graph，信号（signal）驱动的动画可组合",
+    "官方定位信息类动效与配音同步，不是影视特效",
+    "Layout/Flow 自动布局，适合数据与 UI 场景"
+  ],
+  "limits": [
+    "实测 0.13fps，长片与 4K 基本不可行",
+    "官方编辑器构建与 CLI 导出链路不完整",
+    "无 3D/粒子/后期合成，特效上限有限",
+    "项目活动放缓，问题响应慢"
+  ],
+  "compareTips": [
+    {"vs": "midrender__revideo", "adviceZh": "Revideo 是它的分支，砍掉编辑器换来 26.5fps 与并行渲染；要编辑器实时预览选 Motion Canvas，要吞吐选 Revideo"},
+    {"vs": "remotion-dev__remotion", "adviceZh": "Remotion 生态、音频与字幕更成熟；Motion Canvas 的代码 + 编辑器体验更轻，但导出不稳"},
+    {"vs": "ybouane__VideoFlow", "adviceZh": "VideoFlow 用 JSON 跨端复用；Motion Canvas 用 TS scene graph + 编辑器，按是否需要可视化调参来选"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①编辑器实时预览一段文字 + 图形入场；②数据图表随信号增长，展示 TS 算数据的优势；③Layout/Flow 自动布局的节点重排；④音轨与动画同步，展示配音节奏对齐",
+    "featureCallouts": [
+      {"titleZh": "Generator 时间线", "descZh": "yield* waitFor / all 线性读动画"},
+      {"titleZh": "信号驱动", "descZh": "值变化自动触发补间，无需手动帧"},
+      {"titleZh": "实时编辑器", "descZh": "拖时间轴、改属性即时预览"},
+      {"titleZh": "Layout/Flow", "descZh": "节点自动排布与重排"},
+      {"titleZh": "音轨同步", "descZh": "音频与动画同一时间线"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L18-L29", "noteZh": "自述为 TypeScript 动画库 + 编辑器，定位信息类动画与配音同步"},
+    {"field": "workflow 第 2 步", "source": "README.md#L37-L55", "noteZh": "monorepo 含 core/2d/ui/examples/docs，本地开发需 lerna build"},
+    {"field": "limits 第 1 条", "source": "_samples/motion-canvas__motion-canvas/meta.json", "noteZh": "实测 960×540/30fps/120 帧耗时 900s，约 0.13fps"},
+    {"field": "limits 第 2 条", "source": "_reports/", "noteZh": "本批报告记录官方编辑器构建后缺失、需注入 stage 逐帧渲染"}
+  ]
+}

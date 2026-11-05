@@ -1,0 +1,73 @@
+{
+  "id": "welovemedia__ffmate",
+  "taglineZh": "把 FFmpeg 包成带队列、Web UI 和 REST API 的工作流服务，可多机并行",
+  "summaryZh": "FFmate 是 Go 写的 FFmpeg 自动化工作流引擎：它不画画面，而是把 ffmpeg 命令、预设参数、输入输出文件组织成任务，提供 REST API、Web UI、任务队列、并发控制、watchfolder 与 webhook。它解决“一堆转码任务靠手写脚本和 cron 调度”的问题——提交、排队、并发执行、完成回调，失败可查状态。与直接写 ffmpeg 命令相比，它多了持久化、队列、可观测与远程触发；与 Multiplane、Remotion 相比它只处理已有素材。代价是 AGPLv3、依赖本机 FFmpeg。它只做调度与执行，编码质量完全取决于 ffmpeg 参数。",
+  "whatItMakes": [
+    {"type": "批量转码/压制", "exampleZh": "H.264/H.265/NVENC 转码、码率与分辨率批量调整", "strength": "核心能力"},
+    {"type": "素材后处理流水线", "exampleZh": "裁剪、加水印、混音、字幕压制、生成缩略图", "strength": "核心能力"},
+    {"type": "监听目录自动处理", "exampleZh": "watchfolder 发现新文件即入队，完成后 webhook 通知", "strength": "可用"},
+    {"type": "多机渲染集群", "exampleZh": "多个 ffmate 实例共享队列，按机器并发分发", "strength": "可用"},
+    {"type": "任务状态与重试", "exampleZh": "REST 查队列、成功/失败状态、失败重提", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "课程视频批量压制", "whoZh": "课程制作团队", "whyZh": "把几十条录播统一转 1080p、加片头与字幕", "deliverableZh": "批量 MP4，队列可查", "fit": "高度契合"},
+    {"scenarioZh": "媒体资产流水线", "whoZh": "媒体运维", "whyZh": "watchfolder + webhook 接入现有存储与通知", "deliverableZh": "自动转码后的成片与缩略图", "fit": "高度契合"},
+    {"scenarioZh": "渲染农场的编码后端", "whoZh": "视频生成团队", "whyZh": "上游生成 PNG 序列，FFmate 负责编码与分发", "deliverableZh": "多机并发的成片输出", "fit": "适合"},
+    {"scenarioZh": "CI 内的媒体任务", "whoZh": "工程团队", "whyZh": "REST 提交任务，Docker 部署，状态可轮询", "deliverableZh": "构建产物视频/音频", "fit": "适合"},
+    {"scenarioZh": "需要可视化剪辑的场景", "whoZh": "剪辑师", "whyZh": "它只有任务与参数，没有时间轴与预览", "deliverableZh": "不适用", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "取决于本机 FFmpeg 与硬件；实测 1280×720，NVENC 可到 4K",
+    "maxFpsZh": "取决于 FFmpeg 与源素材，实测 30fps",
+    "durationZh": "无硬限制，由任务时长决定；实测 4 秒测试源",
+    "effectsZh": ["FFmpeg 全部滤镜（裁剪/水印/混音/字幕）", "硬件编码 NVENC/QSV/VideoToolbox", "预置参数模板", "watchfolder 自动触发"],
+    "audioZh": "通过 FFmpeg 支持混音、音量、编码与抽取；不内置 TTS",
+    "interactivityZh": "有 Web UI 可查看队列与任务，但不是剪辑界面",
+    "automationZh": "REST API + webhook + watchfolder，可完全脚本化",
+    "assetsZh": "任意 FFmpeg 可读素材；预设与参数存服务端",
+    "exportFormatsZh": ["任意 FFmpeg 输出格式（MP4/MKV/WebM/音频等）"],
+    "realtimePreviewZh": "无实时画面预览，只有任务状态",
+    "ciFriendlyZh": "可进 CI：Docker 镜像 + REST 提交 + 状态轮询"
+  },
+  "ceilingZh": "它的上限是“把 FFmpeg 的吞吐组织起来”：实测启动服务后 POST 一个 4 秒 1280×720 的 testsrc2 任务，纯任务耗时 2.28 秒（h264_nvenc），总流程 120 秒（含服务启动与收尾），说明单任务接近编码极限，真正的价值在队列与并发。多实例集群、watchfolder 与 webhook 让它可以承接课程批量压制、媒体资产流水线这类每天数百条的任务。边界：它不生成画面，所有创意仍要在上游完成；Windows 实测中文输出路径被解码成乱码目录，首个任务失败，需要先输出到英文路径再搬；服务闲置约 34 分钟后出现 SQLite `database is locked` 并 panic（上游 bug）；AGPLv3 对闭源商用有传染性；所有能力依赖本机 FFmpeg 版本与硬件编码器。",
+  "workflow": [
+    {"stepZh": "安装依赖", "detailZh": "装 FFmpeg 与 Go 1.24+，或直接下载预编译二进制", "effortZh": "约 10 分钟"},
+    {"stepZh": "启动服务", "detailZh": "./ffmate server --port 3000，默认 API 在 http://localhost:3000", "effortZh": "约 1 分钟"},
+    {"stepZh": "配置预设", "detailZh": "在 Web UI 里建 preset（编码器、码率、滤镜、输出模板）", "effortZh": "约 15 分钟"},
+    {"stepZh": "提交任务", "detailZh": "POST /api/v1/tasks，传 command/inputFile/outputFile，或交给 watchfolder", "effortZh": "脚本化即可"},
+    {"stepZh": "接回调", "detailZh": "配 webhook 接收完成/失败事件，再接通知或下游流程", "effortZh": "约 30 分钟"}
+  ],
+  "differentiators": [
+    "把 FFmpeg 命令变成可查询、可重试、可并发的任务，而不是一摞 shell 脚本",
+    "REST API + Web UI + watchfolder + webhook 四套入口，容易接现有系统",
+    "支持多实例集群，队列可跨机器分发",
+    "Go 单二进制部署，Docker 镜像开箱即用"
+  ],
+  "limits": [
+    "不生成任何画面，只是 FFmpeg 的任务编排层",
+    "Windows 中文输出路径会乱码导致任务失败，实测需绕开",
+    "闲置约 34 分钟出现 SQLite database is locked 并 panic",
+    "AGPLv3 许可，闭源商用需评估传染性"
+  ],
+  "compareTips": [
+    {"vs": "LBEILC__Multiplane", "adviceZh": "要生成动画画面选 Multiplane；要处理已有素材、批量转码与队列选 FFmate，二者可串成上下游"},
+    {"vs": "Vincentwei1021__video-shotcraft", "adviceZh": "要创意与分镜流程选 video-shotcraft；要稳定跑量、转码与回调选 FFmate"},
+    {"vs": "asciinema__agg", "adviceZh": "agg 只做 cast→GIF；要任意格式转码与批处理才需要 FFmate"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①启动 ffmate server 打开 Web UI；②创建 NVENC 预设并展示参数；③POST 一个 4 秒测试任务，状态从排队到成功；④webhook 回调与失败任务重试",
+    "featureCallouts": [
+      {"titleZh": "REST 任务队列", "descZh": "提交、排队、查状态与结果"},
+      {"titleZh": "硬件编码", "descZh": "NVENC 硬件编码，4 秒任务 2.3 秒"},
+      {"titleZh": "watchfolder", "descZh": "新文件落地即自动入队"},
+      {"titleZh": "webhook 回调", "descZh": "完成/失败通知下游"},
+      {"titleZh": "多实例集群", "descZh": "队列可跨机器分发任务"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L21-L38", "noteZh": "自述 FFmpeg 自动化工作流引擎，含 REST API、Web UI、集群、watchfolder、webhooks"},
+    {"field": "workflow", "source": "README.md#L47-L88", "noteZh": "需 FFmpeg 与 Go 1.24+，二进制启动 ffmate server，API 默认 3000"},
+    {"field": "ceilingZh", "source": "_samples/welovemedia__ffmate/meta.json", "noteZh": "实测 4s/720p testsrc2 任务纯耗时 2.28s；中文路径失败；34 分钟后 SQLite 锁 panic"},
+    {"field": "limits", "source": "LICENSE#L1-L5", "noteZh": "AGPLv3"}
+  ]
+}

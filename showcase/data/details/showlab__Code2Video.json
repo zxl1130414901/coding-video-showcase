@@ -1,0 +1,74 @@
+{
+  "id": "showlab__Code2Video",
+  "taglineZh": "三个智能体把知识点写成 Manim 代码再渲成教学片，附 117 题基准的学术框架",
+  "summaryZh": "学术项目（约 2.2k stars）：不做像素级文生视频，而是让 Planner 扩写分镜、Coder 生成可调试的 Manim 代码、Critic 用视觉模型修版式，最后渲染成教学视频，并发布 MMMC 基准（117 个 3b1b 风格知识点）。与扩散模型相比，它的画面落在可执行代码上，因而可复现、可改一行重渲、可批量；代价是必须自备 LLM/VLM 的付费 Key，没有 Key 完全跑不动。本次因无 Key 直接跳过，无产物。论文、评测脚本与基准数据一起开源，便于复现实验。",
+  "whatItMakes": [
+    {"type": "知识点讲解视频", "exampleZh": "输入「线性变换与矩阵」，自动出 1–3 分钟 Manim 动画讲解", "strength": "核心能力"},
+    {"type": "批量题目转视频", "exampleZh": "脚本循环知识点列表，逐条出片，适合题库产品", "strength": "可用"},
+    {"type": "3b1b 风格分镜", "exampleZh": "Planner 按「引入—推导—结论」扩张故事板", "strength": "可用"},
+    {"type": "版式自动修正", "exampleZh": "Critic 用 VLM 检查重叠/越界并按锚点重排", "strength": "可用"},
+    {"type": "像素风/写实生成视频", "exampleZh": "完全不走扩散模型，画面是矢量代码", "strength": "受限"},
+    {"type": "离线无网跑批", "exampleZh": "依赖云端 API，断网或没额度即停摆", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "教育机构批量出题讲解", "whoZh": "题库产品、教辅团队", "whyZh": "知识点列表可批量转视频，代码中间产物便于人工抽检修正", "deliverableZh": "每条 1–3 分钟 1080p MP4，按知识点命名", "fit": "高度契合"},
+    {"scenarioZh": "教师单题快速成片", "whoZh": "大学讲师", "whyZh": "不用学 Manim，写一句知识点即可拿到可改的代码与成片", "deliverableZh": "1–2 分钟 MP4 + 可编辑 .py", "fit": "适合"},
+    {"scenarioZh": "算法/数学短视频", "whoZh": "科普创作者", "whyZh": "3b1b 风格分镜现成，但画面审美仍依赖 Critic 的模型质量", "deliverableZh": "60–120 秒竖屏或横屏 MP4", "fit": "适合"},
+    {"scenarioZh": "论文对比实验", "whoZh": "研究者", "whyZh": "自带 MMMC 基准与多维评测，可直接复现对比", "deliverableZh": "评测表格与生成视频集", "fit": "高度契合"},
+    {"scenarioZh": "零预算个人使用", "whoZh": "学生、个人创作者", "whyZh": "需要 Claude-4-Opus 与 Gemini Key，成本按调用量计", "deliverableZh": "无 Key 则无产物", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "依赖 ManimCE v0.19 配置，常见 1080p；4K 未确认",
+    "maxFpsZh": "由 Manim 配置，通常 30 或 60；本次未验证",
+    "durationZh": "单条知识点 1–3 分钟；无硬上限，但长片会显著增加 Coder 调试失败率",
+    "effectsZh": ["Manim 全量动画能力", "分镜自动扩张", "版式锚点重排", "图标素材自动检索", "代码调试重试"],
+    "audioZh": "未确认：README 未见 TTS 或混音说明",
+    "interactivityZh": "无交互，命令行脚本驱动",
+    "automationZh": "强：run_agent_single.sh 单题、批量模式脚本，全流程无人值守（有 Key 时）",
+    "assetsZh": "IconFinder 图标（可选 Key）、Manim 内置字体与图形；无素材库",
+    "exportFormatsZh": ["mp4（Manim 渲染）", "中间产物 .py 场景文件"],
+    "realtimePreviewZh": "无；生成后直接渲染",
+    "ciFriendlyZh": "中等：可脚本化，但需要外部 API 与 Key，不适合离线 CI"
+  },
+  "ceilingZh": "它最强的不是画质而是流程：一条知识点能自动走完分镜—代码—修版式—渲染，代码可人工改一行重渲，批量 117 题也有基准可对照。质量上限取决于模型组合，README 给出的最佳配置是 Claude-4-Opus 写 Manim、gemini-2.5-pro 做 Critic；分辨率随 Manim 到 1080p（4K 未验证），单条 1–3 分钟。最复杂的产出是 4K 加速视频示例（README 展示对比素材，本机未验证）。边界很硬：api_config.json 不填 Key 就完全不能跑，本次因此跳过；生成代码常有布局重叠，需要 Critic 多轮甚至人工兜底；没有配音/字幕链路；Windows 支持未确认，脚本以 shell 为主。批量的稳定性也取决于重试次数与 Key 额度，一次跑十条以上建议人工抽检。",
+  "workflow": [
+    {"stepZh": "装 Manim 环境", "detailZh": "按 ManimCE v0.19 官方指南装 Python、ffmpeg、LaTeX，再 cd src && pip install -r requirements.txt", "effortZh": "约 40 分钟"},
+    {"stepZh": "填 API Key", "detailZh": "在 api_config.json 填 LLM（推荐 Claude-4-Opus）、VLM（Gemini-2.5-pro）与可选 IconFinder Key", "effortZh": "约 10 分钟"},
+    {"stepZh": "改运行参数", "detailZh": "编辑 run_agent_single.sh 里的知识点、模型、重试次数等", "effortZh": "约 10 分钟"},
+    {"stepZh": "跑智能体", "detailZh": "sh run_agent_single.sh --knowledge_point \"Linear transformations and matrices\"", "effortZh": "按题目复杂度，数分钟到数十分钟"},
+    {"stepZh": "人工复核", "detailZh": "检查生成的 .py 与成片，改代码后单独用 manim 重渲", "effortZh": "每题 5–15 分钟"}
+  ],
+  "differentiators": [
+    "代码作为中间表示：可复现、可改、可版本管理，不像扩散模型一次一版",
+    "三智能体分工明确，Critic 用 VLM 做版式修正",
+    "自带 MMMC 117 题基准与效率/美学/知识传递三维评测",
+    "可批量跑知识点列表，适合题库化生产"
+  ],
+  "limits": [
+    "必须自备付费 LLM/VLM Key，无 Key 完全不可用",
+    "生成代码常出现布局重叠，需 Critic 多轮或人工兜底",
+    "无配音、字幕、剪辑链路，成片只是 Manim 原始输出",
+    "以 shell 脚本为主，Windows 与离线环境未验证"
+  ],
+  "compareTips": [
+    {"vs": "Vincentwei1021__video-shotcraft", "adviceZh": "要自然影像风格与镜头语言选 video-shotcraft；要可复现的教学动画与代码中间产物选 Code2Video"},
+    {"vs": "3b1b__manim", "adviceZh": "ManimGL 是手工创作引擎；Code2Video 用 ManimCE 自动生成，质量与可控性都在其次，胜在批量"},
+    {"vs": "cth9191__animate", "adviceZh": "animate 面向短视频叙事与画风；Code2Video 面向知识点讲解与学术评测"}
+  ],
+  "showcase": {
+    "demoBriefZh": "本批未出片（缺 API Key）。若演示，建议四段：①输入一个知识点，展示 Planner 输出的分镜；②看 Coder 生成并自修复的 Manim 代码；③Critic 前后的版式对比（重叠/越界修正）；④批量模式连出三条不同知识点，展示基准评分表",
+    "featureCallouts": [
+      {"titleZh": "Tri-Agent", "descZh": "Planner / Coder / Critic 三段式生成"},
+      {"titleZh": "可执行代码", "descZh": "视频由 Manim 代码生成，可改可复现"},
+      {"titleZh": "MMMC 基准", "descZh": "117 个 3b1b 风格知识点"},
+      {"titleZh": "VLM 修版式", "descZh": "按锚点重排重叠与越界元素"},
+      {"titleZh": "批处理脚本", "descZh": "run_agent_single.sh 一条命令出片"}
+    ]
+  },
+  "evidence": [
+    {"field": "summaryZh", "source": "README.md#L198-L205", "noteZh": "代码中心范式、Tri-Agent、MMMC 117 题基准与多维评测"},
+    {"field": "limits 第 1 条", "source": "README.md#L224-L238", "noteZh": "必须填 LLM/VLM Key，推荐 Claude-4-Opus 与 gemini-2.5-pro"},
+    {"field": "workflow 第 4 步", "source": "README.md#L240-L252", "noteZh": "run_agent_single.sh 以 knowledge_point 参数驱动"},
+    {"field": "limits 第 4 条", "source": "_samples/showlab__Code2Video/meta.json", "noteZh": "未执行：无 API Key，按规则跳过"}
+  ]
+}

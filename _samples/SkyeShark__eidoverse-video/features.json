@@ -1,0 +1,63 @@
+{
+  "id": "SkyeShark__eidoverse-video",
+  "durationSec": 21.5,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.17,
+      "capabilityZh": "VRM 角色载入 + MToon 材质 + VRMA 骨骼动画",
+      "proofZh": "v2_fog.js 通过 VRMLoaderPlugin 拿到 userData.vrm，mixer 驱动 idle 动作；屏幕内可见角色姿态随 t 变化"
+    },
+    {
+      "start": 7.17,
+      "end": 14.33,
+      "capabilityZh": "TSL 后处理栈可数据化切换（depth_fog / neon_edges / blueprint）",
+      "proofZh": "三段 footages 同一模型同一机位族，仅 effects+opts 不同：雾、霓虹描边、工程蓝图各 7.2s"
+    },
+    {
+      "start": 14.33,
+      "end": 21.5,
+      "capabilityZh": "GPU 内确定性逐帧渲染（renderFrame(t) 纯函数）",
+      "proofZh": "每帧由 t 决定相机与光照，7.2s=216 帧 @1080p 直出，无 CPU 光栅化"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.5,
+      "dur": 4.0,
+      "titleZh": "① VRM 角色 + MToon 皮肤",
+      "descZh": "VRMLoaderPlugin 解析 claude.vrm，播放 VRMA idle 骨骼动画"
+    },
+    {
+      "t": 4.6,
+      "dur": 4.0,
+      "titleZh": "② PBR 节点材质 + 金属地面",
+      "descZh": "MeshStandardNodeMaterial roughness 0.28 / metalness 0.9，实时反射"
+    },
+    {
+      "t": 8.6,
+      "dur": 4.0,
+      "titleZh": "③ TSL 后处理：depth_fog → neon_edges",
+      "descZh": "同一场景只换 effects 名称与参数，从空气纵深切到霓虹描边"
+    },
+    {
+      "t": 13.4,
+      "dur": 3.6,
+      "titleZh": "④ blueprint 工程蓝图后处理",
+      "descZh": "纸色底 + 墨线网格，把 3D 角色变成一张技术图纸"
+    },
+    {
+      "t": 17.4,
+      "dur": 3.8,
+      "titleZh": "⑤ 纯函数 renderFrame(t) + 机位调度",
+      "descZh": "相机半径与俯角由 t 推导，GPU 直出帧，ffmpeg 编码成片"
+    }
+  ],
+  "renderMs": 1280500,
+  "pipeline": "webgpu-tsl (Deno + three.js TSL)",
+  "knownLimitsZh": [
+    "Deno 进程启动 + TSL 模块图编译是固定开销（每段一次调用，实测 90-870s 不等，受并行渲染争抢 GPU 影响）",
+    "本片角色不出声，日志里的 lipsync 警告属预期（未驱动表情 viseme）",
+    "neon_edges 段机位更靠近角色，画面中角色被裁切；FFF 构图还能更好"
+  ]
+}

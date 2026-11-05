@@ -1,0 +1,57 @@
+{
+  "repo": "AzurIce/ranim",
+  "category": "数学/代码动画（Manim 系）",
+  "status": "success",
+  "render_ms": 18417,
+  "total_ms": 6629000,
+  "cmd": "cargo run --example hello_ranim → hello_ranim.exe render hello_ranim",
+  "ffprobe": {
+    "width": 1920,
+    "height": 1080,
+    "duration_s": 5.0,
+    "nb_frames": 300,
+    "codec": "h264",
+    "pix_fmt": "yuv420p",
+    "fps": "60/1",
+    "size_bytes": 124747
+  },
+  "notes_zh": "Rust+wgpu 动画引擎；首次编译 902 crate 耗时 6596s（CARGO_HOME/CARGO_TARGET_DIR 均在 F 盘），产物 1920x1080 60fps 300 帧/5s，wgpu 走 Vulkan（NVIDIA RTX 4060 Laptop，driver 591.44），渲染 18.4s，ffmpeg 由 PATH 提供",
+  "preview": {
+    "at_s": 2.5,
+    "mean_rgb": [
+      51.87,
+      51.17,
+      51.12
+    ],
+    "stddev_rgb": [
+      12.19,
+      3.07,
+      2.87
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "spec": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "duration_sec": 21.0
+    },
+    "render_ms": 79124,
+    "ffprobe": {
+      "duration_sec": 21.0,
+      "codec": "h264",
+      "nb_frames": 630,
+      "has_audio": false,
+      "size_kb": 642.7,
+      "stddev_10_50_90": {
+        "0.10": 33.344,
+        "0.50": 21.162,
+        "0.90": 20.896
+      }
+    },
+    "generator": "ranim 原生 CLI（Rust + wgpu/Vulkan，RTX 4060）：hello_ranim / text_item / solar_system 三个场景各以 1920x1080@60fps 渲染，ffmpeg 降到 1280x720@30fps 拼三段，drawtext 烧中文标注",
+    "segments_count": 3,
+    "pipeline": "native"
+  }
+}

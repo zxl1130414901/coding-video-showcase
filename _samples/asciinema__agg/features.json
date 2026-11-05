@@ -1,0 +1,63 @@
+{
+  "id": "asciinema__agg",
+  "durationSec": 30.9,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 11.6,
+      "capabilityZh": "主题化渲染（dracula 深色）",
+      "proofZh": "同一份 cast 用 --theme dracula 渲染，2186x1372 / 11.6 秒 / 无外部依赖"
+    },
+    {
+      "start": 11.6,
+      "end": 19.3,
+      "capabilityZh": "浅色主题 + 倍速重排时间线",
+      "proofZh": "--theme github-light --speed 1.5 把 11.6s 压到 7.7s，时间戳等比缩放"
+    },
+    {
+      "start": 19.3,
+      "end": 30.9,
+      "capabilityZh": "视口覆盖 + 字号控制",
+      "proofZh": "--cols 100 --rows 24 --font-size 22，输出 1234x770，cast 本身不用改"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.5,
+      "dur": 4.0,
+      "titleZh": "能力 1｜主题化渲染",
+      "descZh": "同一份 cast → --theme dracula，8 色板映射 ANSI 16/256 色，2186x1372"
+    },
+    {
+      "t": 5.2,
+      "dur": 3.6,
+      "titleZh": "能力 2｜字体回退链",
+      "descZh": "JetBrains Mono→Fira Code→Consolas 逐级回退，等宽 0.6em 保证对齐"
+    },
+    {
+      "t": 12.2,
+      "dur": 4.4,
+      "titleZh": "能力 3｜浅色主题 + 倍速",
+      "descZh": "github-light + --speed 1.5，11.6s 时间线等比压到 7.7s"
+    },
+    {
+      "t": 20.2,
+      "dur": 4.4,
+      "titleZh": "能力 4｜视口覆盖",
+      "descZh": "--cols 100 --rows 24 --font-size 22，输出 1234x770，cast 不用改"
+    },
+    {
+      "t": 26.0,
+      "dur": 3.6,
+      "titleZh": "能力 5｜帧率与体积控制",
+      "descZh": "--fps-cap 60 / --idle-time-limit 0.2，体积与流畅度可调"
+    }
+  ],
+  "renderMs": 30000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "Windows 上字体回退到 Consolas（无 JetBrains Mono），字形宽度略有差异",
+    "agg 会合并相同帧，30fps 上限下实际帧数约为时长的 0.6 倍，转 30fps 有帧复制",
+    "140x34 的 cast 渲染宽度超过 1920，合成时缩放到 1920x1080"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "id": "charmbracelet__vhs",
+  "taglineZh": "用 .tape 脚本写终端录屏：打字、等待、按键都可复现，直接输出 GIF/MP4",
+  "summaryZh": "VHS 是 Charmbracelet 的终端录屏工具，把“录一个 CLI 演示”变成写脚本：.tape 里用 Type、Enter、Sleep、Set Width/FontSize/Theme 等指令描述一次会话，VHS 在虚拟终端里执行并录制，最后由 ffmpeg 编码成 GIF、MP4 或 WebM。它解决终端演示“手动录、重录、剪不齐”的问题。与 asciinema 的“录真实会话再回放”不同，VHS 是声明式重演；与屏幕录制相比，它能精确控制打字速度、停顿与主题。代价是依赖 ttyd + ffmpeg + Chrome。Linux、macOS 与 Docker 是它的舒适区；Windows 上官方链路基本不可用，要另找终端桥接。",
+  "whatItMakes": [
+    {"type": "CLI 工具演示 GIF", "exampleZh": "neofetch、git 操作、安装脚本的逐字输入与输出", "strength": "核心能力"},
+    {"type": "终端交互短片", "exampleZh": "分屏、隐藏/显示光标、窗口栏、主题切换", "strength": "核心能力"},
+    {"type": "集成测试快照", "exampleZh": "CI 里重放 tape，检查终端输出是否变化", "strength": "可用"},
+    {"type": "文档/README 动图", "exampleZh": "固定 1200×600、46px 字体的品牌化 GIF", "strength": "核心能力"},
+    {"type": "MP4/WebM 素材", "exampleZh": "Output 指定 .mp4 或 .webm，交给视频剪辑", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "开源 CLI 的 README 演示", "whoZh": "开源作者", "whyZh": "tape 脚本可版本管理，改命令重录，风格统一", "deliverableZh": "GIF 或 MP4，10–20 秒", "fit": "高度契合"},
+    {"scenarioZh": "终端产品发布视频", "whoZh": "DevTools 团队", "whyZh": "精确控制打字节奏与停顿，画面干净无录屏软件水印", "deliverableZh": "1080p 级 MP4 片段", "fit": "适合"},
+    {"scenarioZh": "CI 视觉回归", "whoZh": "工程团队", "whyZh": "同一条 tape 每次产出相同帧，可做快照对比", "deliverableZh": "GIF/截图基线", "fit": "适合"},
+    {"scenarioZh": "教学材料制作", "whoZh": "讲师、课程作者", "whyZh": "把命令演示标准化，避免现场手滑", "deliverableZh": "分步 GIF，嵌入课件", "fit": "适合"},
+    {"scenarioZh": "Windows 本地生产", "whoZh": "Windows 创作者", "whyZh": "官方有 scoop/winget 包，但实测 ttyd 在 Windows 上 WebSocket 1006，链路不通", "deliverableZh": "需替代方案", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由 Set Width/Height 决定，示例 1200×600；实测输出 1280×720",
+    "maxFpsZh": "由 ffmpeg 编码决定，常用 30fps；实测 30fps",
+    "durationZh": "无硬限制，取决于 Tape 里的 Sleep 与命令时长；实测 13.6 秒",
+    "effectsZh": ["逐字 Type 与按键序列", "Sleep 精确停顿", "隐藏/显示终端元素", "主题、字体、窗口栏、边距"],
+    "audioZh": "不支持音频，产物为无声终端画面",
+    "interactivityZh": "无交互，按 tape 脚本确定性重演",
+    "automationZh": "CLI 可脚本化：vhs demo.tape，可进 CI；依赖 ttyd 与 ffmpeg",
+    "assetsZh": "字体与主题通过 Set 指令指定；无图片素材概念",
+    "exportFormatsZh": ["GIF", "MP4", "WebM", "PNG 截图"],
+    "realtimePreviewZh": "无实时预览窗口；录完直接看文件",
+    "ciFriendlyZh": "可进 CI（Docker 镜像自带依赖），Linux 上稳定，Windows 需绕路"
+  },
+  "ceilingZh": "它能把任何 CLI 操作录成像素级可控的演示：实测 13.6 秒、1280×720、30fps、408 帧的片子，打字、停顿、清屏、分屏都能写进 tape；配合 Theme、FontSize、WindowBar、Padding 可以做出品牌化的终端窗口。上限不在画面复杂度，而在“只能是终端”：没有音频、没有字幕、没有镜头运动，也不适合录 GUI。工程边界更明显：必须装 ttyd 与 ffmpeg，VHS 通过 Chrome 里的 WebSocket 终端桥接，Windows 实测 ttyd 1.7.7 在握手后立即 1006，vhs 永远等不到 xterm 文本层，官方链路失败；Linux/macOS 与 Docker 才是它的舒适区。实测 Windows 上 ttyd 在握手后立即断开，vhs 等不到终端文本层，只能用 WSL 或 Docker 绕过；另外 GIF 体积随分辨率与时长迅速膨胀，长演示要改用 MP4。",
+  "workflow": [
+    {"stepZh": "安装依赖", "detailZh": "装 ttyd 与 ffmpeg，再装 vhs（brew/scoop/二进制/go install 均可）", "effortZh": "约 10 分钟"},
+    {"stepZh": "写 tape", "detailZh": "Output/Settings 加 Type、Sleep、Enter、Ctrl 等指令，描述一次完整会话", "effortZh": "约 20 分钟"},
+    {"stepZh": "试录", "detailZh": "vhs demo.tape，检查字体、主题、停顿节奏与窗口尺寸", "effortZh": "每次 10–60 秒"},
+    {"stepZh": "调优", "detailZh": "改 TypingSpeed、PlaybackSpeed、Padding，必要时加 Hide/Show 清理画面", "effortZh": "多轮迭代"},
+    {"stepZh": "进 CI", "detailZh": "用 ghcr.io/charmbracelet/vhs 镜像重放，或把 GIF 作为文档资产提交", "effortZh": "约半小时"}
+  ],
+  "differentiators": [
+    "声明式 tape 脚本，终端演示可版本管理、可确定性重放",
+    "精确到毫秒的打字与停顿控制，比人手录屏稳定",
+    "主题、字体、窗口栏、边距都能设，产物风格统一",
+    "官方 Docker 镜像自带 ttyd/ffmpeg，CI 复现简单"
+  ],
+  "limits": [
+    "只能录终端，做不了 GUI、网页与 3D 画面",
+    "强依赖 ttyd + ffmpeg + Chrome 桥接，Windows 实测链路失败",
+    "不支持音频与字幕，GIF 体积也容易偏大",
+    "没有可视化编辑器，复杂分屏要读文档试参数"
+  ],
+  "compareTips": [
+    {"vs": "asciinema__asciinema", "adviceZh": "要录真实会话、可回放可嵌入网站选 asciinema；要确定性重演与品牌化 GIF 选 VHS"},
+    {"vs": "asciinema__agg", "adviceZh": "已有 .cast 想转 GIF 用 agg；从零设计一段终端演示用 VHS 的 tape 更直接"},
+    {"vs": "LBEILC__Multiplane", "adviceZh": "要网页/终端混合画面选 Multiplane；纯终端演示 VHS 更轻"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①写一个含 Type/Sleep/Enter 的 tape；②展示 ttyd + Chrome 桥接的虚拟终端执行；③分屏与主题切换的成品 GIF；④用 ffprobe 展示 1280×720/30fps/408 帧的 MP4",
+    "featureCallouts": [
+      {"titleZh": "Tape 脚本", "descZh": "一次会话写成可复现文件"},
+      {"titleZh": "逐字打字", "descZh": "TypingSpeed 可精确控制打字节奏"},
+      {"titleZh": "主题与字体", "descZh": "终端窗口可做品牌化主题"},
+      {"titleZh": "GIF/MP4/WebM", "descZh": "一条 Output 决定成片格式"},
+      {"titleZh": "Docker 复现", "descZh": "Docker 镜像自带 ttyd 与 ffmpeg"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L12-L16", "noteZh": "自述 Write terminal GIFs as code for integration testing and demoing"},
+    {"field": "limits", "source": "README.md#L75-L78", "noteZh": "明确 VHS 依赖 ttyd 与 ffmpeg，且需在 PATH"},
+    {"field": "capabilities.effectsZh", "source": "command.go#L40-L73", "noteZh": "命令映射含 type/sleep/ctrl/alt/shift/screenshot/copy/paste/env/wait 等"},
+    {"field": "ceilingZh", "source": "_samples/charmbracelet__vhs/meta.json", "noteZh": "官方链路在 Windows 上 ttyd 1006 失败；兜底模拟产出 1280×720/30fps/13.6s/408 帧"}
+  ]
+}

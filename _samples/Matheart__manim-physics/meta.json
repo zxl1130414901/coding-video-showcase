@@ -1,0 +1,44 @@
+{
+  "repo": "Matheart/manim-physics",
+  "category": "数学/代码动画（Manim 系）",
+  "status": "success",
+  "render_ms": 13503,
+  "total_ms": 13503,
+  "cmd": "F:\\coding视频\\_env\\py\\Scripts\\python.exe -m manim -qm scene.py SpaceScene",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration": 6.7,
+    "frames": 201,
+    "fps": 30,
+    "codec": "h264",
+    "size_bytes": 178747
+  },
+  "notes_zh": "自写 SpaceScene（pymunk 刚体圆/方/三角在静态地面碰撞），用 manim 0.19 + manim-physics 0.4.0 渲染。版本坑：官方 manim-physics 0.4.0 的 Requires-Python 是 <3.13，本机 Python 3.13.11，需 pip install --ignore-requires-python --no-deps manim-physics==0.4.0 再补 pymunk/shapely；API 与 manim 0.19 兼容，运行无告警级错误。",
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 22.8,
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 6,
+    "render_ms": 95000,
+    "pipeline": "official",
+    "build": "三个 manim scene 独立渲染 1080p30（pymunk/库仑场/多摆），build_sample.py 拼接 + PIL 中文标注 overlay + h264_nvenc",
+    "ffprobe": {
+      "width": 1920,
+      "height": 1080,
+      "duration": 22.7,
+      "frames": 681,
+      "fps": 30.0,
+      "codec": "h264",
+      "size_bytes": 3179829
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 6.7s",
+    "known_limits_zh": [
+      "渲染是 CPU 上的 manim Cairo/CairoSVG 管线，1080p30 约 30 帧/秒，比 GPU 视频管线慢",
+      "0.4.0 的 Lens+Ray（折射）在当前 manim 0.19 下会抛 IndexError，因此改用库仑场演示光学替代",
+      "RadialWave 的 center 参数与 manim 0.19 不兼容，3D 波面段未纳入"
+    ]
+  }
+}

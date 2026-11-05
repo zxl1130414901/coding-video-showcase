@@ -1,0 +1,48 @@
+{
+  "repo": "Remocn/remocn",
+  "category": "Remotion 生态模板/组件",
+  "status": "success",
+  "render_ms": 76377,
+  "total_ms": 76377,
+  "cmd": "最小 Remotion 4.0.540 宿主工程(_host)：复制 registry/remocn/synthwave 组件源码（仅依赖 react+remotion），node @remotion/cli render src/index.tsx Synthwave --concurrency=2 --browser-executable Chrome",
+  "artifact": "F:\\coding视频\\_samples\\Remocn__remocn\\sample.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 4.0,
+    "fps": 30.0,
+    "nb_frames": 120,
+    "codec": "h264",
+    "size_kb": 1564.9
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\Remocn__remocn\\preview.png",
+    "pixel_std": 43.82,
+    "unique_colors": 43160
+  },
+  "notes_zh": "重跑成功：不装 900+ 依赖的整仓，改为最小宿主工程复用 registry 里的自包含组件 synthwave（120 帧/30fps）；宿主 node_modules 由已完成渲染的 snapcn 最小宿主复制（含修复后的 --headless 参数）；Vulkan 启动参数在 Chrome 156 上会让浏览器立即退出，故使用默认 GL",
+  "sample_v2": {
+    "spec": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "duration_sec": 21.0
+    },
+    "render_ms": 136788,
+    "ffprobe": {
+      "duration_sec": 21.0,
+      "codec": "h264",
+      "nb_frames": 630,
+      "has_audio": true,
+      "size_kb": 1547.1,
+      "stddev_10_50_90": {
+        "0.10": 49.334,
+        "0.50": 53.578,
+        "0.90": 35.564
+      }
+    },
+    "generator": "@remotion/player + esbuild 单文件 bundle 复用；Playwright 打开 player.html，逐帧 seekTo 后截图；ffmpeg 720p30 合成 3 段，drawtext 烧中文标注",
+    "segments_count": 3,
+    "pipeline": "fallback"
+  }
+}

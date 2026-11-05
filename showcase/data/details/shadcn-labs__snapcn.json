@@ -1,0 +1,73 @@
+{
+  "id": "shadcn-labs__snapcn",
+  "taglineZh": "把 AI 聊天、终端、设备框做成 React 组件，装进 Remotion 就能出片",
+  "summaryZh": "SnapCN 是面向“软件产品演示视频”的 Remotion 组件注册表：AI 回答流式输出、搜索框打字、终端跑构建、手机与笔记本设备框、逐词字幕，演示片里最费手的镜头都封成可用 shadcn CLI 安装的组件。它走 copy-paste 模式，源码连同依赖进入你的仓库，没有运行时包；组件吃 theme/mode 两个 prop，通过 SnapCnTheme 复用 shadcn 的 surface token，保证视频 UI 与产品 UI 不跑偏。区别：SnapCN 只有 21 个组件但高度垂直，Remocn 是几百个通用原语。组件只有 21 个，但每个都对准产品演示的真实镜头。",
+  "whatItMakes": [
+    {"type": "产品 Demo 视频", "exampleZh": "AI 聊天逐字流式、终端命令执行、手机/笔记本框入画", "strength": "核心能力"},
+    {"type": "功能发布短片", "exampleZh": "hero 发布、轨道画廊、情绪板揭示、Logo 组装/闪烁", "strength": "可用"},
+    {"type": "字幕/口播卡", "exampleZh": "卡拉 OK 逐词高亮、单词级字幕、文字揭示与构建", "strength": "可用"},
+    {"type": "社媒/增长素材", "exampleZh": "关注者涌入动效、文字高亮、打字搜索镜头", "strength": "可用"},
+    {"type": "品牌一致的 UI 动画", "exampleZh": "输入框、光标、主题色都来自 shadcn token", "strength": "核心能力"}
+  ],
+  "useCases": [
+    {"scenarioZh": "SaaS 产品发布 Demo", "whoZh": "产品团队、独立开发者", "whyZh": "聊天/终端/设备框镜头直接复用，和产品设计系统同源", "deliverableZh": "1080p30 的 30–60 秒 MP4", "fit": "高度契合"},
+    {"scenarioZh": "AI 产品能力展示", "whoZh": "AI 创业团队", "whyZh": "answer-stream 能把流式回复演得像真实产品", "deliverableZh": "60–90 秒功能演示", "fit": "高度契合"},
+    {"scenarioZh": "官网首屏视频", "whoZh": "品牌/前端团队", "whyZh": "hero-launch 与文字组件可快速迭代多版", "deliverableZh": "15–30 秒 1080p 或竖屏", "fit": "适合"},
+    {"scenarioZh": "无工程快速出片", "whoZh": "运营、市场", "whyZh": "浏览器编辑器组合组件直接导出 MP4，无需本地环境", "deliverableZh": "30 秒内短片", "fit": "适合"},
+    {"scenarioZh": "Manim 式教学动画", "whoZh": "数学/物理教师", "whyZh": "组件面向产品 UI，没有公式与几何对象", "deliverableZh": "不适用", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由宿主 Remotion Composition 决定，示例 1920×1080；实测 1280×720",
+    "maxFpsZh": "由宿主决定，示例 30fps；组件按帧驱动，无额外上限",
+    "durationZh": "无硬限制，取决于自己排的时间轴；单组件通常 1–5 秒",
+    "effectsZh": ["AI 流式文本与光标动画", "终端模拟器", "设备框（手机/笔记本）", "卡拉 OK 字幕与文字揭示", "Logo 组装/闪烁"],
+    "audioZh": "组件不含音频；需在 Remotion 宿主里自行加 <Audio> 与 TTS",
+    "interactivityZh": "无交互；浏览器编辑器可预览并导出，不是运行时交互",
+    "automationZh": "无独立 CLI，靠宿主 Remotion 的 npx remotion render",
+    "assetsZh": "组件依赖 shadcn token 与 Tailwind；字体、截图素材需自备",
+    "exportFormatsZh": ["MP4（经 Remotion 或浏览器编辑器）"],
+    "realtimePreviewZh": "有：官网每个组件可 scrub，另有浏览器编辑器",
+    "ciFriendlyZh": "可进 CI，前提是 Remotion 宿主工程可构建"
+  },
+  "ceilingZh": "它能做到“像产品自己录的”演示片：21 个组件覆盖 AI 回答流、搜索打字、终端构建、设备框、6 种文字动效、卡拉 OK 字幕、3 个场景与 Logo/社交证明动效，主题通过 shadcn token 与产品 UI 对齐。官方还专门修过缩放文字的亚像素抖动，把 judder 从 0.284px 降到 0.014px，这类细节是屏录替代不了的。实测把 cut-lockup 组件复制进最小 Remotion 4.0.540 宿主，3.6 秒 720p30（108 帧）渲染 127 秒，总耗时相同，说明开销主要在 Chromium 启动与逐帧渲染。边界：组件只有 21 个，超出产品 Demo 范畴（数学、3D、实拍合成）就没有；不含音频与字幕时间轴；必须接 Remotion 或官网编辑器；素材与品牌字体要自己准备。整体更像一套产品 Demo 的美术规范，而不是通用动画库。",
+  "workflow": [
+    {"stepZh": "准备宿主", "detailZh": "npx create-video@latest，补 components.json 与 tsconfig/remotion.config 的 @/ 别名", "effortZh": "约 10 分钟"},
+    {"stepZh": "装组件", "detailZh": "npx shadcn@latest add @snapcn/text-reveal，源码与依赖落到仓库", "effortZh": "约 1 分钟/个"},
+    {"stepZh": "排时间轴", "detailZh": "在 Composition 里组合 answer-stream、terminal-simulator、设备框等，配 theme/mode", "effortZh": "半天到两天"},
+    {"stepZh": "预览调参", "detailZh": "Remotion Studio 逐帧看流式文本节奏与字幕对齐", "effortZh": "随改随看"},
+    {"stepZh": "渲染", "detailZh": "npx remotion render，或直接用 snapcn.dev 浏览器编辑器导出 MP4", "effortZh": "3.6 秒 720p 约 2 分钟"}
+  ],
+  "differentiators": [
+    "专攻产品 Demo 镜头：AI 流式回答、终端、设备框，不用自己伪造产品 UI",
+    "通过 SnapCnTheme 复用 shadcn token，视频 UI 与线上产品不漂移",
+    "21 个组件都经真实渲染帧校验，修过文字缩放的亚像素抖动",
+    "浏览器编辑器无需本地工程即可组合并导出 MP4"
+  ],
+  "limits": [
+    "只有 21 个组件，题材超出产品演示就很受限",
+    "不含音频、字幕时间轴与配音能力，需宿主自己补",
+    "必须依赖 Remotion 或官网编辑器，不能单独出片",
+    "组件按 shadcn/Tailwind 体系组织，非该技术栈的项目接入成本高"
+  ],
+  "compareTips": [
+    {"vs": "Remocn__remocn", "adviceZh": "产品 Demo 的聊天/终端/设备镜头选 SnapCN；需要大量文字、溶解、着色器原语选 Remocn，两者可同宿主混用"},
+    {"vs": "Vincentwei1021__video-shotcraft", "adviceZh": "要真实产品页截图与整片编排选 video-shotcraft；要从零搭品牌一致的 UI 动画选 SnapCN"},
+    {"vs": "remotion-dev__remotion", "adviceZh": "SnapCN 是加速器不是替代品；要云端批量与完整控制仍回到 Remotion"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①浏览器编辑器里把 answer-stream 与 terminal 拼成 3 秒镜头；②切到 Remotion 宿主，展示组件源码与 theme/mode；③逐词字幕与设备框入场；④渲染 720p30 MP4 并对照官网预览",
+    "featureCallouts": [
+      {"titleZh": "AI 流式回答", "descZh": "逐字输出像真实产品"},
+      {"titleZh": "终端模拟器", "descZh": "构建命令逐行执行"},
+      {"titleZh": "设备框", "descZh": "手机/笔记本直接入画"},
+      {"titleZh": "设计系统同源", "descZh": "theme token 与产品 UI 同源"},
+      {"titleZh": "浏览器编辑器", "descZh": "免建工程，浏览器里直接导出 MP4"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L9-L12", "noteZh": "自述 the shots a software demo actually needs，作为 shadcn CLI 组件安装"},
+    {"field": "whatItMakes", "source": "README.md#L69-L86", "noteZh": "21 个组件按 AI chat/设备/文字/字幕/场景/Logo/社交证明/效果分组"},
+    {"field": "differentiators", "source": "README.md#L88-L104", "noteZh": "复用 shadcn token，并用渲染帧验证 0.284px→0.014px 抖动修复"},
+    {"field": "ceilingZh", "source": "_samples/shadcn-labs__snapcn/meta.json", "noteZh": "最小宿主渲染 cut-lockup，720p30/108 帧耗时 126.8s"}
+  ]
+}

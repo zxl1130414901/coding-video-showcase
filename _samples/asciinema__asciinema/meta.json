@@ -1,0 +1,50 @@
+{
+  "repo": "asciinema/asciinema",
+  "category": "终端录制转视频/GIF",
+  "status": "success",
+  "render_ms": 0,
+  "total_ms": 180000,
+  "cmd": "生成 cast v2（真实 PowerShell 输出）→ agg 1.9 Windows 二进制 → GIF → ffmpeg mp4",
+  "artifact": "F:\\coding视频\\_samples\\asciinema__asciinema\\sample.mp4",
+  "ffprobe": {
+    "width": 1008,
+    "height": 780,
+    "duration_s": 11.53,
+    "fps": 100.0,
+    "nb_frames": 1153,
+    "codec": "h264",
+    "size_kb": 193.7
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\asciinema__asciinema\\preview.png",
+    "pixel_std": 20.97,
+    "unique_colors": 6250
+  },
+  "notes_zh": "asciinema 录制端本身不支持 Windows（README 原文 'Windows is currently not supported'，依赖 Unix PTY），且不产视频。此处用同生态终端录制格式：手写 asciinema cast v2（header + [time,o,text]，内容为真实执行的 PowerShell 命令输出）→ agg 渲染 GIF → ffmpeg 转 mp4，证明 cast→视频链路",
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 26.1,
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 5,
+    "render_ms": 112000,
+    "pipeline": "wrapper",
+    "build": "make_casts.py 生成 3 段 cast → agg.exe 渲染 GIF → ffmpeg fps=30 + 1080p 解码 → build_sample.py 拼接与中文标注",
+    "ffprobe": {
+      "width": 1920,
+      "height": 1080,
+      "duration": 26.0,
+      "frames": 780,
+      "fps": 30.0,
+      "codec": "h264",
+      "size_bytes": 729924
+    },
+    "previous_sample": "sample_basic.mp4 1008x780 11.5s",
+    "known_limits_zh": [
+      "asciinema 录制端只支持 Linux/macOS/FreeBSD（依赖 Unix PTY），Windows 无法直接 rec，本样例用等价 cast v2 事件流 + agg 渲染",
+      "cast 宽度 140 列 34 行，agg 输出 1874x1176，合成时轻微拉伸到 1920x1080",
+      "agg 会合并相同帧，平均帧率约 19fps，转 30fps 时有帧复制"
+    ]
+  }
+}

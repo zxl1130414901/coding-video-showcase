@@ -1,0 +1,74 @@
+{
+  "id": "yongkyuns__noon",
+  "taglineZh": "用 Rust 重写 Manim 运行时：Python 语法不变，场景变成可点击的实时图形",
+  "summaryZh": "Noon 是用 Rust 实现的 2D 动画与交互图形引擎：Python 端保留 Manim 兼容语法，场景语义、调度与 GPU 渲染都由共享 Rust 内核完成。它把“渲染一帧”改成“维护可交互的实时场景”，WebGPU 渲染、WebGL2 回退、Pyodide 在浏览器跑 Python，同一份场景既能网页点击交互，也能经原生 MP4 sink 导出 H.264+AAC。与 Manim 的离线逐帧相比，重点是播放确定性、脏区重绘与实时输入；代价是仍在 Phase A、兼容仅子集、只覆盖 2D。项目仍在 Phase A，导出链路要自己接。",
+  "whatItMakes": [
+    {"type": "数学/几何教学动画", "exampleZh": "Manim 风格公式推导、几何变换、坐标系入场与变换", "strength": "核心能力"},
+    {"type": "交互式图形课件", "exampleZh": "点击图形触发 Indicate、按键切换场景段落、暂停后仍可交互", "strength": "核心能力"},
+    {"type": "带配乐的教学短片", "exampleZh": "多段场景叠加背景音乐，淡入淡出后导出带 AAC 音轨的 MP4", "strength": "可用"},
+    {"type": "代码/文本演示动画", "exampleZh": "带语法高亮的代码块逐行出现，原生渲染器已做光栅测试", "strength": "可用"},
+    {"type": "网页内嵌演示", "exampleZh": "Pyodide 跑 Python、WebGPU 渲染，无需渲染服务器", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "交互式数学课件", "whoZh": "中学/大学教师、教研团队", "whyZh": "学生可在网页里点击图形、实时看到变换，而不是看一段固定视频", "deliverableZh": "网页课件 + 720p/1080p MP4 备份", "fit": "适合"},
+    {"scenarioZh": "Manim 存量项目的实时化改造", "whoZh": "技术型课程制作团队", "whyZh": "复用 Manim 语法，换取浏览器内实时播放和输入响应", "deliverableZh": "单条 5–15 分钟课程片段", "fit": "勉强"},
+    {"scenarioZh": "教育产品的内嵌演示", "whoZh": "教育 SaaS 前端团队", "whyZh": "场景直接嵌网页，不需要后端渲染农场", "deliverableZh": "可交互嵌入页，无独立视频文件", "fit": "适合"},
+    {"scenarioZh": "带音乐的概念短片", "whoZh": "科普作者、独立讲师", "whyZh": "原生混音与 MP4 导出可省掉后期软件", "deliverableZh": "1–3 分钟 720p MP4，含 AAC 音轨", "fit": "勉强"},
+    {"scenarioZh": "渲染引擎二次开发", "whoZh": "Rust/图形方向开发者", "whyZh": "共享语义场景 + retained renderer 便于做自定义播放器或插件", "deliverableZh": "自定义播放器、教学工具原型", "fit": "适合"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "文档未声明上限；实测浏览器路径为 1280×720，原生渲染器分辨率可配置",
+    "maxFpsZh": "文档未声明；实测输出 30fps（浏览器抓帧约 10fps 后重排）",
+    "durationZh": "无硬限制；浏览器实时演示建议单段 <1 分钟",
+    "effectsZh": ["Manim 风格 2D 矢量图形与公式文本", "retained GPU 渲染与脏区重绘", "点击 Indicate 等交互指示", "原生代码块语法高亮"],
+    "audioZh": "支持背景音频（可选 audio feature），最多 256 个不可变片段，单/双声道 8–192kHz，可随 MP4 导出 AAC",
+    "interactivityZh": "支持网页内交互与原生窗口键盘控制；不是纯离线渲染器",
+    "automationZh": "需 cargo/Rust 构建，未提供现成的一键录制 CLI；MP4 走原生 sink",
+    "assetsZh": "字体、图片由宿主提供；音频依赖设备 profile，不内置素材库",
+    "exportFormatsZh": ["MP4（H.264+AAC）", "浏览器实时画面"],
+    "realtimePreviewZh": "有：浏览器 Playground 与原生 preview 窗口",
+    "ciFriendlyZh": "可进 CI：Rust 构建 + WebGL2 回退，但录制管线要自己接"
+  },
+  "ceilingZh": "最强形态是“网页里可交互的 Manim 课件”：同一场景在浏览器中以 WebGPU 实时渲染，支持点击触发 Indicate、键盘播放/暂停/跳段、背景音乐淡入淡出，并能导出 H.264+AAC 的 MP4。实测在 Chrome 里跑官方 Playground，9.9 秒的 720p 场景录制耗时约 40 秒，抓帧只有约 10fps，再按时间戳重排成 30fps，瓶颈在浏览器抓帧而不是渲染。边界很清楚：定位是 2D，没有 3D 相机、曲面和网格；没有开箱即用的导出命令，MP4 需要自己调原生 sink；音频设备 profile 限 256 个片段、单/双声道 8–192kHz，时间戳跳变超过 50ms 直接报错；项目仍处 Phase A，兼容行为大量标注为未支持。另外，WebGPU 只在较新 Chrome 上稳定，老设备会退回 Canvas 2D。",
+  "workflow": [
+    {"stepZh": "准备工具链", "detailZh": "安装 Rust stable 并克隆仓库；要跑 Web Playground 还需 Node 与 Chrome", "effortZh": "约 10 分钟"},
+    {"stepZh": "写场景", "detailZh": "用 Manim 兼容 Python 或 Rust noon API 描述场景，先跑官方 example 对齐行为", "effortZh": "首个场景 1–2 小时"},
+    {"stepZh": "交互预览", "detailZh": "执行 scripts/build-web-demo.sh 后起静态服务器，在 Playground 里调点击与段落", "effortZh": "约 5 分钟"},
+    {"stepZh": "导出视频", "detailZh": "启用 noon-native 的 audio feature，通过原生 MP4 sink 输出 H.264+AAC", "effortZh": "需自行接线"},
+    {"stepZh": "回归校验", "detailZh": "cargo test/clippy 加浏览器 smoke，比对画面与音频时间轴", "effortZh": "持续维护"}
+  ],
+  "differentiators": [
+    "场景语义只有一份 Rust 实现，Python 不复制调度器和渲染器，避免 Manim 的 Python 逐帧开销",
+    "retained GPU renderer 做脏区重绘，目标是实时播放而不是离线逐帧出片",
+    "同一份场景既能网页交互，又能原生导出带 AAC 音轨的 MP4",
+    "WebGPU + WebGL2 自动回退，没有独显的机器也能展示"
+  ],
+  "limits": [
+    "只做 2D，没有 3D 相机、曲面、网格，做不了 Three.js 类内容",
+    "没有开箱即用的导出 CLI，MP4 需要自己接原生 sink，学习成本高于 Manim 一条命令",
+    "仍处 Phase A，Manim 兼容只是子集，未支持行为会在运行时显式报错",
+    "仓库根目录未见 LICENSE 文件，商用授权范围未确认"
+  ],
+  "compareTips": [
+    {"vs": "ManimCommunity__manim", "adviceZh": "要成熟生态、海量示例和稳定 API 选 Manim；要在网页里实时交互、点击图形选 Noon，但得接受 Phase A 的不完整"},
+    {"vs": "academa-labs__manimgx", "adviceZh": "需要 3D、开箱即用 MP4 和高帧率选 ManimGX；只做 2D 交互且想掌控渲染循环选 Noon"},
+    {"vs": "maloyan__manim-web", "adviceZh": "只想在浏览器跑 Manim 并要现成导出，manim-web 更省事；要原生 Rust 渲染与音频设备控制，Noon 更彻底"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①在浏览器打开 Noon Playground 载入 Manim 兼容场景；②公式与几何图形入场、变换；③鼠标点击图形触发 Indicate，展示实时输入；④切到原生窗口播放带背景音乐的片段，并展示 MP4/AAC 导出结果",
+    "featureCallouts": [
+      {"titleZh": "共享 Rust 场景语义", "descZh": "Python 与 Rust 操作同一份场景，不各跑一套"},
+      {"titleZh": "WebGPU 实时渲染", "descZh": "浏览器内直接绘制，无渲染服务器"},
+      {"titleZh": "点击 Indicate 交互", "descZh": "已暂停或播完仍可响应鼠标"},
+      {"titleZh": "H.264+AAC 导出", "descZh": "原生 sink 直接出带音轨 MP4"},
+      {"titleZh": "WebGL2 自动回退", "descZh": "无 WebGPU 设备也能播放"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L3-L5", "noteZh": "原文自述 Rust-native 2D engine + Manim-compatible Python authoring"},
+    {"field": "summaryZh", "source": "README.md#L337-L353", "noteZh": "Playground 由 Rust/WASM、Pyodide、WebGPU 与 WebGL2 回退组成"},
+    {"field": "capabilities.audioZh", "source": "README.md#L308-L312", "noteZh": "设备 profile 限 256 clips、mono/stereo 8–192kHz、20ms callback"},
+    {"field": "capabilities.exportFormatsZh", "source": "README.md#L341-L343", "noteZh": "native MP4 sink 支持 H.264 视频 + AAC 音频"},
+    {"field": "ceilingZh", "source": "_samples/yongkyuns__noon/meta.json", "noteZh": "实测 Playground 9.933s/1280×720/30fps，录制 40s，抓帧约 10fps，非离线导出"}
+  ]
+}

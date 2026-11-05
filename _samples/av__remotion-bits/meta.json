@@ -1,0 +1,44 @@
+{
+  "repo": "av/remotion-bits",
+  "category": "Remotion 生态模板/组件",
+  "status": "success",
+  "render_ms": 86892,
+  "total_ms": 92892,
+  "cmd": "npx remotion render demo/src/entry-lite.tsx MatrixRain F:\\coding视频\\_samples\\av__remotion-bits\\raw1080.mp4 --gl=vulkan ; ffmpeg -i raw1080.mp4 -vf scale=1280:720 -c:v h264_nvenc -preset p5 -cq 23 -pix_fmt yuv420p sample.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration": 5.056,
+    "frames": 150,
+    "fps": 30,
+    "codec": "h264",
+    "size_bytes": 3750734
+  },
+  "notes_zh": "使用仓库 src/components/MatrixRain（矩阵雨 + 标题渐隐）。必须新建采样入口：仓库 demo/src/Root.tsx 引用不存在的 MotionTransition，ParticlesShowcase 引用不存在的 Particles，原 demo 直接渲染会报模块找不到；因此只在 demo/src/entry-lite.tsx 新增一个仅注册 MatrixRain 的 Compose（这是唯一写入仓库的文件，未改动任何已有源码）。另补装 three@0.182.0（--no-save），并用 junction 把 F:\\coding视频\\node_modules 指向 demo/node_modules 以解决跨目录解析。Remotion 自带 ffmpeg 只出 libx264，1080p 渲染 86892ms 后用 NVENC 转 720p（约 6s，总 92892ms）。",
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 23.9,
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 6,
+    "render_ms": 67668,
+    "pipeline": "official",
+    "build": "npx remotion render 720 帧 1920x1080（系统 Chrome + --gl=vulkan，concurrency=1，67.7s），ffmpeg 切 3 段；v2tool 拼接 + PIL 中文标注 overlay + h264_nvenc",
+    "ffprobe": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "frames": 717,
+      "duration": 23.9,
+      "codec": "h264",
+      "size_bytes": 17069296
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 5.056s",
+    "known_limits_zh": [
+      "本机 remotion 的 chrome-headless-shell 下载会 30s 超时，改用系统 Chrome（--browser-executable）才跑通",
+      "Remotion 自带 ffmpeg 只出 libx264，1080p 720 帧渲染约 67.7s，未走 NVENC",
+      "仓库 demo/src/Root.tsx 引用了不存在的组件，演示入口 demo/src/entry-v2.tsx 为新建文件，未改动仓库原有源码"
+    ]
+  }
+}

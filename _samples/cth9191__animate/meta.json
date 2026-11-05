@@ -1,0 +1,46 @@
+{
+  "repo": "cth9191/animate",
+  "category": "Agent/LLM 代码视频工作流（边缘）",
+  "status": "success",
+  "render_ms": 21800,
+  "total_ms": 41900,
+  "cmd": "node F:\\coding视频\\cth9191__animate\\plugins\\animate\\skills\\animate\\tools\\export.mjs pieces/math-demo  （复制仓库自带 math 风格 demo 到 _samples 下，逐帧 144 帧 + TTS/音轨 + ffmpeg 合成）",
+  "ffprobe": {
+    "width": 1080,
+    "height": 1920,
+    "duration": 6.0,
+    "frames": 144,
+    "fps": 24,
+    "codec": "h264",
+    "size_bytes": 912171
+  },
+  "notes_zh": "仓库是 Claude 技能包（.claude-plugin + skills/tools 脚本），无独立 npm 工程；直接复用其 tools/export.mjs 与自带 math 风格 demo，复制到 _samples 下未改源码。导出流水线：index.html 1449 行构建 → Playwright 逐帧 144 帧 @24fps（11.5s）→ 音轨 audio.wav（8.6s）→ 分轨 stem-music/sfx（21.8s）→ mux 成 final.mp4。规格为仓库默认 1080x1920 竖屏，非横向 720p（按“或仓库默认分辨率”条款接受）。",
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 23.867,
+    "resolution": "1080x1920",
+    "fps": 30.0,
+    "segments": 4,
+    "callouts": 6,
+    "render_ms": 277217,
+    "pipeline": "official",
+    "build": "node tools/build.mjs + node tools/export.mjs --workers 1，四个 style piece 各 144 帧 1080×1920@24fps（iso 29.6s，pixel+riso 合计 247.7s），ffmpeg 转 30fps 并拼接；v2tool PIL 中文标注 overlay",
+    "ffprobe": {
+      "width": 1080,
+      "height": 1920,
+      "fps": 30.0,
+      "frames": 716,
+      "duration": 23.867,
+      "codec": "h264",
+      "size_bytes": 18400572
+    },
+    "previous_sample": "sample_basic.mp4 1080x1920 6.0s",
+    "known_limits_zh": [
+      "仓库原生 9:16 竖屏 1080×1920，本次保留竖屏，未改成横屏",
+      "piece 默认 24fps（bpm 120 对齐），交付前整体转 30fps，存在重复帧",
+      "四个 style demo 的文案是仓库自带示例（rack / market / unit circle），本次只换风格未重写剧本",
+      "成片为控制体积去掉了音轨；各 piece 的 renders/final.mp4 保留原声",
+      "export.mjs 依赖 require('playwright')，需先设 NODE_PATH=F:\\coding视频\\_env\\pw\\node_modules"
+    ]
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "id": "remotion-dev__remotion",
+  "taglineZh": "用 React 组件逐帧生成视频，生态最成熟、云端渲染选项最多的声明式框架",
+  "summaryZh": "Remotion 把视频拆成“帧号 → React 组件输出”的纯函数：TSX 里用 useCurrentFrame 与 interpolate 控制元素，CLI 在本地 Chrome 逐帧截图并编码 MP4。它解决“用网页技术栈做视频”的问题，优势在复用 React 生态、组件化与 TypeScript 类型，而非渲染速度。与 Manim、Motion Canvas 相比，它更像把网页装进可渲染的时间轴，配合 Lambda 能把长片拆到多机并行。代价是商用许可收费、强依赖 Chromium，动画由 JS 逐帧计算。本地渲染约 2.4 帧/秒，几十分钟长片更适合交给 Lambda 分片。",
+  "whatItMakes": [
+    {"type": "产品宣传/发布会片", "exampleZh": "网页 UI 实拍、逐字标题、镜头推移、品牌收尾", "strength": "核心能力"},
+    {"type": "数据可视化动画", "exampleZh": "柱状图按帧生长、数字滚动、地图区域高亮", "strength": "核心能力"},
+    {"type": "代码/终端演示", "exampleZh": "代码逐行高亮、打字机效果、终端窗口推近", "strength": "核心能力"},
+    {"type": "社交媒体短片", "exampleZh": "9:16 竖屏 15–60 秒，批量替换文案与截图", "strength": "可用"},
+    {"type": "个性化批量视频", "exampleZh": "传入姓名/头像/数据，云端并发渲染上千条", "strength": "核心能力"}
+  ],
+  "useCases": [
+    {"scenarioZh": "SaaS 产品发布片", "whoZh": "增长/市场团队", "whyZh": "直接复用产品真实页面与品牌组件，改文案即可重渲染", "deliverableZh": "1080p30 的 30–90 秒 MP4", "fit": "高度契合"},
+    {"scenarioZh": "数据报告视频化", "whoZh": "分析师、咨询顾问", "whyZh": "图表与注释都在 React 里，数据和画面同源", "deliverableZh": "3–8 分钟 1080p 报告视频", "fit": "高度契合"},
+    {"scenarioZh": "课程片头/片尾包装", "whoZh": "在线课程制作团队", "whyZh": "一套模板批量套不同课程标题与讲师信息", "deliverableZh": "5–15 秒片头，可批量出几十条", "fit": "适合"},
+    {"scenarioZh": "海外投放多尺寸素材", "whoZh": "广告优化师", "whyZh": "同一 Composition 改 width/height 即可出 1:1、9:16、16:9", "deliverableZh": "多尺寸 720p/1080p MP4 套装", "fit": "适合"},
+    {"scenarioZh": "CI 内自动出片", "whoZh": "工程团队", "whyZh": "CLI 可脚本化，可接 GitHub Actions 或 Lambda", "deliverableZh": "每次发版自动生成 changelog 视频", "fit": "适合"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "分辨率由 Composition 的 width/height 决定，无文档上限；实测 1920×1080 稳定，4K 需更长渲染时间",
+    "maxFpsZh": "由 Composition 的 fps 决定，常用 30/60；未声明硬上限",
+    "durationZh": "无硬限制；本地渲染按帧线性增长，长片建议上 Lambda 分片",
+    "effectsZh": ["任意 React/CSS/Canvas/Three.js 画面", "逐帧插值与弹簧动画", "转场、遮罩、Blur 等 CSS 效果", "音频波形与字幕组件"],
+    "audioZh": "支持 <Audio> 引入外部音轨、音量包络与静音；不内置 TTS",
+    "interactivityZh": "仅离线渲染；Remotion Studio 提供时间轴预览与参数调节",
+    "automationZh": "CLI 可脚本化（npx remotion render / still / lambda），可进 CI",
+    "assetsZh": "图片、字体、视频、音频走 public/ 或 staticFile；素材无强制格式",
+    "exportFormatsZh": ["MP4", "PNG 静帧", "帧序列（PNG/JPEG）"],
+    "realtimePreviewZh": "有：Remotion Studio 可实时 scrub",
+    "ciFriendlyZh": "可进 CI；需 Chromium 与足够内存，GPU 可加速但不强制"
+  },
+  "ceilingZh": "上限取决于机器与并发：本地单机实测 5 秒 1080p30（150 帧）用 --concurrency=2 渲染 62 秒，含安装总耗时 330 秒，换算约 2.4 帧/秒；同样的工程搬到 Lambda 可以按帧分片横向扩展，做几十分钟的长片或上千条个性化短片。画面复杂度没有框架级天花板，React 能画的都能出片，Three.js、Skia、Canvas 都能塞进 Composition。真正的边界是工程性的：必须跑 Chromium，Windows 上要指定浏览器路径和 GL 后端；大 monorepo 依赖体量巨大，单仓安装与构建常以十分钟计；许可证按公司规模收费，商用不能当普通 MIT 用；动画值由 JS 计算，CSS 原生时间轴与 GSAP 时间轴要额外适配。整体看，它是产能工具，不是画质工具。",
+  "workflow": [
+    {"stepZh": "初始化工程", "detailZh": "npx create-video@latest 选模板，得到 src/Root.tsx 与 remotion.config.ts", "effortZh": "约 5 分钟"},
+    {"stepZh": "写 Composition", "detailZh": "用 useCurrentFrame/interpolate/spring 写动画，在 Root 里注册宽高、fps、时长", "effortZh": "首个片子 1–3 天"},
+    {"stepZh": "Studio 预览", "detailZh": "npx remotion studio 打开时间轴，逐帧检查排版与音频", "effortZh": "随改随看"},
+    {"stepZh": "命令行渲染", "detailZh": "npx remotion render src/index.ts Main out/main.mp4 --concurrency=2 --gl=vulkan", "effortZh": "5 秒 1080p 约 1 分钟"},
+    {"stepZh": "批量/上云", "detailZh": "接 @remotion/lambda 或 CI，把帧区间分片渲染再合并", "effortZh": "半天到一天"}
+  ],
+  "differentiators": [
+    "React 组件即视频素材，可直接复用设计系统与业务组件，而不是另学一套动画 DSL",
+    "Remotion Studio 提供可 scrub 的时间轴与 props 编辑，调试体验接近前端开发",
+    "Lambda 方案把长视频按帧分片到多机，批量生产能力是同类里最成熟的",
+    "TypeScript 类型与 Jest 测试可以覆盖视频逻辑，适合工程化团队"
+  ],
+  "limits": [
+    "许可证不是 MIT：个人免费，公司和团队商用需按规模购买",
+    "强依赖 Chromium 渲染，Windows 上要处理浏览器路径、GL 后端与 headless 参数",
+    "大仓库/大依赖安装极慢，官方 monorepo 直接安装常超过十分钟",
+    "动画由 JS 逐帧计算，原生 CSS 动画和 GSAP 时间轴需要额外集成"
+  ],
+  "compareTips": [
+    {"vs": "BintzGavin__helios", "adviceZh": "要成熟生态、组件复用和云端批量选 Remotion；要保留原生 CSS/WAAPI 动画、减少 JS 插值开销选 Helios，但要接受 beta 与 ELv2"},
+    {"vs": "0xS4N4TG__kinetograph", "adviceZh": "已有 Remotion 工程且想继续用 React 生态选 Remotion；想摆脱浏览器、用 Rust GPU 合成且能接受 beta 选 Kinetograph"},
+    {"vs": "Remocn__remocn", "adviceZh": "Remocn 只是组件库，仍需 Remotion 宿主；要开箱工程与云端能力直接用 Remotion 官方模板"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①HelloWorld Composition 在 Studio 里逐帧预览；②文字与图形按 spring 入场；③切到 9:16 竖屏同一组件，展示尺寸参数化；④CLI 渲染出 MP4 并用 ffprobe 展示 1080p30/150 帧",
+    "featureCallouts": [
+      {"titleZh": "React 组件化", "descZh": "设计系统组件直接进视频"},
+      {"titleZh": "逐帧确定输出", "descZh": "同一帧号永远同一画面"},
+      {"titleZh": "Studio 时间轴", "descZh": "改参数即时 scrub 预览"},
+      {"titleZh": "CLI 与 Lambda", "descZh": "本地一条命令，云端分片扩容"},
+      {"titleZh": "任意分辨率", "descZh": "改 width/height 即出多种尺寸成片"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L19-L37", "noteZh": "官方定位为 programmatic video 平台，入口 npx create-video@latest"},
+    {"field": "capabilities.automationZh", "source": "package.json#L13-L40", "noteZh": "仓库脚本含 build-fast、testssr、testwebrenderer、watchcli，确认 CLI/SSR/Web renderer 三条链路"},
+    {"field": "ceilingZh", "source": "_samples/remotion-dev__remotion/meta.json", "noteZh": "实测 1920×1080/30fps/150 帧，render 61.9s，总 330s，--concurrency=2 --gl=vulkan"},
+    {"field": "limits", "source": "LICENSE.md#L1-L5", "noteZh": "Remotion License 而非 MIT，5.0 起条款将调整，商用需授权"}
+  ]
+}

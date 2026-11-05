@@ -1,0 +1,51 @@
+{
+  "repo": "jeertmans/manim-slides",
+  "category": "数学/代码动画（Manim 系）",
+  "status": "success",
+  "render_ms": 22169,
+  "total_ms": 35000,
+  "cmd": "manim-slides render example.py BasicExample -qm --media_dir F:\\...",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 4.0,
+    "nb_frames": 120,
+    "codec": "h264",
+    "pix_fmt": "yuv420p",
+    "fps": "30/1",
+    "size_bytes": 89217
+  },
+  "notes_zh": "仓库自带 example.py；manim-slides 的 convert 不支持 mp4 目标，故取 render 阶段产物 BasicExample.mp4 作为样例",
+  "preview": {
+    "at_s": 2.0,
+    "mean_rgb": [
+      0.69,
+      1.32,
+      1.51
+    ],
+    "stddev_rgb": [
+      8.35,
+      15.01,
+      16.64
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "nb_frames": 627,
+      "codec": "h264",
+      "pix_fmt": "yuv420p",
+      "duration_s": 20.9,
+      "size_bytes": 461013
+    },
+    "render_ms": 168000,
+    "segments": 3,
+    "callouts": 5,
+    "pipeline": "official",
+    "methodZh": "manim -qm 渲染自建 SlideCapabilities（3 页），poster.py 归一化 1080p30 并烧入中文标注",
+    "generatedAt": "2026-11-05T15:05:56+08:00"
+  }
+}

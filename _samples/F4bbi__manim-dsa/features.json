@@ -1,0 +1,63 @@
+{
+  "id": "F4bbi__manim-dsa",
+  "durationSec": 24.0,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.6,
+      "capabilityZh": "MArray：索引刻度 + append / pop 动画",
+      "proofZh": "MArray([1,2,3]) 调用 add_indexes() 后 append(4) / pop() 各 1.2s"
+    },
+    {
+      "start": 6.6,
+      "end": 12.6,
+      "capabilityZh": "MStack：LIFO push / pop",
+      "proofZh": "MStack([3,7]) 压入 5 再弹出，动画由 animate.append/pop 驱动"
+    },
+    {
+      "start": 12.6,
+      "end": 18.4,
+      "capabilityZh": "MGraph：加权图 + 自定义节点坐标",
+      "proofZh": "6 条带权边、5 个节点指定坐标，Create 一次成型"
+    },
+    {
+      "start": 18.4,
+      "end": 24.0,
+      "capabilityZh": "MTree：层级自动布局",
+      "proofZh": "7 节点二叉树由 root 自动排布，无需手写坐标"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.5,
+      "dur": 4.0,
+      "titleZh": "① MArray 索引刻度 + append/pop",
+      "descZh": "[1,2,3] 自动加索引刻度，append(4) 与 pop() 各 1.2s 动画"
+    },
+    {
+      "t": 6.8,
+      "dur": 4.0,
+      "titleZh": "② MStack 的 LIFO 进出",
+      "descZh": "2 元素栈压入 5 再弹出，位置与高度自动重排"
+    },
+    {
+      "t": 12.8,
+      "dur": 4.0,
+      "titleZh": "③ MGraph 加权图",
+      "descZh": "6 条带权边 + 5 个指定坐标节点，Create 一次构建"
+    },
+    {
+      "t": 18.6,
+      "dur": 4.0,
+      "titleZh": "④ MTree 层级布局",
+      "descZh": "7 节点二叉树按 root 自动分层，无需手写坐标"
+    }
+  ],
+  "renderMs": 58000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "Text 使用 Consolas 字体，中文标签不进入场景（改由后处理标注）",
+    "图/树的节点样式只支持插件内置的几种配色",
+    "1080p Cairo 渲染 24s 成片约 58s"
+  ]
+}

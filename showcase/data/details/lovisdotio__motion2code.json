@@ -1,0 +1,127 @@
+{
+  "id": "lovisdotio__motion2code",
+  "taglineZh": "把一条动效视频拆成可 seek 的 HTML/GSAP 代码，逐帧对照原片",
+  "summaryZh": "motion2code 是“视频→代码”的技能：先用脚本把原视频抽帧/测量运动，再写 window.anim.seek(t) 的 HTML 动效，render_anim.py 起无头 Chromium 按帧截图输出 mp4，配合帧差脚本对照原片。仓库自带 gallery/think-big 示例（DUR=10）。",
+  "whatItMakes": [
+    {
+      "type": "视频转代码",
+      "exampleZh": "gallery/think-big/index.html 复刻原动效，seek(t) 可任意帧",
+      "strength": "可对照验证"
+    },
+    {
+      "type": "逐帧渲染",
+      "exampleZh": "render_anim.py 输出 mp4，--fps/--width 可调",
+      "strength": "画面稳定"
+    },
+    {
+      "type": "帧差对照",
+      "exampleZh": "frame_diff.py 比较复刻与原片",
+      "strength": "能量化偏差"
+    }
+  ],
+  "useCases": [
+    {
+      "scenarioZh": "动效学习/复刻",
+      "whoZh": "前端/动效设计师",
+      "whyZh": "需要可维护的动效代码",
+      "deliverableZh": "10s 动效 Demo",
+      "fit": "中"
+    }
+  ],
+  "capabilities": {
+    "maxResolutionZh": "参数指定（本次 1920×1080）",
+    "maxFpsZh": "--fps，本次 30",
+    "durationZh": "由 window.anim 的 DUR（think-big 为 10s）",
+    "effectsZh": [
+      "GSAP 时间轴",
+      "SVG/文字动效",
+      "转场"
+    ],
+    "audioZh": "页面可带音频（示例无）",
+    "interactivityZh": "浏览器打开即可 seek",
+    "automationZh": "脚本渲染",
+    "assetsZh": "原片 source.mp4 + 页面",
+    "exportFormatsZh": [
+      "mp4"
+    ],
+    "realtimePreviewZh": "浏览器 seek",
+    "ciFriendlyZh": "可"
+  },
+  "ceilingZh": "适合 5–15s 的 UI/品牌动效复刻；不适合复杂 3D 或实拍素材合成。",
+  "workflow": [
+    {
+      "stepZh": "分析原片",
+      "detailZh": "抽帧/测量节奏",
+      "effortZh": "中"
+    },
+    {
+      "stepZh": "写页面",
+      "detailZh": "实现 window.anim.seek(t)",
+      "effortZh": "中高"
+    },
+    {
+      "stepZh": "渲染",
+      "detailZh": "python render_anim.py gallery/think-big/index.html --root gallery",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "对照",
+      "detailZh": "frame_diff 比对",
+      "effortZh": "低"
+    }
+  ],
+  "differentiators": [
+    "少见的“视频→代码”方向，产出可维护的 HTML/GSAP",
+    "自带复刻示例与帧差工具",
+    "渲染脚本轻量（Playwright）"
+  ],
+  "limits": [
+    "本次只验证官方示例渲染，未验证“从任意视频反推”的完整链路",
+    "示例资产依赖 gallery 目录结构",
+    "星标 330，社区小"
+  ],
+  "compareTips": [
+    {
+      "vs": "vs hyperframes",
+      "adviceZh": "HyperFrames 正向写页面出片；motion2code 反向从片子写页面"
+    },
+    {
+      "vs": "vs huashu-art-motion",
+      "adviceZh": "art-motion 用 JSON 分镜；motion2code 用 GSAP 代码"
+    }
+  ],
+  "showcase": {
+    "demoBriefZh": "演示重点：1) think-big 复刻页逐帧渲染；2) 与原片的帧差对照；3) GSAP 时间轴的可维护性。",
+    "featureCallouts": [
+      {
+        "titleZh": "视频→代码",
+        "descZh": "反向工程动效"
+      },
+      {
+        "titleZh": "逐帧可 seek",
+        "descZh": "任意时刻可复现"
+      },
+      {
+        "titleZh": "帧差对照",
+        "descZh": "量化复刻精度"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "field": "stars",
+      "source": "GitHub API",
+      "noteZh": "330 stars"
+    },
+    {
+      "field": "实测出片",
+      "source": "本地实测",
+      "noteZh": "_samples/lovisdotio__motion2code/meta.json：9.97s 1280×720@30fps"
+    },
+    {
+      "field": "示例",
+      "source": "本地实测",
+      "noteZh": "gallery/think-big 直接渲染成功，300 帧"
+    }
+  ]
+}

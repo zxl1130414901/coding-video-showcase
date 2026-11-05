@@ -1,0 +1,69 @@
+{
+  "id": "codedbytahir__motionforge",
+  "durationSec": 30.0,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.5,
+      "capabilityZh": "KineticTypography（velocity 模式）逐字速度感入场",
+      "proofZh": "同一组件由 frame 驱动的字形位移/缩放，无需手写关键帧"
+    },
+    {
+      "start": 7.5,
+      "end": 15.0,
+      "capabilityZh": "TextStack3D 六层 3D 文字堆叠",
+      "proofZh": "layers=6、depth=28，6 份副本文本沿 Z 轴错位合成厚度"
+    },
+    {
+      "start": 15.0,
+      "end": 22.5,
+      "capabilityZh": "LiquidText 液态描边文字",
+      "proofZh": "fill/stroke 双色 + 液态形变，宽 1400 高 340 的容器内自适应"
+    },
+    {
+      "start": 22.5,
+      "end": 30.0,
+      "capabilityZh": "Sequence 时间轴编排 + stretching 模式收尾",
+      "proofZh": "4 个 Sequence 各 225 帧（7.5s）无缝衔接，总 900 帧 30fps"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.4,
+      "dur": 4.0,
+      "titleZh": "① React 组件即画面",
+      "descZh": "FrameContext 注入 frame/fps/durationInFrames，组件按帧渲染"
+    },
+    {
+      "t": 7.6,
+      "dur": 4.0,
+      "titleZh": "② TextStack3D 六层堆叠",
+      "descZh": "layers=6 / depth=28：6 份副本沿 Z 轴错位，做出厚度感"
+    },
+    {
+      "t": 15.2,
+      "dur": 4.0,
+      "titleZh": "③ LiquidText 液态描边",
+      "descZh": "填充 + 描边双色，容器 1400×340 内自适应形变"
+    },
+    {
+      "t": 22.8,
+      "dur": 4.0,
+      "titleZh": "④ Sequence 把时间轴切成 4 段",
+      "descZh": "每段 225 帧（7.5s），900 帧合计 30s 确定性导出"
+    },
+    {
+      "t": 26.8,
+      "dur": 3.4,
+      "titleZh": "⑤ 逐帧截图 → ffmpeg 合成",
+      "descZh": "Playwright 900 帧截图，1920×1080@30fps 约 180KB 成片"
+    }
+  ],
+  "renderMs": 240000,
+  "pipeline": "wrapper",
+  "knownLimitsZh": [
+    "仓库无内置导出器，成片靠 Playwright 逐帧截图再合成（wrapper 管线）",
+    "组件依赖 FrameContext，脱离 Player 需自行注入上下文，否则帧号为空",
+    "首版布局把 4 个 Sequence 当 flex 子元素排在左上角，需为每段套 AbsoluteFill 才居中"
+  ]
+}

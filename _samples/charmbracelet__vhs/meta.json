@@ -1,0 +1,42 @@
+{
+  "repo": "charmbracelet/vhs",
+  "category": "终端录制→视频",
+  "status": "success",
+  "render_ms": 0,
+  "total_ms": 900000,
+  "cmd": "vhs 0.12.1 源码构建 + ttyd.win32 失败；兜底：@napi-rs/canvas 逐帧终端模拟 → ffmpeg",
+  "artifact": "F:\\coding视频\\_samples\\charmbracelet__vhs\\sample.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 13.6,
+    "fps": 30.0,
+    "nb_frames": 408,
+    "codec": "h264",
+    "size_kb": 103.5
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\charmbracelet__vhs\\preview.png",
+    "pixel_std": 23.88,
+    "unique_colors": 8423
+  },
+  "notes_zh": "官方链路未通：vhs 依赖 ttyd + Chrome xterm 桥接，Windows 上 ttyd 1.7.7 在 WebSocket 建立后立即 closed 1006（ConPTY 子进程启动失败），vhs 永远等不到 canvas.xterm-text-layer；同时 Chrome 156 不打印 DevTools 行。vhs 本身已用源码 + Go1.26.7 构建成功（vhs_built.exe --version = 0.12.1），问题不在 vhs。产物为按 tape 语义重建的终端模拟帧（真实执行 PowerShell 命令并排版渲染），非真实 ttyd 录制，已如实标注。",
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "nb_frames": 897,
+      "codec": "h264",
+      "pix_fmt": "yuv420p",
+      "duration_s": 29.9,
+      "size_bytes": 1259747
+    },
+    "render_ms": 1560000,
+    "segments": 3,
+    "callouts": 7,
+    "pipeline": "fallback",
+    "methodZh": "ttyd 在 Windows 上 WebSocket 1006 失败，改用 @napi-rs/canvas 按 tape 语义逐帧重建终端（900 帧 1280x720@30）→ ffmpeg 编码 → poster.py 统一 1080p30 并烧入中文标注",
+    "generatedAt": "2026-11-05T14:53:26+08:00"
+  }
+}

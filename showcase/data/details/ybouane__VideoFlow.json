@@ -1,0 +1,74 @@
+{
+  "id": "ybouane__VideoFlow",
+  "taglineZh": "用 TypeScript 编排时间轴、编译成一份 JSON，可在浏览器或 Node 渲成 MP4 的视频框架",
+  "summaryZh": "2026 年的新框架（v1.3.4，Apache-2.0）。它把视频写成一段可读的流程：addText 加图层，wait 推进时间，每层 animate 描述进出场，最后 compile 成一份自描述的 VideoJSON；同一份 JSON 有四个渲染器——DOM 实时预览、浏览器 WebCodecs、Node headless Chromium，以及一个可插拔的 React 剪辑器。内置 25 种以上进出场预设与 WebGL 效果管线（泛光、色差、调色），尺寸默认用 em 相对单位，1920×1080 的版式可以直接渲成 720p 或 4K。不绑定 React，但渲染吞吐很慢。官网 playground 可以在线试，不用先装包。定位是短平快的动态图文，而不是长篇课程。",
+  "whatItMakes": [
+    {"type": "数据/营销短片", "exampleZh": "标题、数字滚动、图表图层按时间线进出场，出 1080p30 短片", "strength": "核心能力"},
+    {"type": "文字动效与片头", "exampleZh": "slideUp、blurResolve、glitchResolve、typewriter、numberCountUp 等预设", "strength": "核心能力"},
+    {"type": "Shader 质感片头", "exampleZh": "bloom、chromaticAberration、colorCorrection 的参数可逐帧动画", "strength": "核心能力"},
+    {"type": "多分辨率同版式", "exampleZh": "em 单位让一份布局在 720p、1080p、4K 上等比排布", "strength": "可用"},
+    {"type": "编辑器模板换文案", "exampleZh": "同一份 JSON 喂给 VideoFlow React 编辑器改字、改图", "strength": "可用"},
+    {"type": "分钟级长视频", "exampleZh": "结构上不限时长，但实测帧率 0.32fps，一分钟片要按小时算", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "数据可视化短片", "whoZh": "运营、数据分析师 + 前端", "whyZh": "数字滚动与柱状图都用代码描述，数据一变重跑即可", "deliverableZh": "1080p30 的 10–60 秒 MP4", "fit": "高度契合"},
+    {"scenarioZh": "产品发布会/社媒片头", "whoZh": "品牌内容团队", "whyZh": "文字动效预设与 shader 管线足够做出高级感片头", "deliverableZh": "5–15 秒 1080p MP4，可加配乐", "fit": "适合"},
+    {"scenarioZh": "服务端批量出片", "whoZh": "后端团队", "whyZh": "renderVideo 在 Node 里跑 headless Chromium，可塞进队列，但单帧成本高", "deliverableZh": "每小时数十到上百条短片的产能", "fit": "勉强"},
+    {"scenarioZh": "可视化编辑器", "whoZh": "SaaS 产品团队", "whyZh": "JSON 模型与官方 React 编辑器共用格式，可直接做换文案工具", "deliverableZh": "带编辑器的出片产品", "fit": "适合"},
+    {"scenarioZh": "教学讲解长视频", "whoZh": "教师", "whyZh": "没有内置 LaTeX/公式排版，长片渲染成本极高", "deliverableZh": "不适合直接做 10 分钟课程", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "默认 1920×1080，em 相对单位可写到 4K；实测输出 1280×720 后再转码验证",
+    "maxFpsZh": "默认 30，可配置；实测 30fps，高帧率会线性拉长渲染时间",
+    "durationZh": "结构上不设硬上限，取决于渲染时长；实测 93 帧用了 294 秒",
+    "effectsZh": ["25+ 进出场预设（slideUp/blurResolve/glitchResolve/typewriter/numberCountUp 等）", "WebGL 效果管线（bloom/chromaticAberration/colorCorrection）", "逐层 animate 与 parallel 时间线", "任意参数可动画"],
+    "audioZh": "未确认音频 API 细节；README 的三渲染器说明未列出音轨能力",
+    "interactivityZh": "DOM 渲染器提供可拖拽时间轴的实时预览；另官方 React 编辑器可直接改 JSON",
+    "automationZh": "renderVideo 自动识别环境，Node 24 + tsx 可直接跑脚本；无官方任务队列",
+    "assetsZh": "图片、视频、字体图层；无内置素材库与 TTS",
+    "exportFormatsZh": ["mp4（服务端 Chromium）", "mp4（浏览器 WebCodecs + MediaBunny）", "VideoJSON（可存储/传输）"],
+    "realtimePreviewZh": "有：@videoflow/renderer-dom 实时播放并可 scrub",
+    "ciFriendlyZh": "中等：Node 环境可跑，需 playwright chromium；长片耗时高，不适合频繁 CI"
+  },
+  "ceilingZh": "它最强的地方是「一份 JSON 三渲染器」：代码写的片子和编辑器改的片子共用同一模型，分辨率无关的 em 布局让 1920 版式原样出 4K。效果上限是 shader 管线：泛光、色差、调色都能逐帧调参，配合 25 种以上进出场预设做片头足够。但吞吐是硬边界：实测 93 帧 720p 用了 294 秒，约 0.32fps，按此一分钟 30fps 片子要 5400 秒左右；原因是它按元素逐层截图而非整帧合成。批量能力只能自己写循环，官方没有队列/并发方案。此外它不擅长数学排版（无 LaTeX）、没有确认的音轨 API、社区体量小（约 170 stars），遇到问题基本靠读源码。4K 与 60fps 官方没给实测数据，本机只验证到 720p。",
+  "workflow": [
+    {"stepZh": "安装核心包", "detailZh": "npm install @videoflow/core，再按环境选 renderer-server 或 renderer-browser", "effortZh": "约 10 分钟"},
+    {"stepZh": "装浏览器", "detailZh": "服务端渲染需 npx playwright install chromium，一次性下载", "effortZh": "约 5 分钟"},
+    {"stepZh": "写时间线", "detailZh": "new VideoFlow({width,height,fps})，addText/addImage 后逐层 animate，用 wait 串节奏", "effortZh": "首个片子 1–3 小时"},
+    {"stepZh": "编译或直渲", "detailZh": "await $.renderVideo({outputType:'file'}) 出 mp4；或 compile 存 JSON 稍后交给别的渲染器", "effortZh": "实测 93 帧约 5 分钟"},
+    {"stepZh": "批量出片", "detailZh": "外层用脚本循环替换文案/数据并复用同一 JSON 模板，自行控制并发", "effortZh": "自行开发"}
+  ],
+  "differentiators": [
+    "一份 VideoJSON 同时驱动 DOM 预览、浏览器 MP4、服务端 MP4 与 React 编辑器",
+    "25 种以上进出场预设 + WebGL 效果管线，参数可动画",
+    "em 相对单位做分辨率无关布局，720p 到 4K 同版式",
+    "不绑定 React，流程式 API 可自上而下读时间线"
+  ],
+  "limits": [
+    "实测仅 0.32fps，一分钟片子要按小时算，不适合长片与高频批量",
+    "没有 LaTeX/公式排版，数学课件类的表达力很弱",
+    "音轨能力未在 README 说明，需自行验证或外部混流",
+    "生态小、文档以官网为主，遇坑要靠读源码"
+  ],
+  "compareTips": [
+    {"vs": "remotion-dev__remotion", "adviceZh": "Remotion 用 React 组件、生态与音频/字幕成熟；VideoFlow 不绑框架、JSON 可给编辑器，但渲染慢得多"},
+    {"vs": "motion-canvas__motion-canvas", "adviceZh": "Motion Canvas 有实时编辑器与强类型 scene graph；VideoFlow 胜在 JSON 跨环境复用与相对单位"},
+    {"vs": "spite__ccapture.js", "adviceZh": "只要给已有 canvas 加导出按钮选 ccapture；要从零写时间轴与图层，选 VideoFlow"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①Hello 片头，slideUp + blurResolve 入场；②数字滚动与图表图层的 30 秒数据片；③同一份 JSON 在浏览器与 Node 两种渲染器出片，对比耗时；④em 布局：同一段代码改 width 到 720p 与 4K，对比版式是否一致",
+    "featureCallouts": [
+      {"titleZh": "四渲染器", "descZh": "DOM / 浏览器 WebCodecs / Node Chromium / React 编辑器"},
+      {"titleZh": "25+ 预设", "descZh": "slideUp、blurResolve、glitchResolve、typewriter、numberCountUp"},
+      {"titleZh": "Shader 管线", "descZh": "bloom、chromaticAberration、colorCorrection 可动画"},
+      {"titleZh": "em 相对单位", "descZh": "1em = 项目宽度的 1%，跨分辨率同版式"},
+      {"titleZh": "可读时间线", "descZh": "wait / parallel / animate 自上而下读"}
+    ]
+  },
+  "evidence": [
+    {"field": "summaryZh", "source": "README.md#L10-L22", "noteZh": "原文声明 fluent API → JSON → 三种渲染，25+ 预设、WebGL 管线、em 单位"},
+    {"field": "capabilities.maxResolutionZh", "source": "README.md#L21", "noteZh": "1920×1080 版式可同样渲成 720p 或 4K"},
+    {"field": "capabilities.exportFormatsZh", "source": "README.md#L32-L35", "noteZh": "四个包：core、renderer-dom、renderer-browser（WebCodecs+MediaBunny）、renderer-server"},
+    {"field": "ceilingZh", "source": "_samples/ybouane__VideoFlow/meta.json", "noteZh": "实测 720p/30fps/93 帧耗时 293959ms，约 0.32fps，输出 1194039 字节"}
+  ]
+}

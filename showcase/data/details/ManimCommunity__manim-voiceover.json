@@ -1,0 +1,74 @@
+{
+  "id": "ManimCommunity__manim-voiceover",
+  "taglineZh": "Manim 配音插件：TTS、录音、翻译，配合 Whisper 逐词触发动画并自动出字幕",
+  "summaryZh": "ManimCE 官方生态里的配音插件（约 326 stars，v0.4.0）：用 `with self.voiceover(text=...)` 包住一段动画，插件根据音频实际时长自动决定等待，并把音轨混进成片；配音来源有 Gemini、Azure、gTTS、pyttsx3 四家 TTS 与麦克风录音，Whisper 给出逐词时间戳后可以用 `tracker.duration` 把动画绑到具体单词上，最后导出同名 srt。它解决的是「Manim 成片没声音、配音与画面永远对不准」，是数学课件从默片变网课的关键一步。实测 336 帧 720p 用 58 秒（含 TTS 与 mux）。对已有 Manim 课件，加配音几乎不用改场景结构。",
+  "whatItMakes": [
+    {"type": "带旁白的数学动画", "exampleZh": "一个 voiceover 块包住公式推导，音频结束自动进入下一步", "strength": "核心能力"},
+    {"type": "逐词同步动画", "exampleZh": "Whisper 时间戳触发「讲到这个词时高亮对应项」", "strength": "核心能力"},
+    {"type": "自动字幕", "exampleZh": "每条 voiceover 生成同名 .srt，可直接烧进或外挂", "strength": "核心能力"},
+    {"type": "多语言配音版本", "exampleZh": "DeepL 翻译后重新 TTS，一套课件出多语版", "strength": "可用"},
+    {"type": "真人录音讲解", "exampleZh": "CLI 录制模式边渲边录，适合教师本人配音", "strength": "可用"},
+    {"type": "纯视觉特效", "exampleZh": "只管音频与时序，不做任何画面特效", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "网课讲师做旁白课件", "whoZh": "高校讲师、课程团队", "whyZh": "不用跳出 Python 去剪辑配音，渲染即出带旁白成片", "deliverableZh": "720p/1080p 30fps MP4 + srt，单段 1–10 分钟", "fit": "高度契合"},
+    {"scenarioZh": "科普频道", "whoZh": "科普作者", "whyZh": "AI 音色先出草稿，定稿后再换真人录音，流程可复用", "deliverableZh": "5–15 分钟 1080p MP4", "fit": "高度契合"},
+    {"scenarioZh": "多语言课程", "whoZh": "国际化课程团队", "whyZh": "DeepL 翻译台词后重渲，字幕与配音同步产出", "deliverableZh": "同一课件的多语版本", "fit": "适合"},
+    {"scenarioZh": "无障碍字幕视频", "whoZh": "教育机构", "whyZh": "自动 srt 可直接作为无障碍字幕交付", "deliverableZh": "MP4 + SRT 字幕对", "fit": "适合"},
+    {"scenarioZh": "无配音需求的纯动画", "whoZh": "动效创作者", "whyZh": "画面能力完全来自 Manim，本身不提供视觉特效", "deliverableZh": "可直接用 ManimCE", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由 ManimCE 配置决定，实测 720p，可配 1080p/4K（未验证 4K）",
+    "maxFpsZh": "ManimCE 可配 15/30/60，实测 30fps",
+    "durationZh": "不限；由若干 voiceover 块与场景组成，实测 336 帧 11.2 秒",
+    "effectsZh": ["无视觉特效", "逐词触发动画（Whisper 时间戳）", "多段配音排队与自动等待"],
+    "audioZh": "四家 TTS（Gemini/Azure/gTTS/pyttsx3）+ 麦克风录音 + 背景音乐；自动混入成片并生成 srt",
+    "interactivityZh": "无交互；录制模式有 CLI 提示与倒计时",
+    "automationZh": "manim CLI 渲染即可；另有 manim_translate、manim_render_translation 两个翻译脚本",
+    "assetsZh": "语音文件、srt、背景音乐、Manim 字体；无素材库",
+    "exportFormatsZh": ["mp4（含音轨）", "srt 字幕"],
+    "realtimePreviewZh": "无实时预览，渲染后成片",
+    "ciFriendlyZh": "中等：TTS 需网络或本地引擎，Azure/Gemini 需 Key"
+  },
+  "ceilingZh": "能力上限是「逐词级音画同步」：Whisper 给出每个词的时间戳，动画可以精确绑到某个词，这在教学视频里非常值钱；配音可换四家 TTS 或真人录音，台词能经 DeepL 翻译后重新出片，一套课件做多语版本。实测 336 帧 720p30 用 58 秒（约 5.8fps，含 TTS 与混流），一分钟片子约 5 分钟，长课件可行。边界：它完全没有画面能力，所以天花板取决于 Manim；Windows 上 SAPI 音色写 WAV 却按 .mp3 命名，会让 moviepy 读音频时报错，本次需子类修正；同进程二次 runAndWait 会死锁，必须开独立子进程；离线音色较机械，正式出版仍需真人配音。背景音乐与配音的混音只有基础能力，复杂响度处理仍要后期。",
+  "workflow": [
+    {"stepZh": "装 Manim 与插件", "detailZh": "先装 ManimCE，再 pip install manim-voiceover（Python>=3.11）", "effortZh": "约 30 分钟"},
+    {"stepZh": "选配音来源", "detailZh": "Gemini/Azure 需 Key，gTTS 免费但需联网，pyttsx3 与录音可离线", "effortZh": "约 10 分钟"},
+    {"stepZh": "写 voiceover 块", "detailZh": "with self.voiceover(text=\"...\") as tracker: self.play(...)，用 tracker.duration 控时序", "effortZh": "首个场景 1 小时"},
+    {"stepZh": "对齐与字幕", "detailZh": "需要逐词时用 Whisper 书签；渲染时自动生成 srt", "effortZh": "约 20 分钟"},
+    {"stepZh": "渲染出片", "detailZh": "manim -pqh scene.py，输出 mp4 与同名 srt", "effortZh": "实测 11 秒片约 58 秒"}
+  ],
+  "differentiators": [
+    "逐词时间戳触发动画，讲哪个词就亮哪个对象",
+    "四家 TTS 可换，草稿用 AI、定稿换真人",
+    "DeepL 翻译后重渲，一套课件出多语版",
+    "自动生成 srt，字幕与配音天然对齐"
+  ],
+  "limits": [
+    "完全依赖 Manim，自身没有视觉能力",
+    "Windows SAPI 有扩展名 bug，需改子类规避",
+    "同进程重复调用 TTS 会死锁，要开子进程",
+    "离线音色机械，正式课程仍需真人"
+  ],
+  "compareTips": [
+    {"vs": "ManimCommunity__manim", "adviceZh": "ManimCE 出画面，本插件加旁白；做默片数学动画只用 CE，要网课成片再装它"},
+    {"vs": "jeertmans__manim-slides", "adviceZh": "manim-slides 做可交互幻灯片演示；manim-voiceover 做线性旁白成片，目标不同可叠加"},
+    {"vs": "krassowski__jupyter-manim", "adviceZh": "要在 Notebook 里快速看效果用 jupyter-manim；要正式带旁白成片用 manim-voiceover"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①一段公式推导配 gTTS 旁白，展示音频结束自动进入下一步；②Whisper 逐词时间戳，讲到「矩阵」时高亮矩阵；③导出 srt 并在播放器里挂字幕；④DeepL 翻译成英文后重渲，对比两版",
+    "featureCallouts": [
+      {"titleZh": "voiceover 上下文", "descZh": "包住动画块，按时长自动等待"},
+      {"titleZh": "逐词同步", "descZh": "Whisper 时间戳绑定单词"},
+      {"titleZh": "四家 TTS", "descZh": "Gemini/Azure/gTTS/pyttsx3 可切"},
+      {"titleZh": "自动 srt", "descZh": "每条配音产出同名字幕"},
+      {"titleZh": "翻译工作流", "descZh": "DeepL 翻译脚本重渲多语版"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L12-L17", "noteZh": "插件定位、录音 CLI、AI 音色、Whisper 逐词时间戳"},
+    {"field": "capabilities.audioZh", "source": "README.md#L23-L28", "noteZh": "支持 Gemini、Azure、gTTS、pyttsx3 四家 TTS"},
+    {"field": "whatItMakes 第 4 条", "source": "README.md#L44-L46", "noteZh": "可用 DeepL 等机器翻译把配音转成其他语言"},
+    {"field": "ceilingZh", "source": "_samples/ManimCommunity__manim-voiceover/meta.json", "noteZh": "实测 720p/30fps/336 帧耗时 58s，含 TTS 与混流，约 5.8fps"}
+  ]
+}

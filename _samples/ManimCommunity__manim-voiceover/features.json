@@ -1,0 +1,63 @@
+{
+  "id": "ManimCommunity__manim-voiceover",
+  "durationSec": 29.6,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.5,
+      "capabilityZh": "旁白时长驱动绘制",
+      "proofZh": "Create(circle) 的 run_time 直接取 tracker.duration"
+    },
+    {
+      "start": 6.5,
+      "end": 12.5,
+      "capabilityZh": "旁白时长驱动位移",
+      "proofZh": "circle.animate.shift 关键帧由句子时长决定"
+    },
+    {
+      "start": 12.5,
+      "end": 18.5,
+      "capabilityZh": "旁白时长驱动形变",
+      "proofZh": "Transform(circle→square) 与语音同步，字幕区间自动记录"
+    },
+    {
+      "start": 18.5,
+      "end": 29.6,
+      "capabilityZh": "四段共用一条旁白时间轴 + 收尾",
+      "proofZh": "第四段同时 Write 注释与 FadeOut，总时长 29.6s"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.4,
+      "dur": 4.0,
+      "titleZh": "① 旁白时长 = 动画时长",
+      "descZh": "tracker.duration 直接喂给 Create(circle) 的 run_time"
+    },
+    {
+      "t": 6.8,
+      "dur": 4.0,
+      "titleZh": "② 位移关键帧由语音决定",
+      "descZh": "circle.animate.shift 跟随句子时长，不需要手调秒数"
+    },
+    {
+      "t": 12.8,
+      "dur": 4.0,
+      "titleZh": "③ 形变与语音同步",
+      "descZh": "Transform 圆→方，字幕区间在语音结束时自动截断"
+    },
+    {
+      "t": 19.0,
+      "dur": 4.0,
+      "titleZh": "④ 四段共享一条旁白轴",
+      "descZh": "11 个动画全部由同一时间线调度，成片 29.6s"
+    }
+  ],
+  "renderMs": 96000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "PyTTSX3 在本机写的是 WAV，插件按 mp3 命名，需在样例脚本里转码修复",
+    "同进程第二次 runAndWait 会死锁，必须用子进程跑 SAPI",
+    "语音是英文机器人音（Windows SAPI），无中文发声"
+  ]
+}

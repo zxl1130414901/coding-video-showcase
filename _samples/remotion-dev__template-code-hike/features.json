@@ -1,0 +1,69 @@
+{
+  "id": "remotion-dev__template-code-hike",
+  "durationSec": 29.9,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 9.967,
+      "capabilityZh": "token 级代码过渡",
+      "proofZh": "新增 location 字段逐 token 落位，行内不跳版"
+    },
+    {
+      "start": 9.967,
+      "end": 19.934,
+      "capabilityZh": "类型错误标注",
+      "proofZh": "@errors: 2339 触发红框，错误位置随 token 对齐"
+    },
+    {
+      "start": 19.934,
+      "end": 29.901,
+      "capabilityZh": "大段重构平滑过渡",
+      "proofZh": "改写为 useCounter 并补 step 参数，跨行增删连续过渡"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.4,
+      "dur": 3.8,
+      "titleZh": "代码逐 token 变形",
+      "descZh": "CodeHike 对两份代码做 token 级 diff，位置与颜色插值"
+    },
+    {
+      "t": 4.4,
+      "dur": 3.6,
+      "titleZh": "新增字段不跳版",
+      "descZh": "插入 location 后旧 token 平滑让位，行高与缩进保持"
+    },
+    {
+      "t": 10.4,
+      "dur": 3.6,
+      "titleZh": "行内注释同框",
+      "descZh": "// @errors: 2339 这类讲解注释跟随代码行定位，不打断结构"
+    },
+    {
+      "t": 14.4,
+      "dur": 3.6,
+      "titleZh": "跨行插入不跳版",
+      "descZh": "新增字段后行高、缩进与对齐保持不变，观众不会丢失位置"
+    },
+    {
+      "t": 20.4,
+      "dur": 4.0,
+      "titleZh": "重构也能过渡",
+      "descZh": "整段改写成自定义 Hook，跨行增删仍按 token 对齐"
+    },
+    {
+      "t": 25.2,
+      "dur": 4.0,
+      "titleZh": "进度条与步骤名",
+      "descZh": "底部进度条按 Series 段推进，每一步可单独命名"
+    }
+  ],
+  "renderMs": 240000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "单一 github-dark 主题，未做多主题对照",
+    "不含编辑器滚动镜头",
+    "错误标注依赖 codehike 的 @errors 注释，不是真实编译器"
+  ]
+}

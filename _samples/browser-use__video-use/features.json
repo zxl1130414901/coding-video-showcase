@@ -1,0 +1,69 @@
+{
+  "id": "browser-use__video-use",
+  "durationSec": 20.633,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.27,
+      "capabilityZh": "语义剪辑删停顿",
+      "proofZh": "EDL 取 [0-3.4]+[9-12.9] 两段，7-9s 静默被剪掉，切口落在词边界并加 30ms 音频淡入淡出"
+    },
+    {
+      "start": 7.27,
+      "end": 13.73,
+      "capabilityZh": "字级字幕重建",
+      "proofZh": "transcripts/词级时间轴 + EDL 偏移生成 master.srt（2 词一条 cue，共 4 条），subtitles 滤镜最后叠加"
+    },
+    {
+      "start": 13.73,
+      "end": 20.63,
+      "capabilityZh": "调色/叠加/响度",
+      "proofZh": "warm_cinematic 预设 + 透明 PNG 徽标 overlay + 两遍 loudnorm 归一到 -14 LUFS/-1 dBTP"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.3,
+      "dur": 3.9,
+      "titleZh": "① 语义剪辑：删停顿",
+      "descZh": "词级时间轴 + EDL 区间，7–9s 静默直接剪掉"
+    },
+    {
+      "t": 4.5,
+      "dur": 3.2,
+      "titleZh": "② 切口落在词边界",
+      "descZh": "30ms 音频淡入淡出，硬切不爆音"
+    },
+    {
+      "t": 7.7,
+      "dur": 3.5,
+      "titleZh": "③ 字级字幕重建",
+      "descZh": "每 2 个词一条 cue，按 EDL 偏移重算输出时间"
+    },
+    {
+      "t": 11.3,
+      "dur": 3.0,
+      "titleZh": "④ 字幕最后叠加",
+      "descZh": "先调色再叠字，白字黑描边不被压暗"
+    },
+    {
+      "t": 14.3,
+      "dur": 3.3,
+      "titleZh": "⑤ 暖色电影调色",
+      "descZh": "warm_cinematic：提对比、压饱和、暖阴影冷高光"
+    },
+    {
+      "t": 17.6,
+      "dur": 3.0,
+      "titleZh": "⑥ 徽标 + 响度归一",
+      "descZh": "透明 PNG 叠加，两遍 loudnorm 到 -14 LUFS"
+    }
+  ],
+  "renderMs": 480000,
+  "pipeline": "native",
+  "knownLimitsZh": [
+    "源片是本地 FFmpeg 渐变+文字占位（simulated），不是真实产品拍摄素材；旁白为 SAPI 合成",
+    "字幕路径在 Windows 中文目录下需把反斜杠改成斜杠，本次用等价 FFmpeg 命令合成后用仓库 loudnorm 函数收尾",
+    "三条 EDL 只用了一个 24s 源片，场景复用导致第 2、3 段与前段有画面重叠"
+  ]
+}

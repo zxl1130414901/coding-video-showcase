@@ -1,0 +1,128 @@
+{
+  "id": "browser-use__video-use",
+  "taglineZh": "把一段口播丢给 Agent：转录、删停顿、加动画字幕，全走代码",
+  "summaryZh": "video-use 是 browser-use 团队的视频剪辑技能：helpers 提供转录/切分/字幕/渲染脚本，Agent 按 SKILL 流程删废话、补动画与调色。它的核心是“代码驱动的剪辑决策”，不是画面生成器；官方要求配置 ElevenLabs 做转录。",
+  "whatItMakes": [
+    {
+      "type": "口播精剪",
+      "exampleZh": "转录→按语义删段→重排",
+      "strength": "省人工"
+    },
+    {
+      "type": "字幕与动效",
+      "exampleZh": "自动字幕 + Manim/图形叠加",
+      "strength": "信息密度高"
+    },
+    {
+      "type": "批量交付",
+      "exampleZh": "脚本化处理多条素材",
+      "strength": "可流水线"
+    }
+  ],
+  "useCases": [
+    {
+      "scenarioZh": "播客/访谈切片",
+      "whoZh": "内容运营",
+      "whyZh": "长素材快速出多条",
+      "deliverableZh": "社媒短视频",
+      "fit": "中"
+    }
+  ],
+  "capabilities": {
+    "maxResolutionZh": "取决于源素材",
+    "maxFpsZh": "跟随源素材",
+    "durationZh": "按剪辑结果",
+    "effectsZh": [
+      "跳剪",
+      "字幕",
+      "图形叠加",
+      "调色"
+    ],
+    "audioZh": "人声保留 + 降噪（脚本）",
+    "interactivityZh": "无 GUI，Agent 驱动",
+    "automationZh": "强（脚本 + Agent 流程）",
+    "assetsZh": "源视频 + 转录",
+    "exportFormatsZh": [
+      "mp4"
+    ],
+    "realtimePreviewZh": "无统一预览",
+    "ciFriendlyZh": "可脚本化"
+  },
+  "ceilingZh": "上限在“剪辑判断”与素材质量；它不生成新画面，炫技型动效需另接 Manim/Remotion。",
+  "workflow": [
+    {
+      "stepZh": "装依赖",
+      "detailZh": "pip 安装 helpers 依赖 + ElevenLabs Key",
+      "effortZh": "中"
+    },
+    {
+      "stepZh": "转录",
+      "detailZh": "helpers 调 ElevenLabs 得词级时间码",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "决策剪辑",
+      "detailZh": "Agent 按 SKILL 删段/补字幕",
+      "effortZh": "中"
+    },
+    {
+      "stepZh": "渲染",
+      "detailZh": "FFmpeg 合成输出",
+      "effortZh": "低"
+    }
+  ],
+  "differentiators": [
+    "把剪辑决策显式交给 Agent，流程可审计",
+    "转录/字幕/切分脚本齐全",
+    "browser-use 团队维护，文档规范"
+  ],
+  "limits": [
+    "官方转录链路需 ElevenLabs API Key；本轮用本机 SAPI 配音 + 手写词级时间轴替代转录，才跑通剪辑/调色/字幕链路",
+    "不做画面生成，纯剪辑自动化",
+    "长视频成本取决于转录服务计费"
+  ],
+  "compareTips": [
+    {
+      "vs": "vs OpenChatCut",
+      "adviceZh": "OpenChatCut 是人机协同时间线；video-use 是全自动脚本流程"
+    },
+    {
+      "vs": "vs fragua",
+      "adviceZh": "fragua 专注竖屏去静默+烧字幕，video-use 覆盖语义级剪辑"
+    }
+  ],
+  "showcase": {
+    "demoBriefZh": "演示重点：1) 转录→删废话的前后对比；2) 自动字幕样式；3) 一条命令批量处理。",
+    "featureCallouts": [
+      {
+        "titleZh": "语义剪辑",
+        "descZh": "按 transcript 删段而非按波形"
+      },
+      {
+        "titleZh": "脚本化",
+        "descZh": "helpers 可单独复用"
+      },
+      {
+        "titleZh": "Agent 流程",
+        "descZh": "SKILL 规定决策边界"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "field": "stars",
+      "source": "GitHub API",
+      "noteZh": "30,559 stars"
+    },
+    {
+      "field": "结构",
+      "source": "本地实测",
+      "noteZh": "helpers/ + skills/manim-video，Python 为主"
+    },
+    {
+      "field": "样例",
+      "source": "本地实测",
+      "noteZh": "SAPI 配音 + 手写时间轴 + 2 段裁切/调色/烧字幕，7.04s/1280×720/30fps 出片（libass 步骤手工补跑）"
+    }
+  ]
+}

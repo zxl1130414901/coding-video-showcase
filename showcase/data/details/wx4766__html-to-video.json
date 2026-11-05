@@ -1,0 +1,74 @@
+{
+  "id": "wx4766__html-to-video",
+  "taglineZh": "一个 HTML 文件写成 frame(t)，无头浏览器逐帧截图直出 MP4 与多比例",
+  "summaryZh": "html-to-video 是一套“HTML 进、MP4 出”的本地渲染器：画面写成 frame(t) 纯函数，或直接用 11 个模板，Playwright 无头浏览器按帧 seek 截图，ffmpeg 编成 H.264。它不要求 React、没有构建步骤，渲染时才起并发 worker。它解决“只想把现成 HTML/Canvas 动画变成视频、不想为此建工程”的场景，内置黑屏、卡顿、跳变、半截字等六维 QA。与 Remotion 比少了组件生态与云端，胜在零依赖、--presets 一次出全套、--alpha 出透明层。11 个模板覆盖讲解、图表、竖屏与社交卡片，改文案即可复用。",
+  "whatItMakes": [
+    {"type": "多镜头讲解动画", "exampleZh": "片头→人物气泡→分条要点→条形对比→片尾，8 种转场与持续运镜", "strength": "核心能力"},
+    {"type": "数据图表动画", "exampleZh": "条形生长、折线趋势、KPI 数字滚动、时间线节点点亮", "strength": "核心能力"},
+    {"type": "竖屏社媒短片", "exampleZh": "1080×1920 原生版式、关键词高亮字幕卡、大字标题", "strength": "核心能力"},
+    {"type": "透明叠加层", "exampleZh": "--alpha 输出带透明通道的图层，叠到实拍画面上", "strength": "可用"},
+    {"type": "批量尺寸/批量任务", "exampleZh": "一条命令出抖音/小红书/YouTube 三套比例，或 --batch 跑任务表", "strength": "核心能力"},
+    {"type": "GIF 与封面", "exampleZh": "--gif 出动图、--poster 出封面图，配 --srt 挂字幕时间轴", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "知识科普短视频", "whoZh": "科普作者、教育博主", "whyZh": "11 个模板改 CFG 就出片，中文字体与排版不会糊", "deliverableZh": "1080p 或 1080×1920 的 30–90 秒 MP4", "fit": "高度契合"},
+    {"scenarioZh": "产品功能演示", "whoZh": "产品经理、独立开发者", "whyZh": "把现成产品页 HTML 包一层 frame(t)，无需重写成 React", "deliverableZh": "60fps 1080p 演示 1–3 分钟", "fit": "适合"},
+    {"scenarioZh": "数据汇报视频", "whoZh": "分析师、运营", "whyZh": "图表模板喂 JSON 镜头表，改数据重渲即可", "deliverableZh": "720p/1080p 1–2 分钟", "fit": "适合"},
+    {"scenarioZh": "投放素材批量产出", "whoZh": "投放优化师", "whyZh": "--presets 与 --batch 一次生成多比例多版本", "deliverableZh": "9:16/1:1/16:9 套装，数十条", "fit": "高度契合"},
+    {"scenarioZh": "AI 无人值守出片", "whoZh": "用 LLM 生成 HTML 的开发者", "whyZh": "同输入同输出 + qa.js 自动判红绿，模型可自循环修片", "deliverableZh": "模板化短片，自动验收", "fit": "适合"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "任意 --width/--height；内置 1920×1080、1080×1440、1080×1920 预设，实测 1280×720",
+    "maxFpsZh": "任意帧率，真 60fps（逐帧 seek，不是插帧），实测 30fps",
+    "durationZh": "按 --duration 指定，无硬限制；实测 6 秒",
+    "effectsZh": ["Canvas 2D 绘制与运镜", "8 种镜头转场", "40+ 图标、参数化人物、卡片箭头、纹理", "透明通道叠加层"],
+    "audioZh": "支持外部配乐；可用 --srt 挂字幕时间轴，不内置 TTS",
+    "interactivityZh": "仅离线渲染；HTML 可先在浏览器预览",
+    "automationZh": "CLI 可脚本化：node scripts/render-video-seek.js，支持 --concurrency/--gop/--tmpdir/--out",
+    "assetsZh": "纯代码素材零版权依赖；模板、图标、纹理都在 assets/；字体走系统或自带",
+    "exportFormatsZh": ["MP4（H.264）", "GIF", "PNG 封面", "透明视频层"],
+    "realtimePreviewZh": "部分：HTML 可直接浏览器打开，另有在线预览页",
+    "ciFriendlyZh": "可进 CI：脚本化渲染 + qa.js 六维质量门"
+  },
+  "ceilingZh": "它能做到“一支完整片子”：一个 HTML 里排多镜头、加 8 种转场、持续运镜，不用渲几段再拼；同一份代码用 --presets=douyin,xiaohongshu,youtube 直接出 1920×1080、1080×1440、1080×1920 三套不裁切的成片。实测 6 秒 1280×720@30（180 帧）用 4 个 worker 渲染 54 秒，总耗时 60 秒，约 3.3 帧/秒，说明瓶颈在无头浏览器截图与串行 seek；60fps 的 1080p 长片会明显更慢。边界：表现力锁在 Canvas 2D，做不了真 3D 与实拍质感；模板之外的画面要自己写 Canvas 代码；并发数受内存与显存限制，实测 4 worker 稳定；批量与透明通道都依赖 ffmpeg 参数，跨平台仍需本机装 Chrome/Chromium 与 ffmpeg。它对中文字体回退有专门检测，但字体仍需本机安装或内嵌，服务器上要自己带字体文件；长片建议分段渲染再拼。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "Node ≥18，npm install 装 Playwright 与依赖，准备 ffmpeg 在 PATH", "effortZh": "约 5 分钟"},
+    {"stepZh": "选模板", "detailZh": "复制 assets/templates 下某个 HTML，改顶部 CFG 的标题与数据", "effortZh": "约 10 分钟"},
+    {"stepZh": "写画面", "detailZh": "把动画写成 frame(t) 纯函数，或用多镜头表与转场；需要时加 --srt 字幕", "effortZh": "简单片子 1–3 小时"},
+    {"stepZh": "渲染", "detailZh": "node scripts/render-video-seek.js video.html --duration=6 --fps=30 --width=1280 --height=720 --out=out.mp4", "effortZh": "6 秒 720p 约 1 分钟"},
+    {"stepZh": "质量门", "detailZh": "跑 qa.js 检查确定性、卡顿、跳变、半截字、叠字与字体回退", "effortZh": "约 1 分钟"}
+  ],
+  "differentiators": [
+    "零构建：HTML 直接在浏览器跑，渲染时才起无头 Chromium，不需要 React 工程",
+    "一条命令出横屏、方图、竖屏三套原生版式，不靠裁切",
+    "内置六维自动化 QA，把画面问题变成可脚本判断的指标",
+    "纯代码素材库，40+ 图标与参数化人物零版权风险"
+  ],
+  "limits": [
+    "只有 Canvas 2D，做不了真 3D、粒子 GPU 管线与实拍质感",
+    "无头浏览器逐帧截图，60fps 1080p 长片的渲染时间会线性膨胀",
+    "模板之外要从零写 Canvas，复杂分镜的代码量不比 React 少",
+    "依赖本机 Chrome/Chromium 与 ffmpeg，跨平台需自行处理路径"
+  ],
+  "compareTips": [
+    {"vs": "remotion-dev__remotion", "adviceZh": "要 React 组件复用与云端批量选 Remotion；只有一屏现成 HTML 想直接变 MP4，选这个更省事"},
+    {"vs": "LBEILC__Multiplane", "adviceZh": "要运镜、景深、运动模糊与多 worker 的 HTML 渲染选 Multiplane；要模板、批量比例与 QA 质量门选 html-to-video"},
+    {"vs": "BintzGavin__helios", "adviceZh": "要原生 CSS 动画时间轴与播放器组件选 Helios；画面本来就是 Canvas 函数，html-to-video 的 seek 模型更直接"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①demo-hero.html 在浏览器里播放；②渲染器 4 worker 逐帧 seek 的过程；③同一 HTML 用 --presets 出横屏/竖屏/方图三套；④qa.js 报告把黑屏与半截字标红",
+    "featureCallouts": [
+      {"titleZh": "HTML 进 MP4 出", "descZh": "无需构建，一条命令"},
+      {"titleZh": "真 60fps", "descZh": "逐帧 seek 截图，不靠插帧补"},
+      {"titleZh": "三平台预设", "descZh": "横屏/竖屏/方图不裁切"},
+      {"titleZh": "六维 QA", "descZh": "黑屏、卡顿、半截字自动判"},
+      {"titleZh": "透明叠加层", "descZh": "--alpha 叠到实拍画面上"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L21-L31", "noteZh": "HTML/Canvas 动画 → 无头浏览器逐帧 seek 截图 → ffmpeg H.264"},
+    {"field": "whatItMakes", "source": "README.md#L33-L50", "noteZh": "列出确定性、真 60fps、--alpha、--srt、--gif/--poster/--batch 等能力"},
+    {"field": "capabilities.automationZh", "source": "README.md#L394-L414", "noteZh": "CLI 参数 --concurrency/--gop/--tmpdir/--out"},
+    {"field": "ceilingZh", "source": "_samples/wx4766__html-to-video/meta.json", "noteZh": "实测 6s/1280×720/30fps/180 帧，4 worker，render 54s，总 60s"}
+  ]
+}

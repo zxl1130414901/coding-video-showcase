@@ -1,0 +1,59 @@
+{
+  "repo": "browser-use/video-use",
+  "category": "Agent 自动剪辑",
+  "status": "success",
+  "render_ms": 62000,
+  "total_ms": 95000,
+  "cmd": "python helpers/render.py edl.json -o final.mp4 --build-subtitles（最后一次 libass 合成手工执行）",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 7.04,
+    "nb_frames": 210,
+    "codec": "h264",
+    "pix_fmt": "yuv420p",
+    "fps": "30/1",
+    "size_bytes": 154834
+  },
+  "notes_zh": "缺口：云端 Scribe 转录需 ElevenLabs Key。用本机 SAPI 合成本地配音 + 手写词级时间轴代替转录，走官方 render.py 的裁切/调色/字幕合成链路；字幕合成步骤因仓库 ffmpeg 转义在本机报错，按同一命令手工完成（base.mp4 + master.srt）",
+  "preview": {
+    "at_s": 3.52,
+    "mean_rgb": [
+      3.09,
+      1.38,
+      1.19
+    ],
+    "stddev_rgb": [
+      11.87,
+      14.27,
+      12.76
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 20.633,
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 6,
+    "render_ms": 480000,
+    "pipeline": "native",
+    "build": "本地用 FFmpeg gradients + msyh 字幕生成 24s 源片，SAPI Huihui 合成中文旁白（模拟真人），再走 helpers/render.py 三条 EDL：删停顿 / 字级字幕 / 调色+overlay+loudnorm；1920x1080@30fps",
+    "ffprobe": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "frames": 619,
+      "duration": 20.633,
+      "codec": "h264",
+      "size_bytes": 3452269
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 7.04s",
+    "known_limits_zh": [
+      "源片是本地 FFmpeg 渐变+文字占位（simulated），不是真实产品拍摄素材；旁白为 SAPI 合成",
+      "字幕路径在 Windows 中文目录下需把反斜杠改成斜杠，本次用等价 FFmpeg 命令合成后用仓库 loudnorm 函数收尾",
+      "三条 EDL 只用了一个 24s 源片，场景复用导致第 2、3 段与前段有画面重叠"
+    ]
+  }
+}

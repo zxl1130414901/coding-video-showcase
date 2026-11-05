@@ -1,0 +1,70 @@
+{
+  "id": "AzurIce__ranim",
+  "taglineZh": "纯 Rust 的 Manim 精神续作：代码描述动画，默认直出 1080p60 MP4",
+  "summaryZh": "Ranim 是纯 Rust 的动画引擎，API 思路来自 Manim 与 JAnim：用 Item 描述画面元素，用动画与缓动描述它们随时间的变化，运行时依赖 ffmpeg 把帧编码成 MP4。它解决“不想为动画装 Python、LaTeX 和一堆科学计算库”的问题——一个 cargo 工程、一条 render 命令，默认就产出 1920×1080、60fps 成片。与 Manim 相比它没有公式排版、3D 曲面与插件生态，优势在类型安全与原生性能。代价是生态极小、文档仍在写、首次编译要拉 900 多个 crate。它更像给程序员的动画 DSL，而不是给教师的课件工具。",
+  "whatItMakes": [
+    {"type": "数学/几何动画", "exampleZh": "图形入场、变换、路径运动与缓动曲线演示", "strength": "核心能力"},
+    {"type": "2D 概念讲解", "exampleZh": "分步出现的图形、箭头、标注与场景切换", "strength": "可用"},
+    {"type": "程序化动态图形", "exampleZh": "用 Rust 循环批量生成图形阵列与运动", "strength": "可用"},
+    {"type": "教学短片", "exampleZh": "多场景串联，输出 1080p60 MP4", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "Rust 技术演示视频", "whoZh": "Rust 社区作者、系统工程师", "whyZh": "全流程同一语言，不需要 Node/Python 运行时", "deliverableZh": "1080p60 的 1–5 分钟 MP4", "fit": "适合"},
+    {"scenarioZh": "几何/算法可视化", "whoZh": "算法讲师、科普作者", "whyZh": "用代码批量生成图形与运动，改参数即重渲", "deliverableZh": "720p/1080p 短片", "fit": "适合"},
+    {"scenarioZh": "Manim 迁移试验", "whoZh": "想摆脱 Python 环境的团队", "whyZh": "API 概念接近 Manim，但公式与 3D 能力缺失", "deliverableZh": "2D 教学片段", "fit": "勉强"},
+    {"scenarioZh": "CI 内生成动画", "whoZh": "工程团队", "whyZh": "cargo 构建可复现，render 命令可脚本化", "deliverableZh": "固定模板的短动画", "fit": "适合"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "默认 1920×1080，可通过 output 配置改分辨率；未声明上限",
+    "maxFpsZh": "默认 60fps；文档未声明更高帧率",
+    "durationZh": "由场景时长决定，无硬限制；实测 5 秒",
+    "effectsZh": ["2D 图形与路径动画", "缓动曲线与时间轴", "场景切换与组合", "代码生成的批量图形"],
+    "audioZh": "未见音频输入或音轨合成支持（未确认）",
+    "interactivityZh": "仅离线渲染，无交互播放器",
+    "automationZh": "CLI 可脚本化：cargo run --example 后执行 render <scene>",
+    "assetsZh": "以代码生成图形为主；字体/图片支持范围未确认",
+    "exportFormatsZh": ["MP4"],
+    "realtimePreviewZh": "无（未确认）",
+    "ciFriendlyZh": "可进 CI：cargo 构建 + PATH 中的 ffmpeg，建议 GPU"
+  },
+  "ceilingZh": "它把“默认质量”定得很高：render 不带参数就是 1920×1080、60fps、MP4，输出到 ./output/<scene>_1920x1080_60.mp4。实测 5 秒 300 帧在 RTX 4060 Laptop 上渲染 18.4 秒（约 16fps 出帧），wgpu 走 Vulkan，说明二维场景接近实时；但首次编译拉了 902 个 crate，耗时 6596 秒（约 1 小时 50 分），这是它最真实的门槛。边界：纯 2D，没有 3D 曲面与相机；没有 LaTeX 公式排版，数学课件的核心诉求它接不住；音频与字幕未见支持；文档是一本正在写的 book，示例数量远少于 Manim；没有可视化编辑器，复杂分镜全靠 Rust 代码。它的编译门槛极高，902 个 crate 首次构建近两小时；没有热重载，调一段动画要重跑编译，实际迭代效率不如 Manim 的 -ql 预览；社区示例也少。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "装 Rust 工具链与 ffmpeg 并确保在 PATH，克隆仓库", "effortZh": "约 10 分钟"},
+    {"stepZh": "首次编译", "detailZh": "cargo build 拉取 900+ crate，建议设 CARGO_HOME/CARGO_TARGET_DIR 到大盘", "effortZh": "约 1–2 小时"},
+    {"stepZh": "写场景", "detailZh": "参考 book/getting_started 与 examples，用 Item/动画 API 组织画面", "effortZh": "首个场景 2–4 小时"},
+    {"stepZh": "渲染", "detailZh": "cargo run --example hello_ranim，再执行 hello_ranim render hello_ranim", "effortZh": "5 秒约 18 秒"}
+  ],
+  "differentiators": [
+    "纯 Rust 实现，无 Python/Node 运行时，类型安全且编译期可查错",
+    "默认 1080p60 MP4，不用手动挑质量档",
+    "wgpu 走 Vulkan/Metal，二维场景渲染接近实时",
+    "API 借鉴 Manim/JAnim，概念迁移成本低"
+  ],
+  "limits": [
+    "生态极小，文档与示例远少于 Manim，遇到问题难搜答案",
+    "首次编译 902 个 crate、约 1.8 小时，迭代环境成本高",
+    "只有 2D，没有公式排版、3D 曲面与相机",
+    "音频、字幕、交互预览均未见支持"
+  ],
+  "compareTips": [
+    {"vs": "ManimCommunity__manim", "adviceZh": "要公式/3D/插件生态选 Manim；要纯 Rust、1080p60 默认与类型安全选 Ranim"},
+    {"vs": "academa-labs__manimgx", "adviceZh": "要 3D 与 Python 资产迁移选 ManimGX；要全 Rust 工程与自有渲染循环选 Ranim"},
+    {"vs": "yongkyuns__noon", "adviceZh": "要网页交互课件选 Noon；要离线 2D 成片与 Rust 类型系统选 Ranim"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①cargo 工程与 hello_ranim 场景代码；②图形入场与缓动运动；③多场景切换与批量图形；④render 出 1920×1080/60fps/300 帧 MP4",
+    "featureCallouts": [
+      {"titleZh": "纯 Rust 动画", "descZh": "不依赖 Python、Node 与浏览器"},
+      {"titleZh": "默认 1080p60", "descZh": "一条命令即高质量"},
+      {"titleZh": "wgpu 加速", "descZh": "走 Vulkan 或 Metal，接近实时"},
+      {"titleZh": "Manim 式 API", "descZh": "Item 与动画概念相近"},
+      {"titleZh": "可脚本化", "descZh": "cargo 与 render 可直接进 CI"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L28-L43", "noteZh": "纯 Rust 动画引擎，受 Manim/JAnim 启发，运行时依赖 ffmpeg 编码"},
+    {"field": "capabilities.maxResolutionZh", "source": "book/getting_started.md#L534-L541", "noteZh": "render 默认输出 1920×1080、60fps、mp4"},
+    {"field": "capabilities.automationZh", "source": "book/cli.md#L137-L141", "noteZh": "render <SCENE> 输出 ./output/<scene>_1920x1080_60.mp4"},
+    {"field": "ceilingZh", "source": "_samples/AzurIce__ranim/meta.json", "noteZh": "实测 1080p60/300 帧/5s 渲染 18.4s；首次编译 902 crate 耗时 6596s"}
+  ]
+}

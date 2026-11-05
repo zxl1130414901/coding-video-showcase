@@ -1,0 +1,76 @@
+{
+  "id": "cth9191__animate",
+  "taglineZh": "Claude Code 技能包：用 canvas 代码画分镜、配音配乐，直接渲出竖屏短视频",
+  "summaryZh": "这不是 npm 库，而是一个 Claude Code 技能：把选题、故事节拍、画风、配音、配乐、渲染串成一条流水线，画面全部由 canvas 代码逐帧绘制，再用 headless Chromium 截图、ffmpeg 合成 MP4。它把七种内置画风（剪纸、交叉排线、孔版印刷、速写本、math、像素、等距）连同「故事语法」一起交付，每一种风格都是一套可插拔的绘图套件。与通用动画框架最本质的区别在于：它规定的是叙事节奏与画面规则，而不是给你一堆 API 自己拼。实测 1080×1920、24fps、144 帧带音轨，21.8 秒出片。",
+  "whatItMakes": [
+    {"type": "数学讲解动画", "exampleZh": "math 风格：黑底坐标轴、彩色变量、公式逐步推演，接近 Manim 观感", "strength": "核心能力"},
+    {"type": "竖屏知识/科普短片", "exampleZh": "剪纸、孔版、速写本、像素、等距五种画风的讲解片与历史时间线", "strength": "核心能力"},
+    {"type": "多比例一次出片", "exampleZh": "9:16、1:1、4:5、16:9 各按版式重排，不是裁切", "strength": "核心能力"},
+    {"type": "带旁白的口播视频", "exampleZh": "脚本分句、逐词对时，ElevenLabs 或自录音频驱动画面节奏", "strength": "可用"},
+    {"type": "自定义画风仿制", "exampleZh": "给参考视频或网页，量出色板、线宽、纹理、运镜后生成新风格目录", "strength": "可用"},
+    {"type": "长片分段并行构建", "exampleZh": "长片按场景拆分，一个场景一个文件，由 build 合并（README 标注为并行构建）", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "竖屏知识短视频", "whoZh": "独立创作者、知识类运营", "whyZh": "从选题到成片在同一个会话里完成，剪辑与调色步骤被省掉", "deliverableZh": "1080×1920 24fps MP4，单条 6–60 秒，含配音与配乐", "fit": "高度契合"},
+    {"scenarioZh": "中学/大学数学课件", "whoZh": "教师、课程制作团队", "whyZh": "math 风格自带坐标轴与公式排版规则，不用懂 Manim 也能出片", "deliverableZh": "16:9 1080p MP4，单条 3–8 分钟（需按场景拆分）", "fit": "适合"},
+    {"scenarioZh": "品牌科普与产品短片", "whoZh": "内容营销团队", "whyZh": "可截图真实产品页并把界面动起来，四种比例一次导出", "deliverableZh": "20–45 秒多比例 MP4 套件", "fit": "适合"},
+    {"scenarioZh": "历史/传记时间线视频", "whoZh": "教育频道、出版机构", "whyZh": "故事语法内置「按时间线串联、形变转场」结构，示例就是 60 秒 15 个时代", "deliverableZh": "60 秒剪纸风 MP4，13 次形变转场", "fit": "高度契合"},
+    {"scenarioZh": "需要精细卡点的广告片", "whoZh": "专业后期团队", "whyZh": "节奏由故事节拍表与音乐拍点共同驱动，但缺少逐帧手工微调界面", "deliverableZh": "15–30 秒成片", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "默认 1080×1920 竖屏；横屏与其他尺寸需改配置，实测导出 1080×1920",
+    "maxFpsZh": "实测 24fps 输出（144 帧 6 秒）；渲染按帧逐张截图，帧率由配置决定",
+    "durationZh": "面向短视频，常见 20–60 秒；官方示例为 60 秒，更长需按场景拆分并行构建",
+    "effectsZh": ["七种内置画风套件（剪纸/交叉排线/孔版/速写本/math/像素/等距）", "形变转场（旧世界收束到物体再展开）", "闭式弹簧动画与可选运动模糊", "相机运动与世界坐标映射", "节拍网格剪辑与响度检查"],
+    "audioZh": "TTS 配音（ElevenLabs 连接器或自录）、代码合成配乐、stems 分轨与音效，faster-whisper 逐词对齐；脚本自动分句",
+    "interactivityZh": "生成可交互的 index.html，支持点击听声与 ?t=12.5 定格单帧；无时间轴编辑器",
+    "automationZh": "build/still/storyboard/export/review 等 .mjs 工具可单独调用，但整套流程依赖 Claude Code 会话与三次人工确认",
+    "assetsZh": "系统字体（含 Windows 回退）、参考图/参考视频、产品截图、用户音乐；无内置图库",
+    "exportFormatsZh": ["mp4（多比例批量）", "wav/stems 音频中间件", "png 单帧与拼图"],
+    "realtimePreviewZh": "浏览器打开 index.html 实时预览，playwright 抓 still 帧做审片",
+    "ciFriendlyZh": "较弱：无 package.json 与统一入口，需手动按路径调用脚本，且流程依赖对话式确认"
+  },
+  "ceilingZh": "官方给出的能力上限就是那条 60 秒剪纸风示例：15 个时代、13 次形变转场、一次硬切卡在情绪最高点、全程代码合成配乐。实测 144 帧 24fps 导出 21.8 秒，约 0.15 秒/帧，按此推算 60 秒（1440 帧）约 3.6 分钟，批量出四种比例则是四倍。画质上限是 1080 宽，4K 未确认；最复杂的效果是「自定义画风」：喂参考视频或网页，量出色板、线宽、纹理与剪辑节奏后生成新风格目录，并保证同一套 kit 改动后帧哈希不变。边界：依赖 Claude Code 宿主和人工审美确认，WebGL 风格仍标注为 Coming；没有字幕渲染器，字幕只能画进画面；音轨与画面时长不一致时 ffmpeg 混流会直接报错。这类片子更像手工定制，不适合日更批量。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "通过 /plugin marketplace 安装 animate，或把 skills/animate 拷到 ~/.claude/skills；另装 Playwright Chromium 与 ffmpeg", "effortZh": "约 15 分钟"},
+    {"stepZh": "选题与画风", "detailZh": "用 /animate 描述主题、时长、比例、画风，技能给出节拍表与 2–4 张风格帧", "effortZh": "约 10 分钟"},
+    {"stepZh": "审分镜", "detailZh": "逐格批准故事板，含每格的音效与到下一格转场", "effortZh": "按片长而定"},
+    {"stepZh": "构建与渲染", "detailZh": "tools/build.mjs 合成单个 index.html，tools/export.mjs 输出帧、音轨并合成 MP4；加 --formats 9:16,1:1,16:9 可一次导出多比例", "effortZh": "实测 6 秒片约 22 秒"},
+    {"stepZh": "审片与修订", "detailZh": "tools/review.mjs 出接触表并检查文字溢出、响度、节拍，按意见重跑", "effortZh": "每轮 5–10 分钟"}
+  ],
+  "differentiators": [
+    "交付的是「故事语法 + 画风套件」，不是裸动画 API，节奏和画面规则都被固化",
+    "七种风格可插拔，自定义风格靠测量参考素材而非调参数",
+    "同一份分镜一次导出四种比例，每种比例单独重排版式",
+    "内建审片工具：检查文字溢出、响度曲线、节拍对齐与帧哈希",
+    "配音支持逐词对齐，改写一句台词会自动重排画面时长"
+  ],
+  "limits": [
+    "不是独立工程：没有 package.json，只能按 skills/animate/tools 路径手动调脚本",
+    "默认竖屏 1080×1920，横屏与 4K 需要改配置，官方未提供 4K 验证",
+    "深度依赖 Claude Code 会话与三轮人工确认，无法全自动跑批",
+    "音频与画面时长不一致会让 ffmpeg 混流报错，必须先对齐"
+  ],
+  "compareTips": [
+    {"vs": "bangtutorial__bang-motion", "adviceZh": "要直接拿到 MP4 与数学画风选 animate；交付物可以是可播放网页、偏品牌 opener 选 bang-motion"},
+    {"vs": "iart-ai__motion-skills", "adviceZh": "两者都是 agent 技能；animate 自带导出脚本与审片测量，motion-skills 更偏动效知识库，按是否需要成片管线来选"},
+    {"vs": "ybouane__VideoFlow", "adviceZh": "要可编程时间轴、批量参数化换文案选 VideoFlow；要现成画风与叙事结构选 animate"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①用 math 风格录一段公式推演，展示坐标轴与彩色变量；②剪纸风格历史时间线，展示形变转场与节拍剪辑；③同一条片一次导出 9:16 与 16:9，对比版式重排；④打开 review 接触表与响度报告，指出文字溢出检查结果",
+    "featureCallouts": [
+      {"titleZh": "七种画风套件", "descZh": "剪纸、交叉排线、孔版、速写本、math、像素、等距各自独立"},
+      {"titleZh": "形变转场", "descZh": "旧世界收束到一个物体，再展开成新世界的对应物"},
+      {"titleZh": "逐词对齐配音", "descZh": "faster-whisper 给每个词打时间戳，画面跟着台词走"},
+      {"titleZh": "四比例一次出片", "descZh": "9:16 / 1:1 / 4:5 / 16:9 各按版式重排，不裁切"},
+      {"titleZh": "审片测量", "descZh": "接触表 + 文字溢出、响度、节拍、帧哈希检查"}
+    ]
+  },
+  "evidence": [
+    {"field": "summaryZh", "source": "README.md#L3", "noteZh": "原文：one canvas, drawn and scored procedurally, deterministic frame by frame, rendered to MP4 with a headless browser and ffmpeg"},
+    {"field": "whatItMakes 第 1–3 条", "source": "README.md#L22-L34", "noteZh": "风格表列出剪纸/交叉排线/孔版/速写本/math/像素/等距七种画风及其观感"},
+    {"field": "capabilities.audioZh", "source": "README.md#L40-L51", "noteZh": "配音、自选音乐、产品截图、四比例、弹簧动画与并行构建均在 baked-in 清单"},
+    {"field": "ceilingZh", "source": "README.md#L53", "noteZh": "WebGL 动效风格标注为 Coming，说明 3D 能力尚未交付"},
+    {"field": "ceilingZh", "source": "_samples/cth9191__animate/meta.json", "noteZh": "实测 1080×1920/24fps/144 帧，21.8s，912171 字节，带音轨"}
+  ]
+}

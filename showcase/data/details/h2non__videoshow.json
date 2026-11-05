@@ -1,0 +1,74 @@
+{
+  "id": "h2non__videoshow",
+  "taglineZh": "把一组图片配字幕做成带淡入淡出的幻灯片视频，API 极简的 Node 封装",
+  "summaryZh": "2015 年的 Node 库（约 903 stars）：传一个 images 数组，每项给路径、停留时长、字幕、转场，库用 fluent-ffmpeg 拼成幻灯片视频；默认 25fps、每张停 5 秒、1 秒淡入淡出、640 宽。它解决的是「几十张图 + 一句说明，快速生成一条视频」，适合电商图集、纪念相册、图文课件。本质是图片幻灯片生成器，不是剪辑器：没有视频输入、没有图层、没有时间轴。实测 5 张 PNG 生成 720p30、10 秒成片用 14.8 秒（约 20fps）。字幕可挂 SSA 样式文件，位置与字号都能调。它适合一次性批量生成，而不是反复精修。",
+  "whatItMakes": [
+    {"type": "图片幻灯片", "exampleZh": "10–50 张图按序播放，每张设停留时长", "strength": "核心能力"},
+    {"type": "图文说明视频", "exampleZh": "每张图配一句 caption，字幕位置与样式可调", "strength": "核心能力"},
+    {"type": "淡入淡出转场", "exampleZh": "transition 开启后相邻图交叉淡化", "strength": "核心能力"},
+    {"type": "GIF 动图", "exampleZh": "format: 'gif' 直接输出循环动图", "strength": "可用"},
+    {"type": "配乐视频", "exampleZh": "audio 文件按图集时长铺底，音量可调", "strength": "可用"},
+    {"type": "视频剪辑/图层合成", "exampleZh": "不支持视频输入、画中画与多轨", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "电商商品图集视频", "whoZh": "电商运营、代运营", "whyZh": "商品图批量生成带说明的短视频，模板参数固定，产出稳定", "deliverableZh": "720p 或 1080p 的 10–30 秒 MP4", "fit": "高度契合"},
+    {"scenarioZh": "纪念相册", "whoZh": "个人用户、影像店", "whyZh": "几十张照片加配乐与字幕，一次生成", "deliverableZh": "3–5 分钟 MP4", "fit": "高度契合"},
+    {"scenarioZh": "图文课件", "whoZh": "教师、培训师", "whyZh": "把讲义截图做成带说明的幻灯片视频", "deliverableZh": "5–15 分钟 MP4", "fit": "适合"},
+    {"scenarioZh": "社媒轮播图视频", "whoZh": "内容运营", "whyZh": "方形/竖屏尺寸可配，GIF 可直接发", "deliverableZh": "1:1 或 9:16 短片", "fit": "适合"},
+    {"scenarioZh": "真实视频剪辑", "whoZh": "剪辑师", "whyZh": "不能处理视频素材，只有图片序列", "deliverableZh": "不适用", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "可配 size，实测 1280×720；默认 640 宽。图片与尺寸比例不一致会被裁切或留边",
+    "maxFpsZh": "可配，默认 25；实测 30fps",
+    "durationZh": "图片数量 × 单张 loop 时长；无硬上限，实测 10 秒",
+    "effectsZh": ["淡入淡出转场", "每张图自定义 ffmpeg filter", "字幕文字与位置", "音量调整"],
+    "audioZh": "可传单个音频文件铺底，支持音量参数；无多轨混音与 TTS",
+    "interactivityZh": "无交互，纯 JS API",
+    "automationZh": "JS API 易脚本化；无官方 CLI",
+    "assetsZh": "图片、音频、字体、SSA 字幕样式文件",
+    "exportFormatsZh": ["mp4", "gif"],
+    "realtimePreviewZh": "无预览",
+    "ciFriendlyZh": "中等：Node + ffmpeg 即可，但依赖旧版 fluent-ffmpeg"
+  },
+  "ceilingZh": "它的能力上限就是「图片 + 字幕 + 淡入淡出」：每张图能塞任意 ffmpeg filter，尺寸/帧率/停留时长/转场都可调，输出 mp4 或 GIF，做几十张图的相册或商品图集完全够用。实测 300 帧 720p30 用 14.8 秒，约 20fps，5 分钟相册大约 2 分钟渲完。边界清晰：不接受视频输入，没有图层、时间轴、画中画、多音轨；图片比例与输出尺寸不一致时会被裁切；项目停在 2015 年的 fluent-ffmpeg 2.1.2，ffmpeg 7 会因能力预校验直接报错，需关闭校验或锁旧版；无 CLI、无中文文档。它的字幕是烧进画面的，不能外挂；图片之间只有淡入淡出，没有推拉摇移；输出分辨率一旦设定，超出比例的图片会被裁掉两边。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "npm install videoshow；确认 ffmpeg 在 PATH，必要时锁 fluent-ffmpeg 2.1.2", "effortZh": "约 15 分钟"},
+    {"stepZh": "整理图片", "detailZh": "把所有图统一到目标尺寸比例，避免裁切", "effortZh": "按图量"},
+    {"stepZh": "写配置", "detailZh": "images: [{path, loop, caption, transition}]，再设 size/fps/format/audio", "effortZh": "约 15 分钟"},
+    {"stepZh": "生成", "detailZh": "videoshow(images, options).save('out.mp4', cb)", "effortZh": "实测 10 秒片约 15 秒"},
+    {"stepZh": "检查", "detailZh": "确认字幕未被裁、音轨长度与画面匹配", "effortZh": "约 5 分钟"}
+  ],
+  "differentiators": [
+    "API 极简：一个数组就出片，默认值合理",
+    "每张图可挂自定义 ffmpeg filter，细调空间比想象大",
+    "同时支持 mp4 与 GIF 输出",
+    "字幕与淡入淡出一行配置完成"
+  ],
+  "limits": [
+    "只能处理图片，不接受视频素材",
+    "无图层、时间轴、画中画与多音轨",
+    "依赖 2015 年的 fluent-ffmpeg，新版 ffmpeg 易报错",
+    "无 CLI 与中文文档，长期不更新"
+  ],
+  "compareTips": [
+    {"vs": "mowshon__moviego", "adviceZh": "要视频输入、图层与字幕混音选 moviego；纯图片幻灯片用 videoshow 更快上手"},
+    {"vs": "mifi__editly", "adviceZh": "Editly 支持视频、GL 转场与音频自动化，但安装重；只做图集视频 videoshow 足够"},
+    {"vs": "transitive-bullshit__ffmpeg-concat", "adviceZh": "要多段视频加转场选 ffmpeg-concat；有一堆图片要成片选 videoshow"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①10 张图默认参数出 640 宽片子；②每张配 caption 与 1 秒淡入淡出；③改 size 到 1280×720 并配乐；④同素材输出 GIF，对比体积与画质",
+    "featureCallouts": [
+      {"titleZh": "images 数组", "descZh": "path/loop/caption/transition 四字段驱动"},
+      {"titleZh": "单图 filter", "descZh": "每张图可挂自定义 ffmpeg filter"},
+      {"titleZh": "字幕", "descZh": "caption 与位置/样式可调"},
+      {"titleZh": "GIF 输出", "descZh": "format:gif 直接出循环动图"},
+      {"titleZh": "默认参数", "descZh": "25fps、5 秒/张、1 秒转场、640 宽"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L5-L8", "noteZh": "自述为基于 ffmpeg 的图片转幻灯片工具，支持音频、字幕、淡入淡出"},
+    {"field": "capabilities 默认值", "source": "README.md#L186-L205", "noteZh": "默认 25fps、每张 loop 5 秒、1 秒 transition、libx264、640 宽、mp4"},
+    {"field": "limits 第 3 条", "source": "_samples/h2non__videoshow/meta.json", "noteZh": "实测需关闭 fluent-ffmpeg 能力预校验，否则与 ffmpeg 7 不兼容"},
+    {"field": "ceilingZh", "source": "_samples/h2non__videoshow/meta.json", "noteZh": "实测 1280×720/30fps/300 帧耗时 14.8s，约 20fps"}
+  ]
+}

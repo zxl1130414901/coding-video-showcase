@@ -1,0 +1,123 @@
+{
+  "id": "JohnHeibel__PDoomVideo",
+  "taglineZh": "一支完整 MV 的全部源码：p5.js 逐帧画，render.mjs 直接出片",
+  "summaryZh": "PDoomVideo 不是框架而是作品源码：p5.js/p5.brush 画面脚本 + render.mjs（Puppeteer 逐帧截图 + FFmpeg 编码），支持 --clip 片段与 --stills 单帧。仓库把“成片”当作工程交付，适合学习逐帧渲染管线。",
+  "whatItMakes": [
+    {
+      "type": "音乐可视化 MV",
+      "exampleZh": "整支 MV 的 p5.js 源码 + 音轨",
+      "strength": "完整可读"
+    },
+    {
+      "type": "片段渲染",
+      "exampleZh": "render.mjs --clip=0:8 --fps=24 出短片段",
+      "strength": "可裁切"
+    },
+    {
+      "type": "单帧导出",
+      "exampleZh": "--stills 快速出关键帧",
+      "strength": "便于调参"
+    }
+  ],
+  "useCases": [
+    {
+      "scenarioZh": "学逐帧渲染管线",
+      "whoZh": "创意开发",
+      "whyZh": "想做音乐可视化",
+      "deliverableZh": "MV 片段",
+      "fit": "中"
+    }
+  ],
+  "capabilities": {
+    "maxResolutionZh": "项目内固定（1920×1080）",
+    "maxFpsZh": "--fps 指定（实测 24/30）",
+    "durationZh": "整曲或 --clip 片段",
+    "effectsZh": [
+      "p5.brush 笔触",
+      "粒子/噪声",
+      "文字排版"
+    ],
+    "audioZh": "音轨随片合成",
+    "interactivityZh": "无",
+    "automationZh": "CLI 片段/单帧",
+    "assetsZh": "音轨 + 字体",
+    "exportFormatsZh": [
+      "mp4",
+      "jpg(stills)"
+    ],
+    "realtimePreviewZh": "stills",
+    "ciFriendlyZh": "可"
+  },
+  "ceilingZh": "取决于 p5 画面代码；渲染成本高（实测约 3s/帧），长片需要算力预算。",
+  "workflow": [
+    {
+      "stepZh": "装依赖",
+      "detailZh": "npm i（p5/p5.brush/puppeteer-core）",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "调画面",
+      "detailZh": "改 sketch 脚本",
+      "effortZh": "中"
+    },
+    {
+      "stepZh": "渲片段",
+      "detailZh": "node render.mjs --clip=0:8 --fps=24",
+      "effortZh": "中（约 3s/帧）"
+    }
+  ],
+  "differentiators": [
+    "交付的是完整作品源码，不是框架",
+    "p5.brush 笔触质感突出",
+    "支持片段/单帧快速迭代"
+  ],
+  "limits": [
+    "本次实测：--stills 成功；--clip 两次无帧产出后卡死，未能出片",
+    "约 3s/帧，12s 片段接近 20 分钟",
+    "无 LICENSE 文件，商用需联系作者"
+  ],
+  "compareTips": [
+    {
+      "vs": "vs PDoom 类作品",
+      "adviceZh": "它是“作品源码”，不适合当通用框架"
+    },
+    {
+      "vs": "vs motion2code",
+      "adviceZh": "方向相反：这里是人写代码出片，那边是从片子反推代码"
+    }
+  ],
+  "showcase": {
+    "demoBriefZh": "演示重点：1) p5.brush 笔触；2) 片段渲染参数；3) 音画同步的写法。",
+    "featureCallouts": [
+      {
+        "titleZh": "作品即源码",
+        "descZh": "完整 MV 工程"
+      },
+      {
+        "titleZh": "p5.brush",
+        "descZh": "手绘感笔触"
+      },
+      {
+        "titleZh": "片段渲染",
+        "descZh": "--clip 快速试"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "field": "stars",
+      "source": "GitHub API",
+      "noteZh": "2,837 stars"
+    },
+    {
+      "field": "stills",
+      "source": "本地实测",
+      "noteZh": "--stills=1,2 成功出图（数秒/帧）"
+    },
+    {
+      "field": "clip",
+      "source": "本地实测",
+      "noteZh": "--clip 两次挂死无输出，未出片"
+    }
+  ]
+}

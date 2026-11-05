@@ -1,0 +1,73 @@
+{
+  "id": "dmtrKovalenko__fframes",
+  "taglineZh": "Rust 函数返回 SVG 树、GPU 逐帧绘制，给 vibe coding 的视频框架",
+  "summaryZh": "fframes 是 Rust + SVG 的视频框架：每帧由 Rust 函数返回一棵 SVG 树，用 svgr! 写声明式画面，Skia 在 Metal/Vulkan 上绘制，经 libav 直接编码，不把帧管道给外部 ffmpeg。它解决“代码生成画面但不想手搓 OpenGL”的问题，定位给 coding agent：配套 inspect/strip/onion/frame/audio analyze，让看不见视频的模型也能查字体缺失、文字出界与音频削波。与 Manim/Remotion 的区别是画面直接落在 SVG 上，动画是时间轴插值。它更适合作为库嵌进 Rust 服务，而不是当独立剪辑工具用；官方示例只有短片，长片工程化未验证。",
+  "whatItMakes": [
+    {"type": "信息图/解说短片", "exampleZh": "矢量图形入场、文字沿时间轴移动、场景切换", "strength": "核心能力"},
+    {"type": "数据与图表动画", "exampleZh": "柱线图生长、标注线、数字滚动", "strength": "核心能力"},
+    {"type": "品牌/字体动效", "exampleZh": "字体排版、字距变化、色块转场", "strength": "可用"},
+    {"type": "着色器背景短片", "exampleZh": "SkSL 或粘贴 Shadertoy GLSL 作为任意帧的图层", "strength": "可用"},
+    {"type": "带配乐的成片", "exampleZh": "AudioMap 挂音轨，audio analyze 报 LUFS 与削波", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "数据解说视频", "whoZh": "分析师、科普作者", "whyZh": "SVG 图表与文字都在同一棵树上，改数据即改画面", "deliverableZh": "1080p30 的 1–3 分钟 MP4", "fit": "适合"},
+    {"scenarioZh": "Agent 自动出片", "whoZh": "用 Claude Code/Codex 的开发者", "whyZh": "官方 skill + inspect/onion 工具让模型能自检画面", "deliverableZh": "模板化 30–120 秒短片", "fit": "适合"},
+    {"scenarioZh": "品牌动态图形", "whoZh": "动效设计师（有 Rust 基础）", "whyZh": "SVG 设计稿思路可直接翻译成代码，GPU 渲染快", "deliverableZh": "15–60 秒品牌片，多尺寸", "fit": "勉强"},
+    {"scenarioZh": "批量模板渲染", "whoZh": "内容工作室", "whyZh": "cargo 工程化，render 可脚本化，draft 模式快速迭代", "deliverableZh": "每日批量 720p 草稿 + 1080p 成片", "fit": "适合"},
+    {"scenarioZh": "Windows 本地部署", "whoZh": "个人创作者", "whyZh": "需要 MSVC、FFmpeg 开发库、Skia 预编译包与 libclang，环境门槛高", "deliverableZh": "本地出片环境", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由 Video trait 的 WIDTH/HEIGHT 常量决定；示例 1920×1080，无文档上限",
+    "maxFpsZh": "由 FPS 常量决定，示例 30fps",
+    "durationZh": "由 duration() 返回，示例 30 秒；官方演示片 128 秒",
+    "effectsZh": ["SVG 矢量图形与文字", "时间轴插值与缓动", "SkSL/Shadertoy GLSL 图层", "Skia GPU 合成（Metal/Vulkan）"],
+    "audioZh": "AudioMap 挂外部音轨，audio analyze 报 LUFS、真峰值、削波与静音段；不内置 TTS",
+    "interactivityZh": "仅离线渲染；preview 打开 GPU 窗口可播放、暂停、seek、逐帧步进",
+    "automationZh": "cargo run --release -- render，可加 --draft 半分辨率快速出片，可 --json 输出",
+    "assetsZh": "字体与图片走工程目录；inspect 会报缺字体/缺图片/文字出界",
+    "exportFormatsZh": ["MP4", "PNG 帧", "PNG 拼图 contact sheet"],
+    "realtimePreviewZh": "有：preview 窗口；另有 WebAssembly 浏览器编辑器",
+    "ciFriendlyZh": "可进 CI，但需 Rust、FFmpeg、Skia、libclang，Windows 还要匹配 MSVC 版本"
+  },
+  "ceilingZh": "官方给的性能参照是：128 秒的 fframes-intro 在 GPU 上渲染 36 秒，30fps、1920×1080，说明设计目标是“接近实时”的二维矢量出片。它最强的地方是结构简单——每帧一棵 SVG，静态部分编译期 hash 复用，复杂画面也不会引入场景图或运行时；需要质感时再叠 SkSL/Shadertoy 图层。边界在工程侧：Windows 实测编译失败，卡在 Skia 预编译库与 MSVC STL 符号不匹配（skunicode_icu.lib 需要 14.44+ 的 STL），换 clang-cl 从源码重建 Skia 成本极高；还要 FFmpeg 9 shared、libclang、Skia 二进制三件套。它没有 3D 场景、没有相机、没有交互播放器，128 秒级长片也缺少分片和并行渲染方案。它没有时间轴 GUI，所有缓动与节奏都写在 Rust 代码里，改一次要重编译。",
+    "workflow": [
+    {"stepZh": "准备依赖", "detailZh": "Rust 工具链 + FFmpeg 共享库 + libclang + Skia 预编译包；Windows 需匹配 MSVC 版本", "effortZh": "30 分钟到数小时"},
+    {"stepZh": "建工程", "detailZh": "用 cargo 模板或 examples/hello-world，实现 Video trait 的 FPS/尺寸/时长", "effortZh": "约 10 分钟"},
+    {"stepZh": "写帧", "detailZh": "在 render_frame 里用 svgr! 返回 SVG，用 frame.animate 写时间轴", "effortZh": "首个片子 2–6 小时"},
+    {"stepZh": "自检与预览", "detailZh": "inspect 查错、strip/onion 查运动、preview 窗口听声音", "effortZh": "随改随看"},
+    {"stepZh": "渲染", "detailZh": "cargo run --release -- render，先用 --draft 半分辨率，再出正式 MP4", "effortZh": "秒级到分钟级"}
+  ],
+  "differentiators": [
+    "画面就是 SVG 树，设计稿思维可直接落到代码，不需要学场景图 API",
+    "给 agent 的自检工具链完整：inspect/strip/onion/frame/audio analyze 都能输出 JSON",
+    "静态帧编译期 hash 复用，128 秒 1080p 官称 36 秒渲完",
+    "Skia 后端走 Metal/Vulkan，比 CPU 后端快约 10 倍，且直连 libav 不落中间帧"
+  ],
+  "limits": [
+    "Windows 构建门槛高：Skia 预编译库与 MSVC STL 版本不匹配会 LNK2019，实测编译失败",
+    "只有 2D SVG，没有 3D 场景、相机与物理",
+    "没有内置交互播放器，preview 仅供人工查看",
+    "生态很小，缺少模板、主题与批量渲染/并行分片方案"
+  ],
+  "compareTips": [
+    {"vs": "ManimCommunity__manim", "adviceZh": "要数学对象与成熟教学生态选 Manim；要 SVG 矢量画面、Rust 性能与 agent 自检工具选 fframes"},
+    {"vs": "LBEILC__Multiplane", "adviceZh": "要 HTML/CSS 表现力与多 worker 选 Multiplane；要纯矢量、可编译期优化的画面选 fframes"},
+    {"vs": "remotion-dev__remotion", "adviceZh": "要 React 生态和云渲染选 Remotion；要无浏览器、无 JS 运行时、纯 Rust 出片选 fframes"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①hello-world 的方块沿时间轴移动；②SVG 文字与图形组合的信息图场景；③叠加 SkSL/Shadertoy 着色器背景；④inspect/strip/onion 三件套展示 agent 如何自检画面",
+    "featureCallouts": [
+      {"titleZh": "每帧一棵 SVG", "descZh": "Rust 函数直接返回画面树"},
+      {"titleZh": "时间轴插值", "descZh": "位移/缩放/透明度一套 DSL"},
+      {"titleZh": "静态帧复用", "descZh": "无表达式帧编译期哈希"},
+      {"titleZh": "Agent 自检命令", "descZh": "inspect、strip、onion 各自输出 JSON"},
+      {"titleZh": "GPU Skia", "descZh": "走 Metal 或 Vulkan，比 CPU 快约 10 倍"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L8-L11", "noteZh": "自述 Video vibe coding framework，Rust + SVG，GPU 渲染"},
+    {"field": "capabilities.automationZh", "source": "README.md#L67-L81", "noteZh": "命令表：timeline/inspect/strip/frame/onion/audio analyze/preview/render --draft"},
+    {"field": "differentiators", "source": "README.md#L83-L89", "noteZh": "Skia GPU 快约 10 倍、静态帧 hash、直连 libav"},
+    {"field": "ceilingZh", "source": "_samples/dmtrKovalenko__fframes/meta.json", "noteZh": "Windows 实测编译失败：Skia icu 库引用 MSVC 14.44+ STL 符号，LNK2019/LNK1120"}
+  ]
+}

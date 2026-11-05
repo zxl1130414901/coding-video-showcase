@@ -1,0 +1,44 @@
+{
+  "repo": "ybouane/VideoFlow",
+  "category": "代码驱动/声明式框架",
+  "status": "success",
+  "render_ms": 294370,
+  "total_ms": 294370,
+  "cmd": "node examples/01-basic-text.ts ; ffmpeg -i 01-basic-text.mp4 -vf scale=1280:720 -c:v h264_nvenc -preset p5 -cq 23 -pix_fmt yuv420p sample.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration": 3.1,
+    "frames": 93,
+    "fps": 30,
+    "codec": "h264",
+    "size_bytes": 163607
+  },
+  "notes_zh": "Node 24 原生可直接跑 examples/01-basic-text.ts（无需额外转译），框架在 Chromium 内以 drawElementImage 逐帧合成并自行编码 MP4，输出默认 1920x1080。浏览器内渲染 294s 是主要瓶颈（逐帧 1x 超采样 + 元素截取），再用 NVENC 缩放到 1280x720。",
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 20.9,
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 5,
+    "render_ms": 508300,
+    "pipeline": "browser (Playwright server renderer)",
+    "build": "node examples/v2-showcase.ts（630 帧 1920x1080 全部在无头 Chromium 内合成）→ 切 3 段 concat → ffmpeg drawtext 烧中文标注",
+    "ffprobe": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "frames": 627,
+      "duration": 20.9,
+      "codec": "h264",
+      "size_bytes": 2529291
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 3.1s",
+    "known_limits_zh": [
+      "服务端逐帧截图：1080p 21s 实测 508s（约 0.8s/帧），再长会撞预算",
+      "特效是整块画布级后处理，单个 effect 只支持一种 blend 方式，复杂合成需拆多层",
+      "示例中文字体未内嵌，markup 用系统字体渲染（仅影响演示文案，不影响中文标注层）"
+    ]
+  }
+}

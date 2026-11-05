@@ -1,0 +1,44 @@
+{
+  "repo": "welovemedia/ffmate",
+  "category": "编程式视频合成/FFmpeg",
+  "status": "success",
+  "render_ms": 2282,
+  "total_ms": 120196,
+  "cmd": "& 'F:\\coding视频\\_env\\bin\\ffmate\\ffmate.exe' server --port 3010; POST http://127.0.0.1:3010/api/v1/tasks {name:'ffmate-encoding-sample', command:'-f lavfi -i \"testsrc2=size=1280x720:rate=30:duration=4\" -vf \"hue=h=60*t:s=1.15\" -c:v h264_nvenc -preset p5 -pix_fmt yuv420p -movflags +faststart -y \"F:\\ffmate_tmp\\sample.mp4\"', inputFile:'lavfi:testsrc2', outputFile:'F:\\ffmate_tmp\\sample.mp4'}",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration": 4.0,
+    "frames": 120,
+    "fps": 30,
+    "codec": "h264",
+    "size_bytes": 1367868
+  },
+  "notes_zh": "走 REST 队列：ffmate.exe server 起服务，POST /api/v1/tasks 提交 ffmpeg 合成任务（lavfi testsrc2 4 秒 + NVENC），任务状态 DONE_SUCCESSFUL，纯任务耗时 2.282s。踩坑：Windows 下输出路径含中文会被解码成 'F:\\coding??'，ffmate 建目录失败导致首个任务 DONE_ERROR，改为先输出到 F:\\ffmate_tmp 再复制回 _samples。另服务闲置约 34 分钟后报 sqlite 'database is locked' 并 panic（上游 bug），不影响产物。",
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 22.0,
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 5,
+    "render_ms": 53300,
+    "pipeline": "official",
+    "build": "build_sample.py: 分段 concat + PIL 中文标注贴图 overlay + h264_nvenc",
+    "ffprobe": {
+      "width": 1920,
+      "height": 1080,
+      "duration": 21.9,
+      "frames": 657,
+      "fps": 30.0,
+      "codec": "h264",
+      "size_bytes": 31273200
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 4.0s",
+    "known_limits_zh": [
+      "Windows 下 outputFile 含中文会被 ffmate 解码成 F:\\coding??，任务必须先写纯英文目录",
+      "无外网时默认遥测会在 telemetry.go:56 空指针 panic，必须具备 --send-telemetry=false",
+      "默认 sqlite 落在 %APPDATA%\\ffmate（C 盘），样例用 --database 重定向到工作目录"
+    ]
+  }
+}

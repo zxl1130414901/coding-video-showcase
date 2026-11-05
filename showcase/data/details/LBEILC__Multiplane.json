@@ -1,0 +1,73 @@
+{
+  "id": "LBEILC__Multiplane",
+  "taglineZh": "给 AI agent 的 HTML 无头渲染器：页面写 render(t)，逐帧拍出成片",
+  "summaryZh": "Multiplane 是本地无头 HTML 视频渲染器：镜头就是普通网页，页面实现 render(t)，画面只由时间 t 决定；它用无头 Chromium 逐帧截图，做超采样、运动模糊、胶片颗粒与三维层景深，再由 FFmpeg 合成 MP4/WebM/MOV。它解决“用 HTML/CSS/JS 做视频但不想学新框架”的问题，同时把 agent 最怕的确定性问题做成工具：lint 一秒内指出墙钟时间、随机数、CSS 动画与网络资源，verify 会乱序、重载、多进程渲染同一批帧逐像素比对。与 Remotion 相比不要求 React。",
+  "whatItMakes": [
+    {"type": "3D 卡片/多层视差镜头", "exampleZh": "图片卡片进三维空间、焦点在前后景切换、累积景深", "strength": "核心能力"},
+    {"type": "带运动模糊的动效片", "exampleZh": "快速旋转的轮辐、平滑拖尾、按移动距离自动加采样", "strength": "核心能力"},
+    {"type": "硬切转场", "exampleZh": "声明 cuts 后模糊不跨切点，转场干净", "strength": "核心能力"},
+    {"type": "高质量静帧/海报", "exampleZh": "stills 按时刻出 PNG，与视频同一套超采样与透明通道", "strength": "可用"},
+    {"type": "透明通道叠加层", "exampleZh": "--alpha 输出带 alpha 的 MOV/WebM", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "Agent 自动做产品动效片", "whoZh": "用 Claude Code/Codex 的团队", "whyZh": "lint+verify 让 agent 自己发现不确定性与渲染错误", "deliverableZh": "1080p30 的 15–60 秒 MP4", "fit": "高度契合"},
+    {"scenarioZh": "网页设计师的动效交付", "whoZh": "UI/动效设计师", "whyZh": "HTML/CSS/JS 直接变视频，不用进 AE", "deliverableZh": "1080p 或 720p 短片，带 alpha 版本", "fit": "适合"},
+    {"scenarioZh": "需要景深的产品展示", "whoZh": "品牌/电商团队", "whyZh": "三维卡片与真实焦外虚化，比平面动效更有质感", "deliverableZh": "10–30 秒产品镜头", "fit": "适合"},
+    {"scenarioZh": "批量模板渲染", "whoZh": "内容工作室", "whyZh": "CLI 可脚本化，--workers 并行，--json 可监控", "deliverableZh": "多版本 720p/1080p 成片", "fit": "适合"},
+    {"scenarioZh": "8GB 显存笔记本批量", "whoZh": "个人创作者", "whyZh": "默认 6 个并行 Chromium 会打爆显存，需手动降到 2 worker", "deliverableZh": "小批量短片", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由镜头页面尺寸与 --scale 决定；实测 1280×720 加 --scale 2 超采样",
+    "maxFpsZh": "由 --fps 指定，实测 30fps；无声明上限",
+    "durationZh": "由 --duration 指定，无硬限制；实测 2 秒",
+    "effectsZh": ["超采样抗锯齿", "运动模糊（硬切不串）", "三维层与累积景深", "胶片颗粒", "透明通道"],
+    "audioZh": "未在 README 声明音频混入能力（未确认）",
+    "interactivityZh": "仅离线渲染；页面本身可浏览器预览",
+    "automationZh": "CLI 可脚本化：doctor/lint/verify/render/stills，全部支持 --json",
+    "assetsZh": "图片、字体、CSS/JS 走 --root 资源根；无内置素材库",
+    "exportFormatsZh": ["MP4", "WebM", "MOV（含 alpha）", "PNG 静帧"],
+    "realtimePreviewZh": "无实时预览器；靠浏览器打开页面自查",
+    "ciFriendlyZh": "可进 CI：lint/verify + 确定性逐像素校验"
+  },
+  "ceilingZh": "它能做出“不像网页截屏”的画面：实测 2 秒 720p30 镜头用 --scale 2 超采样、--workers 2、NVENC 编码，纯渲染 258 秒、总耗时 384 秒，换来的是抗锯齿、运动模糊与可选景深；三维卡片的前景边缘不会溢出、背景不会渗进轮廓，这是深度图后期做不到的。工程上限体现在 verify：同一批帧乱序、重载、单/多进程渲染后逐像素比对，能把不确定性钉到具体时刻与区域。边界：默认 workers 在本机 8GB 显存下会开 6 个并行 Chromium 直接抖动，必须降到 2；渲染很慢，2 秒成片要 4 分多钟；0.3.8 版本 1.0 前接口会变；需要 Node 24+、Playwright Chromium 与带 libx264 的 FFmpeg；没有音频与字幕系统。它的超采样倍数直接吃显存，8GB 卡上 2 倍已是上限。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "Node 24+，npm install multiplane，npx playwright install chromium，装好 FFmpeg", "effortZh": "约 10 分钟"},
+    {"stepZh": "自检", "detailZh": "npx multiplane doctor 检查 Chromium/FFmpeg/编码器；npx multiplane lint 镜头", "effortZh": "约 1 分钟"},
+    {"stepZh": "写镜头", "detailZh": "页面实现 render(t)，声明 cuts 与三维层，资源放 --root 目录", "effortZh": "首个镜头 2–4 小时"},
+    {"stepZh": "渲染", "detailZh": "npx multiplane render examples/animation.html --out out.mp4 --duration 2 --fps 30 --scale 2 --workers 2 --encoder nvenc-h264", "effortZh": "2 秒约 4 分钟"},
+    {"stepZh": "验证", "detailZh": "npx multiplane verify 做乱序/重载/多进程逐像素比对", "effortZh": "约数分钟"}
+  ],
+  "differentiators": [
+    "镜头就是 HTML+CSS+JS，agent 不需要学新 DSL，天然适配代码生成",
+    "运动模糊按快门时间多次采样且不跨硬切，转场干净",
+    "三维卡片用多次采样累积出真实景深，边缘不溢出不渗透",
+    "lint 一秒内定位墙钟/随机数/CSS 动画等非确定性写法，verify 逐像素证明"
+  ],
+  "limits": [
+    "渲染慢：2 秒 720p 成片实测约 4 分钟，长片按比例膨胀",
+    "8GB 显存下默认 6 worker 会抖动，必须手动降并发",
+    "0.3.8 版本，1.0 前 CLI 与选项可能调整",
+    "没有音频/字幕/时间轴编辑，叙事仍要在页面代码里写"
+  ],
+  "compareTips": [
+    {"vs": "wx4766__html-to-video", "adviceZh": "要模板、批量比例与 QA 选 html-to-video；要超采样、景深、运动模糊与确定性验证选 Multiplane"},
+    {"vs": "remotion-dev__remotion", "adviceZh": "要 React 生态与云端批量选 Remotion；要纯 HTML 镜头与可验证的本地渲染选 Multiplane"},
+    {"vs": "BintzGavin__helios", "adviceZh": "要原生 CSS 时间轴与播放器选 Helios；要 render(t) 逐帧与三维景深选 Multiplane"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①lint 一秒内标出随机数与墙钟写法；②三维卡片镜头焦点从前景切到背景；③运动模糊在硬切两侧不串色；④verify 的多进程逐像素报告与 720p30 成片",
+    "featureCallouts": [
+      {"titleZh": "HTML 写镜头", "descZh": "实现 render(t) 就是全部 API"},
+      {"titleZh": "累积景深", "descZh": "三维卡片真实焦外"},
+      {"titleZh": "运动模糊", "descZh": "多次采样且硬切不糊"},
+      {"titleZh": "lint 确定性", "descZh": "一秒定位非确定写法"},
+      {"titleZh": "verify 逐像素", "descZh": "乱序多进程逐像素比对"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L8-L10", "noteZh": "给 agent 的本地无头 HTML 渲染器，页面实现 render(t)"},
+    {"field": "capabilities.effectsZh", "source": "README.md#L18-L27", "noteZh": "lint/verify、运动模糊不跨硬切、三维层与累积景深、stills"},
+    {"field": "capabilities.exportFormatsZh", "source": "README.md#L150-L158", "noteZh": "mp4/webm/mov、alpha、--encoder/--workers/--raster"},
+    {"field": "ceilingZh", "source": "_samples/LBEILC__Multiplane/meta.json", "noteZh": "实测 2s/720p30，--scale 2 --workers 2 --encoder nvenc-h264，渲染 258.6s"}
+  ]
+}

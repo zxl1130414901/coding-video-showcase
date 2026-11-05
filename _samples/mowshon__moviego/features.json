@@ -1,0 +1,57 @@
+{
+  "id": "mowshon__moviego",
+  "durationSec": 25.008,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 8.0,
+      "capabilityZh": "AnimatedText 打字机动画 + 图层叠放",
+      "proofZh": "标题以 typewriter 动画 2s 入场，Layer(10) 叠在淡入底片上"
+    },
+    {
+      "start": 8.0,
+      "end": 16.8,
+      "capabilityZh": "关键帧画中画（PropScale 1.00→1.18）",
+      "proofZh": "第二段素材 ResizeTo(860x484) 定位到右上角，7s 内平滑放大 18%"
+    },
+    {
+      "start": 16.8,
+      "end": 25.0,
+      "capabilityZh": "调色 + SRT 字幕烧入 + 转场编排",
+      "proofZh": "Brightness/Contrast/Saturation 三段调色，SubtitlesSRT 烧入 3 条字幕，Crossfade 0.8s / WipeLeft 0.8s 串联"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.5,
+      "dur": 4.0,
+      "titleZh": "① AnimatedText 打字机入场",
+      "descZh": "2 秒 typewriter 动画逐字打出标题，图层号 10 直压底片"
+    },
+    {
+      "t": 8.6,
+      "dur": 4.0,
+      "titleZh": "② 画中画 + 关键帧缩放",
+      "descZh": "第二段素材缩到 860×484 定在右上角，7s 内 PropScale 1.00→1.18"
+    },
+    {
+      "t": 17.2,
+      "dur": 4.0,
+      "titleZh": "③ 调色链 + SRT 字幕",
+      "descZh": "亮度 +0.04 / 对比 1.12 / 饱和 1.15，3 条 SRT 字幕直接烧进画面"
+    },
+    {
+      "t": 21.5,
+      "dur": 4.0,
+      "titleZh": "④ Sequence 转场编排",
+      "descZh": "Crossfade 0.8s 与 WipeLeft 0.8s 串联三段，成片 25.0s"
+    }
+  ],
+  "renderMs": 48000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "moviego 依赖本机 ffmpeg，Windows 上需要先进入 PATH 才能导出",
+    "视频编码走 ffmpeg 管道，1080p 长片导出耗时与磁盘写入速度正相关",
+    "SRT 字幕为英文素材，中文字幕需自备字体与 SRT"
+  ]
+}

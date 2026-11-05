@@ -1,0 +1,48 @@
+{
+  "repo": "motion-canvas/motion-canvas",
+  "category": "编程式动画/视频（TypeScript + 浏览器渲染）",
+  "status": "success",
+  "render_ms": 0,
+  "total_ms": 900000,
+  "cmd": "自建最小工程 _tmp/mc_work（@motion-canvas/core+2d）：vite dev + Playwright 逐帧 stage.render → 120 PNG → ffmpeg",
+  "artifact": "F:\\coding视频\\_samples\\motion-canvas__motion-canvas\\sample.mp4",
+  "ffprobe": {
+    "width": 960,
+    "height": 540,
+    "duration_s": 4.0,
+    "fps": 30.0,
+    "nb_frames": 120,
+    "codec": "h264",
+    "size_kb": 55.9
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\motion-canvas__motion-canvas\\preview.png",
+    "pixel_std": 33.46,
+    "unique_colors": 8196
+  },
+  "notes_zh": "根因绕过：官方编辑器构建缺失 + FFmpegBridge 需编辑器 UI → 直接引 @motion-canvas/core 的 Renderer/PlaybackManager/Stage，手写 Project/FullSceneDescription（补 onReplaced ValueDispatcher），Playwright 驱动 seek(帧号)+stage.render 逐帧导出 PNG，ffmpeg 合成 30fps",
+  "sample_v2": {
+    "spec": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "duration_sec": 19.0
+    },
+    "render_ms": 475300,
+    "ffprobe": {
+      "duration_sec": 19.0,
+      "codec": "h264",
+      "nb_frames": 570,
+      "has_audio": true,
+      "size_kb": 517.3,
+      "stddev_10_50_90": {
+        "0.10": 43.913,
+        "0.50": 58.896,
+        "0.90": 33.077
+      }
+    },
+    "generator": "自建 harness：复制仓库 2D 运行时，vite 构建 index.html，Chrome 逐帧驱动 scene playback 并截图；ffmpeg 30fps 合成 1280x720，再 drawtext 烧录中文标注",
+    "segments_count": 3,
+    "pipeline": "fallback"
+  }
+}

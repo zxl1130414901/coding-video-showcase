@@ -1,0 +1,5 @@
+dist
+node_modules
+public/thumbs
+docs/screenshots
+package-lock.json

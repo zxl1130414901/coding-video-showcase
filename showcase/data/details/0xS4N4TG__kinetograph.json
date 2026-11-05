@@ -1,0 +1,73 @@
+{
+  "id": "0xS4N4TG__kinetograph",
+  "taglineZh": "不用浏览器的 Remotion 兼容引擎：Node 跑代码，Rust 在 GPU 合成每一帧",
+  "summaryZh": "Kinetograph 把 Remotion 的创作方式搬到浏览器之外：用 TSX（Remotion API）或普通 HTML 写视频，Node 负责打包执行，Rust 插件负责排版、绘制与 GPU 合成，直接编码 MP4。它支持 CSS、SVG、Canvas、WebGL 与 3D，现有 Remotion 工程可原样渲染。与 Remotion 最本质的区别是去掉 Chromium：没有浏览器进程与截图回读。代价是 0.3 beta、API 会变，PolyForm Small Business 许可对 100 人以上或年收入百万美元公司收费。它适合把现成 Remotion 工程迁到无浏览器环境，但复杂 CSS 布局与浏览器特有 API 仍需逐个验证。",
+  "whatItMakes": [
+    {"type": "Remotion 风格宣传片", "exampleZh": "TSX 组件、逐帧动画、文字与图形转场", "strength": "核心能力"},
+    {"type": "HTML 页面动画", "exampleZh": "现成网页当 composition，不装浏览器也能渲染", "strength": "核心能力"},
+    {"type": "3D/着色器短片", "exampleZh": "WebGL 着色器背景、3D 物件旋转、Canvas 叠加", "strength": "可用"},
+    {"type": "带音轨的成片", "exampleZh": "Web Audio 离线渲染，音频与画面一起合成", "strength": "可用"},
+    {"type": "批量模板视频", "exampleZh": "CLI 改参数重复渲染，产物固定写到 out/renders/Main.mp4", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "已有 Remotion 工程的提速迁移", "whoZh": "前端视频团队", "whyZh": "TSX 代码基本不改，去掉 Chromium 依赖与截图开销", "deliverableZh": "1080p30 宣传片 30–90 秒", "fit": "适合"},
+    {"scenarioZh": "Windows 本地批量出片", "whoZh": "小型内容工作室", "whyZh": "官方提供 win64 预编译包，NVENC 可直接编码", "deliverableZh": "每日数十条 720p/1080p 短片", "fit": "适合"},
+    {"scenarioZh": "无浏览器环境的 CI 渲染", "whoZh": "工程团队", "whyZh": "不依赖 Chrome headless，容器更轻", "deliverableZh": "发版自动生成演示视频", "fit": "适合"},
+    {"scenarioZh": "HTML 动效交付", "whoZh": "设计师、动效作者", "whyZh": "普通 HTML 页面直接当视频工程", "deliverableZh": "15–60 秒网页动效 MP4", "fit": "适合"},
+    {"scenarioZh": "复杂 3D 产品片", "whoZh": "三维视觉团队", "whyZh": "支持 WebGL/3D，但生态与调试工具尚不成熟", "deliverableZh": "高清 3D 产品展示", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "未声明上限；实测 1280×720，官方示例含 1080p 场景",
+    "maxFpsZh": "未声明；实测 30fps",
+    "durationZh": "未声明硬限制；实测短片 2 秒，长片需自行压测",
+    "effectsZh": ["CSS/SVG/Canvas 2D 绘制", "WebGL 着色器与 3D", "GPU 合成与图层叠加", "Web Audio 离线渲染"],
+    "audioZh": "支持 Web Audio 离线渲染并混入成片；不内置 TTS",
+    "interactivityZh": "仅离线渲染；附带本地 Studio 编辑器可预览",
+    "automationZh": "CLI 可脚本化：kinetograph init / doctor / render，可指定编码器",
+    "assetsZh": "public/ 放图片、字体、音频、视频；无内置素材库",
+    "exportFormatsZh": ["MP4"],
+    "realtimePreviewZh": "部分：Studio 本地编辑器可预览，不是实时播放器",
+    "ciFriendlyZh": "可进 CI；无浏览器依赖，GPU 可加速，也支持软件渲染"
+  },
+  "ceilingZh": "它的上限来自“原生合成”而不是浏览器：官方示例把 1891 年胶片、3D、等距、着色器、Canvas 和玻璃质感镜头放进同一个片子，说明 CSS/SVG/Canvas/WebGL 可以混合。实测用预编译 win64 包渲染默认工程，60 帧 720p30 只用 56.5 秒（含 29 帧静态复用），全程 NVENC 编码，总耗时 131 秒，比同规模 Remotion 更轻。边界：beta 0.3，API 可能破坏性变更；预编译只覆盖 macOS Apple Silicon、Linux x64、Windows x64，其他平台要从源码编译（Rust + FFmpeg，15–30 分钟）；导出目前只有 MP4，没有 PNG 序列或 WebM；调试与错误信息还不如 Remotion Studio 完善；大公司商用要买许可。目前缺少 Studio 式预览，改一行 TSX 要整片重渲才能看到效果，迭代节奏比 Remotion 慢；社区与示例也少。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "Node ≥22，npm install kinetograph，再 npx kinetograph doctor 自检", "effortZh": "约 1 分钟"},
+    {"stepZh": "建工程", "detailZh": "npx kinetograph init（TSX）或 init --html，生成 src/、public/、out/", "effortZh": "约 2 分钟"},
+    {"stepZh": "写画面", "detailZh": "用 Remotion API 写 Composition，或把现成 HTML/HyperFrames 页面放进 html/", "effortZh": "按项目而定"},
+    {"stepZh": "渲染", "detailZh": "npx kinetograph render src/index.tsx，可加 --encoder h264_nvenc，产物在 out/renders/", "effortZh": "2 秒 720p 约 1 分钟"},
+    {"stepZh": "校验", "detailZh": "ffprobe 查分辨率/帧率/时长，Studio 里抽查关键帧", "effortZh": "约 5 分钟"}
+  ],
+  "differentiators": [
+    "完全不需要浏览器：Node 执行 + Rust GPU 合成，省掉 Chromium 进程与截图回读",
+    "直接兼容 Remotion 与 HyperFrames 工程，迁移成本低",
+    "同一引擎支持 CSS/SVG/Canvas/WebGL/3D/Web Audio，不限二维",
+    "预编译包覆盖 Windows x64，NVENC 硬件编码开箱可用"
+  ],
+  "limits": [
+    "beta 0.3，API 可能随时破坏性变更，不适合长期生产依赖",
+    "PolyForm Small Business 许可：100 人以上或年收入 100 万美元以上需商业授权",
+    "只输出 MP4，没有 PNG 序列、WebM、透明通道等选项",
+    "预编译只覆盖三个平台，其他平台需源码编译 Rust + FFmpeg"
+  ],
+  "compareTips": [
+    {"vs": "remotion-dev__remotion", "adviceZh": "要稳定 API、Studio 调试和云端批量选 Remotion；要摆脱浏览器、复用 TSX 且能接受 beta 选 Kinetograph"},
+    {"vs": "BintzGavin__helios", "adviceZh": "依赖 CSS 原生动效与网页播放器选 Helios；要无浏览器的原生合成与硬件编码选 Kinetograph"},
+    {"vs": "LBEILC__Multiplane", "adviceZh": "Multiplane 走 HTML+Playwright 多 worker，调试直观；Kinetograph 无浏览器、单机更快，但生态更小"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①kinetograph doctor 与环境自检；②默认 TSX 工程的标题卡动画；③HTML/HyperFrames 页面直接渲染，证明无浏览器；④NVENC 出片后用 ffprobe 展示 720p30、60 帧、静态帧复用",
+    "featureCallouts": [
+      {"titleZh": "无浏览器渲染", "descZh": "Node 负责执行，Rust 逐帧绘制"},
+      {"titleZh": "Remotion 兼容", "descZh": "现有 TSX 工程原样跑"},
+      {"titleZh": "GPU 合成", "descZh": "CSS、Canvas、WebGL 可混合叠层"},
+      {"titleZh": "NVENC 编码", "descZh": "一步出 MP4，不落中间帧"},
+      {"titleZh": "Windows 预编译", "descZh": "npm 安装后即可渲染"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L17-L23", "noteZh": "自述 makes videos from code, without a browser；Node 执行，Rust GPU compositor 画帧"},
+    {"field": "capabilities.automationZh", "source": "README.md#L25-L66", "noteZh": "npm install、doctor、init、render 的真实命令与 out/renders/Main.mp4 路径"},
+    {"field": "limits", "source": "README.md#L100-L105", "noteZh": "PolyForm Small Business 1.0.0，100 人/100 万美元门槛"},
+    {"field": "ceilingZh", "source": "_samples/0xS4N4TG__kinetograph/meta.json", "noteZh": "实测 720p30/60 帧，render 56.5s，总 131s，h264_nvenc，29 帧静态复用"}
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "id": "spite__ccapture.js",
+  "durationSec": 23.97,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 8.0,
+      "capabilityZh": "虚拟时钟固定帧率",
+      "proofZh": "record() 自驱扁平帧循环，240 帧严格 30fps，机器快慢不影响时间轴"
+    },
+    {
+      "start": 8.0,
+      "end": 16.0,
+      "capabilityZh": "GPU 16 子帧运动模糊",
+      "proofZh": "每输出帧平均 16 个子帧，拖尾来自真实快门采样而非后期模糊"
+    },
+    {
+      "start": 16.0,
+      "end": 23.97,
+      "capabilityZh": "WebGL 画布直录",
+      "proofZh": "原始 WebGL2 片元着色器直接录成 VP9 webm，不经过 2D 转绘"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.5,
+      "dur": 4.2,
+      "titleZh": "虚拟时钟 · 固定帧率",
+      "descZh": "record() 自驱扁平循环：240 帧严格对应 8.000s，机器快慢不影响时间轴"
+    },
+    {
+      "t": 4.8,
+      "dur": 3.4,
+      "titleZh": "2D canvas 直录",
+      "descZh": "140 个粒子逐帧绘制 → WebCodecs H.264，固定 30fps 无掉帧"
+    },
+    {
+      "t": 8.4,
+      "dur": 4.0,
+      "titleZh": "GPU 16 子帧运动模糊",
+      "descZh": "每个输出帧平均 16 个子帧，拖尾来自真实快门采样，不是后期模糊"
+    },
+    {
+      "t": 12.8,
+      "dur": 3.2,
+      "titleZh": "子帧级时间采样",
+      "descZh": "子帧按 (f+k/16)/30 推进，模糊方向与运动速度一致"
+    },
+    {
+      "t": 16.6,
+      "dur": 3.8,
+      "titleZh": "WebGL 画布直录",
+      "descZh": "原始 WebGL2 片元着色器直接录成 VP9 webm，不经过 2D 转绘"
+    },
+    {
+      "t": 20.8,
+      "dur": 3.0,
+      "titleZh": "多编码格式",
+      "descZh": "同一套 API 输出 mp4 / webm：三段共 720 帧、8 秒×3"
+    }
+  ],
+  "renderMs": 19553,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "运动模糊需要 16 倍子帧绘制与 GPU 回读，耗时约为普通录制的 2-3 倍",
+    "WebCodecs 需要 Chromium 支持（Chrome 156 headless 正常）；Firefox 需回落到 webm-legacy",
+    "1080p H.264 编码质量由 WebCodecs 决定，码率固定时细碎粒子会有轻微块效应"
+  ]
+}

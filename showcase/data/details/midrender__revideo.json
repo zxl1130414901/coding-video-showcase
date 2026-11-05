@@ -1,0 +1,74 @@
+{
+  "id": "midrender__revideo",
+  "taglineZh": "用 TypeScript generator 描述场景、近实时渲出 MP4 的代码视频引擎，Motion Canvas 的进化分支",
+  "summaryZh": "Revideo 是 Motion Canvas 分支演进出来的引擎（约 4.1k stars）：场景写成 TypeScript generator，用 `yield* waitFor()` 和 `yield* tween()` 串时间线，`renderVideo()` 在无头环境批量出 mp4，另有 React `<Player/>` 做浏览器预览与渲染端点。与 Remotion 的 React 组件模型相比，它更轻、更快——实测 223 帧 1080×1080 只用 8.4 秒（约 26.5fps），接近实时；内置音频组件与帧精确同步。代价是安装体量大，npm ci 要拉约 1734 个包。场景文件就是普通 TS，可进 Git；官方还给了 Cloud Run 部署示例，能把渲染做成服务。它的 API 与 Motion Canvas 高度相似，迁移成本低。",
+  "whatItMakes": [
+    {"type": "代码驱动短视频", "exampleZh": "TS generator 写场景，出 10–60 秒 1080p MP4", "strength": "核心能力"},
+    {"type": "音视频帧精确同步", "exampleZh": "`<Audio/>` 与动画同轨，按帧对齐旁白", "strength": "核心能力"},
+    {"type": "服务端批量出片", "exampleZh": "renderVideo + 渲染端点，可并发多个 worker", "strength": "核心能力"},
+    {"type": "浏览器实时预览", "exampleZh": "React Player 可拖时间轴，开发时所见即所得", "strength": "核心能力"},
+    {"type": "复杂 3D/自绘组件", "exampleZh": "RubiksCube 用几何自绘，不依赖 Three.js", "strength": "可用"},
+    {"type": "超长视频/影视级合成", "exampleZh": "偏向信息动画，复杂特效与合成能力有限", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "自动化营销视频", "whoZh": "后端团队、营销平台", "whyZh": "模板参数化 + renderVideo 并发，接队列即可批量出片", "deliverableZh": "1080p30 的 15–60 秒 MP4，按 SKU 批量", "fit": "高度契合"},
+    {"scenarioZh": "播客/字幕视频", "whoZh": "播客制作团队", "whyZh": "音频组件与帧精确同步，波形、字幕条可跟音轨走", "deliverableZh": "方形或竖屏 1080p 音频视频", "fit": "高度契合"},
+    {"scenarioZh": "数据动画", "whoZh": "数据记者、分析师", "whyZh": "TS 表达式直接读数据，图表与数字滚动都能算出来", "deliverableZh": "60–120 秒 1080p MP4", "fit": "适合"},
+    {"scenarioZh": "Serverless 渲染服务", "whoZh": "云服务开发者", "whyZh": "官方给出 Cloud Run 示例，可横向扩 worker", "deliverableZh": "按请求返回 MP4 的 API", "fit": "适合"},
+    {"scenarioZh": "品牌广告级视觉", "whoZh": "广告制作公司", "whyZh": "没有图层合成、跟踪、粒子等后期能力，特效上限有限", "deliverableZh": "不推荐", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "可配置；实测 1080×1080，支持 4K 设置（未在本仓验证）",
+    "maxFpsZh": "默认 30，可配置；实测 30fps，渲染吞吐约 26.5fps",
+    "durationZh": "由场景时间线决定，无硬上限；并发 worker 可分摊长片",
+    "effectsZh": ["2D 图形/文字/媒体节点", "自定义 draw 函数与自绘 3D", "tween 缓动与 waitFor 时间线", "过渡与信号驱动动画", "音频波形与字幕条"],
+    "audioZh": "`<Audio/>` 支持音频混入导出，帧精确同步；无 TTS、无自动字幕识别",
+    "interactivityZh": "React Player 可拖动时间轴预览；无独立编辑器 UI",
+    "automationZh": "强：renderVideo API、CLI 渲染端点、并行 worker，官方有 Cloud Run 部署示例",
+    "assetsZh": "视频/音频/图片素材均可作为节点；无内置模板库",
+    "exportFormatsZh": ["mp4（含音轨）", "png 帧序列", "图片单帧"],
+    "realtimePreviewZh": "有，浏览器预览接近实时",
+    "ciFriendlyZh": "好：可容器化并并行渲染，但安装依赖重（约 1734 包）"
+  },
+  "ceilingZh": "吞吐是它最强的地方：223 帧 1080×1080 用 8.4 秒，约 26.5fps，接近实时；按此一分钟 1080p30 片子约 68 秒，批量并发时产能很可观。能力上限是「代码能画的一切」：TS generator 组合图形、媒体、音轨与自绘 3D（官方 RubiksCube 示例），配合帧精确音频同步可做播客视频。边界：默认 wasm 导出器只产出 156B 的空文件，必须换成 `@revideo/core/ffmpeg` 的 ffmpeg 导出器；本次 npm ci 拉了约 1734 个包、耗时约 1 小时，Windows 中文路径还会让 junction 解析失败；没有可视化编辑器，复杂镜头全靠代码，4K 未验证。它也没有内置字幕识别与 TTS，旁白与字幕需要外部生成后作为素材接入；复杂 3D 仍要自己算矩阵。综合看，它是本批唯一接近实时的 1080p 代码渲染器。",
+  "workflow": [
+    {"stepZh": "创建工程", "detailZh": "npm init @revideo@latest，或手动装 @revideo/core、@revideo/2d、@revideo/ffmpeg", "effortZh": "约 10 分钟"},
+    {"stepZh": "装依赖", "detailZh": "npm install；实测约 1734 个包、1 小时；中文路径建议改到英文目录", "effortZh": "30–60 分钟"},
+    {"stepZh": "写场景", "detailZh": "makeScene2D + generator：yield* waitFor(1)，yield* tween(node, 0.5, {...})", "effortZh": "首个场景 1–2 小时"},
+    {"stepZh": "预览", "detailZh": "启动 preview，React Player 拖时间轴检查节奏与音频", "effortZh": "约 10 分钟"},
+    {"stepZh": "渲染", "detailZh": "renderVideo 或 CLI，务必显式指定 ffmpeg 导出器，否则得到空文件", "effortZh": "实测 223 帧约 8 秒"}
+  ],
+  "differentiators": [
+    "渲染吞吐接近实时（实测 26.5fps），远快于 Remotion/VideoFlow",
+    "音频组件与帧精确同步，适合播客与旁白视频",
+    "TS generator 时间线，比 React 组件树更线性易读",
+    "无头渲染 API + 渲染端点 + 并行 worker，适合服务端批量"
+  ],
+  "limits": [
+    "安装极重（约 1734 包），本次耗时约 1 小时",
+    "默认 wasm 导出器产出 156B 空文件，必须换 ffmpeg 导出器",
+    "无可视化编辑器，复杂镜头全手写代码",
+    "Windows 中文路径会让 junction 解析失败，需英文目录"
+  ],
+  "compareTips": [
+    {"vs": "motion-canvas__motion-canvas", "adviceZh": "Motion Canvas 有官方编辑器但 CLI 导出不完整、实测 0.13fps；Revideo 砍掉编辑器换来 26.5fps 的渲染与并行能力"},
+    {"vs": "remotion-dev__remotion", "adviceZh": "要 React 生态、成熟音频/字幕、Stripe 级案例选 Remotion；要更快更轻、TS generator 风格选 Revideo"},
+    {"vs": "ybouane__VideoFlow", "adviceZh": "要 JSON 跨端复用与编辑器选 VideoFlow；要吞吐与并行渲染选 Revideo"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①TS generator 画一个 1080 方形开场（图形 + 文字 tween）；②接音频节点，演示波形跟随与帧精确对齐；③自绘 RubiksCube 3D 旋转；④调用 renderVideo 并展示 26.5fps 的耗时曲线与并行 worker 效果",
+    "featureCallouts": [
+      {"titleZh": "TS generator", "descZh": "yield* waitFor / tween 线性读时间线"},
+      {"titleZh": "音频同步", "descZh": "`<Audio/>` 与动画同轨，帧精确"},
+      {"titleZh": "自绘 3D", "descZh": "RubiksCube 示例不依赖 Three.js"},
+      {"titleZh": "并行渲染", "descZh": "worker 拆分帧段，Cloud Run 示例"},
+      {"titleZh": "React Player", "descZh": "浏览器内拖时间轴预览"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L14-L19", "noteZh": "用 TypeScript 描述场景并渲染视频，提供无头 API 与浏览器预览"},
+    {"field": "capabilities.automationZh", "source": "README.md#L69-L83", "noteZh": "renderVideo、渲染端点、React Player、音视频组件与帧精确同步"},
+    {"field": "limits 第 1 条", "source": "_samples/midrender__revideo/meta.json", "noteZh": "实测 npm ci 约 1734 包、约 1 小时；223 帧 1080×1080 渲染 8.4s"},
+    {"field": "limits 第 2 条", "source": "_reports/", "noteZh": "本批 Windows 报告记录默认 wasm 导出器产出 156B 空文件，需切 ffmpeg 导出器"}
+  ]
+}

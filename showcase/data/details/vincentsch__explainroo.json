@@ -1,0 +1,129 @@
+{
+  "id": "vincentsch__explainroo",
+  "taglineZh": "Agent 写场景脚本，本地 Kokoro 配音，一条命令渲成讲解片",
+  "summaryZh": "explainroo 是 Node CLI：用 script.md + scenes.js 描述讲解内容，内置本地语音模型（Kokoro）生成配音与词级时间码，再逐帧渲染成片。仓库带 examples，可复制成 videos/<name> 直接渲。",
+  "whatItMakes": [
+    {
+      "type": "讲解短片",
+      "exampleZh": "examples/ 下有完整 script.md + scenes.js",
+      "strength": "开箱即跑"
+    },
+    {
+      "type": "本地配音",
+      "exampleZh": "Kokoro ONNX 本地 TTS，无云依赖",
+      "strength": "隐私与成本友好"
+    },
+    {
+      "type": "逐帧渲染",
+      "exampleZh": "Chromium 抓帧 + FFmpeg 编码",
+      "strength": "可脚本化"
+    }
+  ],
+  "useCases": [
+    {
+      "scenarioZh": "知识讲解",
+      "whoZh": "个人创作者",
+      "whyZh": "不想付 TTS 费用",
+      "deliverableZh": "2–5 分钟讲解",
+      "fit": "高"
+    }
+  ],
+  "capabilities": {
+    "maxResolutionZh": "工程设定",
+    "maxFpsZh": "工程设定（默认 30）",
+    "durationZh": "由脚本决定",
+    "effectsZh": [
+      "文字动画",
+      "图形/箭头",
+      "场景切换"
+    ],
+    "audioZh": "本地 TTS + 词级时间码",
+    "interactivityZh": "无",
+    "automationZh": "CLI 全流程",
+    "assetsZh": "脚本 + 本地模型",
+    "exportFormatsZh": [
+      "mp4"
+    ],
+    "realtimePreviewZh": "可能支持 stills",
+    "ciFriendlyZh": "可"
+  },
+  "ceilingZh": "适合“黑板讲解”类内容；视觉复杂度低于专业动效框架，但胜在全本地、零 API 成本。",
+  "workflow": [
+    {
+      "stepZh": "装依赖",
+      "detailZh": "npm install",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "拉模型",
+      "detailZh": "doctor --fetch 下载约 400MB 语音模型",
+      "effortZh": "中"
+    },
+    {
+      "stepZh": "写脚本",
+      "detailZh": "复制 example 到 videos/<name>，改 script.md/scenes.js",
+      "effortZh": "中"
+    },
+    {
+      "stepZh": "渲染",
+      "detailZh": "CLI 渲出 mp4",
+      "effortZh": "低"
+    }
+  ],
+  "differentiators": [
+    "本地 TTS，不需要云配音",
+    "仓库自带完整示例工程",
+    "单进程 CLI，流程短"
+  ],
+  "limits": [
+    "本次实测：npm install 25 分钟；doctor --fetch 两次（含 HF_ENDPOINT=hf-mirror）均报 fetch failed，模型下载不通，未出片",
+    "模型体积约 400MB，弱网/内网需预先离线放置",
+    "本地 TTS 首次调用还要拉语音检查模型",
+    "首次使用需下载约 400MB 模型，弱网成本高",
+    "默认缓存目录在用户目录，需显式改到 F 盘"
+  ],
+  "compareTips": [
+    {
+      "vs": "vs stickman",
+      "adviceZh": "stickman 走本地 canvas 火柴人；explainroo 走 HTML 场景 + 本地配音"
+    },
+    {
+      "vs": "vs huashu-motion",
+      "adviceZh": "explainroo 强在配音闭环，huashu 强在模板风格"
+    }
+  ],
+  "showcase": {
+    "demoBriefZh": "演示重点：1) script.md→配音→成片全本地；2) 词级时间码驱动的字幕/高亮；3) 示例工程的改法。",
+    "featureCallouts": [
+      {
+        "titleZh": "全本地",
+        "descZh": "配音与渲染均离线"
+      },
+      {
+        "titleZh": "词级时间码",
+        "descZh": "字幕与高亮对齐"
+      },
+      {
+        "titleZh": "示例完整",
+        "descZh": "examples 可直接跑"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "field": "stars",
+      "source": "GitHub API",
+      "noteZh": "844 stars"
+    },
+    {
+      "field": "安装",
+      "source": "本地实测",
+      "noteZh": "npm install 1,513,108ms"
+    },
+    {
+      "field": "模型",
+      "source": "本地实测",
+      "noteZh": "doctor --fetch 两次（默认与 hf-mirror 镜像）均报 fetch failed，未出片"
+    }
+  ]
+}

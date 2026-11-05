@@ -1,0 +1,63 @@
+{
+  "id": "jeertmans__manim-slides",
+  "durationSec": 20.9,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.667,
+      "capabilityZh": "标题页排版与分页",
+      "proofZh": "MarkupText + 中文副标题，next_slide() 切到下一页"
+    },
+    {
+      "start": 4.667,
+      "end": 12.234,
+      "capabilityZh": "翻页后重建构图",
+      "proofZh": "self.clear() 后新建 Axes，柱子生长并拉伸到目标值"
+    },
+    {
+      "start": 12.234,
+      "end": 20.901,
+      "capabilityZh": "可循环的收尾页",
+      "proofZh": "MoveAlongPath 绕环一周，next_slide(loop=True)"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.4,
+      "dur": 3.8,
+      "titleZh": "Manim 场景变放映",
+      "descZh": "同一个 Slide 类被切成多页，放映时按页推进或回退"
+    },
+    {
+      "t": 4.8,
+      "dur": 3.4,
+      "titleZh": "翻页即重建",
+      "descZh": "self.clear() 清空上一页，坐标系与柱子在新页重新生成"
+    },
+    {
+      "t": 8.2,
+      "dur": 3.8,
+      "titleZh": "数据动画不妥协",
+      "descZh": "GrowFromEdge 生长 + stretch 到目标值，仍是 Manim 插值"
+    },
+    {
+      "t": 13.0,
+      "dur": 3.8,
+      "titleZh": "末页可循环",
+      "descZh": "next_slide(loop=True) 让收尾段落反复播放，不必重跑"
+    },
+    {
+      "t": 17.4,
+      "dur": 3.4,
+      "titleZh": "纯 Text 排版",
+      "descZh": "无 TeX 环境也能用 MarkupText / Text 做中文排版"
+    }
+  ],
+  "renderMs": 168000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "未录制键盘翻页交互，只呈现自动推进的时间轴",
+    "循环页 loop=True 在成片中只播放一圈",
+    "无 TeX，公式以 Text/MarkupText 排版"
+  ]
+}

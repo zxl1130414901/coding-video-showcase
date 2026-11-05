@@ -1,0 +1,74 @@
+{
+  "id": "nexu-io__html-video",
+  "taglineZh": "选模板、贴链接，让 coding agent 把内容排成多帧 HTML，再渲成 1080p60 宣传片",
+  "summaryZh": "2026 年的新项目（约 4.8k stars，Apache-2.0）：本地 Studio + CLI 的组合，让 Claude Code、Codex 等 14 种 coding agent 把 prompt、文章链接或 GitHub 仓库抓成内容图谱，再逐帧生成 HTML，Hyperframes 用 headless Chromium 录 webm，ffmpeg 转 mp4；内置 21 套模板，可选 MiniMax 配乐与旁白。它的思路与 Remotion 相反：不是让你写组件，而是让 agent 写 HTML 页面，框架只负责把页面变成视频。实测唯一原生 1080p60 的成品，28.17 秒用 55 秒渲完（约 30.7fps）。Studio 里能逐帧改文案，CLI 适合接进自动化流程。它把排版交给 CSS、节奏交给模板，不懂动画也能出片。",
+  "whatItMakes": [
+    {"type": "产品宣传片", "exampleZh": "模板 + 产品名/卖点，出 15–60 秒横屏或竖屏片", "strength": "核心能力"},
+    {"type": "文章/仓库转讲解片", "exampleZh": "贴公众号链接或 GitHub 仓库，抓取正文后分帧讲解", "strength": "核心能力"},
+    {"type": "多帧故事板拼接", "exampleZh": "内容图谱决定帧序，故事板视图可逐帧改文案", "strength": "核心能力"},
+    {"type": "数据可视化短片", "exampleZh": "数据类模板渲染图表与数字滚动", "strength": "可用"},
+    {"type": "配乐与旁白", "exampleZh": "MiniMax 生成音乐/配音，混入 MP4", "strength": "可用"},
+    {"type": "教学长片/课程", "exampleZh": "模板面向 15–60 秒，缺章节与公式排版", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "产品发布短片", "whoZh": "运营、独立开发者", "whyZh": "选模板 + 填文案即可出 1080p60，速度与观感都够发社媒", "deliverableZh": "1080×1080 或 1920×1080 的 15–60 秒 MP4", "fit": "高度契合"},
+    {"scenarioZh": "文章转视频", "whoZh": "公众号作者、内容团队", "whyZh": "贴链接后由 agent 抓正文并分帧，省掉改写脚本的步骤", "deliverableZh": "30–60 秒讲解片 + 逐帧 HTML", "fit": "高度契合"},
+    {"scenarioZh": "开源项目介绍片", "whoZh": "开源作者、DevRel", "whyZh": "直接给仓库地址，agent 读 README 生成介绍片", "deliverableZh": "20–40 秒横屏 MP4", "fit": "适合"},
+    {"scenarioZh": "社媒批量短视频", "whoZh": "MCN、代运营", "whyZh": "CLI 可脚本化，但模板质量参差、首次安装约 10 分钟", "deliverableZh": "按账号批量出片", "fit": "适合"},
+    {"scenarioZh": "课程/教学视频", "whoZh": "教师", "whyZh": "模板偏营销，缺 LaTeX 与章节结构，长时间内容不合适", "deliverableZh": "不推荐", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "实测 1920×1080；模板支持方形与竖屏，4K 未验证",
+    "maxFpsZh": "实测 1080p60，是本批唯一原生 60fps 成品",
+    "durationZh": "实测 28.17 秒；模板多为 15–60 秒，长片未验证",
+    "effectsZh": ["21 套模板（数据可视化/宣传/社媒/讲解/动态字/转场）", "逐帧 HTML 动画", "故事板拼接", "MiniMax 配乐与旁白"],
+    "audioZh": "MiniMax 生成配乐与旁白并混入 MP4；无逐词字幕对齐",
+    "interactivityZh": "Studio 内可逐帧改文案、切模板、预览",
+    "automationZh": "CLI 一条命令渲染；自动探测 14 种 coding agent",
+    "assetsZh": "用户提供的链接/仓库/图片，模板内置样式与字体",
+    "exportFormatsZh": ["mp4", "webm（中间产物）", "逐帧 HTML"],
+    "realtimePreviewZh": "Studio 内实时预览",
+    "ciFriendlyZh": "中等：pnpm 安装约 10 分钟并需首次整体构建，之后 CLI 可跑"
+  },
+  "ceilingZh": "它把「网页 → 视频」这条链路做得最完整：21 套模板 + 内容图谱 + 逐帧 HTML，实测 1080p60、28 秒片 55 秒渲完，约 30.7fps，是本批唯一原生 60fps 的成品；理论上只要浏览器能排版的画面它都能出。上限取决于模板与 agent：内容图谱可拓扑排序出多帧故事板，Studio 可逐帧改文案；但模板偏营销与讲解，没有 LaTeX、章节与长片结构。硬边界：部分模板会产出 261B 空文件（如 frame-bold-poster），必须逐一验片；pnpm 安装约 10 分钟且首次要 pnpm -r build；Windows 下 chmod 报错可忽略但要确认 dist 存在；4K 与长片未验证。另外 CLI 与 Studio 共用同一套模板，改模板要动仓库代码，不能纯配置替换。模板之外的自定义帧仍要手写 HTML。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "pnpm install，约 10 分钟；Windows 出现 chmod 报错可忽略", "effortZh": "约 10 分钟"},
+    {"stepZh": "构建", "detailZh": "pnpm -r build，确认各包 dist 生成，否则 CLI 找不到渲染器", "effortZh": "5–15 分钟"},
+    {"stepZh": "选模板与素材", "detailZh": "从 21 套模板挑一套，准备产品名、卖点或文章/仓库链接", "effortZh": "约 10 分钟"},
+    {"stepZh": "生成与渲染", "detailZh": "用 CLI 指定模板与内容，agent 生成 HTML，Hyperframes 录 webm 后 ffmpeg 转 mp4", "effortZh": "实测 28 秒片 55 秒"},
+    {"stepZh": "验片", "detailZh": "检查 MP4 体积是否异常（空文件约 261B），必要时重渲或换模板", "effortZh": "约 5 分钟"}
+  ],
+  "differentiators": [
+    "让 agent 写 HTML 而不是写组件，画面自由度来自网页排版",
+    "21 套模板 + 14 种 coding agent 自动探测，开箱即用",
+    "文章链接/GitHub 仓库直接转视频，省掉内容改写",
+    "内建 Studio 与 CLI 两条路径，逐帧可改文案"
+  ],
+  "limits": [
+    "部分模板产出空文件，必须逐条验片",
+    "安装与首次构建重，Windows 有 chmod 报错",
+    "模板偏营销，缺 LaTeX、章节与长片能力",
+    "依赖 agent 会话与 Hyperframes 引擎，定制深度受限"
+  ],
+  "compareTips": [
+    {"vs": "remotion-dev__remotion", "adviceZh": "要组件级控制与成熟音频/字幕选 Remotion；要模板 + agent 快速出宣传片选 html-video"},
+    {"vs": "wx4766__html-to-video", "adviceZh": "html-to-video 是把现成 HTML 逐帧录成视频的底层工具；html-video 在其上加了模板、内容图谱与 Studio"},
+    {"vs": "cth9191__animate", "adviceZh": "要竖屏知识动画与画风选 animate；要横屏产品宣传与文章转视频选 html-video"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①选一套发布模板，填产品名出 1080p60 竖屏片；②贴一个 GitHub 仓库链接，agent 抓 README 生成 20 秒介绍片；③Studio 里逐帧改文案并实时预览；④对比两个模板的渲染耗时与成片体积，指出空文件模板",
+    "featureCallouts": [
+      {"titleZh": "21 套模板", "descZh": "宣传/数据/社媒/讲解/动态字"},
+      {"titleZh": "内容图谱", "descZh": "agent 抓取内容后排帧序"},
+      {"titleZh": "1080p60", "descZh": "实测原生 60fps 输出"},
+      {"titleZh": "Studio + CLI", "descZh": "可视化改文案，也可脚本批量"},
+      {"titleZh": "MiniMax 音频", "descZh": "配乐与旁白直接混入 MP4"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L7-L15", "noteZh": "英文 README 说明 coding agent 可把 HTML/文章链接/仓库生成多帧动画并本地渲染 MP4"},
+    {"field": "capabilities.effectsZh", "source": "README.md#L89-L100", "noteZh": "速览列出 14 种 agent、21 个模板、多帧故事板、AI 配乐、Studio + CLI"},
+    {"field": "capabilities.exportFormatsZh", "source": "README.md#L104-L135", "noteZh": "工作流：来源抓取 → content-graph + 逐帧 HTML → Hyperframes 渲染 → ffmpeg 编码 MP4"},
+    {"field": "ceilingZh", "source": "_samples/nexu-io__html-video/meta.json", "noteZh": "实测 1920×1080/60fps/28.17s，55s 渲完，约 30.7fps"}
+  ]
+}

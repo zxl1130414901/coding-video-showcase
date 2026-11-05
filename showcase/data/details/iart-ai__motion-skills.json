@@ -1,0 +1,74 @@
+{
+  "id": "iart-ai__motion-skills",
+  "taglineZh": "56 个给 AI coding agent 的动态图形技能包：把做片子的工艺写成流程",
+  "summaryZh": "motion-skills 不是渲染器，而是一套给 AI coding agent 看的动态图形工艺库：19 个独立仓库、56 个 skill，覆盖动态排版、数据图表、TikTok 竖屏、WebGL、Manim 数学动画与透明下三分之一。视频类 skill 最终通过 Remotion 或 Manim 出片，自带 deliver-and-verify 循环：渲一帧、截图、检查、再改。它补的是从 prompt 到成片之间缺失的工艺知识——时序、缓动、安全区、品牌字体、帧精确。与 Remocn/SnapCN 不同，它不提供组件，只给流程。skills 装在 agent 里才会生效，单独打开仓库看不到效果。",
+  "whatItMakes": [
+    {"type": "短视频/竖屏内容", "exampleZh": "TikTok/Reels 节奏剪辑、文字卡、产品特写", "strength": "可用"},
+    {"type": "数据动画与信息图", "exampleZh": "数据驱动图表、地图动画、逐步揭示", "strength": "可用"},
+    {"type": "动态排版/品牌动效", "exampleZh": "kinetic typography、Logo 动效、下三分之一", "strength": "可用"},
+    {"type": "数学/教学动画", "exampleZh": "Manim 驱动的公式与几何讲解", "strength": "可用"},
+    {"type": "3D/WebGL 视觉", "exampleZh": "Three.js 场景、着色器背景、生成式插画", "strength": "可用"},
+    {"type": "透明叠加层/B-roll", "exampleZh": "WebM alpha 下三分之一、ProRes 4444、口播配画面", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "Agent 自动做投放素材", "whoZh": "增长/投放团队", "whyZh": "把节奏、安全区、品牌规范写成 skill，agent 可稳定复用", "deliverableZh": "9:16 的 15–30 秒 MP4", "fit": "适合"},
+    {"scenarioZh": "内容创作者的批量短片", "whoZh": "TikTok/Shorts 创作者", "whyZh": "从选题到出片有现成工作流，减少从零试错", "deliverableZh": "竖屏 15–60 秒视频", "fit": "适合"},
+    {"scenarioZh": "数据分析师的图表动画", "whoZh": "分析师、产品经理", "whyZh": "data-animation pack 把图表语义与动画节奏一起教给 agent", "deliverableZh": "横屏 30–90 秒数据片", "fit": "适合"},
+    {"scenarioZh": "教育者的数学动画", "whoZh": "教师、科普作者", "whyZh": "manim-skills 直接对接 Manim 生态", "deliverableZh": "1080p 教学片段", "fit": "勉强"},
+    {"scenarioZh": "无 agent 的传统剪辑", "whoZh": "剪辑师", "whyZh": "它没有渲染器、没有时间轴界面，必须由 agent 执行", "deliverableZh": "不适用", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "取决于具体 skill 的宿主（Remotion/Manim/浏览器）；实测 demo 1280×720，无统一上限",
+    "maxFpsZh": "取决于宿主与 skill；实测 30fps",
+    "durationZh": "无统一限制；短视频类 skill 通常按 15–60 秒设计",
+    "effectsZh": ["动态排版与节奏剪辑", "数据图表与地图动画", "GSAP/SVG/Lottie 网页动效", "Three.js/WebGL 与 Manim", "透明通道叠加层"],
+    "audioZh": "部分 skill 含配乐/音效/节拍对齐；取决于宿主，非统一能力",
+    "interactivityZh": "无交互；产物是视频或网页动画",
+    "automationZh": "无独立 CLI；由 Claude Code、Cursor、Codex 等 agent 按 SKILL.md 执行",
+    "assetsZh": "references/ 提供工艺说明与代码片段；素材与字体需按 skill 指引自备",
+    "exportFormatsZh": ["MP4（经 Remotion/Manim）", "GIF", "WebM alpha", "ProRes 4444"],
+    "realtimePreviewZh": "部分：agent 用 freeze-frame/contact sheet 自检，不是实时预览器",
+    "ciFriendlyZh": "不适合 CI；依赖 agent 判断与多轮视觉检查"
+  },
+  "ceilingZh": "它能把“一个 agent 从零做出一支可用短片”变成有章可循的流程：实测用仓库自带 showcase.html，通过 GSAP globalTimeline.time(t) 逐帧 seek 截图 180 帧、再以 NVENC 合成 6 秒 720p30 视频，截图阶段 78 秒，说明这类 GSAP 演示页可以被确定性录制。能力上限取决于所装 skill 与宿主：Manim 类能出公式动画，Remotion 类能出产品片，WebGL 类能做 3D，透明通道类能给 OBS/Premiere 供素材。边界：这个仓库本身只是索引与工具（tools/ + showcase），19 个 pack 都在外部仓库，离线不可用；没有统一渲染器、没有 CLI、没有质量基线；skill 的实际效果高度依赖模型与提示词；复杂片子仍需人类审片。它没有统一版本与质量基线，装哪些 pack 全凭自己判断。",
+  "workflow": [
+    {"stepZh": "选 pack", "detailZh": "按受众选 19 个 pack 之一，例如 tiktok-video-skills 或 data-animation-skills", "effortZh": "约 5 分钟"},
+    {"stepZh": "安装", "detailZh": "npx skills add iart-ai/<pack>，或 /plugin marketplace add 装成 Claude Code 插件", "effortZh": "约 2 分钟"},
+    {"stepZh": "让 agent 执行", "detailZh": "在 Claude Code/Cursor/Codex 里描述需求，skill 自动激活并按步骤实现", "effortZh": "按片子复杂度"},
+    {"stepZh": "自检闭环", "detailZh": "用 skill 自带脚本 freeze 帧、拼 contact sheet、probe MP4，改到满意", "effortZh": "多轮"},
+    {"stepZh": "交付", "detailZh": "Remotion/Manim 渲出 MP4，或输出带 alpha 的 WebM/ProRes 叠加层", "effortZh": "按宿主而定"}
+  ],
+  "differentiators": [
+    "把动效工艺（时序、缓动、安全区、帧精确）写成 agent 可读的 SKILL.md，而不是组件代码",
+    "19 个 pack 按受众拆分，装一个就够，不必吞下整个生态",
+    "视频类 skill 带 deliver-and-verify 工具链，agent 能自己看帧改片",
+    "覆盖 Remotion、Manim、GSAP、Three.js、透明通道等多条技术路线"
+  ],
+  "limits": [
+    "仓库本身不是渲染器，只有索引、showcase 与 tools，19 个 pack 在外部仓库",
+    "没有统一 CLI 与质量基线，效果高度依赖所用模型与提示词",
+    "不能离线独立使用，装 skill 需要网络与 agent 环境",
+    "复杂叙事、品牌级画面仍需人类审片与二次修改"
+  ],
+  "compareTips": [
+    {"vs": "Remocn__remocn", "adviceZh": "要现成可复制的动效组件选 Remocn；要 agent 理解“怎么做片子”的工艺与流程选 motion-skills"},
+    {"vs": "Vincentwei1021__video-shotcraft", "adviceZh": "要一条完整宣传片流程选 video-shotcraft；要覆盖短视频/数据/3D/透明层多题材选 motion-skills 的对应 pack"},
+    {"vs": "remotion-dev__remotion", "adviceZh": "motion-skills 是上层知识库，最终仍落到 Remotion/Manim；要底层控制直接学宿主框架"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①19 个 pack 与 56 个 skill 的目录；②装一个 pack 后 agent 自动激活并读 SKILL.md；③showcase.html 的 GSAP 时间轴逐帧 seek 录制；④deliver-and-verify 的截图/contact sheet/MP4 probe 结果",
+    "featureCallouts": [
+      {"titleZh": "56 个技能", "descZh": "19 个 pack 按受众与场景拆分"},
+      {"titleZh": "Agent 原生", "descZh": "SKILL.md 复制进项目即生效"},
+      {"titleZh": "交付即验证", "descZh": "渲帧截图自检再改"},
+      {"titleZh": "多技术路线", "descZh": "一条流程覆盖 Remotion、Manim、GSAP 与 WebGL"},
+      {"titleZh": "透明叠加层", "descZh": "透明叠加层可用 WebM alpha 与 ProRes 4444"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L3-L9", "noteZh": "56 个开源 skills、19 个可安装 pack，教 agent 做 motion graphics/animation/video"},
+    {"field": "capabilities.exportFormatsZh", "source": "README.md#L37-L59", "noteZh": "视频类 skill 经 Remotion 或 Manim 出片，带 deliver-and-verify 与 scripts 工具"},
+    {"field": "whatItMakes", "source": "README.md#L11-L33", "noteZh": "列出 TikTok、数据、地图、WebGL、Manim、下三分之一、B-roll 等 pack 与技能数"},
+    {"field": "ceilingZh", "source": "_samples/iart-ai__motion-skills/meta.json", "noteZh": "实测 showcase.html GSAP 时间轴 seek 180 帧，截图 78s，NVENC 合成 6s/720p30"}
+  ]
+}

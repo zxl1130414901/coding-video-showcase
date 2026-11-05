@@ -1,0 +1,59 @@
+{
+  "repo": "heygen-com/hyperframes",
+  "category": "HTML→视频（Agent 原生）",
+  "status": "success",
+  "render_ms": 157300,
+  "total_ms": 200000,
+  "cmd": "npx hyperframes@0.9.14 init hfproj2 --example warm-grain --non-interactive；npx hyperframes@0.9.14 render . --fps 30 --workers 1 --start 0 --end 8 -o renders/warm.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 7.97,
+    "nb_frames": 239,
+    "codec": "h264",
+    "pix_fmt": "yuv420p",
+    "fps": "30/1",
+    "size_bytes": 286287
+  },
+  "notes_zh": "根因：默认 workers=auto（22 进程）+ 自动下载浏览器，首个 Chrome 拉不起来导致 20 分钟 0 帧。改 --workers 1、本地 chrome-headless-shell（PUPPETEER_EXECUTABLE_PATH），并用官方 warm-grain 示例渲染 0–8s 成功",
+  "preview": {
+    "at_s": 3.98,
+    "mean_rgb": [
+      227.3,
+      225.04,
+      207.37
+    ],
+    "stddev_rgb": [
+      52.55,
+      40.95,
+      46.28
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 22.3,
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 6,
+    "render_ms": 330000,
+    "pipeline": "native",
+    "build": "hyperframes CLI 0.9.14 渲染三个官方 registry 块工程（bar-chart-race / data-chart / spain-map）各 0-7.5s，Chromium headless-shell 逐帧截图，ffmpeg 拼接后 drawtext 烧中文标注；缓存目录通过 HYPERFRAMES_CACHE_DIR 重定向到 F 盘",
+    "ffprobe": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "frames": 669,
+      "duration": 22.3,
+      "codec": "h264",
+      "size_bytes": 1406383
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 7.97s",
+    "known_limits_zh": [
+      "flowchart 与 thread-message-stack 两个官方块在本机渲染时报 timeline 未注册，本次改用 data-chart 作第二段",
+      "块内 GSAP 从 jsDelivr 拉取，离线环境需要本地镜像；本机联网正常",
+      "官方块自带英文文案，中文只出现在底部标注条，未改块内排版"
+    ]
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "id": "heygen-com__hyperframes",
+  "taglineZh": "把一份 HTML 动效页当作工程，用命令行渲成 MP4 的 Agent 原生框架",
+  "summaryZh": "HyperFrames 是 HeyGen 开源的 HTML→视频框架：作者只写 HTML/CSS/JS 动画，CLI 用无头 Chromium 按帧推进时间轴，再由 FFmpeg 合成。仓库同时提供 Agent 技能与项目脚手架，目标是让 Claude/Codex 直接产出可渲染的工程，而不是零散片段。",
+  "whatItMakes": [
+    {
+      "type": "HTML 动效页",
+      "exampleZh": "index.html 里用 GSAP/CSS 写时间轴，hyperframes init 生成工程骨架",
+      "strength": "页面即工程，改样式即可改片"
+    },
+    {
+      "type": "CLI 逐帧渲染",
+      "exampleZh": "hyperframes render 输出 mp4，支持帧率与质量档位",
+      "strength": "一条命令从源码到成片"
+    },
+    {
+      "type": "Agent 协作",
+      "exampleZh": "附带 skills 与 AGENTS.md，约定 Agent 如何改页面",
+      "strength": "面向自动写片的工程约定"
+    }
+  ],
+  "useCases": [
+    {
+      "scenarioZh": "产品发布短片",
+      "whoZh": "文档/作者",
+      "whyZh": "不需要剪辑软件，改 HTML 就能改片",
+      "deliverableZh": "16:9 marketing 视频",
+      "fit": "高"
+    }
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由页面画布决定（脚手架默认 1920×1080）",
+    "maxFpsZh": "由 --fps 指定，脚手架 30fps",
+    "durationZh": "由页面时间轴总长决定",
+    "effectsZh": [
+      "CSS/GSAP 动画",
+      "Canvas/WebGL（页面自带即可）",
+      "字体与排版"
+    ],
+    "audioZh": "页面内 <audio> 可随帧推进（需自行保证时序）",
+    "interactivityZh": "无交互控件，按时间轴渲染",
+    "automationZh": "CLI + Agent skill，可进 CI",
+    "assetsZh": "HTML/CSS/JS/图片/字体，随工程目录",
+    "exportFormatsZh": [
+      "mp4"
+    ],
+    "realtimePreviewZh": "自带浏览器预览",
+    "ciFriendlyZh": "CLI 可脚本化，但需 Chromium 与 FFmpeg"
+  },
+  "ceilingZh": "上限取决于作者写的页面：复杂 WebGL 场景也能渲，但每帧成本随页面复杂度线性上升；工程化程度高，适合团队流水线。",
+  "workflow": [
+    {
+      "stepZh": "装 CLI",
+      "detailZh": "npm i hyperframes（本次装在 F 盘临时工程内，未污染全局）",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "起工程",
+      "detailZh": "hyperframes init <dir> 生成 index.html/hyperframes.json/AGENTS.md",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "写页面",
+      "detailZh": "按时间轴改 HTML/CSS/JS（或让 Agent 改）",
+      "effortZh": "中"
+    },
+    {
+      "stepZh": "渲染",
+      "detailZh": "hyperframes render，产物落在 renders/",
+      "effortZh": "低"
+    }
+  ],
+  "differentiators": [
+    "官方背景（HeyGen），仓库自带 Agent 技能与渲染约定",
+    "脚手架即含时间轴、字体、音频说明，不是纯文档",
+    "Apache-2.0，商用限制比 PolyForm 类许可宽松"
+  ],
+  "limits": [
+    "本次实测：init 正常；默认 workers=auto 在 Windows 上拉 22 个进程却 0 帧，改 --workers 1 + 本地 chrome-headless-shell 后 8s 出片",
+    "脚手架从 CDN 拉 GSAP，内网/弱网会降级（本次日志有 fetch failed 警告）",
+    "首次使用会自动下载浏览器并缓存到用户目录（本次落在 C:\\Users\\ROG\\.cache\\hyperframes）",
+    "依赖 Chromium 与 FFmpeg，CI 需自备浏览器"
+  ],
+  "compareTips": [
+    {
+      "vs": "vs Remotion",
+      "adviceZh": "Remotion 用 React 组件树 + 官方渲染器，生态成熟；HyperFrames 更轻，直接吃原生 HTML"
+    },
+    {
+      "vs": "vs huashu-motion",
+      "adviceZh": "huashu 是中文 Agent 工作流 + 分镜 CLI；HyperFrames 是框架层，不包内容创意"
+    }
+  ],
+  "showcase": {
+    "demoBriefZh": "演示重点：1) init→render 一条命令出片；2) 同一页面改文案/配色即刻换风格；3) 时间轴与音频对齐的写法。",
+    "featureCallouts": [
+      {
+        "titleZh": "HTML 即时间轴",
+        "descZh": "页面里所有动画都可由时间轴 seek，渲染器只负责推进与抓帧"
+      },
+      {
+        "titleZh": "Agent 原生工程",
+        "descZh": "AGENTS.md 规定改片边界，适合让模型批量产出"
+      },
+      {
+        "titleZh": "CLI 流水线",
+        "descZh": "适合把“生成页面→渲片”接进自动化"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "field": "stars/forks",
+      "source": "GitHub API",
+      "noteZh": "79,071 stars / 7,277 forks（2026-11-05 抓取）"
+    },
+    {
+      "field": "渲染验证",
+      "source": "本地实测",
+      "noteZh": "render --workers 1 --start 0 --end 8 出片成功，8.03s/1920×1080/30fps，用时 2m9s"
+    },
+    {
+      "field": "许可",
+      "source": "GitHub API",
+      "noteZh": "Apache-2.0"
+    }
+  ]
+}

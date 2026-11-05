@@ -1,0 +1,34 @@
+# BintzGavin__helios · 演示脚本（v2）
+
+## 这条片子要证明什么
+Helios 的核心是「虚拟时钟 + 任意渲染器」：同一份时间轴可以驱动 React DOM、Three.js WebGL 与 Canvas 2D，逐帧可复现，不依赖浏览器实时播放。
+
+## 分段设计
+
+| # | 时间 | 能力 | 实测证据 |
+|---|---|---|---|
+| 1 | 0.0–6.0s | 反应式 DOM 排版 | React 组件随 frame 90/150 更新旋转角，画面内 Frame 90.00 / Progress 60.0% / FPS 30 同帧刷新 |
+| 2 | 6.0–12.0s | WebGL / Three.js 画布 | Three.js 渲染器在 headless Chrome 中出图，绿色方块逐帧旋转 |
+| 3 | 12.0–18.0s | Canvas 2D 形状与颜色 | 红色方块与蓝色圆形位置/旋转/尺寸随帧变化，纯 2D context 绘制 |
+
+## 中文标注（4–6 条，每条 3–5s）
+
+- **0.8s +4.4s** ① 反应式 DOM 排版 ｜ React 状态由时间轴驱动，Frame/Progress/FPS 读数同帧更新
+- **6.3s +3.4s** ② WebGL 画布 ｜ Three.js 渲染器在 headless Chrome 中逐帧出图，无需实时播放
+- **9.5s +2.4s** ③ 虚拟时钟注入 ｜ window.__HELIOS_VIRTUAL_TIME__ 注入毫秒时间，DOM 与 WebGL 同步
+- **12.2s +3.8s** ④ Canvas 2D 形状动画 ｜ 方块与圆形的位置、旋转、尺寸随帧变化，2D context 绘制
+- **16.1s +1.8s** ⑤ 纯截图成片 ｜ 540 帧截图 + ffmpeg 合成 18.0s，耗时 293s
+
+## 管线与实测
+- 生成方式：Playwright + Chrome 直开各 example 的 dist/composition.html；用 window.__HELIOS_VIRTUAL_TIME__ 注入虚拟时间，逐帧 rAF 后截图；ffmpeg 720p30 合成 3 段再拼接，drawtext 烧中文标注
+- pipeline：fallback
+- 渲染耗时：293307 ms
+- 构建：三个 example 分别 vite build；threejs 的 index.html 依赖未构建的 player，改用自定义 vite.comp.js 只打包 composition.html
+- 截图脚本 _v2/capture3.py：每场景 180 帧（6s），3 段共 18.0s
+- Chrome 参数 --use-angle=vulkan --enable-gpu，WebGL 在 headless 下可用
+
+## 已知限制
+
+- 仓库自带 CLI 会驱动浏览器实时播放，无法直接出 720p30；本片改用 Playwright 虚拟时间逐帧截图
+- Three.js 示例本身是极简立方体场景，WebGL 段画面元素较少
+- 各示例的 composition.html 固定尺寸，截图统一放 1280x720 视口，未做二次缩放

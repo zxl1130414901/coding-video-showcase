@@ -1,0 +1,44 @@
+{
+  "repo": "spite/ccapture.js",
+  "category": "HTML/浏览器渲染转视频",
+  "status": "success",
+  "render_ms": 3460,
+  "total_ms": 3460,
+  "cmd": "node F:\\coding视频\\_samples\\spite__ccapture.js\\capture.mjs  （Playwright 打开 demo.html，页面内 CCapture 调用仓库 src/index.js 录 canvas，触发下载后 saveAs）",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration": 4.0,
+    "frames": 120,
+    "fps": 30,
+    "codec": "h264",
+    "size_bytes": 683946
+  },
+  "notes_zh": "demo.html 直接 import 仓库 src/index.js，用 CCapture 自带 capturer.record(canvas, frame => draw(frame/30, frame)) 录 120 帧 MP4，Playwright 监听 download 保存为 sample.mp4。坑：手动 rAF 推进配合 capturer.capturing 判断会让 frameCount 停在 0（首帧后卡死），改用库内置 record 回调后一次通过，3.46s 完成。",
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 23.97,
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 6,
+    "render_ms": 19553,
+    "pipeline": "official",
+    "build": "CCapture v2 在浏览器里依次录制 3 段（mp4/16 子帧模糊/webm），下载落盘；build_sample.py 拼接 + PIL 中文标注 overlay + h264_nvenc",
+    "ffprobe": {
+      "width": 1920,
+      "height": 1080,
+      "duration": 23.9,
+      "frames": 717,
+      "fps": 30.0,
+      "codec": "h264",
+      "size_bytes": 16191745
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 4.0s",
+    "known_limits_zh": [
+      "运动模糊需要 16 倍子帧绘制与 GPU 回读，耗时约为普通录制的 2-3 倍",
+      "WebCodecs 需要 Chromium 支持（Chrome 156 headless 正常）；Firefox 需回落到 webm-legacy",
+      "1080p H.264 编码质量由 WebCodecs 决定，码率固定时细碎粒子会有轻微块效应"
+    ]
+  }
+}

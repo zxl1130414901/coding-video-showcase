@@ -1,0 +1,63 @@
+{
+  "id": "JazonJiao__Manim.js",
+  "durationSec": 30.0,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 10.0,
+      "capabilityZh": "算法过程动画：Kruskal + UNION-FIND",
+      "proofZh": "12 节点 / 23 条带权边全部由 Timer 逐帧生成，右侧并查集集合 {0..11} 同步合并"
+    },
+    {
+      "start": 10.0,
+      "end": 20.0,
+      "capabilityZh": "坐标轴 / 散点 / KaTeX 公式排版",
+      "proofZh": "8 个黄色数据点 + 箭头坐标轴，公式 $\\hat y = \\hat\\beta x + \\hat\\beta_0$ 由 KaTeX 渲染"
+    },
+    {
+      "start": 20.0,
+      "end": 30.0,
+      "capabilityZh": "概念类动画：DPO 大标题与图形讲解",
+      "proofZh": "LLM Explained/DPO 页面按帧推进，含自研 figures 图形库绘制"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.4,
+      "dur": 4.0,
+      "titleZh": "① 算法过程逐帧演算",
+      "descZh": "Kruskal：12 节点 / 23 条带权边，边按权重排序后依次尝试合并"
+    },
+    {
+      "t": 5.0,
+      "dur": 4.0,
+      "titleZh": "② Timer 类控制缓动节奏",
+      "descZh": "Timer0 匀速 / Timer1 减速 / Timer2 加速，统一折算成帧数"
+    },
+    {
+      "t": 10.4,
+      "dur": 4.0,
+      "titleZh": "③ 坐标轴 + 散点 + KaTeX 公式",
+      "descZh": "p5.js 画坐标轴与 8 个数据点，KaTeX 渲染回归方程"
+    },
+    {
+      "t": 20.4,
+      "dur": 4.0,
+      "titleZh": "④ 概念动画复用同一套帧循环",
+      "descZh": "LLM/DPO 页面用同样的 setup/draw 结构，换脚本即换主题"
+    },
+    {
+      "t": 25.5,
+      "dur": 4.0,
+      "titleZh": "⑤ 自动录制成片",
+      "descZh": "Playwright 逐页录制 webm → ffmpeg 转 1920×1080/30fps，三段拼接 30s"
+    }
+  ],
+  "renderMs": 210000,
+  "pipeline": "wrapper",
+  "knownLimitsZh": [
+    "仓库本身没有导出器，成片需要浏览器逐页录制再转码（wrapper 管线）",
+    "示例 canvas 固定 1200×675，放大到 1080p 后文字边缘略软",
+    "页面依赖 lib/font/times.ttf 的 XHR 加载，file:// 下会被 CORS 拦截，必须起本地 http 服务"
+  ]
+}

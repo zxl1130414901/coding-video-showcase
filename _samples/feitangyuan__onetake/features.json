@@ -1,0 +1,69 @@
+{
+  "id": "feitangyuan__onetake",
+  "durationSec": 21.8,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.93,
+      "capabilityZh": "一镜到底时间轴",
+      "proofZh": "整条片子由 window.__seek(t) 驱动，镜头、文字、卡片共用一条 15s 时间轴，渲染器逐帧截图"
+    },
+    {
+      "start": 5.93,
+      "end": 13.87,
+      "capabilityZh": "快门运动模糊",
+      "proofZh": "shutter 180° 每帧 4 次采样在线性光下积分，快速位移不频闪（667 次抓帧 / 180 帧）"
+    },
+    {
+      "start": 13.87,
+      "end": 21.8,
+      "capabilityZh": "look 变量换肤",
+      "proofZh": "同一 comp.html 只替换 8 个颜色变量，paper → dusk → ultramarine 三种风格内容不变"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.3,
+      "dur": 3.7,
+      "titleZh": "① 一镜到底时间轴",
+      "descZh": "镜头/文字/卡片共用一条时间轴，window.__seek(t) 同步驱动"
+    },
+    {
+      "t": 4.5,
+      "dur": 3.4,
+      "titleZh": "② 快门 180° 运动模糊",
+      "descZh": "每帧 4 次采样线性光积分，快动作不频闪"
+    },
+    {
+      "t": 8.4,
+      "dur": 3.6,
+      "titleZh": "③ 换 look：dusk 夜紫",
+      "descZh": "只改 8 个颜色变量，深色底 + 紫罗兰强调色"
+    },
+    {
+      "t": 12.4,
+      "dur": 3.2,
+      "titleZh": "④ 同一 comp 只改变量",
+      "descZh": "版式、文案、节拍完全不变，换的是设计令牌"
+    },
+    {
+      "t": 15.7,
+      "dur": 3.2,
+      "titleZh": "⑤ 换 look：ultramarine",
+      "descZh": "蓝底白字 + 黄色强调，poster 质感而非界面"
+    },
+    {
+      "t": 18.6,
+      "dur": 3.2,
+      "titleZh": "⑥ 三段各取所需",
+      "descZh": "15s 模板按能力切三段，成片 21.8s"
+    }
+  ],
+  "renderMs": 300000,
+  "pipeline": "native",
+  "knownLimitsZh": [
+    "仓库未随附 footage 片段，4 个镜头素材 404，画面只保留文字/卡片层，属于本地占位",
+    "合成页是 15s 模板，本次按能力切成三段拼成 21.9s，不是一条完整叙事片",
+    "逐帧截图渲染，1080p 下约 5s/帧（快门 4 采样），不适合长片"
+  ]
+}

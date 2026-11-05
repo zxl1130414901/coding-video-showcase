@@ -1,0 +1,48 @@
+{
+  "repo": "Zulko/moviepy",
+  "category": "编程式视频剪辑（Python）",
+  "status": "success",
+  "render_ms": 36182,
+  "total_ms": 55776,
+  "cmd": "python _samples\\Zulko__moviepy\\sample_run.py",
+  "artifact": "F:\\coding视频\\_samples\\Zulko__moviepy\\sample.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 3.0,
+    "fps": 30.0,
+    "nb_frames": 90,
+    "codec": "h264",
+    "size_kb": 224.1
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\Zulko__moviepy\\preview.png",
+    "pixel_std": 18.57,
+    "unique_colors": 6124
+  },
+  "notes_zh": "从仓库源码 pip 安装 moviepy 2.2.0，用它自带的 media/doc_medias/example.mp4 做 1280x720 合成：纯色背景 + CrossFadeIn + MultiplyColor 调色 + padding=-1 交叉过渡拼接，输出 3.0s/30fps。",
+  "sample_v2": {
+    "spec": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "duration_sec": 28.003
+    },
+    "render_ms": 168000,
+    "ffprobe": {
+      "duration_sec": 28.003,
+      "codec": "h264",
+      "nb_frames": 840,
+      "has_audio": true,
+      "size_kb": 4182.0,
+      "stddev_10_50_90": {
+        "0.10": 79.096,
+        "0.50": 63.759,
+        "0.90": 59.52
+      }
+    },
+    "generator": "MoviePy 2.2（v2 API），Python 脚本 4 段 ×7s，numpy 生成音轨，write_videofile 1280x720/30fps；ffmpeg drawtext 烧录中文标注",
+    "segments_count": 4,
+    "pipeline": "official"
+  }
+}

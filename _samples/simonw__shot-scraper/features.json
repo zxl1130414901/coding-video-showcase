@@ -1,0 +1,63 @@
+{
+  "id": "simonw__shot-scraper",
+  "durationSec": 20.333,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 8.17,
+      "capabilityZh": "YAML storyboard 脚本化录制",
+      "proofZh": "单个 YAML 描述 click/type/scroll/pause 三类动作，20.4s 全交互仅一次命令、无人工介入"
+    },
+    {
+      "start": 8.17,
+      "end": 14.33,
+      "capabilityZh": "脚本输入与滚动触发页面动画",
+      "proofZh": "type delay_ms=28 逐字符敲入 24 字符，scroll y=720 duration=1.5 平滑滚动触发柱状图与 KPI 计数动画"
+    },
+    {
+      "start": 14.33,
+      "end": 20.33,
+      "capabilityZh": "脚本点击驱动 UI 状态变化",
+      "proofZh": "click #play 打开弹层并切换主题色，光标轨迹同步录进视频，可复现的交互闭环"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.6,
+      "dur": 4.2,
+      "titleZh": "YAML 驱动的浏览器录制",
+      "descZh": "一份 storyboard.yml 描述 click / type / scroll / pause，20.4s 交互一次命令录完"
+    },
+    {
+      "t": 5.2,
+      "dur": 3.6,
+      "titleZh": "脚本化逐字输入",
+      "descZh": "type: delay_ms=28 逐字符敲入 24 个字符，input 事件触发结果卡片依次浮出"
+    },
+    {
+      "t": 8.6,
+      "dur": 3.4,
+      "titleZh": "像素级滚动触发动画",
+      "descZh": "scroll: y=720 duration=1.5 平滑滚动，IntersectionObserver 触发柱子长高 + KPI 240/7200/20"
+    },
+    {
+      "t": 13.6,
+      "dur": 3.8,
+      "titleZh": "脚本点击驱动状态变化",
+      "descZh": "click: #play 打开弹层并切换主题色，光标轨迹一并录进视频，交互可完全复现"
+    },
+    {
+      "t": 17.4,
+      "dur": 2.8,
+      "titleZh": "单次录制即交付",
+      "descZh": "20.4s / 1280×720 原始 WebM，录制耗时 24.7s，切 3 段后转 30fps 交付"
+    }
+  ],
+  "renderMs": 24742,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "仓库 storyboard 录制固定 25fps，交付前用 ffmpeg 转 30fps（部分帧重复）",
+    "录制分辨率受 viewport 限制，本次为 1280×720（已满足 720p 下限，未上 1080p 以免录制时长翻倍）",
+    "本机安装的 shot-scraper 1.12 无 __main__.py，需用 python -c 'from shot_scraper.cli import cli; cli()' 且子命令名为 video"
+  ]
+}

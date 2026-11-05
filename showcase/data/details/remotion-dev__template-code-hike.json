@@ -1,0 +1,69 @@
+{
+  "id": "remotion-dev__template-code-hike",
+  "taglineZh": "Remotion 官方代码动画模板：Code Hike 标注源码，做成可推镜的代码镜头",
+  "summaryZh": "这是 Remotion 官方模板，不是独立框架：把代码片段放进 public/，用 Code Hike 的标注语法标出要强调的行、token 与步骤，再由 Remotion 按帧渲染成代码讲解视频。它解决“技术视频里代码块只能静态贴图”的问题——高亮范围、滚动位置、注释气泡都随时间变化，镜头可以推近某一行。与通用 Remotion 模板相比它只专注代码，与 Motion Canvas 的代码组件相比它复用 Remotion 的 React 生态与 CLI。代价是它只是模板，没有组件库与音频编排。",
+  "whatItMakes": [
+    {"type": "代码逐行讲解", "exampleZh": "高亮当前行、逐步揭示新增代码、旁注说明", "strength": "核心能力"},
+    {"type": "Diff/重构演示", "exampleZh": "删除行变红、插入行变绿，按步骤切换", "strength": "可用"},
+    {"type": "API/用法教学", "exampleZh": "同一文件多个函数依次聚焦，镜头推近", "strength": "可用"},
+    {"type": "技术发布短片", "exampleZh": "代码镜头与标题卡、Logo 收尾组合", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "编程课程片段", "whoZh": "技术讲师、课程团队", "whyZh": "代码高亮与讲解节奏同步，比录屏更清晰", "deliverableZh": "1080p30 的 3–10 分钟课程片段", "fit": "高度契合"},
+    {"scenarioZh": "开源项目发布视频", "whoZh": "开源作者", "whyZh": "用少量代码镜头讲清 API 变化", "deliverableZh": "30–90 秒发布短片", "fit": "适合"},
+    {"scenarioZh": "技术博客配套视频", "whoZh": "技术作者", "whyZh": "文章里的代码可直接复用为镜头", "deliverableZh": "1–3 分钟讲解视频", "fit": "适合"},
+    {"scenarioZh": "多语言代码演示", "whoZh": "SDK 团队", "whyZh": "Code Hike 语言支持有限，冷门语言要自己配 parser", "deliverableZh": "主流语言演示", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由 Composition 决定，模板实测 1106×1080（接近方形）",
+    "maxFpsZh": "由 Composition 决定，实测 30fps",
+    "durationZh": "由 Composition 决定，模板实测 12 秒 / 360 帧",
+    "effectsZh": ["逐 token 语法高亮", "按步骤聚焦/变暗代码行", "代码滚动与镜头推近", "旁注与标题叠加"],
+    "audioZh": "模板未配置音频，需自行在 Remotion 里加 <Audio>",
+    "interactivityZh": "仅 Remotion Studio 预览；成片离线",
+    "automationZh": "npx remotion render src/index.ts Main，走 Remotion CLI",
+    "assetsZh": "public/ 放代码文件；字体与主题需自备",
+    "exportFormatsZh": ["MP4", "PNG 静帧"],
+    "realtimePreviewZh": "有：Remotion Studio",
+    "ciFriendlyZh": "可进 CI，需 Chromium 与 Node"
+  },
+  "ceilingZh": "它能把一段代码讲成有节奏的镜头：实测 12 秒、1106×1080、30fps（360 帧）渲染 95.8 秒，总耗时 849 秒（含 npm 安装），说明模板本身不慢，成本在环境准备。能力上限取决于 Code Hike 的标注表达力：逐 token 高亮、行级聚焦、步骤切换、滚动与推镜都能做，复杂讲解可以拆成多个 Composition 再拼。边界：它只是模板，没有可复用组件包，也没有文档站；Code Hike 的语言支持与版本升级要自己跟；不适合 UI、3D、实拍；没有音频/字幕/转场编排，超过 1 分钟的课程要自己在 Remotion 里组织 Series。实测 1106×1080 的竖屏代码镜头可用，但横向 16:9 要自己改布局；代码超过 40 行时滚动与高亮同步容易错位，需要拆成多个步骤。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "在模板目录 npm install（无 package-lock，npm ci 不可用）", "effortZh": "约 5–10 分钟"},
+    {"stepZh": "放代码", "detailZh": "把源码放进 public/，按 Code Hike 语法写标注与步骤", "effortZh": "每个片段 20–60 分钟"},
+    {"stepZh": "预览", "detailZh": "npx remotion studio 逐帧检查高亮时机与滚动位置", "effortZh": "随改随看"},
+    {"stepZh": "渲染", "detailZh": "npx remotion render src/index.ts Main --gl=vulkan", "effortZh": "12 秒 1080p 约 1.6 分钟"}
+  ],
+  "differentiators": [
+    "Code Hike 的 token 级标注，比普通代码高亮更适合“讲到哪亮到哪”",
+    "直接复用 Remotion 的帧控制与 CLI，不需要另建渲染管线",
+    "官方模板，目录结构与依赖版本有参考价值",
+    "代码镜头可与其他 Remotion 组件（标题、Logo）拼在同一条时间轴"
+  ],
+  "limits": [
+    "只是模板，不是组件库或独立工具，二次开发要自己维护",
+    "Code Hike 语言覆盖有限，冷门语言需自定义 parser",
+    "没有音频、字幕与转场编排，长课程要自己搭结构",
+    "渲染仍走 Chromium，GPU/GL 参数在 Windows 上要额外处理"
+  ],
+  "compareTips": [
+    {"vs": "remotion-dev__remotion", "adviceZh": "要做完整技术视频，以 Remotion 为主、把此模板当代码镜头起点；只做代码动画可直接套模板"},
+    {"vs": "remotion-dev__template-three", "adviceZh": "讲代码逻辑选 code-hike；讲 3D/产品外观选 template-three，两者可在同一 Remotion 工程共存"},
+    {"vs": "wx4766__html-to-video", "adviceZh": "要零构建、纯 HTML 的代码演示选 html-to-video；要 React/Code Hike 的精细 token 动画选此模板"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①代码文件在 Code Hike 标注下的初始视图；②逐行高亮推进；③镜头推近某个函数并出现旁注；④渲染 1106×1080/30fps/12 秒 MP4",
+    "featureCallouts": [
+      {"titleZh": "Token 级高亮", "descZh": "精确到变量与关键字"},
+      {"titleZh": "步骤化聚焦", "descZh": "讲到哪里亮到哪里"},
+      {"titleZh": "代码滚动", "descZh": "长文件也能逐段讲"},
+      {"titleZh": "镜头推近", "descZh": "局部代码放大强调"},
+      {"titleZh": "Remotion 时间轴", "descZh": "可与其他镜头拼接"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L28-L37", "noteZh": "public 放代码 snippet，通过 npx remotion render 出片"},
+    {"field": "capabilities.effectsZh", "source": "src/ 与 public/ 目录结构", "noteZh": "模板以 Code Hike 标注驱动 token 高亮与步骤"},
+    {"field": "ceilingZh", "source": "_samples/remotion-dev__template-code-hike/meta.json", "noteZh": "实测 1106×1080/30fps/360 帧/12s，render 95.8s，总 849s"}
+  ]
+}

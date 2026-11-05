@@ -1,0 +1,59 @@
+{
+  "repo": "alchaincyf/huashu-art-motion",
+  "category": "代码动画/讲解视频",
+  "status": "success",
+  "render_ms": 40000,
+  "total_ms": 42000,
+  "cmd": "python render.py --spec examples/t1_3b1b.json --out out/raw.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 9.97,
+    "nb_frames": 299,
+    "codec": "h264",
+    "pix_fmt": "yuv420p",
+    "fps": "30/1",
+    "size_bytes": 111374
+  },
+  "notes_zh": "官方 examples/t1_3b1b.json（数学讲解语法），10s 1920×1080@30fps，缩到 720p 入库；渲染器自带版式/转场/相机",
+  "preview": {
+    "at_s": 4.99,
+    "mean_rgb": [
+      18.09,
+      19.48,
+      24.28
+    ],
+    "stddev_rgb": [
+      12.01,
+      14.74,
+      13.1
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 22.5,
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 6,
+    "render_ms": 105000,
+    "pipeline": "native",
+    "build": "scripts/engine/render.py --spec 分别渲染 t1_3b1b(8.2s) / t3_finance_chart(7s) / y5_kinetic_type(7.5s) 到 1920x1080@30fps，再 concat + drawtext 烧中文标注",
+    "ffprobe": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "frames": 675,
+      "duration": 22.5,
+      "codec": "h264",
+      "size_bytes": 2261371
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 9.97s",
+    "known_limits_zh": [
+      "三个片段都来自官方 examples，未自写新 grammar；只调整 duration 以适配分段",
+      "画风偏欧美科普，中文排版依赖示例自带字体回退，字形粗细不如英文稳定",
+      "需要 Python + Playwright + FFmpeg 三件套，渲染时起本地 HTTP 服务"
+    ]
+  }
+}

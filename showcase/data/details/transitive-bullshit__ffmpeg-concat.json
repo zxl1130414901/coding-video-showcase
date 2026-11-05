@@ -1,0 +1,74 @@
+{
+  "id": "transitive-bullshit__ffmpeg-concat",
+  "taglineZh": "给多段视频加 OpenGL 转场再拼成一条的 Node 小工具，专治手写 filtergraph",
+  "summaryZh": "2018 年的 Node 工具（约 991 stars）：先把每段视频拆成帧，再用 headless-gl 跑 gl-transitions 的着色器，为相邻两段生成过渡帧，最后把帧序列拼成 mp4。它解决的是 ffmpeg 原生 xfade 之前「多段拼接还要自定义转场」的痛点——不用手写几十行 filter graph，写 JSON 配置就行。限制也很直接：输出尺寸与帧率由第一段视频决定，只能出 mp4；gl 是原生依赖，Windows 需 MSVC 或用预编译 webgl.node。实测 640×360 的 266 帧用 10.6 秒。配置里能逐段覆盖转场名称与参数，不用改代码。它更像一个转场渲染器，而不是完整剪辑器。",
+  "whatItMakes": [
+    {"type": "多段素材加转场拼接", "exampleZh": "3–10 段短视频，逐段指定 fade/directionalwipe 等转场", "strength": "核心能力"},
+    {"type": "GL 着色器转场", "exampleZh": "gl-transitions 全库，几百种转场可按段换参数", "strength": "核心能力"},
+    {"type": "素材混剪", "exampleZh": "不同来源片段统一到第一段的尺寸与帧率", "strength": "可用"},
+    {"type": "配乐合成", "exampleZh": "传一个 audio 文件覆盖整条成片音轨", "strength": "可用"},
+    {"type": "字幕/文字动画", "exampleZh": "无字幕与文字层，需先在其他工具里烧好", "strength": "受限"},
+    {"type": "任意格式输出", "exampleZh": "只支持 mp4，其他容器需再转码", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "素材混剪", "whoZh": "剪辑师、短视频作者", "whyZh": "多段素材快速加统一样式的转场，比手写 filtergraph 快", "deliverableZh": "与第一段同规格的 mp4 成片", "fit": "高度契合"},
+    {"scenarioZh": "片头片尾拼接", "whoZh": "内容团队", "whyZh": "固定片头 + 正片 + 片尾，一次配置反复用", "deliverableZh": "完整成片 mp4", "fit": "高度契合"},
+    {"scenarioZh": "播客片段合并", "whoZh": "播客剪辑", "whyZh": "多段录音视频拼成一条，加 audio 覆盖音轨", "deliverableZh": "横屏 mp4 + 单音轨", "fit": "适合"},
+    {"scenarioZh": "批量短视频拼接", "whoZh": "代运营团队", "whyZh": "Node API 可脚本循环，但 2018 年的原生依赖在 CI 里不好装", "deliverableZh": "按批次产出的拼片", "fit": "勉强"},
+    {"scenarioZh": "字幕/图文包装", "whoZh": "课程制作", "whyZh": "无字幕层与文字动画，必须先烧进素材", "deliverableZh": "不推荐单独使用", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由第一段输入视频决定（README 明确），实测 640×360；1080p/4K 可做但逐帧处理更慢",
+    "maxFpsZh": "由第一段输入视频决定，实测 25fps",
+    "durationZh": "各段时长之和，无硬上限；长片帧序列会占大量临时磁盘",
+    "effectsZh": ["gl-transitions 全库（fade/swap/directionalwipe/circleopen 等）", "逐段独立转场与时长", "转场参数（方向、强度）可覆盖"],
+    "audioZh": "可传一个音频文件覆盖成片音轨；无混音、无淡入淡出",
+    "interactivityZh": "无交互，Promise API 与 CLI",
+    "automationZh": "强：CLI 与 Promise API，适合脚本；原生 gl 依赖是主要阻碍",
+    "assetsZh": "视频文件与可选音频文件；无字体/图片层",
+    "exportFormatsZh": ["mp4（README 明确仅此一种）"],
+    "realtimePreviewZh": "无预览",
+    "ciFriendlyZh": "中等：需编译 headless-gl 或用预编译 webgl.node"
+  },
+  "ceilingZh": "它最强的是转场自由度：gl-transitions 库里几百种着色器可以逐段指定、逐段调参（方向、强度、时长），这是 ffmpeg 原生转场给不了的。实测 640×360、25fps、266 帧用 10.6 秒，约 26fps；时长无上限，但拆帧会占大量临时磁盘，长片建议分段。边界很硬：输出尺寸与帧率被第一段视频锁死（README 写明），想改规格必须先转码素材；只能出 mp4；没有字幕、文字、图层能力；gl 是原生依赖，Windows 需 node-gyp 或手动放 webgl.node；项目 2018 年成型，后续活动很少，现代 Node 上安装成功率不高。另外它把每帧写成 PNG 临时文件，长片会占用数 GB 磁盘；转场时长以毫秒计，超过片段长度时会报错。项目没有维护承诺，新 Node 版本的兼容性逐年下降。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "npm install ffmpeg-concat，并准备 ffmpeg；Windows 需 MSVC 编译 gl 或放预编译 webgl.node", "effortZh": "20–40 分钟"},
+    {"stepZh": "准备素材", "detailZh": "把所有片段转成第一段的尺寸与帧率，避免成片规格漂移", "effortZh": "按素材量"},
+    {"stepZh": "写配置", "detailZh": "videos 数组 + transition 或 transitions 数组（N 段需 N-1 个转场）", "effortZh": "约 15 分钟"},
+    {"stepZh": "执行拼接", "detailZh": "await concat({videos, output, transition})，指定 audio 可覆盖音轨", "effortZh": "实测 10 秒片约 11 秒"},
+    {"stepZh": "检查成片", "detailZh": "确认尺寸与帧率等于第一段，再按需转码或加字幕", "effortZh": "约 5 分钟"}
+  ],
+  "differentiators": [
+    "逐段独立 GL 转场，几百种 gl-transitions 可直接用",
+    "配置即用，不用手写复杂 ffmpeg filtergraph",
+    "可传音频覆盖整条成片音轨",
+    "CLI 与 Promise API 双入口，易脚本化"
+  ],
+  "limits": [
+    "输出尺寸与帧率被第一段视频锁死",
+    "只支持 mp4，其他格式要二次转码",
+    "无字幕、文字、图层，包装能力为零",
+    "原生 gl 依赖，Windows 与新版 Node 安装容易失败"
+  ],
+  "compareTips": [
+    {"vs": "mifi__editly", "adviceZh": "Editly 是它的精神继任者：流式处理、更快、省盘，还支持字幕/音频混音；除非只要转场拼接，优先 Editly"},
+    {"vs": "h2non__videoshow", "adviceZh": "图片幻灯片用 videoshow；视频片段拼接加转场用 ffmpeg-concat"},
+    {"vs": "mowshon__moviego", "adviceZh": "要 Go 后端集成与字幕/混音选 moviego；只要 GL 转场效果选 ffmpeg-concat"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①三段素材用 fade 拼接；②逐段指定 directionalwipe 与 circleopen，展示不同着色器；③传音频覆盖整条音轨；④故意混入不同尺寸素材，展示输出被第一段锁死",
+    "featureCallouts": [
+      {"titleZh": "gl-transitions", "descZh": "几百种着色器转场可直接引用"},
+      {"titleZh": "逐段转场", "descZh": "N 段可配 N-1 个不同转场"},
+      {"titleZh": "音频覆盖", "descZh": "一个音频文件接管整条成片"},
+      {"titleZh": "CLI + API", "descZh": "命令行一条或 Promise 调用"},
+      {"titleZh": "参数覆盖", "descZh": "方向、强度、时长可逐段调"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L17-L21", "noteZh": "自述用 ffmpeg + OpenGL 转场拼接视频，替代复杂 filtergraph"},
+    {"field": "limits 第 1 条", "source": "README.md#L124", "noteZh": "输出视频的尺寸与 fps 由第一段输入决定"},
+    {"field": "limits 第 2 条", "source": "README.md#L142", "noteZh": "当前只支持输出 mp4"},
+    {"field": "ceilingZh", "source": "_samples/transitive-bullshit__ffmpeg-concat/meta.json", "noteZh": "实测 640×360/25fps/266 帧耗时 10.6s，约 26fps"}
+  ]
+}

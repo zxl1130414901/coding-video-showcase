@@ -1,0 +1,63 @@
+{
+  "id": "iart-ai__motion-skills",
+  "durationSec": 24.2,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 8.1,
+      "capabilityZh": "逐帧确定时间轴",
+      "proofZh": "同一 GSAP 时间线可被 tl.time(t) 精确 seek，24s 成片 720 帧无漂移"
+    },
+    {
+      "start": 8.1,
+      "end": 16.2,
+      "capabilityZh": "逐字 stagger 编排",
+      "proofZh": "8 字符 0.09s 步进入场 + 遮罩 scaleX 0→1 + 模糊→清晰，一条时间线内完成"
+    },
+    {
+      "start": 16.2,
+      "end": 24.2,
+      "capabilityZh": "多图层视差与遮罩揭示",
+      "proofZh": "光斑 8s sine 漂移、双卡片 rotateX 26° 透视、FRAME xPercent 遮罩、进度条 4.2s 线性填充"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.6,
+      "dur": 4.2,
+      "titleZh": "逐帧确定时间轴",
+      "descZh": "同一 GSAP 时间线用 tl.time(t) 精确 seek：24.000s / 720 帧零漂移"
+    },
+    {
+      "t": 5.0,
+      "dur": 3.8,
+      "titleZh": "逐字 stagger 编排",
+      "descZh": "8 个字符 0.09s 步进 + 遮罩 scaleX 0→1 + 模糊归一，全部由一条时间线驱动"
+    },
+    {
+      "t": 8.5,
+      "dur": 4.0,
+      "titleZh": "六种缓动同屏对比",
+      "descZh": "3.4s 同一时间窗、同一终点：power4 / back / elastic / bounce / steps(8) 差异肉眼可见"
+    },
+    {
+      "t": 16.4,
+      "dur": 4.0,
+      "titleZh": "多层视差 + 遮罩揭示",
+      "descZh": "光斑 8s sine 漂移、卡片 rotateX 26°、FRAME xPercent 揭示、进度条线性填充"
+    },
+    {
+      "t": 20.8,
+      "dur": 3.4,
+      "titleZh": "交付自检闭环",
+      "descZh": "1920×1080 JPEG 逐帧抓取仅 128s，再抽帧核验画面与中文标注"
+    }
+  ],
+  "renderMs": 128180,
+  "pipeline": "wrapper",
+  "knownLimitsZh": [
+    "Playwright 逐帧截图是瓶颈：1920×1080 约 0.18s/帧，24s 成片约 2 分钟",
+    "演示用自建 HTML（仓库本身是技能包，无官方可渲染 demo），验证时间线精度而非 GPU 渲染",
+    "动画只用 CSS transform/opacity/filter，不含 WebGL/3D"
+  ]
+}

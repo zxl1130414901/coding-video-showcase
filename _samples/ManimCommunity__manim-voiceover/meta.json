@@ -1,0 +1,48 @@
+{
+  "repo": "ManimCommunity/manim-voiceover",
+  "category": "语音旁白驱动动画",
+  "status": "success",
+  "render_ms": 58000,
+  "total_ms": 63035,
+  "cmd": "python -m manim -qm -r 1280,720 --fps 30 _samples\\ManimCommunity__manim-voiceover\\sample_scene.py VoiceoverDemo",
+  "artifact": "F:\\coding视频\\_samples\\ManimCommunity__manim-voiceover\\sample.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 11.2,
+    "fps": 30.0,
+    "nb_frames": 336,
+    "codec": "h264",
+    "size_kb": 262.9
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\ManimCommunity__manim-voiceover\\preview.png",
+    "pixel_std": 6.49,
+    "unique_colors": 2361
+  },
+  "notes_zh": "复刻仓库 examples/pyttsx3-example.py，使用离线 Windows SAPI(语音 HuiHui/Zira)，无需 API Key。本机两处坑：SAPI 实际写 WAV 而插件按 .mp3 命名导致 moviepy 报 HeaderNotFoundError；同进程二次 runAndWait 死锁。样例脚本用子类+独立子进程修复，未改仓库源码。附带生成同名 .srt 字幕。",
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "duration_sec": 29.6
+    },
+    "render_ms": 96000,
+    "ffprobe": {
+      "duration_sec": 29.6,
+      "codec": "h264",
+      "nb_frames": 888,
+      "has_audio": true,
+      "size_kb": 1089.8,
+      "stddev_10_50_90": {
+        "0.10": 23.59,
+        "0.50": 27.872,
+        "0.90": 24.045
+      }
+    },
+    "generator": "manim-voiceover + PyTTSX3（Windows SAPI 子进程），python -m manim -qh --fps 30 -r 1920,1080，语音时长驱动 11 个动画；ffmpeg drawtext 烧录中文标注",
+    "segments_count": 4,
+    "pipeline": "official"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "repo": "codedbytahir/motionforge",
+  "category": "React 编程式动画（Player 预览）",
+  "status": "success",
+  "render_ms": 0,
+  "total_ms": 2400000,
+  "cmd": "最小 Vite 宿主：导入仓库 src/lib/remotion 的 Player + KineticTypography/LiquidText，Playwright 键盘逐帧（Home/ArrowRight）+ 截图 300 帧 → ffmpeg 30fps",
+  "artifact": "F:\\coding视频\\_samples\\codedbytahir__motionforge\\sample.mp4",
+  "ffprobe": {
+    "width": 880,
+    "height": 532,
+    "duration_s": 10.0,
+    "fps": 30.0,
+    "nb_frames": 300,
+    "codec": "h264",
+    "size_kb": 70.5
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\codedbytahir__motionforge\\preview.png",
+    "pixel_std": 37.85,
+    "unique_colors": 4774
+  },
+  "notes_zh": "仓库本身是 Next.js 16 + Prisma 的 Web 编辑器（无 CLI 导出；README 无 demo 链接）。完整 npm/pnpm 安装 1001 包两次都因 registry socket timeout 中断，改用轻量宿主：仅依赖 react/react-dom/vite，通过 alias '@mf' 直接引用仓库 lib/remotion 源码（Player、动画组件），并加 Tailwind v4 的 @source 指向仓库目录以还原样式。合成对象为该框架自带的 KineticTypography / LiquidText 3 段序列（未使用 TextStack3D，避免额外 three 依赖）。录制方式为暂停后逐帧步进截图，输出 30fps 无丢帧视频。",
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "duration_sec": 30.0
+    },
+    "render_ms": 240000,
+    "ffprobe": {
+      "duration_sec": 30.0,
+      "codec": "h264",
+      "nb_frames": 900,
+      "has_audio": true,
+      "size_kb": 367.5,
+      "stddev_10_50_90": {
+        "0.10": 47.563,
+        "0.50": 18.779,
+        "0.90": 29.549
+      }
+    },
+    "generator": "React + FrameContext 逐帧 seek 渲染（vite build 静态包 → Playwright 系统 Chrome 逐帧截图 900 帧）→ ffmpeg 30fps 合成，1920x1080；ffmpeg drawtext 烧录中文标注",
+    "segments_count": 4,
+    "pipeline": "wrapper"
+  }
+}

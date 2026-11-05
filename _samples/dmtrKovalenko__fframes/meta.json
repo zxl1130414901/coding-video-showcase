@@ -1,0 +1,13 @@
+{
+  "repo": "dmtrKovalenko/fframes",
+  "category": "代码驱动/声明式框架",
+  "status": "fail",
+  "render_ms": 0,
+  "total_ms": 4500000,
+  "cmd": "FFMPEG_DIR=_env/ffmpeg9/ffmpeg-n9.0-*-shared  LIBCLANG_PATH=_env/libclang/clang/native  SKIA_BINARIES_URL=file://F:/_skia_tmp/skia-binaries.tar.gz  cargo build --release -j 4 -p hello-world-example --bin hello_world_example_bin",
+  "artifact": "",
+  "ffprobe": {
+    "error": "未产出，状态 fail"
+  },
+  "notes_zh": "根因已推进到链接阶段：①FFmpeg 9.0 shared（BtbN n9.0-gpl-shared，82MB）与 bindgen 用的 libclang（pip libclang 18.1.1 的 libclang.dll）均已就位，ffmpeg-sys-fframes 与 skia 头文件绑定成功；②skia 预编译二进制直连 GitHub 多次 curl 56/28，改为本地 SKIA_BINARIES_URL=file://F:/_skia_tmp/skia-binaries.tar.gz（注意 file:// 后只能跟一个斜杠，file:/// 会触发 Windows os error 123）后解压成功；③最终卡在 MSVC 链接：skia 预编译 skunicode_icu.lib(icu.uloc.obj) 引用 __std_find_first_of_trivial_pos_1，本机 VS2022 BuildTools 17.13 / MSVC 14.43 的 STL 不含该符号（skia 二进制由 14.44+ 构建），报 LNK2019 + LNK1120。可行修复需升级 BuildTools 到 17.14（写入 C 盘、需联网，违反本批约束）或用 clang-cl 从源码重建 Skia（远超 45 分钟上限），故按超时记最终失败。另：cargo 默认 home 在 C 盘，第 2 次起已改用 CARGO_HOME=_env/cargo。"
+}

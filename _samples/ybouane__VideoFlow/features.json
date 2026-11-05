@@ -1,0 +1,63 @@
+{
+  "id": "ybouane__VideoFlow",
+  "durationSec": 20.9,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 6.97,
+      "capabilityZh": "过渡预设：文本入场由 transitionIn 一行声明",
+      "proofZh": "0-7s 四条文案依次用 blurResolve / typewriter / slideUp / overshootPop 入场，无需手写关键帧"
+    },
+    {
+      "start": 6.97,
+      "end": 13.93,
+      "capabilityZh": "图层组 + 3D 透视 + numberCountUp",
+      "proofZh": "7-14s $.group() 组合矩形/标签/数值，perspective 与 rotation 让三卡对旋，数字从 0 滚到 25/12/3"
+    },
+    {
+      "start": 13.93,
+      "end": 20.9,
+      "capabilityZh": "WebGL 特效栈 + 着色器参数动画",
+      "proofZh": "14-21s effects 数组依次叠加 colorCorrection→bloom→lightSweep，并 animate effects.lightSweep.progress 打出斜向光扫"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.4,
+      "dur": 3.8,
+      "titleZh": "① 过渡预设驱动入场",
+      "descZh": "blurResolve / typewriter / slideUp / overshootPop 四条文案共用 25+ 预设"
+    },
+    {
+      "t": 6.9,
+      "dur": 3.8,
+      "titleZh": "② 图层组当作一张卡",
+      "descZh": "group 把矩形+标签+数值合成一个整体，再做统一变换"
+    },
+    {
+      "t": 10.8,
+      "dur": 3.5,
+      "titleZh": "③ 3D 透视与对旋",
+      "descZh": "perspective + rotation 让三张卡在虚拟 3D 空间里交叉旋转"
+    },
+    {
+      "t": 14.2,
+      "dur": 3.6,
+      "titleZh": "④ 特效栈就是一串数组",
+      "descZh": "colorCorrection → bloom → lightSweep 按顺序叠加在同一个帧上"
+    },
+    {
+      "t": 17.8,
+      "dur": 3.0,
+      "titleZh": "⑤ 着色器参数可打关键帧",
+      "descZh": "effects.lightSweep.progress 从 -0.2 动画到 1.25，与普通属性同一套系统"
+    }
+  ],
+  "renderMs": 508300,
+  "pipeline": "browser (Playwright server renderer)",
+  "knownLimitsZh": [
+    "服务端逐帧截图：1080p 21s 实测 508s（约 0.8s/帧），再长会撞预算",
+    "特效是整块画布级后处理，单个 effect 只支持一种 blend 方式，复杂合成需拆多层",
+    "示例中文字体未内嵌，markup 用系统字体渲染（仅影响演示文案，不影响中文标注层）"
+  ]
+}

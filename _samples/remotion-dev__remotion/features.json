@@ -1,0 +1,69 @@
+{
+  "id": "remotion-dev__remotion",
+  "durationSec": 29.9,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 8.967,
+      "capabilityZh": "React 组件与帧插值",
+      "proofZh": "卡片弹簧入场、数字 interpolate、进度条都由组件状态计算"
+    },
+    {
+      "start": 8.967,
+      "end": 18.934,
+      "capabilityZh": "音频解码与波形同步",
+      "proofZh": "真实 WAV 解出 96 个频带，逐帧重绘并带播放头"
+    },
+    {
+      "start": 18.934,
+      "end": 29.901,
+      "capabilityZh": "Series 时间轴与字幕",
+      "proofZh": "Series.Sequence 分段 + 字幕弹簧转场，帧号确定性输出"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.6,
+      "dur": 3.9,
+      "titleZh": "React 组件驱动",
+      "descZh": "卡片、数字、进度条都是 React 组件，复用前端生态与状态管理"
+    },
+    {
+      "t": 4.9,
+      "dur": 3.7,
+      "titleZh": "spring() 物理动画",
+      "descZh": "阻尼与刚度参数直接生成运动曲线，不靠手调关键帧"
+    },
+    {
+      "t": 9.4,
+      "dur": 3.8,
+      "titleZh": "真实音频频谱",
+      "descZh": "48kHz WAV 预处理成 96 个频带，频带高度由当前帧号决定"
+    },
+    {
+      "t": 13.5,
+      "dur": 4.9,
+      "titleZh": "波形与时间轴一致",
+      "descZh": "波形采样与音轨同源，帧号即时间，任意帧可确定性重放"
+    },
+    {
+      "t": 19.6,
+      "dur": 4.8,
+      "titleZh": "Series 时间轴",
+      "descZh": "Sequence 把 30 秒切成独立片段，每段可单独预览与复用"
+    },
+    {
+      "t": 24.7,
+      "dur": 4.5,
+      "titleZh": "字幕分层转场",
+      "descZh": "字幕按帧弹簧进入，渲染结果可重复，适合 CI 自动出片"
+    }
+  ],
+  "renderMs": 240000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "单 worker 渲染，900 帧 1080p 耗时较长（遵守并发=1 约束）",
+    "波形为 96 采样点的 SVG 折线，不是逐像素频谱",
+    "音轨仅在第二段播放，第三段为静音字幕演示"
+  ]
+}

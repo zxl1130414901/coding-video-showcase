@@ -1,0 +1,72 @@
+{
+  "id": "asciinema__agg",
+  "taglineZh": "把 asciicast 终端录像转成高质量 GIF 的单文件 Rust 工具，开箱即用",
+  "summaryZh": "agg 是 asciinema 生态里的转换器：读 asciicast v1/v2/v3，用 gifski 编码出高质量 GIF，保留终端颜色、字体与时间节奏，还能设帧率上限、空闲压缩、最后一帧停留和主题。它解决的是“录了 .cast 但分享场景只认 GIF”的问题——一条命令就能把终端会话变成能贴进 README、聊天工具和文档的动图。与 VHS 相比它不做重演，只做转换；与 ffmpeg 直接转 GIF 相比，它懂终端语义（等宽字体、行高、主题、空闲时间压缩），产物更小更清晰。代价是只出 GIF，没有音频，也不能直接出 MP4。",
+  "whatItMakes": [
+    {"type": "终端演示 GIF", "exampleZh": "命令执行、彩色输出、光标移动，按原节奏播放", "strength": "核心能力"},
+    {"type": "文档/README 动图", "exampleZh": "统一主题与字号，嵌入 GitHub、博客与聊天工具", "strength": "核心能力"},
+    {"type": "教学步骤动图", "exampleZh": "配合 idle-time-limit 压缩停顿，突出关键操作", "strength": "可用"},
+    {"type": "多主题输出", "exampleZh": "asciinema/monokai/dracula 等主题，同一 cast 出多版", "strength": "可用"},
+    {"type": "cast 预览检查", "exampleZh": "渲染成 GIF 快速确认会话内容与节奏", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "开源 README 演示", "whoZh": "开源作者", "whyZh": "cast 转 GIF 一条命令，主题统一、体积极小", "deliverableZh": "10–20 秒 GIF", "fit": "高度契合"},
+    {"scenarioZh": "技术文档配图", "whoZh": "技术作者", "whyZh": "比截图更能表达流程，比视频更易嵌入", "deliverableZh": "分步 GIF，可控制尺寸", "fit": "高度契合"},
+    {"scenarioZh": "CI 产物可视化", "whoZh": "工程团队", "whyZh": "测试录制的 cast 自动转 GIF 归档", "deliverableZh": "构建演示 GIF", "fit": "适合"},
+    {"scenarioZh": "要 MP4 的投放素材", "whoZh": "市场团队", "whyZh": "只出 GIF，还得再用 ffmpeg 转一次", "deliverableZh": "需二次转码", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由终端列×行与字体大小决定；实测 1207×731",
+    "maxFpsZh": "可设 --fps-cap，实测上限 60fps，实际平均约 39–50fps",
+    "durationZh": "由 cast 时长决定；实测 4.6 秒 / 181 帧",
+    "effectsZh": ["终端主题与配色", "等宽字体与字号", "空闲时间压缩", "最后一帧停留时长"],
+    "audioZh": "不支持音频",
+    "interactivityZh": "无交互，纯转换",
+    "automationZh": "CLI 可脚本化：agg sample.cast sample.gif，参数可配",
+    "assetsZh": "输入 asciicast v1/v2/v3；可配字体与主题",
+    "exportFormatsZh": ["GIF"],
+    "realtimePreviewZh": "无，转换后查看文件",
+    "ciFriendlyZh": "可进 CI：Rust 单二进制，Windows 直接可用"
+  },
+  "ceilingZh": "它能把终端录像压成体面的 GIF：实测 1207×731、4.6 秒、181 帧，加 --fps-cap 60 --idle-time-limit 0.1 --last-frame-duration 0.1 后平均约 39fps，接近源节奏；gifski 的调色板与抖动让彩色终端输出比 ffmpeg 默认 GIF 干净得多。上限受 GIF 格式本身限制：256 色、无音轨、体积随分辨率与帧率快速膨胀；gifski 会合并重复帧，如果原始 cast 画面长时间不变，平均帧率会掉到 6–10fps，实测必须每帧刷新状态行才能保住流畅度。它也只吃 asciicast，不能直接录屏，不能出 MP4/WebM，不能做镜头运动。它的上限就是 GIF 的天花板：256 色、无音轨、体积随时间线性膨胀；gifski 会合并重复帧，原始 cast 长时间不动时平均帧率会掉到 6–10fps，必须让状态行每帧刷新才能保住流畅。它只吃 asciicast，不能直接录屏，也不能出 MP4 或 WebM。",
+  "workflow": [
+    {"stepZh": "准备 cast", "detailZh": "用 asciinema 录制，或手写 asciicast v2 的 header 与事件行", "effortZh": "按会话时长"},
+    {"stepZh": "安装 agg", "detailZh": "下载单文件二进制，或 cargo install --git 构建；Windows 可直接运行", "effortZh": "约 3 分钟"},
+    {"stepZh": "转换", "detailZh": "agg --fps-cap 60 --idle-time-limit 0.1 --theme asciinema sample.cast sample.gif", "effortZh": "约 20 秒"},
+    {"stepZh": "检查体积", "detailZh": "看 GIF 大小与帧率，必要时降分辨率或加大 idle 压缩", "effortZh": "几分钟"},
+    {"stepZh": "转 MP4（可选）", "detailZh": "ffmpeg -i sample.gif -c:v h264_nvenc sample.mp4", "effortZh": "约 1 分钟"}
+  ],
+  "differentiators": [
+    "懂终端语义的 GIF 编码：主题、等宽字体、空闲压缩都由它处理",
+    "gifski 编码，彩色文字边缘与抖动明显优于 ffmpeg 默认 GIF",
+    "Rust 单文件二进制，Windows 无需额外依赖即可跑",
+    "支持 asciicast v1/v2/v3，兼容老录像与新格式"
+  ],
+  "limits": [
+    "只输出 GIF，做 MP4 要再经 ffmpeg",
+    "GIF 只有 256 色、无音频，不适合长片与高画质交付",
+    "重复帧会被合并，原始 cast 画面不动时帧率会骤降",
+    "不带录制能力，必须先有 asciicast 文件"
+  ],
+  "compareTips": [
+    {"vs": "charmbracelet__vhs", "adviceZh": "要声明式重演与主题化窗口选 VHS；已有 cast 只想转 GIF 选 agg，更轻更稳"},
+    {"vs": "asciinema__asciinema", "adviceZh": "录制端选 asciinema；出图端选 agg，两者是上下游而非替代"},
+    {"vs": "welovemedia__ffmate", "adviceZh": "只转终端 GIF 用 agg；要批量转码、队列与 webhook 才需要 FFmate"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①一份 asciicast v2 的内容结构；②agg 转换命令与主题/帧率参数；③生成的 1207×731 GIF 播放效果；④用 ffmpeg 再转 MP4 的对比",
+    "featureCallouts": [
+      {"titleZh": "终端语义转换", "descZh": "主题字体行高都懂"},
+      {"titleZh": "gifski 高质量", "descZh": "彩色文字边缘干净"},
+      {"titleZh": "空闲压缩", "descZh": "停顿与空闲自动剪短"},
+      {"titleZh": "60fps 上限", "descZh": "帧率上限可调，播放不卡顿"},
+      {"titleZh": "单文件二进制", "descZh": "Windows 下单个 exe 直接可用"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L3-L11", "noteZh": "自述从终端录制生成动画 GIF，支持 asciicast v1/v2/v3，使用 gifski"},
+    {"field": "capabilities.maxFpsZh", "source": "README.md#L50-L89", "noteZh": "安装/构建方式，参数含 fps-cap 与主题"},
+    {"field": "ceilingZh", "source": "_samples/asciinema__agg/meta.json", "noteZh": "实测 1207×731/181 帧/4.6s，--fps-cap 60 后平均约 39fps；默认会合并重复帧"},
+    {"field": "limits", "source": "LICENSE#L1-L4", "noteZh": "GPLv3"}
+  ]
+}

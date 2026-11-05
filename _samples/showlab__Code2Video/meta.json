@@ -1,0 +1,11 @@
+{
+  "repo": "showlab/Code2Video",
+  "category": "LLM 生成 Manim 教学视频",
+  "status": "skip",
+  "render_ms": 0,
+  "total_ms": 0,
+  "cmd": "未执行（缺少 API 凭据）",
+  "artifact": null,
+  "ffprobe": null,
+  "notes_zh": "缺 LLM + VLM API Key：README 要求在 api_config.json 填入 LLM（推荐 Claude-4-Opus）与 VLM 凭据才能从题目生成 Manim 代码并渲染。仓库内只有 src/prompts/json_files，没有可离线复跑的 CASES 产物，无法在不调模型的情况下出片。本机 Manim Community 0.19 已装好，只差 Key。"
+}

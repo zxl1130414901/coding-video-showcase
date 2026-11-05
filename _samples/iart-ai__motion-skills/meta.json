@@ -1,0 +1,44 @@
+{
+  "repo": "iart-ai/motion-skills",
+  "category": "Agent/LLM 代码视频工作流（边缘）",
+  "status": "success",
+  "render_ms": 1466,
+  "total_ms": 79526,
+  "cmd": "node F:\\coding视频\\_samples\\iart-ai__motion-skills\\capture.mjs  （Playwright 打开仓库 demo，GSAP globalTimeline.time(t) 逐帧 seek → PNG → ffmpeg h264_nvenc 合成）",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration": 6.0,
+    "frames": 180,
+    "fps": 30,
+    "codec": "h264",
+    "size_bytes": 786618
+  },
+  "notes_zh": "改造仓库自带 tools/showcase-to-gif.mjs：用 GSAP 的 globalTimeline.time(t) 逐帧定位后截图 180 帧（1280x720），再用 ffmpeg NVENC 合成 6s/30fps。截图阶段约 78s（Playwright 逐帧 round-trip 是瓶颈），纯编码 1.466s。注意 page.waitForFunction 必须写成 waitForFunction(fn, null, {timeout})，否则第二个参数被当 arg 导致默认 30s 超时。",
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 24.2,
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 5,
+    "render_ms": 128180,
+    "pipeline": "wrapper",
+    "build": "Playwright 逐帧 seek GSAP 时间线抓 720 张 JPEG，ffmpeg 切 3 段；build_sample.py 拼接 + PIL 中文标注 overlay + h264_nvenc",
+    "ffprobe": {
+      "width": 1920,
+      "height": 1080,
+      "duration": 24.167,
+      "frames": 725,
+      "fps": 30.0,
+      "codec": "h264",
+      "size_bytes": 1680833
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 6.0s",
+    "known_limits_zh": [
+      "Playwright 逐帧截图是瓶颈：1920×1080 约 0.18s/帧，24s 成片约 2 分钟",
+      "演示用自建 HTML（仓库本身是技能包，无官方可渲染 demo），验证时间线精度而非 GPU 渲染",
+      "动画只用 CSS transform/opacity/filter，不含 WebGL/3D"
+    ]
+  }
+}

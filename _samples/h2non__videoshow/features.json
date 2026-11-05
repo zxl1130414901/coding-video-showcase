@@ -1,0 +1,57 @@
+{
+  "id": "H2non__videoshow",
+  "durationSec": 23.6,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 8.0,
+      "capabilityZh": "5 张图 + 淡入淡出转场 + 单图时长控制",
+      "proofZh": "loop=1.6s，transitionDuration=0.6s，5 图合成 8.0s"
+    },
+    {
+      "start": 8.0,
+      "end": 15.8,
+      "capabilityZh": "音轨 + SRT 字幕烧入",
+      "proofZh": "loop=2.6s，3 图 + song.mp3 + subtitles.srt（useSubRipSubtitles）"
+    },
+    {
+      "start": 15.8,
+      "end": 23.6,
+      "capabilityZh": "ASS 字幕通道 + 更长停留",
+      "proofZh": "subtitles.ass 直接交给 ffmpeg，3 图合成 7.8s"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.5,
+      "dur": 4.0,
+      "titleZh": "① 5 图 + 0.6s 淡入淡出",
+      "descZh": "单图停留 1.6s，5 张 fixture 合成 8.0s 幻灯片"
+    },
+    {
+      "t": 8.6,
+      "dur": 4.0,
+      "titleZh": "② 音轨 + SRT 字幕",
+      "descZh": "song.mp3 作音轨，subtitles.srt 直接烧进画面，3 图 ×2.6s"
+    },
+    {
+      "t": 16.4,
+      "dur": 4.0,
+      "titleZh": "③ ASS 字幕通道",
+      "descZh": "换成 .ass 字幕文件，样式由字幕自身携带，不需要改代码"
+    },
+    {
+      "t": 20.5,
+      "dur": 4.0,
+      "titleZh": "④ 3 段 concat 拼接",
+      "descZh": "三段分别编码后 ffmpeg concat 无缝拼接，成片 23.6s"
+    }
+  ],
+  "renderMs": 24000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "ffmpeg 7 的三位能力标志位导致 fluent-ffmpeg 2.1.2 误判 mp4 不可用，样例脚本关闭了能力预校验",
+    "logo 叠加在本机 ffmpeg 7 下报 Invalid argument，未纳入成片",
+    "输入图片是 562×562 正方形 fixture，1280x720 下有留白"
+  ]
+}

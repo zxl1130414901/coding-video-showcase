@@ -1,0 +1,57 @@
+{
+  "id": "midrender__revideo",
+  "durationSec": 29.077,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 10.0,
+      "capabilityZh": "JSX 组件即画面 + staggered tween 入场",
+      "proofZh": "Txt/Circle/Rect 以 opacity+scale+rotation 多属性并行 tween 入场"
+    },
+    {
+      "start": 10.0,
+      "end": 20.0,
+      "capabilityZh": "程序化阵列 + 每格延迟 0.08s 错峰",
+      "proofZh": "9 个 Rect 由 chain+waitFor 编排，整体再旋转 90°"
+    },
+    {
+      "start": 20.0,
+      "end": 29.1,
+      "capabilityZh": "Line 矢量绘制 + 视图缩放",
+      "proofZh": "两条折线 end 0→1 绘制，view.scale 1.18 与节点同步放大"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.4,
+      "dur": 4.0,
+      "titleZh": "① JSX 组件直接就是画面",
+      "descZh": "Txt/Circle/Rect 同时 tween 透明度、缩放、旋转，React 组件即帧内容"
+    },
+    {
+      "t": 10.4,
+      "dur": 4.2,
+      "titleZh": "② 9 节点错峰动画",
+      "descZh": "chain + waitFor 让每格延迟 0.08s，整体再旋转 90°"
+    },
+    {
+      "t": 20.4,
+      "dur": 4.2,
+      "titleZh": "③ 矢量线条 end 0→1 绘制",
+      "descZh": "两条 Line 以 easeOutCubic 生长，用于图表/流程演示"
+    },
+    {
+      "t": 25.0,
+      "dur": 4.0,
+      "titleZh": "④ 视图缩放 + 节点同步",
+      "descZh": "view.scale 1.18 与圆点 scale 1.6 同步，30fps 逐帧确定性导出"
+    }
+  ],
+  "renderMs": 210000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "渲染依赖 Playwright + Chrome，本机需指向系统 Chrome（PUPPETEER_EXECUTABLE_PATH）",
+    "renderVideo 的 outDir/outFile 在本版本被忽略，产物固定落在 packages\\template\\output\\video.mp4",
+    "wasm 导出器会产出空文件，必须改用 @revideo/core/ffmpeg"
+  ]
+}

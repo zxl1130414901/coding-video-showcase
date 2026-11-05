@@ -1,0 +1,48 @@
+{
+  "repo": "F4bbi/manim-dsa",
+  "category": "数学/算法动画（Manim 插件）",
+  "status": "success",
+  "render_ms": 21000,
+  "total_ms": 28848,
+  "cmd": "python -m manim -qm -r 1280,720 --fps 30 _samples\\F4bbi__manim-dsa\\sample_scene.py DsaDemo",
+  "artifact": "F:\\coding视频\\_samples\\F4bbi__manim-dsa\\sample.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 5.4,
+    "fps": 30.0,
+    "nb_frames": 162,
+    "codec": "h264",
+    "size_kb": 96.6
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\F4bbi__manim-dsa\\preview.png",
+    "pixel_std": 42.12,
+    "unique_colors": 7785
+  },
+  "notes_zh": "pip 安装 manim-dsa 插件后，直接复用 README 官方示例（数组/栈/图三种数据结构组件），字体改为 Consolas。Manim 0.19 渲染，无外部依赖。",
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "duration_sec": 24.0
+    },
+    "render_ms": 58000,
+    "ffprobe": {
+      "duration_sec": 24.0,
+      "codec": "h264",
+      "nb_frames": 720,
+      "has_audio": false,
+      "size_kb": 535.6,
+      "stddev_10_50_90": {
+        "0.10": 44.794,
+        "0.50": 31.292,
+        "0.90": 35.2
+      }
+    },
+    "generator": "manim-dsa 插件 + Manim CE 0.19，python -m manim -qh --fps 30 -r 1920,1080；Cairo 渲染 20 个动画；ffmpeg drawtext 烧录中文标注",
+    "segments_count": 4,
+    "pipeline": "official"
+  }
+}

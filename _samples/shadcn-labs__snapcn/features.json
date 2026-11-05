@@ -1,0 +1,63 @@
+{
+  "id": "shadcn-labs__snapcn",
+  "durationSec": 21.0,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.0,
+      "capabilityZh": "裁切式标题锁版 CutLockup",
+      "proofZh": "210 帧内巨型字标横向推进并裁切出画，背景为 snapcn 方格纸纹理"
+    },
+    {
+      "start": 7.0,
+      "end": 14.0,
+      "capabilityZh": "多机位叠放 PhoneStack",
+      "proofZh": "3 台手机按 stagger=14 帧依次入场，叠加发光与背景流媒体画面"
+    },
+    {
+      "start": 14.0,
+      "end": 21.0,
+      "capabilityZh": "瀑布式视频墙 ReelWall",
+      "proofZh": "4 块视频卡横向错位排布，各自独立播放 bg1/bg2 素材"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.8,
+      "dur": 4.2,
+      "titleZh": "① 裁切式标题锁版",
+      "descZh": "入参 speed=0.5 控制推进速度，字标裁切出画面"
+    },
+    {
+      "t": 5.1,
+      "dur": 1.6,
+      "titleZh": "② 组件即参数",
+      "descZh": "speed / stagger / 背景色全部由 props 驱动，无需改代码"
+    },
+    {
+      "t": 7.4,
+      "dur": 3.6,
+      "titleZh": "③ 多机位叠放",
+      "descZh": "stagger=14 帧错峰入场，三台手机带同款状态栏细节"
+    },
+    {
+      "t": 11.2,
+      "dur": 2.2,
+      "titleZh": "④ 统一时间轴",
+      "descZh": "三段各 210 帧接在同一条 630 帧时间轴上播放"
+    },
+    {
+      "t": 14.6,
+      "dur": 3.8,
+      "titleZh": "⑤ 视频墙错位排布",
+      "descZh": "4 块视频卡独立播放素材，视觉上形成瀑布式滚动"
+    }
+  ],
+  "renderMs": 266282,
+  "pipeline": "fallback",
+  "knownLimitsZh": [
+    "整仓 pnpm 装不完整（落盘缺文件导致 ERR_MODULE_NOT_FOUND），改用最小 Remotion 宿主复用 registry 组件",
+    "示例自带的 bg1/bg2 是渐变测试素材，手机与卡片内看不到真实影片内容",
+    "抓帧改用 @remotion/player 逐帧 seek，避免 Remotion CLI bundler 在本机长时间阻塞"
+  ]
+}

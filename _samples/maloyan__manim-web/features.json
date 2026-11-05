@@ -1,0 +1,69 @@
+{
+  "id": "maloyan__manim-web",
+  "durationSec": 21.7,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.17,
+      "capabilityZh": "矢量几何 Transform 形变",
+      "proofZh": "Square→Circle→Triangle 两次 Transform 各 2.2s，配 Create 入场与 FadeOut 收尾，一条 Timeline 7.2s / 216 帧"
+    },
+    {
+      "start": 7.17,
+      "end": 15.13,
+      "capabilityZh": "3D 高斯曲面与 Rotate 环绕",
+      "proofZh": "Surface3D 36×36 网格棋盘着色 + ThreeDAxes，绕 z 轴 Rotate 2π 共 8s，ThreeD 相机 phi=68°/theta=-38°"
+    },
+    {
+      "start": 15.13,
+      "end": 21.7,
+      "capabilityZh": "Axes 函数绘图",
+      "proofZh": "axes.plot 画出 sin/cos 两条曲线，Create 依次绘制；xRange ±6.4 内各 2 个完整周期，6.6s / 198 帧"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.4,
+      "dur": 3.6,
+      "titleZh": "矢量几何 + Transform 形变",
+      "descZh": "Square→Circle→Triangle，两次 Transform 各 2.2s；7.2s 一幕共 216 帧，可逐帧定位"
+    },
+    {
+      "t": 4.2,
+      "dur": 3.4,
+      "titleZh": "Timeline 串联三类动画",
+      "descZh": "Create 1.6s → Transform 2.2s ×2 → FadeOut 1.2s，一条 Timeline 精确控时"
+    },
+    {
+      "t": 7.6,
+      "dur": 4.0,
+      "titleZh": "3D 曲面 + ThreeDAxes",
+      "descZh": "高斯曲面 36×36 网格、橙紫棋盘着色，ThreeD 相机 phi=68° / theta=-38° / distance=17"
+    },
+    {
+      "t": 12.0,
+      "dur": 3.6,
+      "titleZh": "Rotate 3D 环绕",
+      "descZh": "曲面绕 z 轴旋转 2π 用 8.0s，棋盘纹理可见旋转，坐标轴保持世界坐标"
+    },
+    {
+      "t": 16.0,
+      "dur": 3.6,
+      "titleZh": "Axes + 函数绘图",
+      "descZh": "axes.plot 画 sin / cos 双曲线，Create 依次绘出，±6.4 区间各 2 个完整周期"
+    },
+    {
+      "t": 19.9,
+      "dur": 2.9,
+      "titleZh": "浏览器内确定性渲染",
+      "descZh": "scene.seek(t) 逐帧定位，654 帧 1280×720 抓取 349s，无实时录制抖动"
+    }
+  ],
+  "renderMs": 348889,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "Playwright 逐帧截图是瓶颈：3D 幕约 0.6s/帧，全片 654 帧耗时 349s",
+    "仓库未提供相机动画（MoveCamera），3D 运动用 Rotate 旋转物体而非绕场景运镜",
+    "输出 1280×720；web 端 Scene 画布在 1080p 下逐帧成本更高，本次取 720p 满足下限"
+  ]
+}

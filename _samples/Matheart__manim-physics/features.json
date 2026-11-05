@@ -1,0 +1,69 @@
+{
+  "id": "Matheart__manim-physics",
+  "durationSec": 22.8,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 8.0,
+      "capabilityZh": "pymunk 刚体物理",
+      "proofZh": "圆/方/三角三体 + 三面墙，碰撞、摩擦、旋转全部由引擎逐帧积分（240 帧）"
+    },
+    {
+      "start": 8.0,
+      "end": 15.4,
+      "capabilityZh": "库仑电场向量场",
+      "proofZh": "3 个点电荷的箭头场按 1/r² 逐点计算，整场数百箭头逐帧重算"
+    },
+    {
+      "start": 15.4,
+      "end": 22.8,
+      "capabilityZh": "多摆混沌耦合",
+      "proofZh": "7 个摆长 1→5 的刚体摆在 pymunk 中耦合，非线性运动不可预测"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.5,
+      "dur": 4.0,
+      "titleZh": "pymunk 刚体求解",
+      "descZh": "圆/方/三角三体 + 三面静态墙：240 帧全部逐帧物理积分，没有烘焙动画"
+    },
+    {
+      "t": 4.8,
+      "dur": 3.4,
+      "titleZh": "碰撞 · 旋转 · 摩擦",
+      "descZh": "刚体带角速度与摩擦系数，落点与回弹完全由物理引擎决定"
+    },
+    {
+      "t": 8.3,
+      "dur": 3.8,
+      "titleZh": "库仑定律向量场",
+      "descZh": "3 个正负点电荷，全场箭头按 1/r² 逐点计算，共 222 帧"
+    },
+    {
+      "t": 12.4,
+      "dur": 3.4,
+      "titleZh": "改电荷即改场",
+      "descZh": "箭头方向与长度由 Charge 位置实时生成，不是静态贴图"
+    },
+    {
+      "t": 15.7,
+      "dur": 4.0,
+      "titleZh": "多摆混沌",
+      "descZh": "7 个摆长 1→5 的刚体摆耦合，非线性运动对初值极度敏感"
+    },
+    {
+      "t": 19.9,
+      "dur": 3.0,
+      "titleZh": "确定性逐帧渲染",
+      "descZh": "1920×1080@30fps 三段共 684 帧，独立渲染后拼成 22.8 秒"
+    }
+  ],
+  "renderMs": 95000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "渲染是 CPU 上的 manim Cairo/CairoSVG 管线，1080p30 约 30 帧/秒，比 GPU 视频管线慢",
+    "0.4.0 的 Lens+Ray（折射）在当前 manim 0.19 下会抛 IndexError，因此改用库仑场演示光学替代",
+    "RadialWave 的 center 参数与 manim 0.19 不兼容，3D 波面段未纳入"
+  ]
+}

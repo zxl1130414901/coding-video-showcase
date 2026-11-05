@@ -1,0 +1,48 @@
+{
+  "repo": "mowshon/moviego",
+  "category": "编程式视频剪辑（Go）",
+  "status": "success",
+  "render_ms": 4569,
+  "total_ms": 262547,
+  "cmd": "go run .（_samples\\mowshon__moviego，用本地 go1.25.0 + moviego v2 合成）",
+  "artifact": "F:\\coding视频\\_samples\\mowshon__moviego\\sample.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 5.0,
+    "fps": 30.0,
+    "nb_frames": 150,
+    "codec": "h264",
+    "size_kb": 1456.9
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\mowshon__moviego\\preview.png",
+    "pixel_std": 43.76,
+    "unique_colors": 44804
+  },
+  "notes_zh": "本机无 Go，安装 go1.25.0 便携版到 F 盘；样例程序用 ffmpeg lavfi 本地生成的 testsrc2 背景 + 渐变卡片，做画中画/淡入/图层合成，导出 1280x720/30fps。首次 go mod tidy 走 goproxy.cn 拉依赖耗时约 132s。",
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "duration_sec": 25.008
+    },
+    "render_ms": 48000,
+    "ffprobe": {
+      "duration_sec": 25.008,
+      "codec": "h264",
+      "nb_frames": 750,
+      "has_audio": true,
+      "size_kb": 3313.1,
+      "stddev_10_50_90": {
+        "0.10": null,
+        "0.50": null,
+        "0.90": null
+      }
+    },
+    "generator": "Go 1.25 + moviego v2（本地 replace 仓库源码），ffmpeg lavfi 生成渐变底片，AnimatedText 打字机 + 图层合成 + SRT 字幕，WriteVideo 导出 1920x1080/30fps；ffmpeg drawtext 烧录中文标注",
+    "segments_count": 3,
+    "pipeline": "official"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "id": "alchaincyf__huashu-motion",
+  "taglineZh": "om 一条命令新建工程、渲出成片，模板就是可改的动效分镜",
+  "summaryZh": "huashu-motion 提供一个轻量 CLI（om new/render/studio）与多套动效模板（kinetic-type 等）：工程是纯 HTML/CSS/JS，渲染用本机 Chrome 的 CDP 逐帧推进，再由 FFmpeg 编码。仓库自带 templates，是这批技能里最接近“开箱出片”的一个。",
+  "whatItMakes": [
+    {
+      "type": "模板成片",
+      "exampleZh": "om new --template kinetic-type，改文案即可渲",
+      "strength": "上手快"
+    },
+    {
+      "type": "浏览器逐帧渲染",
+      "exampleZh": "om render 用 CDP 抓帧，--workers 控制并发",
+      "strength": "无需装 Node 渲染框架"
+    },
+    {
+      "type": "分镜/预览",
+      "exampleZh": "om studio 打开时间轴预览",
+      "strength": "调参直观"
+    }
+  ],
+  "useCases": [
+    {
+      "scenarioZh": "知识口播片头",
+      "whoZh": "运营/内容团队",
+      "whyZh": "没有剪辑软件，改 HTML 就改片",
+      "deliverableZh": "竖屏/横屏短片",
+      "fit": "高"
+    }
+  ],
+  "capabilities": {
+    "maxResolutionZh": "模板 1920×1080（可改画布）",
+    "maxFpsZh": "--fps 指定，本次 30",
+    "durationZh": "模板时长决定",
+    "effectsZh": [
+      "文字动效",
+      "遮罩/形变",
+      "缓动曲线",
+      "分镜转场"
+    ],
+    "audioZh": "模板可带音轨（未验证）",
+    "interactivityZh": "studio 预览",
+    "automationZh": "CLI 可脚本化",
+    "assetsZh": "字体/图片随模板",
+    "exportFormatsZh": [
+      "mp4"
+    ],
+    "realtimePreviewZh": "studio 实时预览",
+    "ciFriendlyZh": "需 Chrome"
+  },
+  "ceilingZh": "适合 15–60s 信息型动效片；重 3D/复杂合成会撞到“页面性能”而非框架能力。",
+  "workflow": [
+    {
+      "stepZh": "建工程",
+      "detailZh": "om new <dir> --template kinetic-type",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "改内容",
+      "detailZh": "改 index.html 文案/配色/时长",
+      "effortZh": "低中"
+    },
+    {
+      "stepZh": "渲染",
+      "detailZh": "om render <dir> --fps 30 --workers 1",
+      "effortZh": "低"
+    }
+  ],
+  "differentiators": [
+    "CLI 设计完整（new/render/studio/doctor）",
+    "模板即工程，无需 React/Remotion 依赖",
+    "中文文档与示例对齐国内容创作习惯"
+  ],
+  "limits": [
+    "本次实测：doctor 全绿；本机 Chrome 156 启动即静默退出（Chrome exited 0），把 OM_CHROME 指向 Playwright 的 chrome-headless-shell 后正常出片",
+    "依赖本机 Chrome/Chromium，版本与全量浏览器在 Windows 上有兼容坑",
+    "模板风格偏信息型，纪录片/实拍类不适用"
+  ],
+  "compareTips": [
+    {
+      "vs": "vs huashu-art-motion",
+      "adviceZh": "art-motion 用自带引擎渲 spec JSON；motion 用模板 + CDP 渲染页面"
+    },
+    {
+      "vs": "vs hyperframes",
+      "adviceZh": "两者都渲 HTML，huashu 更偏成品模板，HyperFrames 更偏框架"
+    }
+  ],
+  "showcase": {
+    "demoBriefZh": "演示重点：1) om new→render 最短路径；2) kinetic-type 文字节奏；3) 模板换肤的改法。",
+    "featureCallouts": [
+      {
+        "titleZh": "一条命令",
+        "descZh": "new 直接生成可渲染工程"
+      },
+      {
+        "titleZh": "CDP 渲染",
+        "descZh": "复用系统 Chrome，无重型依赖"
+      },
+      {
+        "titleZh": "studio 预览",
+        "descZh": "改完立刻看"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "field": "stars",
+      "source": "GitHub API",
+      "noteZh": "2,374 stars（文中记 1,766）"
+    },
+    {
+      "field": "doctor",
+      "source": "本地实测",
+      "noteZh": "doctor 全部检查通过"
+    },
+    {
+      "field": "渲染",
+      "source": "本地实测",
+      "noteZh": "OM_CHROME=chrome-headless-shell 后 om render 成功，14.37s/1920×1080/30fps，431 帧"
+    }
+  ]
+}

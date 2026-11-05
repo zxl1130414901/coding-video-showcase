@@ -1,0 +1,51 @@
+{
+  "repo": "patriciogonzalezvivo/glslViewer",
+  "category": "3D/Shader 渲染",
+  "status": "success",
+  "render_ms": 11706,
+  "total_ms": 200000,
+  "cmd": "glslViewer examples/test.frag --headless -w 1280 -h 720 -E record,out.mp4,0,5,30",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 5.0,
+    "nb_frames": 150,
+    "codec": "h264",
+    "pix_fmt": "yuv420p",
+    "fps": "30/1",
+    "size_bytes": 11496587
+  },
+  "notes_zh": "官方 win64 发行包缺 FFmpeg 共享 DLL，补 ffmpeg 8.1 shared 的 DLL 后可运行；headless 录制 5s/30fps",
+  "preview": {
+    "at_s": 2.5,
+    "mean_rgb": [
+      182.2,
+      126.09,
+      201.83
+    ],
+    "stddev_rgb": [
+      83.94,
+      73.62,
+      0.87
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "nb_frames": 717,
+      "codec": "h264",
+      "pix_fmt": "yuv420p",
+      "duration_s": 23.9,
+      "size_bytes": 11752393
+    },
+    "render_ms": 240000,
+    "segments": 3,
+    "callouts": 6,
+    "pipeline": "official",
+    "methodZh": "glslViewer 3.5.2 headless 逐段录制（-w 1280 -h 720，record 0-8s@30fps），三段自写 shader，poster.py 统一 1080p30 并烧入中文标注",
+    "generatedAt": "2026-11-05T15:50:49+08:00"
+  }
+}

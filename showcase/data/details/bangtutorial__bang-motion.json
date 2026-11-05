@@ -1,0 +1,74 @@
+{
+  "id": "bangtutorial__bang-motion",
+  "taglineZh": "把 coding agent 当动效设计师用的技能包，交付物是一个能自动播放的 index.html",
+  "summaryZh": "一个 Agent Skill，不是 npm 工程：SKILL.md 加十份参考文档、HTML 起步模板、自检与导出脚本，让 Claude Code、Codex 等按「动效设计规则」直接产出单文件 index.html——自动播放、可循环、加 ?debug=1 能拖时间轴，需要视频时再跑 export-frames.mjs 逐帧导出 MP4。它覆盖品牌 opener、促销片、SaaS 演示、动态字体、讲解片五类交付物。与 animate 最大的区别：它交付网页而不是成片，规则里明确反抗「把 PPT 翻页」，也明确禁止照抄截图拼贴。同一 brief 会先给三个风格方向，再由人挑一个往下做。",
+  "whatItMakes": [
+    {"type": "品牌 opener", "exampleZh": "3–15 秒的 logo 揭示与口号动效，单页 HTML 自动播放", "strength": "核心能力"},
+    {"type": "SaaS 产品演示", "exampleZh": "20–60 秒功能演示，用真实界面截图做推拉与高亮", "strength": "核心能力"},
+    {"type": "动态字体（kinetic type）", "exampleZh": "10–30 秒文字逐词冲击、字形变形", "strength": "核心能力"},
+    {"type": "讲解片", "exampleZh": "20–90 秒的九宫格/漫画分格讲解，每格一句台词", "strength": "可用"},
+    {"type": "MP4 成片", "exampleZh": "仓库附 export-frames.mjs，用 puppeteer + ffmpeg 导出，但未实测成功", "strength": "受限"},
+    {"type": "长视频/课程", "exampleZh": "设计上限 120 秒，没有章节、字幕轨、旁白编排", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "产品发布竖屏短片", "whoZh": "品牌与运营团队", "whyZh": "给 agent 一句 brief 就能出可播放网页，直接发社媒或嵌落地页", "deliverableZh": "1080×1920 的 15–40 秒单页 HTML", "fit": "高度契合"},
+    {"scenarioZh": "SaaS 功能演示", "whoZh": "产品市场（PMM）", "whyZh": "用真实截图做动效，比录屏更干净，且能反复改文案", "deliverableZh": "20–60 秒 16:9 HTML 演示", "fit": "高度契合"},
+    {"scenarioZh": "活动/发布会动态字体", "whoZh": "活动策划、视觉设计师", "whyZh": "kinetic type 的节奏与排版规则写在参考文档里，agent 有章可循", "deliverableZh": "10–30 秒文字动效页", "fit": "适合"},
+    {"scenarioZh": "需要 MP4 投放的广告", "whoZh": "投放运营", "whyZh": "导出脚本存在但未验证，需自己装 puppeteer 与 ffmpeg 并调参", "deliverableZh": "MP4（未确认分辨率与帧率）", "fit": "勉强"},
+    {"scenarioZh": "教学课程长片", "whoZh": "教师", "whyZh": "规则限定 120 秒内、无旁白/字幕轨，不适合系统课程", "deliverableZh": "不适用", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "未确认；规则按 1080 宽舞台校准，要求最小字号不低于 30px",
+    "maxFpsZh": "未确认；导出脚本依赖 puppeteer 截图与 ffmpeg 合成，帧率需自行指定",
+    "durationZh": "按类型分档：opener 3–15 秒、促销 15–90 秒、SaaS 演示 20–60 秒、动态字体 10–30 秒、讲解 20–90 秒，上限约 120 秒",
+    "effectsZh": ["十种动效风格", "十九个设计概念（含相机、遮罩、形变）", "二十一个渲染族", "六种讲解/漫画排版", "背景动效与持续主体"],
+    "audioZh": "旁白与音乐按参考文档编排，可选；无内建 TTS 或混音管线",
+    "interactivityZh": "HTML 自动播放并循环，?debug=1 可手动拖时间轴，?t=12.5 定格",
+    "automationZh": "snap.mjs 自检、export-frames.mjs 导出，需要 Node + puppeteer + ffmpeg，但整套依赖 agent 会话",
+    "assetsZh": "用户提供的 logo、产品截图、照片、视频片段；字体与 GSAP 走 CDN",
+    "exportFormatsZh": ["index.html（主交付物）", "mp4（可选，经 export-frames.mjs，未验证）"],
+    "realtimePreviewZh": "浏览器直接播放，是主要审片方式",
+    "ciFriendlyZh": "弱：交付物是网页，不是可流水线化的工程；导出脚本未列入 npm 包"
+  },
+  "ceilingZh": "它最强的地方是设计规则被写死：1080 舞台上字号不得低于 30px、每片最多两级文字、必须有持续移动的主体、禁止把截图贴成 PPT——这些约束让 agent 产出的页面在手机上有可读性。官方给出的上限是 120 秒、五类交付物（opener、促销、SaaS 演示、动态字体、讲解），风格库为 10 风格 × 19 概念 × 21 渲染族。但实测这一批没有出片：仓库没有 package.json 与渲染入口，repos.json 记为跳过，README 声称的 MP4 导出无法验证，只能标「未确认」。真实上限取决于宿主 agent 的生成质量与 export-frames.mjs 的稳定性，不是渲染器性能；画面依赖 CDN 上的 GSAP 与字体，断网即失效。它适合 15–60 秒的竖屏或横屏短片，长叙事不在设计目标内。",
+  "workflow": [
+    {"stepZh": "安装技能", "detailZh": "/plugin marketplace add 安装，或把技能目录拷进 agent 的 skills 目录", "effortZh": "约 5 分钟"},
+    {"stepZh": "写 brief", "detailZh": "给出产品、受众、时长、比例、品牌色与必须出现的素材（logo/截图）", "effortZh": "约 10 分钟"},
+    {"stepZh": "定风格", "detailZh": "agent 返回 2–3 个风格方向与关键帧描述，选定一个再往下做", "effortZh": "约 10 分钟"},
+    {"stepZh": "生成页面", "detailZh": "产出单文件 index.html，自动播放；用 ?debug=1 拖时间轴逐段审", "effortZh": "约 20–40 分钟"},
+    {"stepZh": "自检与导出", "detailZh": "snap.mjs 截关键帧检查溢出与遮挡；需要视频时跑 export-frames.mjs", "effortZh": "约 10 分钟，导出未验证"}
+  ],
+  "differentiators": [
+    "交付单文件 HTML，不发视频：可直接嵌落地页、可改字改色",
+    "设计规则显式写死（最小字号、文字层级、禁止 PPT 翻页），降低 agent 产出废片率",
+    "10 种风格 × 19 个设计概念 × 21 个渲染族的组合库",
+    "?debug=1 拖拽时间轴，审片不靠反复导出"
+  ],
+  "limits": [
+    "没有本地可跑的渲染入口，MP4 导出未验证",
+    "强依赖 agent 会话与 CDN 资源，离线不可用",
+    "上限约 120 秒，没有旁白轨、字幕轨与章节结构",
+    "不是工程：无 package.json、无测试、无 CI"
+  ],
+  "compareTips": [
+    {"vs": "cth9191__animate", "adviceZh": "要直接拿到 MP4、带配音与数学画风选 animate；只要可播放网页、偏品牌 opener 选 bang-motion"},
+    {"vs": "iart-ai__motion-skills", "adviceZh": "两者都是动效技能；bang-motion 自带起步模板与导出脚本，motion-skills 更偏概念与规则库"},
+    {"vs": "ybouane__VideoFlow", "adviceZh": "要可编程时间轴与参数化批量出片选 VideoFlow；要 agent 一次性出视觉稿选 bang-motion"}
+  ],
+  "showcase": {
+    "demoBriefZh": "本批未出片（无渲染入口）。若演示，建议四段：①给同一 brief 生成三个风格方向并对比关键帧；②打开 ?debug=1 拖时间轴，展示动效节奏；③放大看最小字号 30px 的可读性规则；④尝试 export-frames.mjs 并记录是否能拿到 MP4",
+    "featureCallouts": [
+      {"titleZh": "单文件交付", "descZh": "一个 index.html 即成品，可嵌可改"},
+      {"titleZh": "设计规则约束", "descZh": "30px 最小字号、两级文字、持续主体"},
+      {"titleZh": "五类交付物", "descZh": "opener/促销/SaaS/动态字体/讲解"},
+      {"titleZh": "调试模式", "descZh": "?debug=1 手动拖时间轴，?t 定格"},
+      {"titleZh": "导出脚本", "descZh": "export-frames.mjs 逐帧截图交 ffmpeg"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L8", "noteZh": "每个交付物都是单个 index.html，自动播放，可选 MP4 导出"},
+    {"field": "capabilities.durationZh", "source": "README.md#L31-L41", "noteZh": "五类交付物的典型时长表，最长为促销 15–90 秒"},
+    {"field": "ceilingZh", "source": "README.md#L247", "noteZh": "手机可读性规则：1080 舞台上字号不低于 30px"},
+    {"field": "limits 第 1 条", "source": "_samples/bangtutorial__bang-motion/meta.json", "noteZh": "无 package.json 渲染入口，按规则跳过，未产出视频"}
+  ]
+}

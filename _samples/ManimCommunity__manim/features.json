@@ -1,0 +1,69 @@
+{
+  "id": "ManimCommunity__manim",
+  "durationSec": 26.2,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 8.767,
+      "capabilityZh": "富文本与公式排版",
+      "proofZh": "MarkupText 上下标/渐变，Write 与 TransformMatchingShapes 逐字符变形"
+    },
+    {
+      "start": 8.767,
+      "end": 15.834,
+      "capabilityZh": "3D 曲面与相机运镜",
+      "proofZh": "ThreeDAxes + Surface 参数曲面，环境相机连续环绕"
+    },
+    {
+      "start": 15.834,
+      "end": 26.201,
+      "capabilityZh": "ValueTracker 实时求导",
+      "proofZh": "always_redraw 每帧重绘切线与斜率，无需预渲染序列"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.5,
+      "dur": 3.9,
+      "titleZh": "富文本排版",
+      "descZh": "MarkupText 上下标与渐变着色：不依赖外部 TeX 也能排出公式层级"
+    },
+    {
+      "t": 4.5,
+      "dur": 4.1,
+      "titleZh": "形状级变换",
+      "descZh": "TransformMatchingShapes 逐字符插值，公式改写不闪断"
+    },
+    {
+      "t": 9.2,
+      "dur": 3.2,
+      "titleZh": "3D 曲面建模",
+      "descZh": "Surface 参数方程 20×20 网格，z = sin(x)·cos(y) 实时投影"
+    },
+    {
+      "t": 12.5,
+      "dur": 3.2,
+      "titleZh": "相机运镜",
+      "descZh": "move_camera + 环境旋转，视角连续插值并保持曲面完整"
+    },
+    {
+      "t": 19.3,
+      "dur": 4.2,
+      "titleZh": "数据驱动更新",
+      "descZh": "ValueTracker 每帧重算切线与斜率，动画由状态而非关键帧驱动"
+    },
+    {
+      "t": 23.9,
+      "dur": 2.3,
+      "titleZh": "矢量逐帧输出",
+      "descZh": "30fps 逐帧渲染，曲线与文字边缘均为矢量抗锯齿"
+    }
+  ],
+  "renderMs": 404417,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "本机未安装 TeX 发行版（无 latex/dvisvgm），公式段改用 MarkupText 富文本，未使用 MathTex",
+    "源片为 720p30，后期上采样到 1920×1080（曲面网格 20×20 以控制渲染时间）",
+    "3D 曲面段为避免逐面淡入的性能问题，改为直接加入场景后由相机运镜呈现"
+  ]
+}

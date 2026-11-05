@@ -1,0 +1,73 @@
+{
+  "id": "Remocn__remocn",
+  "taglineZh": "Remotion 的 shadcn 式组件库：npx 把两百多段成品动效复制进工程",
+  "summaryZh": "Remocn 是 Remotion 的 copy-paste 组件注册表：npx shadcn add 把组件源码连同依赖直接复制进工程，而不是装运行时包。它把“每个淡入、擦除、动态标题都从零写”的重复劳动变成挑一个改参数，组件统一用 useCurrentFrame/interpolate/spring，避开会破坏渲染的 Math.random。它本身不渲染视频、没有 CLI，必须挂在 Remotion 工程里。与 SnapCN 同类，但 Remocn 是通用动效原语库，SnapCN 更偏产品 demo 专用镜头。组件页可逐帧 scrub，但整套片子仍要自己排时间轴；它不提供 CLI 与批量导出。",
+  "whatItMakes": [
+    {"type": "文字与标题动画", "exampleZh": "打字机、逐字弹入、模糊揭示、动态排版、刮擦替换", "strength": "核心能力"},
+    {"type": "转场与溶解效果", "exampleZh": "纸张撕裂、故障切割、像素排序、烟雾溶解、镜头推拉", "strength": "核心能力"},
+    {"type": "产品 Demo 动效", "exampleZh": "模拟光标、终端窗口、聊天界面、代码块推近", "strength": "可用"},
+    {"type": "数据/图表动画", "exampleZh": "动画条形图、折线图、数字滚轮、共享坐标轴", "strength": "可用"},
+    {"type": "整片模板", "exampleZh": "发布预告、产品发布、品牌规范、工作流演示等 6 套模板", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "SaaS 产品演示片", "whoZh": "独立开发者、小团队", "whyZh": "直接 add 聊天/终端/光标组件，当天拼出可发的 demo", "deliverableZh": "1080p30 的 30–60 秒 MP4", "fit": "高度契合"},
+    {"scenarioZh": "发布/融资预告", "whoZh": "创始人、市场负责人", "whyZh": "release-teaser 等模板改文案即可出片", "deliverableZh": "15–30 秒竖屏或横屏短片", "fit": "适合"},
+    {"scenarioZh": "动效原语二开", "whoZh": "前端/动效工程师", "whyZh": "源码进仓库，可任意改参数与时间曲线，不受包版本限制", "deliverableZh": "自定义组件与品牌动效库", "fit": "适合"},
+    {"scenarioZh": "Agent 自动拼片", "whoZh": "Claude Code/Codex 用户", "whyZh": "skill 按 brief→storyboard→install→compose→视觉检查走流程", "deliverableZh": "模板化 30–90 秒视频", "fit": "适合"},
+    {"scenarioZh": "无 Remotion 的轻量需求", "whoZh": "只想快速出片的人", "whyZh": "需要 Remotion 宿主工程，零基础仍要装 Node 与依赖", "deliverableZh": "需先搭工程", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由宿主 Remotion Composition 决定，常见 1920×1080；实测 1280×720",
+    "maxFpsZh": "由宿主 Composition 决定，示例 30fps；组件本身不限制",
+    "durationZh": "无硬限制，取决于宿主时间轴；单组件通常 1–5 秒",
+    "effectsZh": ["CSS/Canvas/SVG 动效原语", "着色器背景与溶解", "字幕/排版动画", "3D 景深、镜头缩放等伪 3D 效果"],
+    "audioZh": "组件库不含音频能力；需在 Remotion 宿主里自行加 <Audio>",
+    "interactivityZh": "无交互；仅 @remotion/player 的预览 scrub",
+    "automationZh": "无 CLI，靠宿主 Remotion 的 npx remotion render",
+    "assetsZh": "图标（remocn-icons）与 UI 原语（remocn-ui）随 registry 提供；字体需宿主自备",
+    "exportFormatsZh": ["MP4（经 Remotion）", "PNG 静帧（经 Remotion）"],
+    "realtimePreviewZh": "有：每个组件页挂 @remotion/player",
+    "ciFriendlyZh": "可进 CI，前提是宿主 Remotion 工程可构建"
+  },
+  "ceilingZh": "它的天花板就是 Remotion 的天花板，但把“从零写动效”压成“挑组件再改参数”：registry 下约 280 个组件目录，覆盖 50 多种字幕样式、几十种着色器背景、纸张/故障/像素/烟雾等溶解转场，以及 6 套整片模板。实测把其中 synthwave 组件复制进最小 Remotion 4.0.540 宿主，4 秒 720p30（120 帧）渲染 76 秒，说明组件本身没有额外性能负担。边界：不是独立工具，没有 Remotion 就无法预览或出片；组件质量参差，复杂效果仍要读源码调时间轴；没有音频、没有时间轴编排器；实现语言是 React/CSS，做不了 Manim 那种数学对象推导；商用虽为 MIT，但 Remotion 本身对 4 人以上团队收费。组件本身没有版本锁定，升级 Remotion 后可能要逐个人工修。",
+  "workflow": [
+    {"stepZh": "建 Remotion 工程", "detailZh": "npx create-video@latest，或复用已有工程，确认 components.json 与 @/ 别名", "effortZh": "约 5 分钟"},
+    {"stepZh": "装组件", "detailZh": "npx shadcn@latest add @remocn/blur-reveal，源码落到 components/ 下", "effortZh": "约 1 分钟/个"},
+    {"stepZh": "拼时间轴", "detailZh": "在 Composition 里用 Series/Sequence 排列组件，改 props 与 durationInFrames", "effortZh": "半小时到数小时"},
+    {"stepZh": "逐帧预览", "detailZh": "npx remotion studio 或组件页 player scrub，检查动效衔接", "effortZh": "随改随看"},
+    {"stepZh": "渲染出片", "detailZh": "npx remotion render src/index.tsx Main out/main.mp4", "effortZh": "4 秒 720p 约 1 分钟"}
+  ],
+  "differentiators": [
+    "约 280 个动效组件按 shadcn 方式复制进仓库，源码可改、无包版本锁定",
+    "组件统一遵守 Remotion 渲染规则，避开随机数与时间漂移的坑",
+    "每个组件都有真实 @remotion/player 预览，可逐帧对照",
+    "自带 6 套整片模板与 agent 插件，brief 到成片的路径比纯组件库短"
+  ],
+  "limits": [
+    "不是独立渲染器：没有 Remotion 宿主就无法使用，也没有自己的 CLI",
+    "不含音频、字幕时间轴与调色能力，复杂片子仍要自己搭宿主",
+    "组件以视觉原语为主，缺少 Manim 式数学/3D 对象",
+    "Remocn 自身 MIT，但底层 Remotion 对较大团队收费"
+  ],
+  "compareTips": [
+    {"vs": "shadcn-labs__snapcn", "adviceZh": "要做产品 demo 的聊天/终端/设备框镜头选 SnapCN；要海量文字、溶解、着色器原语选 Remocn，两者都可混用"},
+    {"vs": "remotion-dev__remotion", "adviceZh": "要自己掌控全部逻辑与云端渲染直接用 Remotion；要在一天内拼出成片，先用 Remocn 组件再回宿主改"},
+    {"vs": "Vincentwei1021__video-shotcraft", "adviceZh": "要产品页真实截图与整片编排选 video-shotcraft；要可复用的单段动效进自己的 React 工程选 Remocn"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①npx shadcn add 把 blur-reveal 复制进工程并展示源码归属；②在 Studio 里换 props 实时预览；③把文字、转场、着色器三个组件用 Series 拼成 4 秒片；④渲染出 720p30 MP4 并对比组件页预览",
+    "featureCallouts": [
+      {"titleZh": "代码复制进仓库", "descZh": "不是依赖包，改多少都不冲突"},
+      {"titleZh": "约 280 个动效", "descZh": "字幕、转场、着色器全覆盖"},
+      {"titleZh": "组件页可 scrub", "descZh": "真实 player 可逐帧 scrub 对照"},
+      {"titleZh": "6 套整片模板", "descZh": "预告/发布/品牌直接改"},
+      {"titleZh": "Agent 插件流程", "descZh": "brief 到视觉检查一条链"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L9-L17", "noteZh": "自述 copy-paste component library for Remotion，组件复制而非依赖"},
+    {"field": "capabilities.assetsZh", "source": "registry/remocn", "noteZh": "组件目录约 280 个，另有 remocn-icons、remocn-ui、remocn-templates 三套 registry"},
+    {"field": "ceilingZh", "source": "_samples/Remocn__remocn/meta.json", "noteZh": "最小 Remotion 宿主复用 synthwave 组件，720p30/120 帧渲染 76s"},
+    {"field": "limits", "source": "README.md#L19-L25", "noteZh": "明确 Remotion 为前置条件，需要先有工程才能 add"}
+  ]
+}

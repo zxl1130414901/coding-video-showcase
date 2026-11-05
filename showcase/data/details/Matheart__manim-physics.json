@@ -1,0 +1,72 @@
+{
+  "id": "Matheart__manim-physics",
+  "taglineZh": "给 Manim 装上物理引擎：刚体、斜面、弹簧与电磁场都能真的动起来",
+  "summaryZh": "manim-physics 是 Manim 的物理模拟插件，底层用 pymunk 做 2D 刚体与碰撞：在 Manim 场景里创建 Space、加入地面/斜面/弹簧，让物体按真实物理运动，同时复用 Manim 的镜头、文字与公式能力。它覆盖刚体力学、电磁学（电荷、场线、透镜与面镜成像）与波动光学，适合把受力分析、碰撞、电场线这类概念变成可观看的动画。与手写关键帧相比，它省掉逐帧推导位置的代码；与 Unity/Blender 物理相比，它没有 3D 与复杂材质，但能和公式排版混排。硬伤是版本兼容与低帧率穿透。",
+  "whatItMakes": [
+    {"type": "刚体/碰撞演示", "exampleZh": "小球落地、方块堆叠、三角滚落、斜面滑动", "strength": "核心能力"},
+    {"type": "受力与斜面教学", "exampleZh": "重力/支持力/摩擦力箭头，随运动实时变化", "strength": "核心能力"},
+    {"type": "电磁场可视化", "exampleZh": "点电荷场线、带电粒子轨迹、透镜与面镜成像", "strength": "可用"},
+    {"type": "波动/光学动画", "exampleZh": "波的传播、干涉、折射路径", "strength": "可用"},
+    {"type": "与公式混排的物理讲解", "exampleZh": "Manim 文字/公式与物理对象同场景出现", "strength": "核心能力"}
+  ],
+  "useCases": [
+    {"scenarioZh": "高中/大学物理课件", "whoZh": "物理教师、教研团队", "whyZh": "碰撞与受力不需要手算关键帧，改参数即得新过程", "deliverableZh": "720p/1080p 的 2–8 分钟教学片", "fit": "高度契合"},
+    {"scenarioZh": "物理科普短视频", "whoZh": "科普作者", "whyZh": "真实物理运动比关键帧更有说服力", "deliverableZh": "1080p 的 1–3 分钟短片", "fit": "适合"},
+    {"scenarioZh": "电磁学可视化课程", "whoZh": "大学讲师", "whyZh": "内置电磁模块，场线与成像可直接调用", "deliverableZh": "1080p60 片段", "fit": "适合"},
+    {"scenarioZh": "3D 物理场景", "whoZh": "需要立体演示的团队", "whyZh": "pymunk 是 2D，没有 3D 刚体与碰撞", "deliverableZh": "不适用", "fit": "勉强"},
+    {"scenarioZh": "新版 Manim 直接安装", "whoZh": "使用 Manim 0.19 的用户", "whyZh": "0.4.0 的 Requires-Python 是 <3.13，且 Space API 在新版被移除，需要打补丁", "deliverableZh": "需改造环境", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "继承 Manim 质量档，-qm 720p、-qh 1080p、-qk 4K；实测 1280×720",
+    "maxFpsZh": "继承 Manim，-qm 30fps、-qh 60fps；物理稳定性建议提高帧率",
+    "durationZh": "无硬限制；实测 3 秒",
+    "effectsZh": ["pymunk 2D 刚体与碰撞", "弹簧、斜面、地面", "电磁场线与粒子", "透镜/面镜成像", "与 Manim 公式/文字混排"],
+    "audioZh": "继承 Manim 的 add_sound；插件本身不做音频",
+    "interactivityZh": "仅渲染；Manim 的预览窗口可播放",
+    "automationZh": "CLI 可脚本化：manim -qm scene.py SpaceScene",
+    "assetsZh": "沿用 Manim 素材体系；物理对象由代码生成",
+    "exportFormatsZh": ["MP4", "GIF", "PNG 序列"],
+    "realtimePreviewZh": "部分：Manim -p 渲完播放",
+    "ciFriendlyZh": "可进 CI，但需固定 Manim 与插件版本，Python 3.13 要绕依赖"
+  },
+  "ceilingZh": "它能把“物理过程”直接交给引擎跑：实测自写 SpaceScene（圆/方/三角刚体落在静态地面）用 manim 0.19 + manim-physics 0.4.0 渲染 3 秒 720p30 只要 13.5 秒，比纯 Manim 的关键帧计算更省事，画面也真实。上限取决于 pymunk 的 2D 能力与 Manim 的渲染：刚体数量、碰撞形状复杂度、弹簧约束都会拖慢；官方也提醒低帧率会导致碰撞穿透，复杂堆叠要抬高 fps。边界：只有 2D，没有 3D 刚体；0.4.0 的 Requires-Python 限 <3.13，本机 Python 3.13 需 --ignore-requires-python --no-deps 再补 pymunk/shapely；Manim 0.19 移除了 Space，得用补丁或降级；没有可视化物理编辑器，参数全靠代码。实测 3 秒 720p30 渲染 13.5 秒，比纯 Manim 关键帧省代码但不省时间；刚体超过几十个后会明显掉帧，复杂堆叠要抬高 fps。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "装 Manim 0.19 与 manim-physics 0.4.0；Python 3.13 需忽略 requires-python 并补 pymunk/shapely", "effortZh": "约 15 分钟"},
+    {"stepZh": "建场景", "detailZh": "继承 Scene，创建 Space，加入地面/斜面与刚体，设置质量、摩擦与重力", "effortZh": "首个场景 1–2 小时"},
+    {"stepZh": "预演", "detailZh": "manim -ql 低质量跑一遍，观察碰撞是否穿透、物体是否飞出画面", "effortZh": "按片长"},
+    {"stepZh": "正式渲染", "detailZh": "manim -qm/-qh scene.py SpaceScene，复杂场景提高 fps 防穿透", "effortZh": "3 秒约 14 秒"}
+  ],
+  "differentiators": [
+    "pymunk 真实物理，碰撞与受力不需要手算关键帧",
+    "与 Manim 的文字/公式同场景，物理过程与推导可以并排讲",
+    "内置电磁、光学与波动模块，不只是刚体",
+    "MIT 许可，插件轻量，接入现有 Manim 工程成本低"
+  ],
+  "limits": [
+    "只有 2D 物理，没有 3D 刚体与空间碰撞",
+    "低帧率会碰撞穿透，复杂堆叠需要显著提高 fps",
+    "0.4.0 限 Python <3.13，且与 Manim 0.19 的 Space API 冲突，需补丁",
+    "没有可视化编辑器，物理参数与场景全靠代码"
+  ],
+  "compareTips": [
+    {"vs": "ManimCommunity__manim", "adviceZh": "只做公式/几何选 Manim；要做碰撞、受力与电磁过程再加 manim-physics"},
+    {"vs": "academa-labs__manimgx", "adviceZh": "需要 3D 与高帧率成片选 ManimGX；需要真实 2D 物理模拟选 manim-physics"},
+    {"vs": "SkyeShark__eidoverse-video", "adviceZh": "要 3D 角色、Rapier 刚体与布料选 Eidoverse；只要 2D 刚体并和公式混排，选 manim-physics"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①Space 与地面的搭建代码；②圆/方/三角刚体落地碰撞；③受力箭头随运动变化；④电磁场线或透镜成像，最后展示 -qm 渲染结果",
+    "featureCallouts": [
+      {"titleZh": "pymunk 刚体", "descZh": "质量摩擦重力可配"},
+      {"titleZh": "碰撞与斜面", "descZh": "真实运动非关键帧"},
+      {"titleZh": "受力可视化", "descZh": "箭头随物体实时变化"},
+      {"titleZh": "电磁/光学模块", "descZh": "电场线与透镜成像演示"},
+      {"titleZh": "公式同场景", "descZh": "Manim 文字与物理并排"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L2-L19", "noteZh": "2D physics simulation Manim 插件，覆盖刚体、电磁、波，pip 安装"},
+    {"field": "capabilities.effectsZh", "source": "manim_physics/rigid_mechanics/rigid_mechanics.py#L3-L19", "noteZh": "刚体/静态体依赖 pymunk，低帧率可能穿透"},
+    {"field": "limits", "source": "_samples/Matheart__manim-physics/meta.json", "noteZh": "0.4.0 Requires-Python <3.13；Manim 0.19 移除 Space，需补丁/绕依赖"},
+    {"field": "ceilingZh", "source": "_samples/Matheart__manim-physics/meta.json", "noteZh": "实测 3s/720p30 渲染 13.5s，manim 0.19 + manim-physics 0.4.0"}
+  ]
+}

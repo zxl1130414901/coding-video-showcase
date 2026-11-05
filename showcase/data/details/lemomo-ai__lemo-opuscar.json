@@ -1,0 +1,123 @@
+{
+  "id": "lemomo-ai__lemo-opuscar",
+  "taglineZh": "59 套可复用的视觉语法：把风格当代码写，再逐帧渲成短片",
+  "summaryZh": "lemo-opuscar 把短视频拆成“风格 + 渲染”：仓库提供 59 种风格的提示与示例、canvas/WebGL 页面写法，以及 core/render 浏览器逐帧渲染工具。它不是成品视频库，示例源码不随仓库分发，需要 Agent 按风格规范现场写页面再渲染。",
+  "whatItMakes": [
+    {
+      "type": "风格化短片",
+      "exampleZh": "按风格规范写 canvas/WebGL 页面，渲染器逐帧输出",
+      "strength": "风格一致性强"
+    },
+    {
+      "type": "风格库",
+      "exampleZh": "59 套风格提示 + 参考图，覆盖 3D/拼贴/数据可视化等",
+      "strength": "选型快"
+    },
+    {
+      "type": "渲染工具链",
+      "exampleZh": "core/render 内 browser/video 脚本负责起浏览器、抓帧、编码",
+      "strength": "可复用"
+    }
+  ],
+  "useCases": [
+    {
+      "scenarioZh": "品牌风格短片",
+      "whoZh": "设计/创意团队",
+      "whyZh": "需要统一视觉语言",
+      "deliverableZh": "社媒 15–30s 片",
+      "fit": "中"
+    }
+  ],
+  "capabilities": {
+    "maxResolutionZh": "页面画布决定",
+    "maxFpsZh": "渲染脚本参数决定",
+    "durationZh": "页面时间轴决定",
+    "effectsZh": [
+      "Canvas 2D",
+      "WebGL",
+      "粒子/形变",
+      "排版"
+    ],
+    "audioZh": "未在本次验证中确认",
+    "interactivityZh": "浏览器预览",
+    "automationZh": "渲染脚本可批处理",
+    "assetsZh": "风格参考图 + 字体",
+    "exportFormatsZh": [
+      "mp4"
+    ],
+    "realtimePreviewZh": "浏览器打开",
+    "ciFriendlyZh": "需 Chromium"
+  },
+  "ceilingZh": "风格上限很高（59 套语法），但仓库不含成片源码，实际质量取决于 Agent 写页面的能力。",
+  "workflow": [
+    {
+      "stepZh": "选风格",
+      "detailZh": "从风格库挑一套，读其规范与示例",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "写页面",
+      "detailZh": "按规范实现 window.render(t) 页面",
+      "effortZh": "中高"
+    },
+    {
+      "stepZh": "渲染",
+      "detailZh": "用 core/render 的脚本起浏览器逐帧渲",
+      "effortZh": "低"
+    }
+  ],
+  "differentiators": [
+    "风格数量与体系化程度在同类里突出（59 套）",
+    "渲染层与内容层分离，风格可复用",
+    "MIT 许可，商用友好"
+  ],
+  "limits": [
+    "仓库不含可直接运行的示例工程，需自写调用脚本（本次用官方 core/render/page.mjs 写最小脚本跑通）",
+    "示例字体/素材按 fetch.sh 在线拉取，离线环境需自备字体文件",
+    "示例成片源码不随仓库分发"
+  ],
+  "compareTips": [
+    {
+      "vs": "vs huashu-art-motion",
+      "adviceZh": "huashu 带可运行示例与引擎；lemo 强在风格库，弱在开箱示例"
+    },
+    {
+      "vs": "vs hyperframes",
+      "adviceZh": "HyperFrames 给框架，lemo 给风格"
+    }
+  ],
+  "showcase": {
+    "demoBriefZh": "演示重点：1) 风格库的覆盖广度；2) 同一段文案换风格的反差；3) Canvas/WebGL 逐帧渲染的一致性。",
+    "featureCallouts": [
+      {
+        "titleZh": "风格即代码",
+        "descZh": "每套风格是可复现的页面规范"
+      },
+      {
+        "titleZh": "渲染与内容解耦",
+        "descZh": "风格换、叙事不换"
+      },
+      {
+        "titleZh": "MIT 许可",
+        "descZh": "商用门槛低"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "field": "stars",
+      "source": "GitHub API",
+      "noteZh": "12,339 stars（文中记 8,322，已增长）"
+    },
+    {
+      "field": "克隆",
+      "source": "本地实测",
+      "noteZh": "90MB 源码，解压 166s"
+    },
+    {
+      "field": "样例",
+      "source": "本地实测",
+      "noteZh": "最小脚本取 styles/ascii-crt/demo 前 5s 出片（1280×720/24→30fps），补 VT323 字体后跑通"
+    }
+  ]
+}

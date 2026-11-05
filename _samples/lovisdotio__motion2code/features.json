@@ -1,0 +1,69 @@
+{
+  "id": "lovisdotio__motion2code",
+  "durationSec": 23.8,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.93,
+      "capabilityZh": "视频→代码反向工程",
+      "proofZh": "think-big 页面用 GSAP 时间轴复刻原片排版与缓动，窗口暴露 window.anim.seek(t) 供逐帧渲染"
+    },
+    {
+      "start": 7.93,
+      "end": 15.87,
+      "capabilityZh": "任意帧可复现",
+      "proofZh": "eye 篇 240 帧按 30fps 固定步进抓屏，单帧可随时重放，不依赖实时录屏"
+    },
+    {
+      "start": 15.87,
+      "end": 23.8,
+      "capabilityZh": "多题材同一管线",
+      "proofZh": "festival-map 地图动效沿用 render_anim.py 同一渲染入口，版式与相机各自独立"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.4,
+      "dur": 4.2,
+      "titleZh": "① 视频→代码复刻",
+      "descZh": "逐帧对照原片，GSAP 重建同一时间轴与缓动"
+    },
+    {
+      "t": 5.2,
+      "dur": 3.6,
+      "titleZh": "② 逐帧 seek 可复现",
+      "descZh": "window.anim.seek(t) 精确定格，不依赖录屏"
+    },
+    {
+      "t": 8.6,
+      "dur": 3.8,
+      "titleZh": "③ 任意时刻定格",
+      "descZh": "eye 篇 240 帧全部可单帧重放，无丢帧"
+    },
+    {
+      "t": 12.6,
+      "dur": 3.6,
+      "titleZh": "④ 30fps 固定步进",
+      "descZh": "帧号=时间×fps，节奏与原片一致"
+    },
+    {
+      "t": 16.4,
+      "dur": 4.2,
+      "titleZh": "⑤ 多题材同一管线",
+      "descZh": "festival-map 地图动效照跑，版式不串味"
+    },
+    {
+      "t": 20.5,
+      "dur": 3.3,
+      "titleZh": "⑥ 帧差可量化",
+      "descZh": "原片/复刻逐帧比对，误差用平均像素差衡量"
+    }
+  ],
+  "renderMs": 110000,
+  "pipeline": "native",
+  "knownLimitsZh": [
+    "本次只验证官方 gallery 三页的渲染链路，未跑“从任意视频反推代码”的完整分析流程",
+    "示例页依赖 gallery 目录结构与 ?external=1 参数，脱离该目录需改 root",
+    "渲染走本机 Chrome（channel=chrome），无 GPU 加速时单帧约 100ms"
+  ]
+}

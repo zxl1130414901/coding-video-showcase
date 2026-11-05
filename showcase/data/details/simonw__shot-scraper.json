@@ -1,0 +1,73 @@
+{
+  "id": "simonw__shot-scraper",
+  "taglineZh": "用 YAML 分镜指挥浏览器：截图、点击、滚动、等待，录成网页操作演示视频",
+  "summaryZh": "shot-scraper 是 Simon Willison 写的 Python CLI，本职是网页截图与抓取，但带一个 storyboard 子命令：写一份 YAML，声明 URL、视口、fps、光标与 scenes，每一步可等待元素、执行 JS、点击、输入、滚动，Playwright 驱动 Chromium 录制，输出 WebM，可用 --mp4 转 MP4。它解决“录产品网页演示要手动操作、画面不稳”的问题——分镜声明式，重跑即可复现。与 Remotion 相比它录的是真实交互，与 Multiplane 相比没有景深与确定性校验。它适合把 SaaS 产品的真实操作录成说明片，而不是做美术动画。",
+  "whatItMakes": [
+    {"type": "网页产品演示", "exampleZh": "打开首页、点击菜单、切换主题、滚动到功能区", "strength": "核心能力"},
+    {"type": "功能操作教学", "exampleZh": "填表、提交、等待结果、展示成功页", "strength": "核心能力"},
+    {"type": "网页截图/PDF 批量", "exampleZh": "多 URL 截图、整页 PDF、元素级截图", "strength": "核心能力"},
+    {"type": "可访问性/结构抓取", "exampleZh": "导出无障碍树、抓取 JS 渲染后的 HTML", "strength": "可用"},
+    {"type": "需要镜头语言的宣传片", "exampleZh": "只能录真实网页，无法做 3D、景深与程序化转场", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "SaaS 功能演示视频", "whoZh": "产品经理、售前", "whyZh": "YAML 分镜重跑即复现，不依赖人手操作", "deliverableZh": "1280×720 的 1–3 分钟 MP4/WebM", "fit": "高度契合"},
+    {"scenarioZh": "技术文档配图", "whoZh": "技术作者", "whyZh": "同一份 storyboard 既出视频又出截图", "deliverableZh": "PNG/PDF + WebM", "fit": "高度契合"},
+    {"scenarioZh": "自动化验收录像", "whoZh": "测试/工程团队", "whyZh": "CLI 可脚本化，失败路径也能录下来", "deliverableZh": "操作回放 WebM", "fit": "适合"},
+    {"scenarioZh": "营销级产品片", "whoZh": "市场团队", "whyZh": "没有动画编排、景深、字幕与配乐，观感偏“录屏”", "deliverableZh": "需后期加工", "fit": "勉强"},
+    {"scenarioZh": "需要登录态的页面", "whoZh": "内部系统团队", "whyZh": "可用 auth 存登录态，但复杂 SSO/MFA 仍要人工介入", "deliverableZh": "内网演示", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "viewport 可设，实测 1280×720；无文档上限",
+    "maxFpsZh": "storyboard 的 fps 字段在已装版本不支持，默认 25fps",
+    "durationZh": "由场景步骤与等待决定，实测 10.2 秒；无硬限制",
+    "effectsZh": ["真实点击/输入/滚动/等待", "场景切换与光标显示", "主题/视口变化", "截图与整页 PDF"],
+    "audioZh": "不支持音频混入",
+    "interactivityZh": "录制过程是真实浏览器交互；成片不可交互",
+    "automationZh": "CLI 可脚本化：shot-scraper storyboard storyboard.yml，可进 CI",
+    "assetsZh": "YAML 分镜 + 目标网页；无内置素材或主题",
+    "exportFormatsZh": ["WebM", "MP4（--mp4 转码）", "PNG 截图", "PDF", "HTML"],
+    "realtimePreviewZh": "无预览窗口，录完看文件",
+    "ciFriendlyZh": "可进 CI：CLI + Playwright，需装 Chromium 与 ffmpeg"
+  },
+  "ceilingZh": "它能稳定产出“真实网页操作录像”：实测自建 3 场景 storyboard（首页动效→点击换主题→点击卡片），Playwright 录制 131 秒得到 1280×720、25fps、10.2 秒、255 帧的 VP9 WebM，再用 NVENC 转 MP4 只需 5 秒。能力上限在分镜表达力：等待元素、执行 JS、点击/输入/滚动、切场景、控制视口，足以覆盖大多数产品演示。边界：录的是真实页面，画面质感取决于网页本身，没有景深、超采样、运动模糊与程序化转场；fps 不能通过 storyboard 设（该版本不支持，默认 25），高帧率需求要改代码或后期；不支持音频；Windows 首次要补 playwright install ffmpeg，否则录制直接报缺 ffmpeg-win64.exe。它不能控制页面内的 Canvas 动画时间，只能录真实等待；要确定性逐帧得换 Multiplane 或 Helios。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "pip install shot-scraper，再 shot-scraper install 装 Chromium；补 playwright install ffmpeg", "effortZh": "约 10 分钟"},
+    {"stepZh": "写分镜", "detailZh": "YAML 里写 output、url、viewport、scenes，每步 click/wait_for/javascript", "effortZh": "约 30 分钟"},
+    {"stepZh": "试录", "detailZh": "shot-scraper storyboard storyboard.yml，得到 WebM", "effortZh": "按片长 2 倍"},
+    {"stepZh": "转 MP4", "detailZh": "ffmpeg -i sample.webm -c:v h264_nvenc -pix_fmt yuv420p sample.mp4", "effortZh": "约 5 秒"},
+    {"stepZh": "复核", "detailZh": "检查点击是否命中、等待是否足够、光标是否可见", "effortZh": "几分钟"}
+  ],
+  "differentiators": [
+    "YAML 声明式分镜，真实浏览器操作可复现，不用人守着录屏",
+    "一个工具同时覆盖视频、截图、PDF、HTML 与无障碍树抓取",
+    "CLI 极轻，pip 安装，适合接进文档与 CI 流程",
+    "基于 Playwright，登录态、视口、JS 执行都能脚本化"
+  ],
+  "limits": [
+    "不支持音频，也没有字幕、配乐与转场编排",
+    "storyboard 的 fps 字段在已装版本不生效，默认锁 25fps",
+    "只能录真实网页，做不了 3D、景深与程序化动画",
+    "Windows 需额外装 playwright ffmpeg，否则录制直接失败"
+  ],
+  "compareTips": [
+    {"vs": "wx4766__html-to-video", "adviceZh": "要程序化 Canvas 动画与模板选 html-to-video；要真实网页点击操作录像选 shot-scraper"},
+    {"vs": "LBEILC__Multiplane", "adviceZh": "要景深/运动模糊与确定性校验选 Multiplane；要真实交互与截图 PDF 选 shot-scraper"},
+    {"vs": "asciinema__asciinema", "adviceZh": "录终端选 asciinema；录网页操作选 shot-scraper"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①YAML 分镜的 url/viewport/scenes 结构；②首页动效与点击换主题；③点击卡片进入详情并等待元素；④WebM 录制与 --mp4/NVENC 转码结果",
+    "featureCallouts": [
+      {"titleZh": "YAML 分镜", "descZh": "点击滚动等待都可声明"},
+      {"titleZh": "真实浏览器交互", "descZh": "录的是真实浏览器操作"},
+      {"titleZh": "一稿多产", "descZh": "一次分镜同时产出视频与截图"},
+      {"titleZh": "CLI 可进 CI", "descZh": "pip 装完即可脚本化调用"},
+      {"titleZh": "MP4 转码", "descZh": "WebM 一条命令转成 H.264"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L9-L29", "noteZh": "CLI 用于网站截图、录制视频 demo、JS 抓取"},
+    {"field": "capabilities.automationZh", "source": "shot_scraper/cli.py#L598-L659", "noteZh": "video/storyboard 从 YAML 录 WebM，--mp4 与 --fps 覆盖"},
+    {"field": "ceilingZh", "source": "_samples/simonw__shot-scraper/meta.json", "noteZh": "实测 3 场景 720p/25fps/10.2s/255 帧，录制 131s；fps 字段不支持；缺 ffmpeg-win64.exe"},
+    {"field": "limits", "source": "LICENSE#L1-L3", "noteZh": "Apache-2.0"}
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "repo": "UnMolDeQuimica/manim-Chemistry",
+  "category": "数学/化学动画（Manim 插件）",
+  "status": "success",
+  "render_ms": 7200,
+  "total_ms": 12929,
+  "cmd": "python -m manim -qm -r 1280,720 --fps 30 _samples\\UnMolDeQuimica__manim-Chemistry\\sample_scene.py ChemDemo",
+  "artifact": "F:\\coding视频\\_samples\\UnMolDeQuimica__manim-Chemistry\\sample.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 5.0,
+    "fps": 30.0,
+    "nb_frames": 150,
+    "codec": "h264",
+    "size_kb": 161.4
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\UnMolDeQuimica__manim-Chemistry\\preview.png",
+    "pixel_std": 29.51,
+    "unique_colors": 220
+  },
+  "notes_zh": "pip 安装 manim-Chemistry（setuptools_scm 在无 .git 的归档仓库下取版本失败，需临时设置 SETUPTOOLS_SCM_PRETEND_VERSION）。场景读取仓库自带 morphine_2d.mol，叠加 BohrAtom。README 示例里的 filename= 参数已过时，实际签名为 filepath=。",
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "duration_sec": 26.067
+    },
+    "render_ms": 73000,
+    "ffprobe": {
+      "duration_sec": 26.067,
+      "codec": "h264",
+      "nb_frames": 782,
+      "has_audio": false,
+      "size_kb": 1320.1,
+      "stddev_10_50_90": {
+        "0.10": 35.176,
+        "0.50": 26.125,
+        "0.90": 42.853
+      }
+    },
+    "generator": "Manim CE 0.19 + manim-chemistry 插件，python -m manim -qh --fps 30 -r 1920,1080；Cairo 渲染 21 个动画，ffmpeg drawtext 烧录标注",
+    "segments_count": 4,
+    "pipeline": "official"
+  }
+}

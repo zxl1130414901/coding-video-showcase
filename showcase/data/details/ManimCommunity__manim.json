@@ -1,0 +1,73 @@
+{
+  "id": "ManimCommunity__manim",
+  "taglineZh": "3Blue1Brown 引擎的社区版：用 Python 数学对象讲清公式、几何与 3D",
+  "summaryZh": "Manim Community 是 3b1b 动画引擎的开源维护版：用 Python 描述 Mobject（圆、公式、坐标轴）与动画（Create、Transform、FadeOut），Cairo 或 OpenGL 渲染器逐帧绘制，ffmpeg 编码成 MP4/GIF。它的核心资产不是速度，而是数学语义、LaTeX 排版与十年积累的示例和插件——公式能逐项变形、坐标系能精确对齐。与 ManimGX、Ranim 相比它慢、安装重，但 API 最全、教程最多；与 Remotion 相比它只擅长把数学讲清楚，不适合 UI 演示与美术场景。社区版文档与教程最全，遇到问题更容易搜到答案。",
+  "whatItMakes": [
+    {"type": "公式推导动画", "exampleZh": "LaTeX 公式逐项变形、配方法、求导与积分步骤", "strength": "核心能力"},
+    {"type": "几何/线性代数演示", "exampleZh": "平面变换、向量场、矩阵作用于网格、单位圆", "strength": "核心能力"},
+    {"type": "3D 曲面与相机", "exampleZh": "OpenGL 渲染器下的曲面、参数方程、环绕镜头", "strength": "可用"},
+    {"type": "函数/数据图像", "exampleZh": "Axes 坐标系、曲线绘制、切线沿曲线滑动", "strength": "核心能力"},
+    {"type": "带配乐的教学片段", "exampleZh": "add_sound 挂音轨，动画节点与音乐对齐", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "大学数学/物理课件", "whoZh": "教师、课程制作团队", "whyZh": "公式与几何对象有语义，改一行步长即可重渲整段推导", "deliverableZh": "-qh 1080p60 MP4，单条 3–15 分钟", "fit": "高度契合"},
+    {"scenarioZh": "科普频道的数学短片", "whoZh": "科普创作者", "whyZh": "3b1b 同源画风，公式排版与镜头语言成熟", "deliverableZh": "1080p60 的 5–20 分钟", "fit": "高度契合"},
+    {"scenarioZh": "论文/答辩配图视频", "whoZh": "研究生、科研人员", "whyZh": "LaTeX 公式直接进画面，比 PPT 动画精确", "deliverableZh": "720p/1080p 的 1–5 分钟", "fit": "适合"},
+    {"scenarioZh": "需要 4K 的商用课程", "whoZh": "出版级课程团队", "whyZh": "-qk 支持 2160p60，但渲染时间成倍增长", "deliverableZh": "4K60 MP4", "fit": "适合"},
+    {"scenarioZh": "产品/UI 演示视频", "whoZh": "市场团队", "whyZh": "没有网页、组件与截图能力，做产品 UI 很别扭", "deliverableZh": "不适用", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "质量档 -ql 480p15、-qm 720p30、-qh 1080p60、-qk 2160p60；实测 1280×720",
+    "maxFpsZh": "-ql 15fps、-qm 30fps、-qh/-qk 60fps；可在 config 自定义",
+    "durationZh": "无硬限制；长片按帧线性增长，单条 10 分钟以上要分 Scene",
+    "effectsZh": ["LaTeX 公式排版与 Transform", "2D 矢量图形与坐标系", "OpenGL 3D 曲面与相机", "音频 add_sound"],
+    "audioZh": "支持 add_sound 挂外部音轨；不内置 TTS 与字幕对齐",
+    "interactivityZh": "仅渲染；IPython magic 可在 Jupyter 里预览，但不是交互播放器",
+    "automationZh": "CLI 可脚本化：manim -qh scene.py Scene，支持 -n 跳动画、-s 只出末帧",
+    "assetsZh": "依赖 LaTeX 发行版与系统字体；图片/SVG 可导入，3D 模型支持有限",
+    "exportFormatsZh": ["MP4", "GIF", "PNG 序列", "单帧 PNG"],
+    "realtimePreviewZh": "部分：-p 渲完自动播放；OpenGL 渲染器可交互预览",
+    "ciFriendlyZh": "可进 CI（Docker 镜像），但 LaTeX 与 ffmpeg 依赖重"
+  },
+  "ceilingZh": "它最强的是“把推导过程逐帧讲透”：-qh 可出 1080p60，-qk 可出 4K60，公式、坐标系、3D 曲面与相机可以在一个 Scene 里连续运动；配合 Transform/ReplacementTransform 能做逐项变形，配合 Axes/NumberPlane 能做精确的几何演示。实测 3 秒 720p30 画面渲染 73 秒，总耗时 350 秒（含 pip 安装），CPU 渲染的代价很明显，10 分钟 1080p60 的片子要按小时计。边界：Cairo 渲染器不支持真 3D，3D 必须换 OpenGL 渲染器且稳定性较差；LaTeX 是硬依赖，Windows 上装 TeX 与字体常是第一个坑；Python 逐帧执行，复杂场景很容易卡；没有可视化编辑器、没有云端批量、没有音频对齐工具。它对硬件没有要求，但 CPU 单线程渲染让长片非常吃时间，教学短片控制在 3 分钟内更现实。",
+  "workflow": [
+    {"stepZh": "安装", "detailZh": "Python 3.9+ 加 pip install manim；再装 LaTeX（MiKTeX/TeX Live）与 ffmpeg", "effortZh": "30–60 分钟"},
+    {"stepZh": "写场景", "detailZh": "继承 Scene，用 Mobject 与动画方法描述内容，公式用 MathTex", "effortZh": "首个场景 2–6 小时"},
+    {"stepZh": "低质量试渲", "detailZh": "manim -p -ql scene.py SquareToCircle，快速看节奏与排版", "effortZh": "秒级到分钟级"},
+    {"stepZh": "正式渲染", "detailZh": "manim -qh --media_dir media scene.py Scene，需要 3D 时加 --renderer=opengl", "effortZh": "按片长计"},
+    {"stepZh": "后期", "detailZh": "需要配乐/字幕时把 MP4 进剪辑软件，或用 add_sound 先挂音轨", "effortZh": "另计"}
+  ],
+  "differentiators": [
+    "数学对象有语义：Transform 能把公式逐项变形，而不是简单淡入淡出",
+    "LaTeX 原生排版，是同价位工具里公式质量最好的",
+    "十年社区生态：教程、示例、插件（如 manim-physics）与 Docker 镜像齐全",
+    "一套代码覆盖 2D/3D、MP4/GIF/PNG，且质量档可精确控制"
+  ],
+  "limits": [
+    "CPU 逐帧渲染慢，实测 3 秒 720p 要 73 秒，长片按小时计",
+    "LaTeX 是硬依赖，Windows 安装与字体配置经常报错",
+    "3D 必须切 OpenGL 渲染器，稳定性与兼容性不如 2D",
+    "没有可视化编辑器、音频对齐与云端批量，工程化能力弱"
+  ],
+  "compareTips": [
+    {"vs": "academa-labs__manimgx", "adviceZh": "要最快出片、默认 1080p60 与 3D 选 ManimGX；要最全 API、插件生态与稳定行为选 Manim"},
+    {"vs": "AzurIce__ranim", "adviceZh": "已有 Python 教学资产选 Manim；要 Rust 性能与原生工程化选 Ranim，但要接受生态小"},
+    {"vs": "yongkyuns__noon", "adviceZh": "要网页内交互与实时播放选 Noon；要离线成片与成熟教程选 Manim"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①SquareToCircle 基础变换；②MathTex 公式逐项推导；③Axes 上切线滑动展示导数；④OpenGL 渲染器下的 3D 曲面与相机环绕，最后展示 -qh 渲染参数",
+    "featureCallouts": [
+      {"titleZh": "数学对象语义", "descZh": "公式可逐项 Transform 变形"},
+      {"titleZh": "LaTeX 排版", "descZh": "LaTeX 排版达到出版级质量"},
+      {"titleZh": "质量档可调", "descZh": "-ql 到 -qk 六档质量，最高 4K60"},
+      {"titleZh": "坐标系与图像", "descZh": "Axes 与数据点精确对齐"},
+      {"titleZh": "插件生态", "descZh": "物理、化学等扩展齐全"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L1-L40", "noteZh": "社区维护的 3b1b 引擎，Python 描述数学动画"},
+    {"field": "capabilities.automationZh", "source": "README.md#L81-L95", "noteZh": "manim -p -ql 等 CLI 参数与质量档说明"},
+    {"field": "capabilities.maxFpsZh", "source": "docs/source/guides/configuration.rst", "noteZh": "质量档定义 -ql/-qm/-qh/-qk 的分辨率与帧率"},
+    {"field": "ceilingZh", "source": "_samples/ManimCommunity__manim/meta.json", "noteZh": "实测 720p30/90 帧/3s，render 73s，总 350s，pip manim 0.22.1"}
+  ]
+}

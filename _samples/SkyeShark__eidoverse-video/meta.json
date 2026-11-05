@@ -1,0 +1,44 @@
+{
+  "repo": "SkyeShark/eidoverse-video",
+  "category": "HTML/浏览器渲染转视频",
+  "status": "success",
+  "render_ms": 258385,
+  "total_ms": 258385,
+  "cmd": ". F:\\coding视频\\env.ps1; $env:PATH='F:\\coding视频\\_env\\deno;'+$env:PATH; $env:DENO_DIR='F:\\coding视频\\_env\\deno_cache'; python eido.py bootstrap ; python eido.py doctor ; python eido.py render eidoverse/examples/basic_vrm.json",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration": 10.0,
+    "frames": 300,
+    "fps": 30,
+    "codec": "h264",
+    "size_bytes": 7924137
+  },
+  "notes_zh": "本批唯一走原生 WebGPU 的仓库，Windows + RTX 4060 可跑：doctor 报 hardware 适配器（vendor=4318 device=10464，computeReadback passed），渲染端 Deno + three.js TSL，编码 h264_nvenc。bootstrap 首次拉 deno npm 依赖 785505ms（three/three-vrm/satori/rapier/@resvg 等，缓存到 F:\\coding视频\\_env\\deno_cache）。render 总 258385ms：帧渲染 300 帧 1280x720@30fps 仅 18.2s（约 16.5fps），其余为 deno 模块图加载/编译与审计；产物 10s/7.9MB。日志中的 lipsync 警告来自示例人物不说话（预期），core-features-and-limits 缺失由仓库自带 feature shim 兜底，均已确认不影响画面。",
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 21.5,
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 5,
+    "render_ms": 1280500,
+    "pipeline": "webgpu-tsl (Deno + three.js TSL)",
+    "build": "python eido.py render eidoverse/examples/v2_fog|v2_neon|v2_blueprint.json → 三段 concat → ffmpeg drawtext 烧中文标注",
+    "ffprobe": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "frames": 645,
+      "duration": 21.5,
+      "codec": "h264",
+      "size_bytes": 21771807
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 10.0s",
+    "known_limits_zh": [
+      "Deno 进程启动 + TSL 模块图编译是固定开销（每段一次调用，实测 90-870s 不等，受并行渲染争抢 GPU 影响）",
+      "本片角色不出声，日志里的 lipsync 警告属预期（未驱动表情 viseme）",
+      "neon_edges 段机位更靠近角色，画面中角色被裁切；FFF 构图还能更好"
+    ]
+  }
+}

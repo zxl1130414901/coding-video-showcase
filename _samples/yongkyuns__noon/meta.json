@@ -1,0 +1,48 @@
+{
+  "repo": "yongkyuns/noon",
+  "category": "代码驱动/声明式框架",
+  "status": "success",
+  "render_ms": 40000,
+  "total_ms": 120000,
+  "cmd": "",
+  "artifact": "F:\\coding视频\\_samples\\yongkyuns__noon\\sample.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 9.933,
+    "fps": 30.0,
+    "nb_frames": 298,
+    "codec": "h264",
+    "size_kb": 251.6
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\yongkyuns__noon\\preview.png",
+    "pixel_std": 29.46,
+    "unique_colors": 45705
+  },
+  "notes_zh": "playground 在线版（github pages 构建，Python+pyodide+WebGL2 semantic worker）在 Chrome 中真实运行；Playwright/CDP screencast 实时录制 9.4s 画面（约 10fps 抓帧），按真实时间戳重排为 30fps 视频。注意：录制的是 Web 播放器实时画面，非离线导出；本地 Rust/wgpu 构建未做（超预算）",
+  "sample_v2": {
+    "spec": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "duration_sec": 19.467
+    },
+    "render_ms": 181400,
+    "ffprobe": {
+      "duration_sec": 19.467,
+      "codec": "h264",
+      "nb_frames": 584,
+      "has_audio": false,
+      "size_kb": 176.5,
+      "stddev_10_50_90": {
+        "0.10": 33.235,
+        "0.50": 34.14,
+        "0.90": 24.248
+      }
+    },
+    "generator": "线上 playground（yongkyuns.github.io/noon，Pyodide + WebGL2）实机录制：注入 setInterval 抓帧钩子，页内 drawImage 拷出 canvas 为 JPEG（16.67fps），ffmpeg 转 30fps 并拼 3 段，drawtext 烧中文标注",
+    "segments_count": 3,
+    "pipeline": "fallback"
+  }
+}

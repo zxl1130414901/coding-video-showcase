@@ -1,0 +1,51 @@
+{
+  "repo": "remotion-dev/template-code-hike",
+  "category": "Remotion 生态模板/组件",
+  "status": "success",
+  "render_ms": 95834,
+  "total_ms": 849000,
+  "cmd": "npx remotion render src/index.ts Main ... --gl=vulkan",
+  "ffprobe": {
+    "width": 1106,
+    "height": 1080,
+    "duration_s": 12.0,
+    "nb_frames": 360,
+    "codec": "h264",
+    "pix_fmt": "yuvj420p",
+    "fps": "30/1",
+    "size_bytes": 572167
+  },
+  "notes_zh": "仓库自带模板，npm install（无 package-lock，npm ci 不可用），GPU: --gl=vulkan",
+  "preview": {
+    "at_s": 6.0,
+    "mean_rgb": [
+      14.42,
+      16.44,
+      24.55
+    ],
+    "stddev_rgb": [
+      15.02,
+      14.78,
+      16.01
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "nb_frames": 897,
+      "codec": "h264",
+      "pix_fmt": "yuv420p",
+      "duration_s": 29.9,
+      "size_bytes": 1088742
+    },
+    "render_ms": 240000,
+    "segments": 3,
+    "callouts": 6,
+    "pipeline": "official",
+    "methodZh": "复用模板 Main 组合，5 个代码步骤 × 180 帧 = 900 帧，Remotion CLI 单 worker 渲染 1080p30，poster.py 烧入中文标注",
+    "generatedAt": "2026-11-05T16:00:41+08:00"
+  }
+}

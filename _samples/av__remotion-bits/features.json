@@ -1,0 +1,69 @@
+{
+  "id": "av__remotion-bits",
+  "durationSec": 23.9,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.97,
+      "capabilityZh": "React 组件化文字动效",
+      "proofZh": "AnimatedText 按字符拆分，stagger=4 帧、y 140→0、blur 22→0，一条 transition 描述即完成 240 帧入场"
+    },
+    {
+      "start": 7.97,
+      "end": 15.93,
+      "capabilityZh": "StaggeredMotion + AnimatedCounter 编排",
+      "proofZh": "5 张卡片 stagger=7 帧级联入场，计数器 0→720 用 outExpo 在 210 帧内走完，共用同一帧基准"
+    },
+    {
+      "start": 15.93,
+      "end": 23.9,
+      "capabilityZh": "Canvas 特效与渐变过渡叠层",
+      "proofZh": "MatrixRain 在 30fps 下逐帧绘制 34 字符流，GradientTransition 3 段渐变在 240 帧内插值，与 DOM 层同屏合成"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.8,
+      "dur": 4.2,
+      "titleZh": "六个动效组件即插即用",
+      "descZh": "AnimatedText 逐字入场：stagger 4 帧 / y 140→0 / blur 22→0，写成一条 transition 即可"
+    },
+    {
+      "t": 5.2,
+      "dur": 3.8,
+      "titleZh": "打字机 + 逐帧确定性",
+      "descZh": "TypeWriter 每 2 帧打一个字；同一帧号永远渲染同一画面，24s = 720 帧可复现"
+    },
+    {
+      "t": 8.6,
+      "dur": 4.0,
+      "titleZh": "StaggeredMotion 级联进场",
+      "descZh": "5 张卡片 stagger=7 帧级联，配合 scale 0.8→1 与 blur 14→0，一条 props 描述全部节奏"
+    },
+    {
+      "t": 13.0,
+      "dur": 3.6,
+      "titleZh": "AnimatedCounter 缓动计数",
+      "descZh": "0→720 用 outExpo 在 210 帧内递增，数字与卡片动画共用同一时间基准，无跳变"
+    },
+    {
+      "t": 16.8,
+      "dur": 4.0,
+      "titleZh": "MatrixRain canvas 特效层",
+      "descZh": "canvas 逐帧绘制 30fps 字符雨（34 字符流），叠在 React DOM 文字层之上"
+    },
+    {
+      "t": 21.2,
+      "dur": 3.2,
+      "titleZh": "渐变过渡与合成",
+      "descZh": "3 段 linear-gradient 在 240 帧内插值，与矩阵雨、标题同屏合成，单次渲染 67.7s"
+    }
+  ],
+  "renderMs": 67668,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "本机 remotion 的 chrome-headless-shell 下载会 30s 超时，改用系统 Chrome（--browser-executable）才跑通",
+    "Remotion 自带 ffmpeg 只出 libx264，1080p 720 帧渲染约 67.7s，未走 NVENC",
+    "仓库 demo/src/Root.tsx 引用了不存在的组件，演示入口 demo/src/entry-v2.tsx 为新建文件，未改动仓库原有源码"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "id": "BintzGavin__helios",
+  "taglineZh": "不模拟浏览器，直接驱动它的原生动画引擎：用 CSS/WAAPI 时间轴出视频",
+  "summaryZh": "Helios 是跑在 Web 标准上的程序化视频引擎：场景就是普通 HTML/CSS/JS，渲染时通过 CDP 虚拟时间冻结浏览器时钟、逐帧推进，让 CSS @keyframes、WAAPI 与 WebGL 自己算插值，再编码 MP4。它解决 Remotion 式“用 JS 重新实现动画”的重复劳动——现有网页动画不改写就能录。与 Remotion 的本质区别在渲染模型：Remotion 把浏览器当截图机，Helios 把它当动画引擎。代价是 beta、Elastic License 2.0，且链路对 Chrome 版本与虚拟时间策略敏感。CLI 与虚拟时间策略对 Chrome 版本很敏感。",
+  "whatItMakes": [
+    {"type": "产品发布/宣传片", "exampleZh": "官网首屏、组件入场、CSS 关键帧转场", "strength": "核心能力"},
+    {"type": "网页功能演示", "exampleZh": "真实页面点击、滚动、弹窗、主题切换的录屏式动画", "strength": "核心能力"},
+    {"type": "数据/Canvas 动画", "exampleZh": "Canvas 2D 自绘帧、WebGL 着色器、粒子", "strength": "可用"},
+    {"type": "带音轨的短片", "exampleZh": "CLI 传 --audio 混入外部音乐，输出声画同步 MP4", "strength": "可用"},
+    {"type": "可交互网页预览", "exampleZh": "<helios-player> 嵌入网页播放并 scrub", "strength": "核心能力"}
+  ],
+  "useCases": [
+    {"scenarioZh": "官网改版宣传片", "whoZh": "品牌/前端团队", "whyZh": "官网现成 CSS 动画直接录，不用重写一套视频代码", "deliverableZh": "1080p30 的 15–45 秒 MP4", "fit": "高度契合"},
+    {"scenarioZh": "产品功能 Demo", "whoZh": "产品经理、售前", "whyZh": "真实页面操作序列可脚本化，画面与线上一致", "deliverableZh": "720p/1080p 功能演示 1–3 分钟", "fit": "适合"},
+    {"scenarioZh": "设计师动效提案", "whoZh": "UI/动效设计师", "whyZh": "直接交付 CSS 关键帧作品，导出成可评审视频", "deliverableZh": "短动效 10–30 秒，多版本对比", "fit": "适合"},
+    {"scenarioZh": "批量社媒切片", "whoZh": "内容运营", "whyZh": "一套 HTML 模板改文案与配色批量渲染", "deliverableZh": "9:16/1:1 多尺寸短片", "fit": "勉强"},
+    {"scenarioZh": "无头录制进 CI", "whoZh": "工程团队", "whyZh": "CLI + composition.html 可脚本化，产物稳定", "deliverableZh": "每次发版自动生成演示视频", "fit": "适合"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由 composition 定义，README 示例 1920×1080；无全局上限声明，实测 1280×720",
+    "maxFpsZh": "由 composition 的 fps 决定，示例 30fps；未声明硬上限",
+    "durationZh": "由 composition 的 duration 决定，无框架级时长限制",
+    "effectsZh": ["原生 CSS @keyframes 与过渡", "Web Animations API 逐帧 seek", "Canvas 2D / WebGL 自绘帧", "任意 HTML 页面 renderAt(t) 回调"],
+    "audioZh": "CLI 支持 --audio 传入外部音轨；不内置 TTS",
+    "interactivityZh": "提供 <helios-player> Web Component 交互预览；成片为离线 MP4",
+    "automationZh": "CLI 可脚本化：npx @helios-project/cli render composition.html -o out.mp4",
+    "assetsZh": "任意网页素材（图片/字体/视频/音频）；无内置模板或主题库",
+    "exportFormatsZh": ["MP4"],
+    "realtimePreviewZh": "有：Player 组件与浏览器实时预览",
+    "ciFriendlyZh": "可进 CI；需 Chrome 与 CDP，GPU 建议开启"
+  },
+  "ceilingZh": "它最强的地方是“任何会自己画帧的网页都能录”：不导入 Helios 也行，只要页面暴露 renderAt(t)，CLI 就能逐帧调用并编码。实测在 Windows 用 Playwright 打开 examples/simple-canvas-animation，每帧写 window.__HELIOS_VIRTUAL_TIME__ 推进时间，5 秒 720p30 渲染约 91 秒，WebGL 走 ANGLE/Vulkan（RTX 4060 Laptop），瓶颈在逐帧截图与合成，不在动画计算。边界：CLI 与虚拟时间策略对 Chrome 版本敏感，Windows 直接跑 CLI 未验证通过；项目 beta，API 会变；许可证是 Elastic License 2.0，不是 OSI 开源；音频只有 CLI 透传；复杂 3D 仍取决于 Three.js 实现。实测同一工程改 1080p 后耗时约翻倍，长片要按帧预算；CI 里跑需要固定 Chrome 版本与可用 GPU 或软件 GL，否则截图会黑屏或超时。它没有音频混音与字幕编辑器，配音要在外部做好再透传。",
+  "workflow": [
+    {"stepZh": "安装依赖", "detailZh": "npm install @helios-project/core @helios-project/player，Node ≥18", "effortZh": "约 3 分钟"},
+    {"stepZh": "写 Composition", "detailZh": "创建 Helios({duration, fps})，订阅 frame 或用 CSS 动画；页面挂 window.helios", "effortZh": "简单片子 1–2 小时"},
+    {"stepZh": "浏览器预览", "detailZh": "用 <helios-player> 或本地 dev server 播放、seek 到关键帧", "effortZh": "即时"},
+    {"stepZh": "CLI 渲染", "detailZh": "npx @helios-project/cli render ./composition.html -o output.mp4，可加 --duration/--audio", "effortZh": "5 秒 720p 约 1.5 分钟"},
+    {"stepZh": "兜底录制", "detailZh": "CLI 不通时用 Playwright 写虚拟时间逐帧截图，再 ffmpeg 合成", "effortZh": "需写脚本"}
+  ],
+  "differentiators": [
+    "用 CDP 冻结浏览器时钟，真实驱动 CSS/WAAPI 动画，而不是在 JS 里重算每一帧",
+    "任何自绘网页暴露 renderAt(t) 就能录，不强制引入框架",
+    "CSS 动画零改写，设计师的动效稿可以直接出片",
+    "自带 Web Component 播放器，预览与成片使用同一套时间语义"
+  ],
+  "limits": [
+    "beta 阶段，CLI 与虚拟时间策略对 Chrome 版本敏感，Windows 直接跑未验证通过",
+    "Elastic License 2.0：禁止未经授权提供托管/服务化能力，商用需评估",
+    "音频只支持外部音轨透传，没有内置 TTS、混音与音量自动化",
+    "生态与模板远少于 Remotion，复杂 3D 仍要自己写 Three.js"
+  ],
+  "compareTips": [
+    {"vs": "remotion-dev__remotion", "adviceZh": "团队已在 React 生态、需要云端批量与成熟文档选 Remotion；要保留原生 CSS/GSAP 动效、减少 JS 插值选 Helios"},
+    {"vs": "0xS4N4TG__kinetograph", "adviceZh": "想要浏览器原生动效与 Web 生态选 Helios；想彻底离开浏览器、要 Rust GPU 合成选 Kinetograph"},
+    {"vs": "wx4766__html-to-video", "adviceZh": "只要简单 HTML 页面逐帧截图，html-to-video 更轻；要 CSS 关键帧真实时间轴与播放器组件选 Helios"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①打开 composition.html，用 Player 实时播放；②展示 CSS @keyframes 在虚拟时间下被逐帧推进；③切到 Canvas/WebGL 场景，证明任意 renderAt 页面可录；④展示 CLI 渲染出的 720p30 MP4 与音轨",
+    "featureCallouts": [
+      {"titleZh": "CDP 虚拟时间", "descZh": "冻结浏览器时钟，逐帧推进"},
+      {"titleZh": "原生 CSS 动画", "descZh": "关键帧零改写直接录"},
+      {"titleZh": "任意页面可录", "descZh": "页面暴露 renderAt(t) 就能逐帧录"},
+      {"titleZh": "Web Component 播放器", "descZh": "网页内可预览并可逐帧 scrub"},
+      {"titleZh": "CLI 加音轨", "descZh": "一条命令出带声音 MP4"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L32-L35", "noteZh": "自述 programmatic video engine that runs on web standards"},
+    {"field": "summaryZh", "source": "README.md#L164-L205", "noteZh": "明确对比 Remotion 截图机模型，说明用 CDP/WAAPI 驱动原生动画引擎"},
+    {"field": "capabilities.automationZh", "source": "README.md#L126-L147", "noteZh": "CLI render composition.html -o output.mp4，可加 --duration 与 --audio"},
+    {"field": "ceilingZh", "source": "_samples/BintzGavin__helios/meta.json", "noteZh": "实测 Playwright 写虚拟时间逐帧推进，720p30/5s 渲染 91s，ANGLE/Vulkan"},
+    {"field": "limits", "source": "LICENSE#L1-L3", "noteZh": "Elastic License 2.0，非 OSI 开源许可"}
+  ]
+}

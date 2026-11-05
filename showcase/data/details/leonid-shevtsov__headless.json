@@ -1,0 +1,73 @@
+{
+  "id": "leonid-shevtsov__headless",
+  "taglineZh": "Ruby 里开一块 Xvfb 虚拟屏，顺手把这块屏录成视频或截图的 gem",
+  "summaryZh": "2010 年起的 Ruby gem，用 Xvfb 起一个虚拟 X 显示，让 Selenium、wkhtmltopdf 这类需要图形界面的程序在无头服务器上跑；再用 ffmpeg 抓 framebuffer，把整块屏幕连续录成 mov/mp4，或随时截图。它解决的是「Linux CI 里没有显示器」的问题，本质是显示环境与录屏基础设施，不是动画引擎：画面来自你跑起来的程序，它只负责把屏幕像素收下来。本次因 Windows 没有 Xvfb/PTY 直接跳过，无产物可验证；定位应理解为「测试录像」而不是内容创作工具。",
+  "whatItMakes": [
+    {"type": "失败测试的屏幕录像", "exampleZh": "Cucumber 场景失败时自动保存该用例的 mov，便于回看 UI 操作", "strength": "核心能力"},
+    {"type": "GUI 操作演示录制", "exampleZh": "远程 Linux 上跑脚本操作浏览器，按 12fps 录全程", "strength": "可用"},
+    {"type": "网页截图", "exampleZh": "take_screenshot 走 ImageMagick 或 xwd，按扩展名定格式", "strength": "核心能力"},
+    {"type": "PDF 渲染隔离", "exampleZh": "wkhtmltopdf 在独立 display 里跑，避免抢占浏览器焦点", "strength": "可用"},
+    {"type": "动画/合成视频", "exampleZh": "无内置合成、转场、字幕能力，只能录已有窗口", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "CI 里录失败用例", "whoZh": "Ruby/Rails 测试团队", "whyZh": "Selenium 用例失败时自动留下屏幕录像，比日志更快定位 UI 问题", "deliverableZh": "按用例命名的 mov 片段，常用 12fps", "fit": "高度契合"},
+    {"scenarioZh": "无头服务器跑 GUI 程序", "whoZh": "运维、Docker 镜像维护者", "whyZh": "一行 Headless.ly 就能在没有显示器的机器上跑浏览器或 GUI 工具", "deliverableZh": "可用的虚拟显示环境，无视频", "fit": "高度契合"},
+    {"scenarioZh": "PDF/截图批处理", "whoZh": "文档流水线开发者", "whyZh": "wkhtmltopdf、import、xwd 都能在独立 display 里工作", "deliverableZh": "PNG/PDF 文件", "fit": "适合"},
+    {"scenarioZh": "终端/Shell 演示录制", "whoZh": "教程作者", "whyZh": "能录窗口但不能录字符流，终端演示更适合 asciinema", "deliverableZh": "整屏 mov，无逐字回放", "fit": "勉强"},
+    {"scenarioZh": "Windows 本地出片", "whoZh": "任何 Windows 用户", "whyZh": "无 Xvfb 与 Unix PTY 实现，完全跑不起来", "deliverableZh": "无", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由 Xvfb 虚拟屏尺寸决定，README 未声明上限；记录的是整屏 framebuffer，不做缩放",
+    "maxFpsZh": "可配，示例用 12fps；高帧率会增加 ffmpeg 与 CPU 压力，未给出上限",
+    "durationZh": "连续捕获，无硬上限；长录像文件体积与磁盘直接相关",
+    "effectsZh": ["无任何合成/转场/滤镜", "整屏 framebuffer 捕获", "ImageMagick 或 xwd 两种截图后端"],
+    "audioZh": "无音频捕获，录出的是无声视频",
+    "interactivityZh": "无；只有 Ruby API 与块模式/对象模式两种用法",
+    "automationZh": "强：可在 Ruby 脚本、Cucumber hook、并行测试中调用，支持 display 复用与 destroy_at_exit:false",
+    "assetsZh": "无素材库；依赖系统的 ffmpeg、ImageMagick、xwd/netpbm",
+    "exportFormatsZh": ["mov（默认临时容器）", "mp4/其他 ffmpeg 支持的容器（靠 :extra 传参）", "png 等截图格式"],
+    "realtimePreviewZh": "无预览界面，录完直接落盘",
+    "ciFriendlyZh": "高（仅 Linux CI）：gem 安装 + Xvfb 即可，是 CI 录像的经典方案"
+  },
+  "ceilingZh": "能力上限由 Xvfb 与 ffmpeg 决定：屏幕尺寸任意、时长不限、帧率可调到 24/30fps，最复杂的用法是多线程测试里先起一个 display 100、各进程 reuse:true 共享，最后统一 destroy。但它始终只是「录屏 + 无头显示」：没有时间轴、没有画面合成、没有字幕、没有音轨，也无法把 DOM 或 canvas 直接变成视频，画质就是屏幕分辨率本身。硬边界非常明确——Windows 无 Xvfb 与 Unix PTY，本次在 Windows 上直接 skip，没有任何产物；macOS 需要 XQuartz，且 README 明说不会隐藏大多数应用；跨平台可用性基本限定在 Linux 容器。另外 gem 无预编译包，Ruby 版本升级后常需重装；录出的文件默认是 mov 临时容器，要 mp4 还得自己传 ffmpeg 参数，长录像的磁盘占用按屏幕分辨率乘以时长直接累加。",
+  "workflow": [
+    {"stepZh": "装系统依赖", "detailZh": "Debian/Ubuntu 执行 apt-get install xvfb，并准备 ffmpeg；截图还需 imagemagick 或 X11-apps", "effortZh": "约 10 分钟"},
+    {"stepZh": "装 gem", "detailZh": "gem install headless；无预编译包，需要 Ruby 与编译链", "effortZh": "约 10 分钟"},
+    {"stepZh": "起虚拟屏", "detailZh": "Headless.new.start，或 Headless.ly 块模式；可指定 display 号", "effortZh": "约 5 分钟"},
+    {"stepZh": "开始录制", "detailZh": "headless.video.start_capture；可通过 :video 哈希传 frame_rate、codec、ffmpeg_path", "effortZh": "约 5 分钟"},
+    {"stepZh": "保存或丢弃", "detailZh": "场景失败时 stop_and_save 到指定路径，成功则 stop_and_discard", "effortZh": "约 5 分钟"}
+  ],
+  "differentiators": [
+    "真实抓取 framebuffer，不做 DOM 重绘或模拟，所见即所录",
+    "块模式一行包住 Selenium 会话，测试代码几乎不用改",
+    "支持多进程共享同一 display，适合并行测试矩阵",
+    "截图可选 ImageMagick（通用）或 xwd（快但需转换）"
+  ],
+  "limits": [
+    "Windows 完全不可用：缺 Xvfb 与 Unix PTY，本次直接跳过",
+    "没有音频、字幕、转场与合成，只是屏幕录像",
+    "无预编译 gem，安装依赖 Ruby 编译环境",
+    "macOS 需 XQuartz，且不会隐藏大多数应用"
+  ],
+  "compareTips": [
+    {"vs": "asciinema__asciinema", "adviceZh": "要终端逐字回放、可复制文本、跨平台，选 asciinema；要录整个 GUI 窗口的像素，选 headless（且只能 Linux）"},
+    {"vs": "charmbracelet__vhs", "adviceZh": "vhs 用脚本声明终端画面、能出 GIF/MP4 且有 Windows 支持；headless 只能实拍真实窗口，不可编排"},
+    {"vs": "asciinema__agg", "adviceZh": "已有 .cast 录像想转 GIF/MP4 用 agg，不需要 headless 这类虚拟屏方案"}
+  ],
+  "showcase": {
+    "demoBriefZh": "本批未出片（Windows 无 Xvfb/PTY）。若在 Linux 演示，建议四段：①Headless.ly 里跑 Selenium 并打开页面；②start_capture 后录一段 12fps 操作；③失败场景 stop_and_save 得到 mov，成功场景丢弃；④演示 take_screenshot 的 imagemagick 与 xwd 两种方式",
+    "featureCallouts": [
+      {"titleZh": "Xvfb 虚拟显示", "descZh": "无显示器也能跑 GUI 程序"},
+      {"titleZh": "framebuffer 录像", "descZh": "ffmpeg 直抓整屏，帧率与编码可配"},
+      {"titleZh": "失败即保存", "descZh": "Cucumber hook 按用例名落盘"},
+      {"titleZh": "display 复用", "descZh": "多进程共享 display 100，适合并行测试"},
+      {"titleZh": "两种截图后端", "descZh": "ImageMagick 通用，xwd 更快"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L8-L9", "noteZh": "自述为 Ruby 的 Xvfb 接口，可从虚拟 framebuffer 捕获图像与视频"},
+    {"field": "capabilities.exportFormatsZh", "source": "README.md#L110-L149", "noteZh": "录像走 ffmpeg，可配 codec/frame_rate/ffmpeg_path，示例输出 .mov"},
+    {"field": "limits 第 1 条", "source": "_samples/leonid-shevtsov__headless/meta.json", "noteZh": "未执行：Windows 缺 Xvfb/PTY，按规则记 skip"},
+    {"field": "ceilingZh", "source": "README.md#L18", "noteZh": "macOS 不会隐藏大多数应用，平台能力有明确限制"}
+  ]
+}

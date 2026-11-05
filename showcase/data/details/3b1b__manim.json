@@ -1,0 +1,74 @@
+{
+  "id": "3b1b__manim",
+  "taglineZh": "3b1b 自用的实时 OpenGL 数学动画引擎，能在窗口里拖着时间轴调镜头",
+  "summaryZh": "ManimGL 是 3Blue1Brown 自用的引擎：OpenGL 实时渲染，可开交互窗口拖动时间轴、用 checkpoint_paste 热重载某段代码而保留场景状态，这是 3b1b 调镜头的真实工作方式。它与社区版 ManimCE 是两套 API，名字相同但不能互换：manimgl 命令、`manimlib` 包、交互优先。96k stars 意味着教程极多，但也意味着大量教程版本串味；Windows 需自装 FFmpeg、OpenGL 与 MiKTeX，Python 3.13 还要补 audioop-lts 和 setuptools<81。实测 720p30 的 360 帧 56.6 秒。官方文档站与视频教程是主要学习入口，社区版 ManimCE 的教程基本不适用。",
+  "whatItMakes": [
+    {"type": "数学/物理解释动画", "exampleZh": "公式逐行推导、坐标系变换、向量场", "strength": "核心能力"},
+    {"type": "三维曲面与相机运镜", "exampleZh": "参数曲面、空间曲线，相机沿轨道推拉旋转", "strength": "核心能力"},
+    {"type": "实时调镜头工作流", "exampleZh": "交互窗口里拖时间轴、热重载单段代码反复试镜头", "strength": "核心能力"},
+    {"type": "LaTeX 公式排版", "exampleZh": "TransformMatchingTex 做公式项级变换", "strength": "核心能力"},
+    {"type": "带旁白的课件", "exampleZh": "需另装 manim-voiceover，本引擎不带 TTS 与字幕", "strength": "受限"},
+    {"type": "无头批量渲染", "exampleZh": "服务器无 OpenGL 上下文时无法运行", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "大学数学/物理网课", "whoZh": "讲师、课程制作团队", "whyZh": "公式推导 + 3D 几何是它的主场，成片观感接近 3b1b", "deliverableZh": "1080p30 MP4，单集 5–20 分钟", "fit": "高度契合"},
+    {"scenarioZh": "科普频道动画", "whoZh": "科普作者", "whyZh": "相机语言与 3D 场景表现力强，适合讲抽象概念", "deliverableZh": "3–10 分钟 1080p MP4", "fit": "适合"},
+    {"scenarioZh": "实时试镜头", "whoZh": "动画导演、技术美术", "whyZh": "交互窗口拖时间轴、checkpoint_paste 热重载，迭代速度远快于改一次渲一次", "deliverableZh": "可反复调整的场景文件", "fit": "高度契合"},
+    {"scenarioZh": "纯脚本化 CI 出片", "whoZh": "后端/工具链团队", "whyZh": "依赖 OpenGL 上下文，无头服务器易失败，且 API 与 CE 教程不通用", "deliverableZh": "需要带 GPU 或虚拟 GL 的 runner", "fit": "勉强"},
+    {"scenarioZh": "三维几何教学", "whoZh": "中学/大学教师", "whyZh": "曲面、空间向量、投影的相机演示直观，但学习曲线陡", "deliverableZh": "30 秒–3 分钟片段", "fit": "适合"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "配置文件可设，实测 1280×720；支持 1080p 与 4K 渲染，帧率与分辨率越高显存压力越大",
+    "maxFpsZh": "默认 30，可配置到 60；实测 30fps",
+    "durationZh": "不限，长片由多个场景与剪辑拼接",
+    "effectsZh": ["OpenGL 实时 3D 场景", "相机推拉/旋转/跟随", "Transform 与 TransformMatchingTex", "运动轨迹与矢量场", "后期泛光与景深效果"],
+    "audioZh": "无内置配音与混音，需外接 manim-voiceover 或后期合成",
+    "interactivityZh": "强：交互模式可拖动时间轴、-se 定位到某行、checkpoint_paste 热重载选中代码",
+    "automationZh": "manimgl CLI 支持 -w 写出、-se 交互，可脚本调用；但无头环境受 OpenGL 限制",
+    "assetsZh": "LaTeX 字体、SVG、图片；专用字体需自行安装",
+    "exportFormatsZh": ["mp4", "gif", "png（单帧）"],
+    "realtimePreviewZh": "有，OpenGL 窗口实时渲染",
+    "ciFriendlyZh": "较弱：需要 OpenGL 上下文，纯 CPU 容器通常失败"
+  },
+  "ceilingZh": "实测 360 帧 720p30 用 56.6 秒（约 6.4fps），这个速度足够做 10 分钟级长片：按线性推算 1080p 一分钟约 3 分钟渲染。能力上限接近 3b1b 成片：OpenGL 实时 3D、相机轨道、公式项级变换，配合 4K 配置可以出 3840×2160；最复杂的效果是三维光场/曲面叠加后期泛光。边界明确：README 要求系统具备 OpenGL，无头服务器没有 GL 上下文就跑不起来；API 与 ManimCE 完全分离，网上九成教程不能直接用；Windows 要装 FFmpeg 与 MiKTeX，Python 3.13 还需补 audioop-lts、setuptools<81 才能装；没有配音/字幕链路。相比 ManimCE，它没有跨平台的稳定无头渲染，也更缺中文文档；相机参数与 OpenGL 状态耦合，换机器后同一场景构图可能有细微差异，实际项目通常先用交互窗口定镜头再批量出片。",
+  "workflow": [
+    {"stepZh": "装 Python 与系统依赖", "detailZh": "Python 3.9–3.12；装 FFmpeg、OpenGL 驱动，Windows 另装 MiKTeX 提供 LaTeX", "effortZh": "约 40 分钟"},
+    {"stepZh": "装 ManimGL", "detailZh": "pip install manimgl，或 clone 后 pip install -e .；Python 3.13 追加 audioop-lts 与 setuptools<81", "effortZh": "约 15 分钟"},
+    {"stepZh": "写场景", "detailZh": "from manimlib import *，用 Scene/InteractiveScene 描述对象与相机", "effortZh": "首个场景 1 小时"},
+    {"stepZh": "交互调镜头", "detailZh": "manimgl file.py Scene -se 进交互窗口，选中代码后 checkpoint_paste 热重载", "effortZh": "每轮数十秒"},
+    {"stepZh": "出片", "detailZh": "manimgl file.py Scene -w 或 -l/-h 控制画质，输出 mp4", "effortZh": "实测 6 秒片约 57 秒"}
+  ],
+  "differentiators": [
+    "实时 OpenGL 渲染 + 交互窗口拖时间轴，调镜头像剪片一样快",
+    "checkpoint_paste 热重载代码片段，保留当前场景状态",
+    "3b1b 同源，3D 与相机表现力是同类最强一档",
+    "公式项级变换（TransformMatchingTex）体验成熟"
+  ],
+  "limits": [
+    "API 与 ManimCE 不兼容，社区教程大量串味",
+    "无头/无 GPU 环境常因缺 OpenGL 上下文失败",
+    "Windows 依赖 FFmpeg + MiKTeX，Python 3.13 还需额外补丁包",
+    "无配音、字幕、批量队列，需自行补齐"
+  ],
+  "compareTips": [
+    {"vs": "ManimCommunity__manim", "adviceZh": "要稳定 API、跨平台、文档全、无头可跑选 ManimCE；要实时交互调镜头与 3b1b 同源 3D 选 ManimGL"},
+    {"vs": "academa-labs__manimgx", "adviceZh": "ManimGX 主打开箱即用与批量出片；ManimGL 主线是实时创作体验，按是否要交互来选"},
+    {"vs": "3b1b__videos", "adviceZh": "manim 是引擎，videos 是官方场景源码；想学镜头先读 videos，想跑起来先装 manimgl"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①公式逐行推导（TransformMatchingTex）；②三维参数曲面加相机绕行；③交互窗口拖时间轴 + checkpoint_paste 热重载，展示秒级迭代；④同场景改 1080p 出片，对比清晰度与耗时",
+    "featureCallouts": [
+      {"titleZh": "交互时间轴", "descZh": "窗口内拖动播放头，逐帧看构图"},
+      {"titleZh": "checkpoint_paste", "descZh": "热重载选中代码，不丢场景状态"},
+      {"titleZh": "OpenGL 3D", "descZh": "实时曲面、光场与相机运动"},
+      {"titleZh": "公式项级变换", "descZh": "TransformMatchingTex 对齐等号两侧"},
+      {"titleZh": "定位到行", "descZh": "-se 参数可直跳某一行调试"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L13", "noteZh": "自述为精确程序化动画引擎，面向解释性数学视频，使用 OpenGL"},
+    {"field": "capabilities.interactivityZh", "source": "README.md#L13-L27", "noteZh": "系统依赖 FFmpeg、OpenGL、可选 LaTeX；交互用法在文档与视频中说明"},
+    {"field": "limits 第 3 条", "source": "README.md#L108-L118", "noteZh": "Windows 需先装 FFmpeg 与 LaTeX（推荐 MiKTeX），再 clone 并 pip install -e ."},
+    {"field": "ceilingZh", "source": "_samples/3b1b__manim/meta.json", "noteZh": "实测 1280×720/30fps/360 帧耗时 56615ms，约 6.4fps"}
+  ]
+}

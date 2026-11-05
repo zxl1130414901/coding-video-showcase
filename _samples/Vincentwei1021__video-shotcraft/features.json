@@ -1,0 +1,68 @@
+{
+  "id": "Vincentwei1021__video-shotcraft",
+  "durationSec": 35.9,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 11.967,
+      "capabilityZh": "卡片阵列与信息层级",
+      "proofZh": "倾斜卡片瀑布，编号/摘要/元信息多层级排版"
+    },
+    {
+      "start": 11.967,
+      "end": 23.934,
+      "capabilityZh": "搜索交互镜头",
+      "proofZh": "逐字输入 + 光标闪烁，结果区随关键词重排"
+    },
+    {
+      "start": 23.934,
+      "end": 35.901,
+      "capabilityZh": "动态排版与封面收束",
+      "proofZh": "逐词放大接封面，卡片飞入定格"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.4,
+      "dur": 3.8,
+      "titleZh": "杂志式栅格",
+      "descZh": "卡片按倾斜栅格排布，编号、标题、摘要、元信息分层"
+    },
+    {
+      "t": 4.4,
+      "dur": 3.6,
+      "titleZh": "卡片带空间感",
+      "descZh": "投影、轻微旋转与视差让二维排版有纵深"
+    },
+    {
+      "t": 12.4,
+      "dur": 3.6,
+      "titleZh": "交互也能拍成镜头",
+      "descZh": "搜索框逐字输入、光标闪烁，状态变化被渲染出来"
+    },
+    {
+      "t": 16.4,
+      "dur": 3.6,
+      "titleZh": "结果随输入重排",
+      "descZh": "关键词变化后列表即时重排，像一个真实的检索界面"
+    },
+    {
+      "t": 24.4,
+      "dur": 3.8,
+      "titleZh": "动效排版",
+      "descZh": "The whole team 逐词放大，字重与字距参与节奏"
+    },
+    {
+      "t": 29.0,
+      "dur": 3.8,
+      "titleZh": "封面收束",
+      "descZh": "标题落版后卡片飞入定格，形成杂志封面式结尾"
+    }
+  ],
+  "renderMs": 0,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "本次为既有成片重切，未新增渲染镜头",
+    "未演示剪映草稿导出与 shot-polish 自检（不产生画面）"
+  ]
+}

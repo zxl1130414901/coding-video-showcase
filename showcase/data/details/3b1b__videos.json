@@ -1,0 +1,74 @@
+{
+  "id": "3b1b__videos",
+  "taglineZh": "3Blue1Brown 全部视频的 ManimGL 场景源码库：不是工具，是生产级临摹素材",
+  "summaryZh": "3b1b 官方视频源码仓库，按年份与主题组织 manimgl 场景代码，覆盖 3D 曲面、相机运镜、公式排版等真实生产写法，是学习「3b1b 镜头为什么好看」最直接的材料。它不自带框架、没有统一入口，依赖 manimgl、全量 LaTeX、专用字体和音频资产，单文件常引用同目录常量，直接拷出来跑不起来。许可证为 CC BY-NC-SA 4.0：可以学、可以改，但不能商用。本次因环境成本高直接跳过，无产物。读它更像翻一本可逐帧拆读的参考书，而不是装一个工具。",
+  "whatItMakes": [
+    {"type": "临摹 3b1b 镜头语言", "exampleZh": "相机推拉、场景过渡、公式逐步推导的写法可逐帧对照", "strength": "核心能力"},
+    {"type": "3D 曲面与光场动画", "exampleZh": "Optics 系列的 3D 光场、曲面参数化与相机绕行", "strength": "核心能力"},
+    {"type": "数学/物理讲解场景", "exampleZh": "微积分、线性代数、光学等主题场景，可改参数复用", "strength": "可用"},
+    {"type": "完整成片", "exampleZh": "仓库不含成片，需自建渲染与剪辑流程", "strength": "受限"},
+    {"type": "商用视频", "exampleZh": "CC BY-NC-SA 4.0 禁止商业使用，需另行授权", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "学习高级 ManimGL 写法", "whoZh": "已会 Manim 的创作者、技术美术", "whyZh": "能直接读到官方场景如何组织相机、常量与转场，比教程更真实", "deliverableZh": "可运行的单场景片段", "fit": "高度契合"},
+    {"scenarioZh": "同风格课程制作", "whoZh": "大学讲师、科普频道", "whyZh": "照抄镜头与节奏做自己主题的讲解片，但必须署名非商用", "deliverableZh": "16:9 1080p MP4，单集 10–30 分钟", "fit": "适合"},
+    {"scenarioZh": "3D 光场/曲面演示", "whoZh": "物理、数学可视化团队", "whyZh": "Optics 系列提供了现成的三维光场与相机运动参考", "deliverableZh": "3D 场景片段 MP4", "fit": "适合"},
+    {"scenarioZh": "商业课程/付费内容", "whoZh": "商业教育机构", "whyZh": "许可证禁止商用，只能作为写法参考后重写", "deliverableZh": "需完全重写的场景", "fit": "勉强"},
+    {"scenarioZh": "批量出片", "whoZh": "内容工厂", "whyZh": "每个场景依赖同目录常量与资产，无法批量孤立运行", "deliverableZh": "需人工逐个适配", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由 manimgl 配置决定，官方成片常见 1080p；仓库未声明上限，OpenGL 路径可渲染 4K",
+    "maxFpsZh": "通常 30fps；manimgl 支持 60fps 配置，仓库未统一声明",
+    "durationZh": "单场景不限；官方单集成片 10–30 分钟，由多个场景串联",
+    "effectsZh": ["3D 曲面与光场", "相机推拉与旋转", "LaTeX 公式排版", "Transform/形变过渡", "自定义着色器与网格"],
+    "audioZh": "部分场景引用音频资产，但仓库不提供配音与混流流程",
+    "interactivityZh": "manimgl 交互模式可 -se 定位到某行、用 checkpoint_paste 热重载片段，这是 3b1b 本人调镜头的方式",
+    "automationZh": "manimgl CLI 可渲染单场景，但没有批处理脚本；需自建任务编排",
+    "assetsZh": "专用字体、音频、LaTeX 宏包与图片资产分散在目录中，缺失即跑不动",
+    "exportFormatsZh": ["mp4（manimgl 输出）", "部分场景可出 gif"],
+    "realtimePreviewZh": "有：manimgl 的 OpenGL 窗口可实时拖时间轴",
+    "ciFriendlyZh": "弱：需要 OpenGL 上下文与完整 TeX 发行版，不适合无头 CI"
+  },
+  "ceilingZh": "上限就是 3b1b 的成片本身：1080p、30fps、单集 10–30 分钟的多场景长片，含 3D 光场、相机绕行、LaTeX 公式逐行变换，画面精度与镜头节奏属于行业天花板。但仓库只给场景源码，不给渲染编排：没有批量脚本、没有资产打包、没有统一入口，实测单场景 12 秒 360 帧需 56.6 秒。最复杂的用法不是跑通，而是读懂 Optics 系列里相机与 3D 对象的坐标关系并复用。硬边界：CC BY-NC-SA 4.0 禁止商用；README 明说老项目依赖旧版 manim，可能无法直接运行；每个 .py 依赖同目录常量与资产，单独拷出必然失败。仓库还缺少依赖清单与渲染脚本，环境版本只能从老 commit 里倒推。",
+  "workflow": [
+    {"stepZh": "装 ManimGL 源码版", "detailZh": "README 要求从源码安装 manimgl，因为 PyPI 版本不够新；同时装 FFmpeg", "effortZh": "约 30 分钟"},
+    {"stepZh": "装 TeX 全量", "detailZh": "Ubuntu 需 texlive、texlive-latex-extra、fonts-extra、science；Windows 一般用 MiKTeX", "effortZh": "数 GB 下载，约 1 小时"},
+    {"stepZh": "克隆并补路径", "detailZh": "git clone 后在目标场景顶部加 sys.path.append('.') 与父级目录", "effortZh": "约 10 分钟"},
+    {"stepZh": "跑单场景", "detailZh": "manimgl e_field.py WavesIn3D，先用 -se 进交互模式调镜头", "effortZh": "单场景数分钟"},
+    {"stepZh": "串成片", "detailZh": "逐场景出片后用 ffmpeg 或剪辑软件拼接，仓库不提供这步", "effortZh": "按片长而定"}
+  ],
+  "differentiators": [
+    "唯一一份 3b1b 官方生产源码，镜头与节奏可直接逐帧对照",
+    "覆盖 3D 光场、相机运镜、LaTeX 排版等高级实战写法",
+    "配套作者本人的 Sublime 工作流与 checkpoint_paste 热重载技巧",
+    "许可证边界写得清楚：代码可学可用，内容禁商用"
+  ],
+  "limits": [
+    "不是工具/框架：没有统一入口、没有 CLI 封装、没有批处理",
+    "依赖 manimgl + 全量 TeX + 专用字体与音频，环境极重",
+    "场景强耦合同目录常量，单独拷出无法运行",
+    "CC BY-NC-SA 4.0 禁止商业使用"
+  ],
+  "compareTips": [
+    {"vs": "3b1b__manim", "adviceZh": "manim 是引擎，videos 是内容；想跑起来先装 manimgl，想学镜头写法再读 videos"},
+    {"vs": "ManimCommunity__manim", "adviceZh": "要稳定 API、跨平台与中文教程选 ManimCE；要 3b1b 同源 OpenGL 实时预览与官方素材选 ManimGL + videos"},
+    {"vs": "academa-labs__manimgx", "adviceZh": "想开箱即用批量出片选 ManimGX；想亲手还原官方镜头细节，videos 无可替代"}
+  ],
+  "showcase": {
+    "demoBriefZh": "本批未出片（环境成本过高）。若演示，建议四段：①打开一个 2023 年场景文件，讲常量的组织方式；②manimgl -se 进入交互模式并 checkpoint_paste 改动一行；③渲染 Optics 的 3D 光场片段；④对照官方成片截图，标出同一镜头的源码位置",
+    "featureCallouts": [
+      {"titleZh": "官方生产源码", "descZh": "与 3b1b 成片一一对应，不是教学 demo"},
+      {"titleZh": "3D 光场场景", "descZh": "Optics 系列的相机与光场写法"},
+      {"titleZh": "checkpoint_paste", "descZh": "热重载选中代码，保留场景状态"},
+      {"titleZh": "按年份归档", "descZh": "从早期到 2023 之后的主题目录"},
+      {"titleZh": "明确许可边界", "descZh": "CC BY-NC-SA，商用需另议"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L2-L4", "noteZh": "仓库是 3b1b 视频的生成代码，几乎全部为 Manim 场景"},
+    {"field": "limits 第 2 条", "source": "README.md#L6", "noteZh": "老项目依赖旧版 manim，可能无法开箱运行"},
+    {"field": "limits 第 4 条", "source": "README.md#L8", "noteZh": "内容为 CC BY-NC-SA 4.0，禁止商业使用"},
+    {"field": "workflow 第 3 步", "source": "README.md#L69-L89", "noteZh": "需手动 sys.path.append 同目录与父级，再 manimgl 运行"},
+    {"field": "ceilingZh", "source": "_samples/3b1b__videos/meta.json", "noteZh": "未执行：内容仓库，依赖 LaTeX/字体/音频全量环境，记 skip"}
+  ]
+}

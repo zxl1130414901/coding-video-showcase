@@ -1,0 +1,48 @@
+{
+  "repo": "shadcn-labs/snapcn",
+  "category": "代码驱动/声明式框架",
+  "status": "success",
+  "render_ms": 126805,
+  "total_ms": 126805,
+  "cmd": "最小 Remotion 宿主工程(_host)：复制 registry/snap-cn/cut-lockup 组件源码，node @remotion/cli render src/index.tsx CutLockup --concurrency=2 --browser-executable Chrome",
+  "artifact": "F:\\coding视频\\_samples\\shadcn-labs__snapcn\\sample.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 3.6,
+    "fps": 30.0,
+    "nb_frames": 108,
+    "codec": "h264",
+    "size_kb": 84.2
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\shadcn-labs__snapcn\\preview.png",
+    "pixel_std": 49.44,
+    "unique_colors": 256
+  },
+  "notes_zh": "重跑成功：放弃整仓 pnpm（落盘不完整导致 ERR_MODULE_NOT_FOUND），改为最小 Remotion 4.0.540 宿主工程复用仓库 registry 组件；共用宿主内 @remotion/studio dist 缺失，从 _env/smoke 完整副本补回；Chrome 156 不再支持 --headless=old，已把 renderer 的 headless 参数改回 --headless；Vulkan 相关启动参数在 Chrome 156 上导致浏览器立即退出，改用默认 GL",
+  "sample_v2": {
+    "spec": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "duration_sec": 21.0
+    },
+    "render_ms": 266282,
+    "ffprobe": {
+      "duration_sec": 21.0,
+      "codec": "h264",
+      "nb_frames": 630,
+      "has_audio": true,
+      "size_kb": 1256.6,
+      "stddev_10_50_90": {
+        "0.10": 54.378,
+        "0.50": 83.7,
+        "0.90": 21.504
+      }
+    },
+    "generator": "最小 Remotion 宿主 + @remotion/player + esbuild 单文件 bundle；Playwright 逐帧 seekTo 截图；ffmpeg 720p30 合成 3 段，drawtext 烧中文标注",
+    "segments_count": 3,
+    "pipeline": "fallback"
+  }
+}

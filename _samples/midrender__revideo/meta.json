@@ -1,0 +1,48 @@
+{
+  "repo": "midrender/revideo",
+  "category": "编程式视频（React/TypeScript 渲染器）",
+  "status": "success",
+  "render_ms": 8400,
+  "total_ms": 10852,
+  "cmd": "node _samples\\midrender__revideo\\render_ffmpeg.js（cwd=packages\\template，导出器 @revideo/core/ffmpeg）",
+  "artifact": "F:\\coding视频\\_samples\\midrender__revideo\\sample.mp4",
+  "ffprobe": {
+    "width": 1080,
+    "height": 1080,
+    "duration_s": 7.433,
+    "fps": 30.0,
+    "nb_frames": 223,
+    "codec": "h264",
+    "size_kb": 976.5
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\midrender__revideo\\preview.png",
+    "pixel_std": 61.68,
+    "unique_colors": 13767
+  },
+  "notes_zh": "npm ci 拉 1734 个包耗时约 1 小时；依次构建 telemetry/ffmpeg/vite-plugin/renderer/core/2d/ui 后渲染模板。两个 Windows 坑：1) node_modules/@revideo/ui 的 junction 在含中文路径下 Node 解析失败，改为实体目录副本；2) 默认 wasm 导出器（mp4-wasm）只产出 156B 空 mp4，导致后续静音音轨时长取到 N/A 报错，改用 @revideo/core/ffmpeg 导出器后正常。渲染进程 1 路，符合显存并发限制。",
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "duration_sec": 29.077
+    },
+    "render_ms": 210000,
+    "ffprobe": {
+      "duration_sec": 29.077,
+      "codec": "h264",
+      "nb_frames": 872,
+      "has_audio": true,
+      "size_kb": 801.6,
+      "stddev_10_50_90": {
+        "0.10": 34.683,
+        "0.50": 57.986,
+        "0.90": 28.08
+      }
+    },
+    "generator": "@revideo/core renderVideo（@revideo/core/ffmpeg 导出器），3 个 makeScene2D 场景，Playwright + 系统 Chrome headless，1920x1080/30fps；ffmpeg drawtext 烧录中文标注",
+    "segments_count": 3,
+    "pipeline": "official"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "repo": "JazonJiao/Manim.js",
+  "category": "数学动画（p5.js / 浏览器运行时）",
+  "status": "success",
+  "render_ms": 9000,
+  "total_ms": 38647,
+  "cmd": "node _samples\\JazonJiao__Manim.js\\capture.js 'http://127.0.0.1:8848/Graph%20Algorithms/graph.html' 9000",
+  "artifact": "F:\\coding视频\\_samples\\JazonJiao__Manim.js\\sample.mp4",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 10.833,
+    "fps": 30.0,
+    "nb_frames": 325,
+    "codec": "h264",
+    "size_kb": 133.3
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\JazonJiao__Manim.js\\preview.png",
+    "pixel_std": 31.44,
+    "unique_colors": 15504
+  },
+  "notes_zh": "浏览器端 p5.js 动画库，自带 Graph Algorithms 示例。用 Playwright 在本地 http 服务下录制 9s（file:// 会被 CORS 阻断字体加载），1920x1080 录制后 lanczos 缩放为 1280x720/30fps。",
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "duration_sec": 30.0
+    },
+    "render_ms": 210000,
+    "ffprobe": {
+      "duration_sec": 30.0,
+      "codec": "h264",
+      "nb_frames": 900,
+      "has_audio": true,
+      "size_kb": 784.3,
+      "stddev_10_50_90": {
+        "0.10": 25.602,
+        "0.50": 20.875,
+        "0.90": 65.196
+      }
+    },
+    "generator": "Playwright（系统 Chrome headless）录制仓库自带 p5.js 示例页面：graph.html / Linear Regression idea 1 / dpo.html 各 10s，1920x1080@30fps，三段 concat；ffmpeg drawtext 烧录中文标注",
+    "segments_count": 3,
+    "pipeline": "wrapper"
+  }
+}

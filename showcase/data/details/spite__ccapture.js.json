@@ -1,0 +1,75 @@
+{
+  "id": "spite__ccapture.js",
+  "taglineZh": "给任意 canvas/WebGL 作品加「导出视频」按钮的逐帧捕获库，2.0 已换上 WebCodecs",
+  "summaryZh": "2012 年就存在的老牌 Canvas 录制库。它不抓屏幕，而是接管动画时钟：把 requestAnimationFrame、Date.now 改写成可由程序推进的虚拟时间，让画面以固定步长逐帧重绘，再把帧交给内置编码器封装成 mp4/webm/gif 或图片 TAR 包。因此机器掉帧也不会丢帧，成片帧率与性能无关，同一段代码每次导出的画面完全一致。代价是它只是库：没有 CLI、没有时间轴、没有字幕与音频编辑，必须自己写宿主页面和保存逻辑。实测 720p 120 帧 3.46 秒完成，是本批编码最快的一档。",
+  "whatItMakes": [
+    {"type": "Canvas 数学/物理动画", "exampleZh": "p5.js 或原生 canvas 的公式、函数图像、粒子运动，逐帧推进后导 mp4", "strength": "核心能力"},
+    {"type": "WebGL/WebGPU 场景录制", "exampleZh": "Three.js 场景、着色器动画、生成艺术，直接传 canvas 即可捕获", "strength": "核心能力"},
+    {"type": "运动模糊短片", "exampleZh": "motionBlurFrames 把多张子帧平均进一帧，做出接近电影的拖影", "strength": "核心能力"},
+    {"type": "GIF 动图", "exampleZh": "256 色 quantize 的循环动图，用于文档、网页配图", "strength": "可用"},
+    {"type": "图片序列交付后期", "exampleZh": "png/jpg/webp 打包成 .tar，交给 AE 或 ffmpeg 再合成", "strength": "可用"},
+    {"type": "带音轨的成片", "exampleZh": "传入一个 AudioBuffer，mp4/webm 会混入音频轨", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "已有 canvas 作品加导出功能", "whoZh": "前端开发者、生成艺术作者", "whyZh": "作品已在浏览器里跑，只差一个「导出视频」按钮，不想引入整套渲染框架", "deliverableZh": "4 秒 1280×720 30fps MP4，约 684KB", "fit": "高度契合"},
+    {"scenarioZh": "课程演示动画出片", "whoZh": "教师、课程制作团队", "whyZh": "p5.js 写的几何/函数演示可直接录成固定帧率视频，不受演示机性能影响", "deliverableZh": "单条 1–5 分钟 720p MP4 + GIF 缩略版", "fit": "适合"},
+    {"scenarioZh": "WebGL 生成艺术批量导出", "whoZh": "数字艺术家、NFT 创作者", "whyZh": "逐帧确定性强，同一 seed 每次导出像素一致，便于版本管理", "deliverableZh": "10–60 秒 1080p MP4 或图片序列", "fit": "高度契合"},
+    {"scenarioZh": "文档与博客配图", "whoZh": "技术写作者", "whyZh": "GIF 一行配置就能出，不需要额外转码工具", "deliverableZh": "3–8 秒 480p GIF，<5MB", "fit": "适合"},
+    {"scenarioZh": "CI 中自动出片", "whoZh": "工具链维护者", "whyZh": "用 Playwright 打开页面、触发下载即可保存，无需图形界面", "deliverableZh": "自动化产出的 MP4 附件", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "未声明上限，取决于 canvas 尺寸与浏览器编码器；实测 1280×720，奇数或改变尺寸的帧会被自动补齐到偶数编码尺寸",
+    "maxFpsZh": "framerate 默认 60，可任意设定；实际受浏览器编码吞吐限制，实测 30fps 输出",
+    "durationZh": "默认不限时长（timeLimit/frameLimit 均为 0）；可用 autoSaveTime 分段下载以控制内存",
+    "effectsZh": ["虚拟时钟 TimeWarp（可快进、可定格）", "子帧运动模糊（GPU 或 CPU 后端）", "视频/音频元素逐帧步进", "自定义编码器（FrameEncoder/BatchEncoder）"],
+    "audioZh": "可传一个 AudioBuffer 混入 mp4/webm 音轨，默认 128kbps；无 TTS、无字幕、无多轨混音",
+    "interactivityZh": "浏览器内 API 调用，可选 display 显示页内捕获状态小部件；没有编辑器或时间轴",
+    "automationZh": "无 CLI；需宿主页面 + Playwright 触发下载，本次实测即走此路径",
+    "assetsZh": "无内置素材、字体或模板，画面内容全部由宿主 canvas 绘制",
+    "exportFormatsZh": ["mp4（H.264/AV1）", "webm（VP9/VP8/AV1）", "webm-legacy", "gif", "png/jpg/webp 的 tar 包"],
+    "realtimePreviewZh": "捕获期间按虚拟时钟推进，不是实时播放；可随时 stop 后恢复实时循环",
+    "ciFriendlyZh": "中等：需要 Chromium 与宿主页，可脚本化，但无现成录制命令"
+  },
+  "ceilingZh": "能力上限由 canvas 尺寸与浏览器编码器决定。实测 1280×720、30fps 下 120 帧仅 3.46 秒，折合约 29ms/帧，按此外推 4 分钟 60fps（14400 帧）约 7 分钟；timeLimit/frameLimit 默认 0，时长不设硬上限，autoSaveTime 可分卷下载来绕开内存。最复杂的效果是 GPU 子帧运动模糊（多张子帧平均进一帧）与自定义编码器——接口只有 start/add/save/dispose，可以挂 WASM 编解码、APNG 或上传服务端。边界很硬：没有 CLI、工程脚手架、时间轴、字幕和音频管线，宿主页要自己写；GIF 只有 256 色，且延时按厘秒取整，60fps 素材实际回放约 50fps；浏览器不支持 WebCodecs 时 mp4 直接抛错，只能退回 webm。总体是「小而快」的录制内核，适合嵌进已有页面。帧率上限也受浏览器定时器影响，60fps 素材建议避开 GIF 容器。",
+  "workflow": [
+    {"stepZh": "引入库", "detailZh": "npm 安装 ccapture.js，或直接用 UMD 版两个 script 标签挂到 window.CCapture", "effortZh": "约 5 分钟"},
+    {"stepZh": "写宿主页面", "detailZh": "准备 canvas 与绘制函数 draw(frame)，按库要求把渲染循环改为可被虚拟时钟推进的形式", "effortZh": "首个页面 1–2 小时"},
+    {"stepZh": "配置录制", "detailZh": "new CCapture({format:'mp4', framerate:30, quality:90})，用 record(canvas, draw) 或 start/capture/stop", "effortZh": "约 15 分钟"},
+    {"stepZh": "保存产物", "detailZh": "监听 stop 事件拿到 Blob，触发下载或直接写盘", "effortZh": "约 10 分钟"},
+    {"stepZh": "自动化出片", "detailZh": "Playwright 打开页面、等待 download 事件保存 mp4；本次实测即用此法", "effortZh": "约 30 分钟"}
+  ],
+  "differentiators": [
+    "改写时钟做逐帧确定性推进，成片不受机器掉帧与 rAF 抖动影响",
+    "单库零工程依赖，UMD 版两个 script 标签即可接入任何老页面",
+    "2.0 换成 WebCodecs 硬件编码并带背压，队列上限可调",
+    "内建子帧运动模糊，省掉后期加拖影的步骤",
+    "编码器接口可插拔，能接 WASM 编解码或服务端上传"
+  ],
+  "limits": [
+    "是库不是工具：没有 CLI、没有项目脚手架，宿主页与保存逻辑全要自己写",
+    "无时间轴、字幕、多轨音频，做不了真正的剪辑",
+    "编码依赖浏览器能力，缺 WebCodecs 时 mp4 直接不可用",
+    "文档只有 README 与 API 表，缺少系统教程与中文资料"
+  ],
+  "compareTips": [
+    {"vs": "dmnsgn__canvas-record", "adviceZh": "要更多容器格式（mkv/mov/图片序列）与 WebGPU 支持选 canvas-record；只求快、求简单接入，ccapture 实测快约 8 倍"},
+    {"vs": "wx4766__html-to-video", "adviceZh": "要录整个 DOM 页面、含 CSS 排版选 html-to-video；只录单个 canvas、不想装浏览器自动化，ccapture 更轻"},
+    {"vs": "ybouane__VideoFlow", "adviceZh": "要从零编排时间轴、写多图层视频选 VideoFlow；已有画面只想加导出按钮选 ccapture"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①p5.js 几何动画在虚拟时钟下逐帧录成 720p30；②打开运动模糊开关，对比有无子帧拖影；③同一段导出 GIF 与 mp4，对比体积与画质；④传入 AudioBuffer 出带音轨的 mp4，并演示 autoSaveTime 分段下载",
+    "featureCallouts": [
+      {"titleZh": "虚拟时钟推进", "descZh": "rAF 与 Date.now 被改写，画面按帧号而非真实时间前进"},
+      {"titleZh": "子帧运动模糊", "descZh": "motionBlurFrames 多帧平均，GPU/CPU 双后端"},
+      {"titleZh": "WebCodecs 背压", "descZh": "maxQueueSize 控制编码队列，长片不炸内存"},
+      {"titleZh": "自定义编码器", "descZh": "FrameEncoder/BatchEncoder 两种基类，任意格式可挂"},
+      {"titleZh": "分段自动保存", "descZh": "autoSaveTime 按秒切分下载，规避浏览器内存上限"}
+    ]
+  },
+  "evidence": [
+    {"field": "summaryZh", "source": "README.md#L186-L201", "noteZh": "选项表确认虚拟时钟、timeLimit/frameLimit、motionBlurFrames、audio 等能力"},
+    {"field": "capabilities.exportFormatsZh", "source": "README.md#L214-L235", "noteZh": "格式与编码器对照表：mp4 走 WebCodecs，webm 可回退 legacy，gif 走 gifenc"},
+    {"field": "ceilingZh", "source": "README.md#L224-L235", "noteZh": "GIF 256 色、厘秒延时导致 60fps 实际约 50fps；缺 WebCodecs 时 mp4 抛错"},
+    {"field": "whatItMakes 第 1 条", "source": "_samples/spite__ccapture.js/meta.json", "noteZh": "实测 1280×720/30fps/120 帧，3.46s 完成，683946 字节"}
+  ]
+}

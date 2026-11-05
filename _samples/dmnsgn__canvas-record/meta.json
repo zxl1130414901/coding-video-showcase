@@ -1,0 +1,44 @@
+{
+  "repo": "dmnsgn/canvas-record",
+  "category": "HTML/浏览器渲染转视频",
+  "status": "success",
+  "render_ms": 29526,
+  "total_ms": 29526,
+  "cmd": "node F:\\coding视频\\_samples\\dmnsgn__canvas-record\\capture.mjs  （Playwright 打开 demo.html，new Recorder(ctx,{extension:'mp4',frameRate:30,duration:4,download:true})，循环 120 次 draw(frame)+step()，监听 download 保存）",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration": 4.0,
+    "frames": 120,
+    "fps": 30,
+    "codec": "h264",
+    "size_bytes": 2450214
+  },
+  "notes_zh": "仓库的 Recorder 依赖裸模块（canvas-screenshot / canvas-context / media-codecs / h264-mp4-encoder / gifenc / fflate / mediabunny），页面必须加 import-map 指向仓库 web_modules 才能跑。另一个坑是 RecorderStatus 未导出，靠 status 判断的循环只跑 1 帧，改为固定 120 次 recorder.step() 后一次成功，4s/30fps，2.45MB。",
+  "sample_v2": {
+    "artifact": "sample.mp4",
+    "duration_s": 20.8,
+    "resolution": "1920x1080",
+    "fps": 30.0,
+    "segments": 3,
+    "callouts": 5,
+    "render_ms": 26127,
+    "pipeline": "official",
+    "build": "canvas-record 依次录制 mp4(2D)/webm(WebGL)/gif 三段并下载；build_sample.py 拼接 + PIL 中文标注 overlay + h264_nvenc",
+    "ffprobe": {
+      "width": 1920,
+      "height": 1080,
+      "duration": 20.667,
+      "frames": 620,
+      "fps": 30.0,
+      "codec": "h264",
+      "size_bytes": 11966216
+    },
+    "previous_sample": "sample_basic.mp4 1280x720 4.0s",
+    "known_limits_zh": [
+      "GIF 段为 1280×720@12fps（GIF 调色板与体积限制），成片时放大到 1920×1080，会略软",
+      "GIF 编码在浏览器主线程完成，1080p 长 GIF 会明显卡顿，因此控制在 60 帧",
+      "WebGL 段依赖 preserveDrawingBuffer=true，否则 readback 可能拿到空帧"
+    ]
+  }
+}

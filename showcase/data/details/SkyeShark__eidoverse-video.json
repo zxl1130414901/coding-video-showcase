@@ -1,0 +1,74 @@
+{
+  "id": "SkyeShark__eidoverse-video",
+  "taglineZh": "给 AI agent 的完整片厂：VRM 角色、物理、天气与唇形同步都在内",
+  "summaryZh": "Eidoverse Video 是一套给 AI agent 用的电影制片厂工具集：场景写成 JSON，Deno + WebGPU + three.js/TSL 原生渲染，覆盖角色（VRM 骨骼、足部 IK、走跑攀爬坐下）、生物与机器人搭建、物理（Rapier）、布料、粒子、天气、书本翻页、镜头与唇形同步，再由 NVENC 编码出片。它解决“agent 只能做二维动效、做不了有世界、有角色、有物理的片子”的问题。代价是 prealpha 0.01、AGPLv3、首次 bootstrap 要拉海量 Deno 依赖。它把场景、角色与镜头都写成 JSON，agent 可以反复改参数重渲；单条片子 10 秒级，长叙事要自己拆场景。",
+  "whatItMakes": [
+    {"type": "VRM 角色表演短片", "exampleZh": "行走/奔跑/攀爬/坐下、上半身手势、面向镜头、唇形同步", "strength": "核心能力"},
+    {"type": "带物理的世界场景", "exampleZh": "Rapier 刚体、布料、粒子、地形贴合足部 IK", "strength": "核心能力"},
+    {"type": "程序化生物/机器人", "exampleZh": "Spore 式四足/鸟/蛇/章鱼/蜘蛛/鱼，机器人模块与机械臂", "strength": "可用"},
+    {"type": "工业/制造仿真镜头", "exampleZh": "FDM 3D 打印、CNC 铣削、体素等值面", "strength": "可用"},
+    {"type": "环境与天气", "exampleZh": "地形、植被、光照、雨雪雾、镜头运动", "strength": "可用"},
+    {"type": "音乐/音效与对白", "exampleZh": "配乐、音效、lipsync.py 生成 viseme 时间轴", "strength": "可用"}
+  ],
+  "useCases": [
+    {"scenarioZh": "Agent 自动生成 3D 短片", "whoZh": "AI 视频团队", "whyZh": "世界、角色、镜头、声音都在工具集里，按 AGENTS.md 执行", "deliverableZh": "720p/1080p 的 10–60 秒 MP4", "fit": "适合"},
+    {"scenarioZh": "虚拟人讲解视频", "whoZh": "企业培训、教育团队", "whyZh": "VRM 角色 + 口型同步 + 手势，可批量换脚本", "deliverableZh": "1080p 讲解片", "fit": "适合"},
+    {"scenarioZh": "3D 产品/工业演示", "whoZh": "工业可视化团队", "whyZh": "CNC/FDM/机器人模块可直接演过程", "deliverableZh": "30–90 秒机构演示", "fit": "适合"},
+    {"scenarioZh": "实验性影像创作", "whoZh": "新媒体艺术家", "whyZh": "物理、天气、程序化生物提供大量可组合元素", "deliverableZh": "短片/实验片段", "fit": "适合"},
+    {"scenarioZh": "稳定量产商业片", "whoZh": "商业制作公司", "whyZh": "prealpha 0.01、接口会变、AGPLv3，量产风险高", "deliverableZh": "需谨慎评估", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由 scene.json/渲染参数决定；实测 1280×720，文档未见硬上限",
+    "maxFpsZh": "实测 30fps；渲染端报告可到实时速度，具体上限取决于 GPU",
+    "durationZh": "由场景时长决定；实测 10 秒 / 300 帧",
+    "effectsZh": ["VRM 骨骼动画与足部 IK", "Rapier 物理、布料、粒子", "天气、地形、植被", "N8AO/SSR/Bloom/FXAA 默认增强", "唇形同步 viseme"],
+    "audioZh": "支持配乐、音效与对白，lipsync.py 从人声生成逐帧 viseme",
+    "interactivityZh": "无交互播放器；由 agent 迭代场景并渲染",
+    "automationZh": "CLI 可脚本化：python eido.py bootstrap/doctor/render --probe/--at/--full",
+    "assetsZh": "VRM 模型、VRMA 动画 30+、贴图、PDF/书本素材；资源放在 work/<id>/",
+    "exportFormatsZh": ["MP4"],
+    "realtimePreviewZh": "部分：probe/at 可渲单帧检查，不是交互预览",
+    "ciFriendlyZh": "可进 CI（需 GPU 或软件 WebGPU），但 bootstrap 依赖拉取很慢"
+  },
+  "ceilingZh": "它的上限是“agent 能独立拍出有角色、有物理、有环境的 3D 短片”：实测 basic_vrm.json 在 RTX 4060 Laptop 上以硬件 WebGPU 渲染 300 帧、1280×720、30fps，帧渲染仅 18.2 秒（约 16.5fps），其余 240 秒耗在 Deno 模块图加载/编译与审计，成片 10 秒、7.9MB。工具集覆盖 30+ VRMA 动作、足部 IK、Rapier 物理、布料粒子、天气、程序化生物、机器人、CNC/FDM、书本翻页与唇形同步，复杂度远超普通 3D 模板。边界：prealpha 0.01，接口与文档会变；首次 bootstrap 实测 785 秒；AGPLv3 对闭源商用有传染性；无 GPU 时软件 WebGPU 可用但慢；3D 资产与角色质量取决于 VRM 素材；镜头与叙事仍要人/agent 反复试。角色动作库以 VRMA 为主，缺少 IK 手部与面部微表情，特写镜头容易露怯；物理精度也只适合演示。",
+  "workflow": [
+    {"stepZh": "装环境", "detailZh": "Deno 2.8.1/2.9.5 + FFmpeg + Python，python eido.py bootstrap 拉依赖", "effortZh": "首次约 13 分钟"},
+    {"stepZh": "自检", "detailZh": "python eido.py doctor 检查硬件 WebGPU 与 compute/readback", "effortZh": "约 1 分钟"},
+    {"stepZh": "写场景", "detailZh": "在 work/<id>/ 写 scene.json，配 VRM、动作、地形、相机与音频", "effortZh": "按项目复杂度"},
+    {"stepZh": "抽帧检查", "detailZh": "python eido.py render scene.json --probe 或 --at 单帧，确认构图与动作", "effortZh": "秒级"},
+    {"stepZh": "成片", "detailZh": "python eido.py render scene.json --full，NVENC 编码 MP4", "effortZh": "10 秒约 4 分钟"}
+  ],
+  "differentiators": [
+    "不是模板而是完整世界构建：角色、物理、天气、工业仿真、声音都在同一套工具里",
+    "原生 Deno + WebGPU + three.js/TSL，GPU compute 与节点材质，无逐帧 CPU 网格更新",
+    "VRM 角色带足部 IK、30+ VRMA 动作与从人声生成的唇形同步",
+    "AGENTS.md + 工具指南让 agent 能按流程独立制片，另有容器化 auto 分支"
+  ],
+  "limits": [
+    "prealpha 0.01，接口、场景 schema 与文档都可能大幅变动",
+    "首次 bootstrap 实测 785 秒，依赖 Deno/npm 网络与缓存",
+    "AGPLv3 许可，闭源商用需评估传染性",
+    "无 GPU 时软件 WebGPU 很慢；3D 资产质量决定最终观感"
+  ],
+  "compareTips": [
+    {"vs": "remotion-dev__template-three", "adviceZh": "只要简单 3D 产品镜头选 template-three；要角色、物理、天气与完整制片流程选 Eidoverse"},
+    {"vs": "LBEILC__Multiplane", "adviceZh": "要 HTML/CSS 动效与景深选 Multiplane；要真 3D 世界与角色表演选 Eidoverse"},
+    {"vs": "0xS4N4TG__kinetograph", "adviceZh": "要轻量 TSX 出片选 Kinetograph；要复杂 3D 场景与 agent 制片流程选 Eidoverse"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①doctor 报硬件 WebGPU 适配器；②VRM 角色行走/转身/面向镜头；③物理与天气叠加的场景；④lipsync 口型与 720p30 成片参数",
+    "featureCallouts": [
+      {"titleZh": "VRM 角色系统", "descZh": "行走攀爬坐下与足部 IK"},
+      {"titleZh": "原生 WebGPU", "descZh": "原生 Deno 与 three.js/TSL 实时渲染"},
+      {"titleZh": "物理与布料", "descZh": "Rapier 刚体、布料、粒子与天气"},
+      {"titleZh": "唇形同步", "descZh": "按人声逐帧生成 viseme"},
+      {"titleZh": "工业仿真", "descZh": "FDM、CNC 与机器人模块仿真"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L3-L15", "noteZh": "自述 A film studio for AI agents，覆盖世界、角色、物理、音乐、唇形与渲染"},
+    {"field": "capabilities.effectsZh", "source": "README.md#L49-L76", "noteZh": "渲染引擎、VRM 控制/IK、30+ VRMA、lipsync"},
+    {"field": "capabilities.automationZh", "source": "AGENTS.md#L131-L139", "noteZh": "bootstrap/doctor/render --probe/--at/--full 的 CLI 流程"},
+    {"field": "ceilingZh", "source": "_samples/SkyeShark__eidoverse-video/meta.json", "noteZh": "实测 720p30/300 帧，帧渲染 18.2s，总 258.4s；bootstrap 785.5s；产物 10s/7.9MB"}
+  ]
+}

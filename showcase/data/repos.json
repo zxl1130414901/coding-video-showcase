@@ -1,0 +1,5844 @@
+{
+  "meta": {
+    "generatedAt": "2026-11-05T00:00:00+08:00",
+    "criteria": {
+      "pushedAt": ">=2025-01-01",
+      "archived": false,
+      "fork": false,
+      "count": 65
+    },
+    "counts": {
+      "total": 65,
+      "ok": 51,
+      "failed": 5,
+      "skipped": 9
+    },
+    "installRuleZh": "installComplexity：1=约 1 分钟内一条命令出片；2=3 分钟内；3=10 分钟内或需小修补；4=30 分钟内或需 native 编译；5=超过 30 分钟、安装失败或无法安装。按本次实测总耗时（含依赖安装）定档。",
+    "scoringRuleZh": "maturity=仓库年龄+生态/发布节奏；usability=从安装到出片的最短路径实测总耗时与步骤数；performance=本次实测渲染吞吐（帧/秒，>=20→5，10~20→4，5~10→3，2~5→2，<2→1；无产物记 1）；docs=README/示例完整度；windows=本机实测通过度（works=5，workaround=3~4，broken=1~2，未能实测=3）；activity=pushed_at 距 2026-11-05 的天数（<=45→5，<=120→4，<=240→3，<=400→2，其余→1）。",
+    "disclaimerZh": "评分是本次在 Windows 11 + RTX 4060 Laptop 环境下的实测口径（安装耗时、render_ms、ffprobe 规格、能否出片），不是官方排名，也不代表代码质量评测；stars/forks 未采集到的一律写 null，不做猜测。",
+    "sources": [
+      {
+        "id": "base",
+        "labelZh": "原有采集（GitHub API + 本机实测）",
+        "count": 51
+      },
+      {
+        "id": "article:Te14wRPAJiVpJ1k4O9pcpgX3nHg",
+        "labelZh": "飞书文章《我评估了 369 个…》新增仓库",
+        "count": 14
+      }
+    ]
+  },
+  "repos": [
+    {
+      "id": "yongkyuns__noon",
+      "owner": "yongkyuns",
+      "repo": "noon",
+      "url": "https://github.com/yongkyuns/noon",
+      "homepage": null,
+      "stars": 138,
+      "forks": null,
+      "openIssues": null,
+      "license": "未知",
+      "language": "Rust",
+      "createdAt": "2022-02-28",
+      "updatedAt": null,
+      "pushedAt": "2026-11-04",
+      "descriptionZh": "Rust+wgpu 复刻 Manim 的动画引擎，带浏览器操场",
+      "category": "动画引擎",
+      "techStack": [
+        "Rust",
+        "wgpu",
+        "WebGL2",
+        "Python",
+        "Pyodide"
+      ],
+      "renderBackends": [
+        "wgpu",
+        "WebGL2",
+        "Canvas"
+      ],
+      "outputFormats": [
+        "mp4",
+        "png 序列"
+      ],
+      "gpuAcceleration": "required",
+      "cliHeadless": "partial",
+      "windowsSupport": "unknown",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 40000,
+        "frames": 298,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/yongkyuns__noon/sample.mp4",
+        "thumbPath": "_samples/yongkyuns__noon/preview.png",
+        "pipeline": "fallback",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30,
+          "durationSec": 19.47,
+          "frames": 584,
+          "bytes": 180724,
+          "codec": "h264"
+        },
+        "noteZh": "Chrome 打开官方 playground，CDP 抓帧后按时间戳重排为 30fps"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 2,
+        "performance": 3,
+        "docs": 3,
+        "windows": 3,
+        "activity": 5
+      },
+      "pros": [
+        "Rust+wgpu 原生渲染，目标对齐 Manim 的矢量动画语义",
+        "自带浏览器 playground，免本地编译即可看效果",
+        "文档记录与 Manim 的变换/采样边界差异，便于迁移对照"
+      ],
+      "cons": [
+        "离线导出链路未验证，本次只能录 playground 实时画面",
+        "0.1 级别版本，API 与文档主要靠源码和 playground",
+        "无 pip/npm 一键安装，自建需完整 cargo 工具链"
+      ],
+      "bestFor": "想在浏览器里试 Manim 语义、并能接受早期版本的 Rust 开发者",
+      "pitfalls": [
+        "playground 用 CDP 实时抓帧只有约 10fps，需按时间戳重排成 30fps",
+        "本地 wgpu 构建未纳入本次实测，Windows 依赖 Vulkan 驱动"
+      ],
+      "alternatives": [
+        "ManimCommunity__manim",
+        "academa-labs__manimgx",
+        "AzurIce__ranim"
+      ],
+      "tags": [
+        "GPU 渲染",
+        "浏览器预览",
+        "Rust",
+        "Manim 兼容"
+      ]
+    },
+    {
+      "id": "remotion-dev__remotion",
+      "owner": "remotion-dev",
+      "repo": "remotion",
+      "url": "https://github.com/remotion-dev/remotion",
+      "homepage": null,
+      "stars": 70471,
+      "forks": null,
+      "openIssues": null,
+      "license": "NOASSERTION",
+      "language": "TypeScript",
+      "createdAt": "2020-06-23",
+      "updatedAt": null,
+      "pushedAt": "2026-11-03",
+      "descriptionZh": "用 React 组件写视频、CLI 批量渲染的框架",
+      "category": "动画引擎",
+      "techStack": [
+        "TypeScript",
+        "React",
+        "Chromium",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "Canvas",
+        "WebGL",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "mov",
+        "gif",
+        "png 序列"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 61972,
+        "frames": 150,
+        "width": 1920,
+        "height": 1080,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/remotion-dev__remotion/sample.mp4",
+        "thumbPath": "_samples/remotion-dev__remotion/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 29.9,
+          "frames": 897,
+          "bytes": 3738489,
+          "codec": "h264"
+        },
+        "noteZh": "官方 template-helloworld 经 npx remotion render 出 1080p 5s 成片"
+      },
+      "scores": {
+        "maturity": 5,
+        "usability": 4,
+        "performance": 2,
+        "docs": 5,
+        "windows": 5,
+        "activity": 5
+      },
+      "pros": [
+        "React 组件 + Composition 时间轴，前端组件与 CSS 可直接复用",
+        "官方 CLI（render/studio）一条命令出片，支持帧区间与并发",
+        "生态最大：官方模板、组件库、三方教程都围绕它",
+        "支持 --gl=vulkan 让无头 Chrome 走 GPU"
+      ],
+      "cons": [
+        "许可分档：营利组织 ≤3 人可免费商用，超出需购买公司许可（LICENSE.md 明示）",
+        "Chromium 逐帧截屏，1080p 实测约 2.4fps，重动效成本高",
+        "monorepo 体量巨大，直接装整仓不可行，须用官方 template"
+      ],
+      "bestFor": "已有 React 前端团队、想把数据与 UI 直接做成视频并接 CI 的项目",
+      "pitfalls": [
+        "Chrome 156 不再支持 --headless=old，需改回 --headless",
+        "Vulkan 启动参数在 Chrome 156 会让浏览器立即退出，部分组件需退回默认 GL",
+        "F 盘被 Turbopack 判为 Slow filesystem，首次编译可拖到数分钟"
+      ],
+      "alternatives": [
+        "midrender__revideo",
+        "motion-canvas__motion-canvas",
+        "nexu-io__html-video"
+      ],
+      "tags": [
+        "React",
+        "适合 CI",
+        "官方 CLI",
+        "GPU 渲染",
+        "许可分档"
+      ]
+    },
+    {
+      "id": "BintzGavin__helios",
+      "owner": "BintzGavin",
+      "repo": "helios",
+      "url": "https://github.com/BintzGavin/helios",
+      "homepage": "https://github.com/BintzGavin/helios#readme",
+      "stars": 123,
+      "forks": null,
+      "openIssues": null,
+      "license": "NOASSERTION",
+      "language": "TypeScript",
+      "createdAt": "2025-08-12",
+      "updatedAt": null,
+      "pushedAt": "2026-11-03",
+      "descriptionZh": "浏览器与 Node 通用的确定性动画引擎",
+      "category": "动画引擎",
+      "techStack": [
+        "TypeScript",
+        "Canvas",
+        "WebGL",
+        "SVG",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Canvas",
+        "WebGL",
+        "SVG",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "webm",
+        "png 序列"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "partial",
+      "windowsSupport": "workaround",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 91158,
+        "frames": 150,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/BintzGavin__helios/sample.mp4",
+        "thumbPath": "_samples/BintzGavin__helios/preview.png",
+        "pipeline": "wrapper",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30,
+          "durationSec": 18,
+          "frames": 540,
+          "bytes": 443747,
+          "codec": "h264"
+        },
+        "noteZh": "Playwright 逐帧写 __HELIOS_VIRTUAL_TIME__ 截屏，ffmpeg 合成 720p"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 3,
+        "performance": 1,
+        "docs": 4,
+        "windows": 4,
+        "activity": 5
+      },
+      "pros": [
+        "虚拟时间可逐帧推进，同一动画既能预览也能离线渲染",
+        "Canvas/WebGL/SVG 多后端，适合图表、UI 动效与 3D 混合",
+        "自带 simple-canvas-animation 示例，改造成采集页成本低"
+      ],
+      "cons": [
+        "Elastic License 2.0，非 OSI 开源，商用需先读条款",
+        "官方 CLI 未在 Windows 验证，本次自建 Playwright 采集",
+        "实测 1.6fps（720p），逐帧截屏是主要瓶颈"
+      ],
+      "bestFor": "要在浏览器里做帧级确定动效、又不想引入 React 的团队",
+      "pitfalls": [
+        "官方 CLI 在 Windows 未跑通，需自写 Playwright 逐帧脚本",
+        "无头 Chrome 用 GPU 需显式 --use-angle=vulkan"
+      ],
+      "alternatives": [
+        "motion-canvas__motion-canvas",
+        "remotion-dev__remotion",
+        "AzurIce__ranim"
+      ],
+      "tags": [
+        "帧级确定",
+        "WebGL",
+        "免 React",
+        "ELv2"
+      ]
+    },
+    {
+      "id": "0xS4N4TG__kinetograph",
+      "owner": "0xS4N4TG",
+      "repo": "kinetograph",
+      "url": "https://github.com/0xS4N4TG/kinetograph",
+      "homepage": null,
+      "stars": 452,
+      "forks": null,
+      "openIssues": null,
+      "license": "NOASSERTION",
+      "language": "TypeScript",
+      "createdAt": "2026-10-23",
+      "updatedAt": null,
+      "pushedAt": "2026-11-03",
+      "descriptionZh": "Rust GPU 合成引擎，用 TSX 描述画面",
+      "category": "动画引擎",
+      "techStack": [
+        "Rust",
+        "TypeScript",
+        "Vulkan",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Vulkan",
+        "Skia",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "required",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 2,
+      "renderPerf": {
+        "totalMs": 56504,
+        "frames": 60,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/0xS4N4TG__kinetograph/sample.mp4",
+        "thumbPath": "_samples/0xS4N4TG__kinetograph/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30,
+          "durationSec": 18,
+          "frames": 540,
+          "bytes": 601862,
+          "codec": "h264"
+        },
+        "noteZh": "预编译 win64 二进制 + init 默认工程，Vulkan 渲染 60 帧"
+      },
+      "scores": {
+        "maturity": 1,
+        "usability": 4,
+        "performance": 1,
+        "docs": 3,
+        "windows": 5,
+        "activity": 5
+      },
+      "pros": [
+        "预编译 win64 二进制，init 后无需本地编译",
+        "TSX 描述场景，Vulkan 合成与 h264 编码一条命令完成",
+        "CLI 可直接指定 h264_nvenc 等编码器"
+      ],
+      "cons": [
+        "PolyForm Small Business 许可，非标准开源许可",
+        "2026-10 新建仓库，API 与文档仍在变",
+        "首帧 shader 编译拖慢整体，1fps 级"
+      ],
+      "bestFor": "想尝鲜 GPU 合成、接受新项目不确定性的团队",
+      "pitfalls": [
+        "首次渲染触发 Vulkan shader 编译，耗时远超后续帧",
+        "仅提供 win64 预编译包，其他平台需自行编译"
+      ],
+      "alternatives": [
+        "academa-labs__manimgx",
+        "AzurIce__ranim",
+        "SkyeShark__eidoverse-video"
+      ],
+      "tags": [
+        "GPU 合成",
+        "TSX 场景",
+        "预编译二进制",
+        "新项目"
+      ]
+    },
+    {
+      "id": "dmtrKovalenko__fframes",
+      "owner": "dmtrKovalenko",
+      "repo": "fframes",
+      "url": "https://github.com/dmtrKovalenko/fframes",
+      "homepage": null,
+      "stars": 3162,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "Rust",
+      "createdAt": "2021-11-22",
+      "updatedAt": null,
+      "pushedAt": "2026-11-03",
+      "descriptionZh": "Rust 声明式视频：Skia 绘制 + FFmpeg 编码",
+      "category": "动画引擎",
+      "techStack": [
+        "Rust",
+        "Skia",
+        "FFmpeg",
+        "wgpu"
+      ],
+      "renderBackends": [
+        "Skia",
+        "FFmpeg",
+        "wgpu"
+      ],
+      "outputFormats": [
+        "mp4",
+        "png 序列"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "broken",
+      "installComplexity": 5,
+      "renderPerf": null,
+      "sample": {
+        "status": "failed",
+        "videoPath": null,
+        "thumbPath": null,
+        "pipeline": "none",
+        "spec": null,
+        "noteZh": "源码编译 hello-world 示例，卡在 MSVC 链接阶段，无产物"
+      },
+      "scores": {
+        "maturity": 4,
+        "usability": 1,
+        "performance": 1,
+        "docs": 4,
+        "windows": 1,
+        "activity": 5
+      },
+      "pros": [
+        "声明式 Rust API，类型安全地描述时间轴、缓动与布局",
+        "Skia 绘制 + FFmpeg 编码，对文字与矢量排版友好",
+        "3.1k stars、2021 年起迭代，示例目录齐全"
+      ],
+      "cons": [
+        "Windows 上 MSVC 链接 skia/icu 预编译库失败，本次无产物",
+        "需自备 FFmpeg shared、libclang、Skia 二进制与多个环境变量",
+        "编译阶段即耗时 75 分钟，反馈循环极慢"
+      ],
+      "bestFor": "在 Linux/macOS 上愿意搭 Rust 工具链、追求类型安全的团队",
+      "pitfalls": [
+        "skia 预编译 icu 目标引用 __std_find_first_of_trivial…，MSVC 链接报错",
+        "SKIA_BINARIES_URL 必须 file:///F:/… 形式，少斜杠触发 Windows error 123"
+      ],
+      "alternatives": [
+        "yongkyuns__noon",
+        "AzurIce__ranim",
+        "0xS4N4TG__kinetograph"
+      ],
+      "tags": [
+        "Rust",
+        "Skia",
+        "FFmpeg",
+        "Windows 不可用"
+      ]
+    },
+    {
+      "id": "Remocn__remocn",
+      "owner": "Remocn",
+      "repo": "remocn",
+      "url": "https://github.com/Remocn/remocn",
+      "homepage": null,
+      "stars": 1667,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "TypeScript",
+      "createdAt": "2026-04-07",
+      "updatedAt": null,
+      "pushedAt": "2026-11-03",
+      "descriptionZh": "Remotion 动效组件库，网页 UI 直接变视频",
+      "category": "模板与 CLI 工具",
+      "techStack": [
+        "TypeScript",
+        "React",
+        "Remotion",
+        "Tailwind CSS"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "Canvas",
+        "WebGL"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 76377,
+        "frames": 120,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/Remocn__remocn/sample.mp4",
+        "thumbPath": "_samples/Remocn__remocn/preview.png",
+        "pipeline": "wrapper",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30,
+          "durationSec": 21,
+          "frames": 630,
+          "bytes": 1584186,
+          "codec": "h264"
+        },
+        "noteZh": "复制 registry/synthwave 组件到最小 Remotion 宿主，渲染 120 帧"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 3,
+        "performance": 1,
+        "docs": 3,
+        "windows": 4,
+        "activity": 5
+      },
+      "pros": [
+        "registry 内的动效组件可整段拷进 Remotion 工程",
+        "转场/文字/背景类组件成套，风格与 Tailwind 统一",
+        "单组件只依赖 react+remotion，最小宿主即可复用"
+      ],
+      "cons": [
+        "整仓 900+ 依赖，pnpm 安装易残缺，实测改用最小宿主",
+        "组件与 Remotion 4 版本强绑定，升级需同步",
+        "2026-04 建仓，组件数量与文档仍在增长"
+      ],
+      "bestFor": "已用 Remotion、想快速拿到现成动效组件的项目",
+      "pitfalls": [
+        "整仓安装后 @remotion/studio dist 缺失，需从完整副本补回",
+        "Chrome 156 下 --headless=old 与 Vulkan 参数会让浏览器启动即退出"
+      ],
+      "alternatives": [
+        "shadcn-labs__snapcn",
+        "av__remotion-bits",
+        "remotion-dev__template-code-hike"
+      ],
+      "tags": [
+        "Remotion 生态",
+        "组件库",
+        "Tailwind"
+      ]
+    },
+    {
+      "id": "wx4766__html-to-video",
+      "owner": "wx4766",
+      "repo": "html-to-video",
+      "url": "https://github.com/wx4766/html-to-video",
+      "homepage": "https://github.com/wx4766/html-to-video#readme",
+      "stars": 179,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "JavaScript",
+      "createdAt": "2026-10-11",
+      "updatedAt": null,
+      "pushedAt": "2026-11-03",
+      "descriptionZh": "HTML 页面逐帧截图转 MP4 的 Node 工具",
+      "category": "网页/H5 录屏",
+      "techStack": [
+        "JavaScript",
+        "Node.js",
+        "Playwright",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "png 序列"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 2,
+      "renderPerf": {
+        "totalMs": 54177,
+        "frames": 180,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/wx4766__html-to-video/sample.mp4",
+        "thumbPath": "_samples/wx4766__html-to-video/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 23.9,
+          "frames": 717,
+          "bytes": 1463783,
+          "codec": "h264"
+        },
+        "noteZh": "仓库自带 render-video-seek.js 渲染 demo-hero.html，6s/30fps"
+      },
+      "scores": {
+        "maturity": 1,
+        "usability": 4,
+        "performance": 2,
+        "docs": 3,
+        "windows": 5,
+        "activity": 5
+      },
+      "pros": [
+        "seek 到指定时刻逐帧截图，不受 rAF 实时速度限制",
+        "4 worker 并行截图，纯 CPU 也能出片",
+        "直接吃现成 HTML，不需要 React 或动画 DSL"
+      ],
+      "cons": [
+        "CPU 逐帧合成，长视频耗时线性增长（实测 3.3fps）",
+        "2026-10 新建，文档仅英文 README 与 demo",
+        "复杂 CSS 动画需自己保证可确定性 seek"
+      ],
+      "bestFor": "已有 HTML 页面/海报，想一键转固定时长视频的人",
+      "pitfalls": [
+        "无限循环动画无法 seek，帧内容会重复或漂移",
+        "多 worker 并行吃满 CPU，8GB 内存机器需降并发"
+      ],
+      "alternatives": [
+        "LBEILC__Multiplane",
+        "simonw__shot-scraper",
+        "nexu-io__html-video"
+      ],
+      "tags": [
+        "HTML 转视频",
+        "免 React",
+        "CPU 合成",
+        "多 worker"
+      ]
+    },
+    {
+      "id": "shadcn-labs__snapcn",
+      "owner": "shadcn-labs",
+      "repo": "snapcn",
+      "url": "https://github.com/shadcn-labs/snapcn",
+      "homepage": "https://snapcn.dev",
+      "stars": 560,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "TypeScript",
+      "createdAt": "2026-07-24",
+      "updatedAt": null,
+      "pushedAt": "2026-11-03",
+      "descriptionZh": "shadcn 风格的 Remotion 视频组件注册表",
+      "category": "模板与 CLI 工具",
+      "techStack": [
+        "TypeScript",
+        "React",
+        "Remotion",
+        "Tailwind CSS"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "Canvas"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 126805,
+        "frames": 108,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/shadcn-labs__snapcn/sample.mp4",
+        "thumbPath": "_samples/shadcn-labs__snapcn/preview.png",
+        "pipeline": "wrapper",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30,
+          "durationSec": 21,
+          "frames": 630,
+          "bytes": 1286797,
+          "codec": "h264"
+        },
+        "noteZh": "最小 Remotion 宿主复用 registry/cut-lockup 组件，渲染 108 帧"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 3,
+        "performance": 1,
+        "docs": 3,
+        "windows": 4,
+        "activity": 5
+      },
+      "pros": [
+        "按 shadcn CLI 方式分发视频组件，复制即用",
+        "覆盖标题、字幕、转场等常用镜头",
+        "组件源码自包含，只依赖 react+remotion"
+      ],
+      "cons": [
+        "整仓 pnpm 安装落盘不完整，实测 ERR_MODULE_NOT_FOUND",
+        "2026-07 建仓，组件与版本仍在早期",
+        "实测 0.85fps，长镜头渲染慢"
+      ],
+      "bestFor": "想要成套「视频版 shadcn」组件的 Remotion 用户",
+      "pitfalls": [
+        "--headless=old 在 Chrome 156 失效，需改回 --headless",
+        "组件拷出后会缺 studio 依赖，需补完整 dist"
+      ],
+      "alternatives": [
+        "Remocn__remocn",
+        "av__remotion-bits",
+        "remotion-dev__template-code-hike"
+      ],
+      "tags": [
+        "组件库",
+        "shadcn 风格",
+        "Remotion 生态"
+      ]
+    },
+    {
+      "id": "academa-labs__manimgx",
+      "owner": "academa-labs",
+      "repo": "manimgx",
+      "url": "https://github.com/academa-labs/manimgx",
+      "homepage": null,
+      "stars": 2506,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "Python",
+      "createdAt": "2026-10-05",
+      "updatedAt": null,
+      "pushedAt": "2026-11-02",
+      "descriptionZh": "Manim 风格 API，Rust/wgpu 核心出 1080p60",
+      "category": "动画引擎",
+      "techStack": [
+        "Python",
+        "Rust",
+        "wgpu",
+        "Manim API"
+      ],
+      "renderBackends": [
+        "wgpu",
+        "Canvas",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "png 序列"
+      ],
+      "gpuAcceleration": "required",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 41700,
+        "frames": 1507,
+        "width": 1920,
+        "height": 1080,
+        "fps": 60,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/academa-labs__manimgx/sample.mp4",
+        "thumbPath": "_samples/academa-labs__manimgx/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 29.93,
+          "frames": 898,
+          "bytes": 4690016,
+          "codec": "h264"
+        },
+        "noteZh": "pip 安装预编译 wheel，渲染仓库 examples/derivative.py，1507 帧"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 4,
+        "performance": 5,
+        "docs": 3,
+        "windows": 5,
+        "activity": 5
+      },
+      "pros": [
+        "pip 装预编译 wheel 即用，Manim 风格 API 迁移成本低",
+        "1080p60 实测 36fps，本次最快的 Python 渲染方案之一",
+        "Rust/wgpu 内核，不依赖 LaTeX 与 cairo"
+      ],
+      "cons": [
+        "0.1.1 早期版本，API 覆盖与 Manim 仍有差距",
+        "需要可用的 Vulkan/DX12 GPU，纯 CPU 无退路",
+        "文档集中在 examples，缺系统教程"
+      ],
+      "bestFor": "想要 Manim 语法但追求 GPU 速度、能接受 0.1 版本的项目",
+      "pitfalls": [
+        "虚拟机/远程桌面可能拿不到 wgpu 设备，导致渲染直接失败",
+        "与 Manim 不完全兼容，复杂场景需改写"
+      ],
+      "alternatives": [
+        "ManimCommunity__manim",
+        "3b1b__manim",
+        "AzurIce__ranim"
+      ],
+      "tags": [
+        "GPU 渲染",
+        "Manim 风格",
+        "1080p60",
+        "pip 安装"
+      ]
+    },
+    {
+      "id": "jeertmans__manim-slides",
+      "owner": "jeertmans",
+      "repo": "manim-slides",
+      "url": "https://github.com/jeertmans/manim-slides",
+      "homepage": "https://github.com/jeertmans/manim-slides",
+      "stars": 974,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "Python",
+      "createdAt": "2022-07-12",
+      "updatedAt": null,
+      "pushedAt": "2026-11-02",
+      "descriptionZh": "把 Manim 场景变成可交互幻灯片",
+      "category": "代码动画",
+      "techStack": [
+        "Python",
+        "Manim",
+        "Qt",
+        "Reveal.js"
+      ],
+      "renderBackends": [
+        "Cairo",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "html",
+        "pdf"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 1,
+      "renderPerf": {
+        "totalMs": 22169,
+        "frames": 120,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/jeertmans__manim-slides/sample.mp4",
+        "thumbPath": "_samples/jeertmans__manim-slides/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 20.9,
+          "frames": 627,
+          "bytes": 461013,
+          "codec": "h264"
+        },
+        "noteZh": "manim-slides render 仓库 example.py，取 BasicExample.mp4 作样例"
+      },
+      "scores": {
+        "maturity": 4,
+        "usability": 5,
+        "performance": 3,
+        "docs": 4,
+        "windows": 5,
+        "activity": 5
+      },
+      "pros": [
+        "一条命令把 Manim 场景转成 HTML/PDF 幻灯片，动画直接复用",
+        "支持交互式前进/后退，讲解与动画同屏",
+        "实测 22s 出 4s 成片，Windows pip 安装无坑"
+      ],
+      "cons": [
+        "convert 不直接产 mp4，需用 render 子命令产物",
+        "与 Manim 版本绑定，升级 Manim 要同步",
+        "定位是演示工具，不是批量视频生产线"
+      ],
+      "bestFor": "用 Manim 做课件或技术分享、需要现场可控播放的人",
+      "pitfalls": [
+        "manim-slides convert 不支持 mp4 目标，需取 render 产物",
+        "Qt 交互模式在无显示环境不可用"
+      ],
+      "alternatives": [
+        "ManimCommunity__manim",
+        "ManimCommunity__manim-voiceover",
+        "F4bbi__manim-dsa"
+      ],
+      "tags": [
+        "Manim 生态",
+        "幻灯片",
+        "交互演示"
+      ]
+    },
+    {
+      "id": "patriciogonzalezvivo__glslViewer",
+      "owner": "patriciogonzalezvivo",
+      "repo": "glslViewer",
+      "url": "https://github.com/patriciogonzalezvivo/glslViewer",
+      "homepage": null,
+      "stars": 5353,
+      "forks": null,
+      "openIssues": null,
+      "license": "BSD-3-Clause",
+      "language": "C++",
+      "createdAt": "2014-11-25",
+      "updatedAt": null,
+      "pushedAt": "2026-11-02",
+      "descriptionZh": "GLSL 着色器实时预览与无头录制",
+      "category": "动画引擎",
+      "techStack": [
+        "C++",
+        "OpenGL",
+        "GLSL",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "OpenGL",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "png 序列"
+      ],
+      "gpuAcceleration": "required",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 11706,
+        "frames": 150,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/patriciogonzalezvivo__glslViewer/sample.mp4",
+        "thumbPath": "_samples/patriciogonzalezvivo__glslViewer/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 23.9,
+          "frames": 717,
+          "bytes": 11752393,
+          "codec": "h264"
+        },
+        "noteZh": "官方 win64 发行包 + 补 FFmpeg DLL，headless 录制 5s/30fps"
+      },
+      "scores": {
+        "maturity": 5,
+        "usability": 3,
+        "performance": 4,
+        "docs": 4,
+        "windows": 4,
+        "activity": 5
+      },
+      "pros": [
+        "直接加载 .frag 着色器，改一行即时预览",
+        "自带 headless 录制：-E record,out.mp4,0,5,30",
+        "2014 年起维护，示例覆盖 shader、3D 与视频输入"
+      ],
+      "cons": [
+        "官方 win64 包缺 FFmpeg 共享 DLL，需自行补 ffmpeg 8.1 shared",
+        "面向 shader 创作，不是通用时间轴动画工具",
+        "需要可用 OpenGL 上下文，远程/无头环境要额外配置"
+      ],
+      "bestFor": "做 shader 视觉、生成式背景或 GPU 特效短片的人",
+      "pitfalls": [
+        "缺 DLL 时启动直接失败，把 ffmpeg 8.1 shared 放进同目录可解",
+        "headless 录制必须显式 -E record，默认只预览"
+      ],
+      "alternatives": [
+        "SkyeShark__eidoverse-video",
+        "spite__ccapture.js",
+        "dmnsgn__canvas-record"
+      ],
+      "tags": [
+        "GLSL",
+        "实时预览",
+        "无头录制",
+        "C++"
+      ]
+    },
+    {
+      "id": "charmbracelet__vhs",
+      "owner": "charmbracelet",
+      "repo": "vhs",
+      "url": "https://github.com/charmbracelet/vhs",
+      "homepage": null,
+      "stars": 21261,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "Go",
+      "createdAt": "2022-07-19",
+      "updatedAt": null,
+      "pushedAt": "2026-11-02",
+      "descriptionZh": "用 .tape 脚本录终端 GIF/MP4",
+      "category": "终端录制",
+      "techStack": [
+        "Go",
+        "ttyd",
+        "Chrome",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "Canvas",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "gif",
+        "mp4",
+        "webm",
+        "png 序列"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 4,
+      "renderPerf": {
+        "totalMs": 900000,
+        "frames": 408,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/charmbracelet__vhs/sample.mp4",
+        "thumbPath": "_samples/charmbracelet__vhs/preview.png",
+        "pipeline": "fallback",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 29.9,
+          "frames": 897,
+          "bytes": 1259747,
+          "codec": "h264"
+        },
+        "noteZh": "官方 ttyd 链路失败，改用 @napi-rs/canvas 按 tape 语义逐帧模拟终端"
+      },
+      "scores": {
+        "maturity": 5,
+        "usability": 2,
+        "performance": 1,
+        "docs": 4,
+        "windows": 2,
+        "activity": 5
+      },
+      "pros": [
+        "声明式 .tape：Type/Enter/Sleep 逐行写，产物可复现",
+        "输出 GIF/MP4/PNG，内置主题与字号设置",
+        "21k stars、Charm 团队维护，CLI 体验成熟"
+      ],
+      "cons": [
+        "Windows 官方链路不通：ttyd 1.7.7 WebSocket closed 1006，等不到 xterm 文本层",
+        "本次产物是终端模拟帧，不是真实 ttyd 录制",
+        "逐帧慢：13.6s 视频约 15 分钟"
+      ],
+      "bestFor": "在 macOS/Linux 上录终端演示的开发者",
+      "pitfalls": [
+        "ttyd 在 Windows 启动 ConPTY 子进程失败，WebSocket 立即 1006",
+        "Chrome 156 不打印 DevTools 行，vhs 拿不到录制端点"
+      ],
+      "alternatives": [
+        "asciinema__asciinema",
+        "asciinema__agg",
+        "leonid-shevtsov__headless"
+      ],
+      "tags": [
+        "终端录屏",
+        "GIF",
+        "声明式脚本",
+        "Windows 有坑"
+      ]
+    },
+    {
+      "id": "remotion-dev__template-code-hike",
+      "owner": "remotion-dev",
+      "repo": "template-code-hike",
+      "url": "https://github.com/remotion-dev/template-code-hike",
+      "homepage": null,
+      "stars": 222,
+      "forks": null,
+      "openIssues": null,
+      "license": "NOASSERTION",
+      "language": "TypeScript",
+      "createdAt": "2024-06-11",
+      "updatedAt": null,
+      "pushedAt": "2026-11-02",
+      "descriptionZh": "Remotion×Code Hike 的代码打字视频模板",
+      "category": "模板与 CLI 工具",
+      "techStack": [
+        "TypeScript",
+        "Remotion",
+        "Code Hike",
+        "React"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "Canvas"
+      ],
+      "outputFormats": [
+        "mp4",
+        "gif"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 4,
+      "renderPerf": {
+        "totalMs": 95834,
+        "frames": 360,
+        "width": 1106,
+        "height": 1080,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/remotion-dev__template-code-hike/sample.mp4",
+        "thumbPath": "_samples/remotion-dev__template-code-hike/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 29.9,
+          "frames": 897,
+          "bytes": 1088742,
+          "codec": "h264"
+        },
+        "noteZh": "模板自带 Composition 直接 npx remotion render，360 帧/12s"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 3,
+        "performance": 2,
+        "docs": 3,
+        "windows": 4,
+        "activity": 5
+      },
+      "pros": [
+        "代码逐行高亮 + 打字机动画，适合编程教学",
+        "模板自带 Composition，改文案即可渲染",
+        "基于 Remotion 4，可直接用其 render/studio"
+      ],
+      "cons": [
+        "无 package-lock，npm ci 不可用，安装约 14 分钟",
+        "package.json 标 UNLICENSED，模板不可直接商用",
+        "Code Hike 生态小众，版本升级易踩坑"
+      ],
+      "bestFor": "做代码讲解视频、且接受 Remotion 许可的团队",
+      "pitfalls": [
+        "缺 lockfile 导致 npm install 解析慢且不稳定",
+        "Vulkan 参数在 Chrome 156 会让浏览器退出"
+      ],
+      "alternatives": [
+        "remotion-dev__template-three",
+        "Remocn__remocn",
+        "Vincentwei1021__video-shotcraft"
+      ],
+      "tags": [
+        "代码视频",
+        "Remotion 模板",
+        "打字机"
+      ]
+    },
+    {
+      "id": "remotion-dev__template-three",
+      "owner": "remotion-dev",
+      "repo": "template-three",
+      "url": "https://github.com/remotion-dev/template-three",
+      "homepage": null,
+      "stars": 117,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "TypeScript",
+      "createdAt": "2021-06-01",
+      "updatedAt": null,
+      "pushedAt": "2026-11-02",
+      "descriptionZh": "Remotion + Three.js 的 3D 视频模板",
+      "category": "模板与 CLI 工具",
+      "techStack": [
+        "TypeScript",
+        "Remotion",
+        "Three.js",
+        "WebGL"
+      ],
+      "renderBackends": [
+        "WebGL",
+        "Chromium",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 4,
+      "renderPerf": {
+        "totalMs": 46812,
+        "frames": 150,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/remotion-dev__template-three/sample.mp4",
+        "thumbPath": "_samples/remotion-dev__template-three/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 29.9,
+          "frames": 897,
+          "bytes": 3898173,
+          "codec": "h264"
+        },
+        "noteZh": "官方 Three.js 模板 npx remotion render，取前 150 帧/720p"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 3,
+        "performance": 2,
+        "docs": 3,
+        "windows": 4,
+        "activity": 5
+      },
+      "pros": [
+        "Remotion 时间轴里直接跑 Three.js，3D 与字幕可叠加",
+        "模板结构清晰，替换 Scene 组件即可",
+        "支持 --gl=vulkan 走 GPU"
+      ],
+      "cons": [
+        "3D 资源与相机需自己调，模板只给最小场景",
+        "npm 安装约 11 分钟，版本锁死 Remotion 4",
+        "package.json 标 UNLICENSED，商用需换许可"
+      ],
+      "bestFor": "要在视频里放 3D 产品演示、且用 Remotion 的团队",
+      "pitfalls": [
+        "--gl=vulkan 在 Chrome 156 会让浏览器立即退出",
+        "默认只渲 150 帧，长镜头需改 durationInFrames"
+      ],
+      "alternatives": [
+        "SkyeShark__eidoverse-video",
+        "remotion-dev__template-code-hike",
+        "remotion-dev__remotion"
+      ],
+      "tags": [
+        "3D",
+        "Three.js",
+        "Remotion 模板"
+      ]
+    },
+    {
+      "id": "ManimCommunity__manim",
+      "owner": "ManimCommunity",
+      "repo": "manim",
+      "url": "https://github.com/ManimCommunity/manim",
+      "homepage": "https://www.manim.community/",
+      "stars": 42215,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "Python",
+      "createdAt": "2020-05-19",
+      "updatedAt": null,
+      "pushedAt": "2026-11-02",
+      "descriptionZh": "社区版 Manim：Python 数学动画的事实标准",
+      "category": "动画引擎",
+      "techStack": [
+        "Python",
+        "Cairo",
+        "FFmpeg",
+        "NumPy"
+      ],
+      "renderBackends": [
+        "Cairo",
+        "FFmpeg",
+        "OpenGL"
+      ],
+      "outputFormats": [
+        "mp4",
+        "gif",
+        "png 序列"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 73089,
+        "frames": 90,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/ManimCommunity__manim/sample.mp4",
+        "thumbPath": "_samples/ManimCommunity__manim/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 26.2,
+          "frames": 786,
+          "bytes": 2392265,
+          "codec": "h264"
+        },
+        "noteZh": "官方 example_scenes/basic.py 的 SquareToCircle，-qm 渲染"
+      },
+      "scores": {
+        "maturity": 5,
+        "usability": 3,
+        "performance": 1,
+        "docs": 5,
+        "windows": 5,
+        "activity": 5
+      },
+      "pros": [
+        "Scene/Transform/LaTeX 原语齐全，教程与社区最大",
+        "python -m manim -qm 一条命令出 mp4/gif/png",
+        "6 年维护、42k stars，官方文档站与示例仓完整"
+      ],
+      "cons": [
+        "Cairo 软件渲染，720p 实测 1.2fps，长片慢",
+        "LaTeX 场景需完整 TeX 发行版，体积与配置成本高",
+        "新 Python 版本偶发依赖不兼容，需补包"
+      ],
+      "bestFor": "做数学/算法讲解、需要成熟生态与大量教程的人",
+      "pitfalls": [
+        "-qm 下 90 帧需 73s，复杂 Transform 更慢",
+        "未装 LaTeX 时 Tex 类场景直接失败，Text 类可跑"
+      ],
+      "alternatives": [
+        "3b1b__manim",
+        "academa-labs__manimgx",
+        "F4bbi__manim-dsa"
+      ],
+      "tags": [
+        "数学动画",
+        "LaTeX",
+        "生态成熟",
+        "Python"
+      ]
+    },
+    {
+      "id": "AzurIce__ranim",
+      "owner": "AzurIce",
+      "repo": "ranim",
+      "url": "https://github.com/AzurIce/ranim",
+      "homepage": "https://azurice.github.io/ranim",
+      "stars": 662,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "Rust",
+      "createdAt": "2024-11-13",
+      "updatedAt": null,
+      "pushedAt": "2026-10-31",
+      "descriptionZh": "Rust+wgpu 的声明式动画引擎",
+      "category": "动画引擎",
+      "techStack": [
+        "Rust",
+        "wgpu",
+        "Vulkan",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "wgpu",
+        "Vulkan",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "png 序列"
+      ],
+      "gpuAcceleration": "required",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 5,
+      "renderPerf": {
+        "totalMs": 18417,
+        "frames": 300,
+        "width": 1920,
+        "height": 1080,
+        "fps": 60,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/AzurIce__ranim/sample.mp4",
+        "thumbPath": "_samples/AzurIce__ranim/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30,
+          "durationSec": 21,
+          "frames": 630,
+          "bytes": 658112,
+          "codec": "h264"
+        },
+        "noteZh": "cargo run 官方 hello_ranim 示例后二进制 render，1080p60 300 帧"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 1,
+        "performance": 4,
+        "docs": 3,
+        "windows": 5,
+        "activity": 5
+      },
+      "pros": [
+        "Rust 类型安全 + wgpu，1080p60 实测 16fps",
+        "自带 hello_ranim 示例，cargo run 即渲染",
+        "可直接复用 Rust 生态做程序化生成"
+      ],
+      "cons": [
+        "首次编译 902 个 crate，耗时 6596s（约 1.8 小时）",
+        "2024 年建仓、662 stars，文档以 examples/docs.rs 为主",
+        "必须有可用 Vulkan 设备，无软件渲染兜底"
+      ],
+      "bestFor": "愿意等一次长编译、换取 Rust 原生 GPU 渲染的团队",
+      "pitfalls": [
+        "CARGO_HOME/CARGO_TARGET_DIR 不重定向会写满 C 盘",
+        "编译 1.8 小时，迭代反馈极慢"
+      ],
+      "alternatives": [
+        "academa-labs__manimgx",
+        "yongkyuns__noon",
+        "0xS4N4TG__kinetograph"
+      ],
+      "tags": [
+        "Rust",
+        "wgpu",
+        "1080p60",
+        "编译极慢"
+      ]
+    },
+    {
+      "id": "Vincentwei1021__video-shotcraft",
+      "owner": "Vincentwei1021",
+      "repo": "video-shotcraft",
+      "url": "https://github.com/Vincentwei1021/video-shotcraft",
+      "homepage": null,
+      "stars": 16586,
+      "forks": null,
+      "openIssues": null,
+      "license": "Apache-2.0",
+      "language": "TypeScript",
+      "createdAt": "2026-07-19",
+      "updatedAt": null,
+      "pushedAt": "2026-10-29",
+      "descriptionZh": "Claude 技能包 + Remotion 模板，AI 起草宣传片",
+      "category": "模板与 CLI 工具",
+      "techStack": [
+        "TypeScript",
+        "Remotion",
+        "React",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 407870,
+        "frames": 1085,
+        "width": 1920,
+        "height": 1080,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/Vincentwei1021__video-shotcraft/sample.mp4",
+        "thumbPath": "_samples/Vincentwei1021__video-shotcraft/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 35.9,
+          "frames": 1077,
+          "bytes": 15333256,
+          "codec": "h264"
+        },
+        "noteZh": "取仓库 template/ 的 Remotion 工程完整渲染 1085 帧/36s"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 3,
+        "performance": 2,
+        "docs": 4,
+        "windows": 5,
+        "activity": 5
+      },
+      "pros": [
+        "把「写脚本→分镜→Remotion 渲染」打包成一套技能",
+        "自带 template/，npx remotion render 可直接出片",
+        "16.5k stars，README 给出完整工作流与提示词示例"
+      ],
+      "cons": [
+        "1085 帧 1080p 耗 408s，AI 产出仍需人工调整",
+        "依赖 Claude/LLM 客户端，纯离线只有模板可用",
+        "成片 36s/约 20MB，素材与字体版权需自查"
+      ],
+      "bestFor": "想让 LLM 起草宣传片分镜、再本地渲染的团队",
+      "pitfalls": [
+        "仓库是技能包不是独立工程，必须进 template/ 渲染",
+        "1080p 36s 成片渲染近 7 分钟"
+      ],
+      "alternatives": [
+        "remotion-dev__remotion",
+        "nexu-io__html-video",
+        "Remocn__remocn"
+      ],
+      "tags": [
+        "AI 生成",
+        "Remotion 模板",
+        "宣传片"
+      ]
+    },
+    {
+      "id": "welovemedia__ffmate",
+      "owner": "welovemedia",
+      "repo": "ffmate",
+      "url": "https://github.com/welovemedia/ffmate",
+      "homepage": null,
+      "stars": 601,
+      "forks": null,
+      "openIssues": null,
+      "license": "AGPL-3.0",
+      "language": "Go",
+      "createdAt": "2025-01-02",
+      "updatedAt": null,
+      "pushedAt": "2026-10-28",
+      "descriptionZh": "FFmpeg 任务队列服务，REST 提交与追踪编码",
+      "category": "剪辑与合成",
+      "techStack": [
+        "Go",
+        "FFmpeg",
+        "SQLite",
+        "REST API"
+      ],
+      "renderBackends": [
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "mov",
+        "mkv"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 2,
+      "renderPerf": {
+        "totalMs": 2282,
+        "frames": 120,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/welovemedia__ffmate/sample.mp4",
+        "thumbPath": "_samples/welovemedia__ffmate/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 21.9,
+          "frames": 657,
+          "bytes": 31273200,
+          "codec": "h264"
+        },
+        "noteZh": "启动 ffmate server 后 POST /api/v1/tasks，NVENC 合成 4s 视频"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 4,
+        "performance": 5,
+        "docs": 4,
+        "windows": 4,
+        "activity": 5
+      },
+      "pros": [
+        "把 ffmpeg 命令包装成 REST 队列，任务状态可轮询",
+        "单二进制 + 内嵌 SQLite，无常驻依赖",
+        "支持并发/重试与模板化任务，适合批量转码"
+      ],
+      "cons": [
+        "AGPL-3.0，网络分发需评估开源义务",
+        "Windows 下中文输出路径被解码成 'F:\\coding??'，任务直接失败",
+        "服务闲置约 34 分钟报 sqlite database is locked 并 panic（上游 bug）"
+      ],
+      "bestFor": "需要把零散 ffmpeg 任务收进服务端队列、做批量转码的团队",
+      "pitfalls": [
+        "中文输出路径会导致建目录失败，先写英文临时目录再复制回",
+        "长时间闲置后 sqlite 锁 panic，需定时重启或避免闲置"
+      ],
+      "alternatives": [
+        "mowshon__moviego",
+        "h2non__videoshow",
+        "transitive-bullshit__ffmpeg-concat"
+      ],
+      "tags": [
+        "FFmpeg",
+        "任务队列",
+        "REST",
+        "单二进制"
+      ]
+    },
+    {
+      "id": "asciinema__asciinema",
+      "owner": "asciinema",
+      "repo": "asciinema",
+      "url": "https://github.com/asciinema/asciinema",
+      "homepage": "https://asciinema.org",
+      "stars": 17934,
+      "forks": null,
+      "openIssues": null,
+      "license": "GPL-3.0",
+      "language": "Rust",
+      "createdAt": "2011-11-21",
+      "updatedAt": null,
+      "pushedAt": "2026-10-27",
+      "descriptionZh": "终端会话录制，产出 asciicast 文本",
+      "category": "终端录制",
+      "techStack": [
+        "Rust",
+        "PTY",
+        "asciicast v2"
+      ],
+      "renderBackends": [],
+      "outputFormats": [
+        "cast"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "yes",
+      "windowsSupport": "broken",
+      "installComplexity": 4,
+      "renderPerf": {
+        "totalMs": 180000,
+        "frames": 1153,
+        "width": 1008,
+        "height": 780,
+        "fps": 100,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/asciinema__asciinema/sample.mp4",
+        "thumbPath": "_samples/asciinema__asciinema/preview.png",
+        "pipeline": "fallback",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 26,
+          "frames": 780,
+          "bytes": 729924,
+          "codec": "h264"
+        },
+        "noteZh": "手写 asciicast v2（真实 PowerShell 输出）→ agg GIF → ffmpeg mp4"
+      },
+      "scores": {
+        "maturity": 5,
+        "usability": 2,
+        "performance": 3,
+        "docs": 4,
+        "windows": 1,
+        "activity": 5
+      },
+      "pros": [
+        "录制结果只是文本 cast，体积极小、可版本化",
+        "可重放/暂停/搜索，生态有 agg 等转换工具",
+        "2011 年起维护、17.9k stars，终端录制的行业格式"
+      ],
+      "cons": [
+        "官方不支持 Windows（README 明示依赖 Unix PTY）",
+        "本身不产视频，要视频得接 agg/ffmpeg",
+        "本次产物是手写 cast 走 agg→mp4 的间接链路"
+      ],
+      "bestFor": "在 Linux/macOS 上记录终端会话、需要可分享文本回放的开发者",
+      "pitfalls": [
+        "Windows 无 PTY 支持，直接安装运行会失败",
+        "cast→视频需另装 agg 与 ffmpeg，链路是拼出来的"
+      ],
+      "alternatives": [
+        "asciinema__agg",
+        "charmbracelet__vhs",
+        "leonid-shevtsov__headless"
+      ],
+      "tags": [
+        "终端录制",
+        "cast 格式",
+        "跨平台有坑"
+      ]
+    },
+    {
+      "id": "asciinema__agg",
+      "owner": "asciinema",
+      "repo": "agg",
+      "url": "https://github.com/asciinema/agg",
+      "homepage": "https://docs.asciinema.org/manual/agg/",
+      "stars": 1743,
+      "forks": null,
+      "openIssues": null,
+      "license": "GPL-3.0",
+      "language": "Rust",
+      "createdAt": "2022-07-29",
+      "updatedAt": null,
+      "pushedAt": "2026-10-27",
+      "descriptionZh": "把 asciicast 转成 GIF 的 Rust 单文件工具",
+      "category": "终端录制",
+      "techStack": [
+        "Rust",
+        "gifski",
+        "Skia"
+      ],
+      "renderBackends": [
+        "Skia",
+        "gifski"
+      ],
+      "outputFormats": [
+        "gif"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 1,
+      "renderPerf": {
+        "totalMs": 21352,
+        "frames": 181,
+        "width": 1207,
+        "height": 731,
+        "fps": 60,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/asciinema__agg/sample.gif",
+        "thumbPath": "_samples/asciinema__agg/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1207,
+          "height": 731,
+          "fps": 60,
+          "durationSec": 4.6,
+          "frames": 181,
+          "bytes": 139690,
+          "codec": "gif"
+        },
+        "noteZh": "自造 asciicast v2 后用 agg.exe 编码 GIF，181 帧/4.6s"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 5,
+        "performance": 3,
+        "docs": 4,
+        "windows": 5,
+        "activity": 5
+      },
+      "pros": [
+        "单个 exe，无需运行时，Windows 直接可用",
+        "主题/字号/fps-cap 参数齐全，能压出可用的 GIF",
+        "与 asciinema 生态无缝，cast 直接喂进去"
+      ],
+      "cons": [
+        "只输出 GIF，要 mp4 需再接 ffmpeg",
+        "重复帧会被 gifski 合并，平均帧率可能掉到 6-10fps",
+        "终端字体需本机存在，跨机器渲染字形会变"
+      ],
+      "bestFor": "已有 cast 文件、想快速出 GIF 演示的任何人",
+      "pitfalls": [
+        "重复帧合并会拉低平均帧率，需 --fps-cap 60 + 每帧变化内容",
+        "GIF 体积大，长会话建议直接转 mp4"
+      ],
+      "alternatives": [
+        "asciinema__asciinema",
+        "charmbracelet__vhs",
+        "h2non__videoshow"
+      ],
+      "tags": [
+        "cast 转 GIF",
+        "单文件",
+        "免安装"
+      ]
+    },
+    {
+      "id": "iart-ai__motion-skills",
+      "owner": "iart-ai",
+      "repo": "motion-skills",
+      "url": "https://github.com/iart-ai/motion-skills",
+      "homepage": null,
+      "stars": 1187,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "HTML",
+      "createdAt": "2026-06-22",
+      "updatedAt": null,
+      "pushedAt": "2026-10-25",
+      "descriptionZh": "给 LLM 的 GSAP 动效规范与可复用技能",
+      "category": "模板与 CLI 工具",
+      "techStack": [
+        "GSAP",
+        "JavaScript",
+        "HTML",
+        "Chromium"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "Canvas"
+      ],
+      "outputFormats": [
+        "mp4",
+        "gif"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "partial",
+      "windowsSupport": "works",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 79526,
+        "frames": 180,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/iart-ai__motion-skills/sample.mp4",
+        "thumbPath": "_samples/iart-ai__motion-skills/preview.png",
+        "pipeline": "wrapper",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 24.17,
+          "frames": 725,
+          "bytes": 1680833,
+          "codec": "h264"
+        },
+        "noteZh": "改造自带 showcase-to-gif.mjs，GSAP 逐帧 seek 截 180 帧后 NVENC 合成"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 3,
+        "performance": 2,
+        "docs": 3,
+        "windows": 5,
+        "activity": 5
+      },
+      "pros": [
+        "成套动效规范 + 提示词，可直接交给 LLM 生成页面",
+        "GSAP globalTimeline.time(t) 可确定性 seek",
+        "自带 showcase-to-gif 工具，改两行即可出片"
+      ],
+      "cons": [
+        "本质是技能/规范文档，不是渲染框架",
+        "逐帧 Playwright 截图慢，79s 才 180 帧",
+        "依赖 Chrome 与 GSAP 版本，API 变动需跟"
+      ],
+      "bestFor": "想让 AI 按统一动效规范产出网页动画、再自行录制的人",
+      "pitfalls": [
+        "waitForFunction 第二参数会被当 arg，需 (fn, null, {timeout})",
+        "GSAP 时间轴需全局可访问，否则无法逐帧 seek"
+      ],
+      "alternatives": [
+        "cth9191__animate",
+        "bangtutorial__bang-motion",
+        "remotion-dev__remotion"
+      ],
+      "tags": [
+        "GSAP",
+        "LLM 技能",
+        "动效规范"
+      ]
+    },
+    {
+      "id": "maloyan__manim-web",
+      "owner": "maloyan",
+      "repo": "manim-web",
+      "url": "https://github.com/maloyan/manim-web",
+      "homepage": "https://maloyan.github.io/manim-web/",
+      "stars": 510,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "TypeScript",
+      "createdAt": "2026-01-29",
+      "updatedAt": null,
+      "pushedAt": "2026-10-25",
+      "descriptionZh": "把 Manim 场景搬进浏览器渲染",
+      "category": "动画引擎",
+      "techStack": [
+        "TypeScript",
+        "Canvas",
+        "WebGL",
+        "WebCodecs"
+      ],
+      "renderBackends": [
+        "Canvas",
+        "WebGL"
+      ],
+      "outputFormats": [
+        "gif",
+        "webm",
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "partial",
+      "windowsSupport": "workaround",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 43237,
+        "frames": 90,
+        "width": 1280,
+        "height": 720,
+        "fps": 33.33,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/maloyan__manim-web/sample.gif",
+        "thumbPath": "_samples/maloyan__manim-web/preview.png",
+        "pipeline": "wrapper",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 33.33,
+          "durationSec": 2.7,
+          "frames": 90,
+          "bytes": 412805,
+          "codec": "gif"
+        },
+        "noteZh": "vite build 出 browser bundle，页面 scene.export 导出 2.7s GIF"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 3,
+        "performance": 2,
+        "docs": 3,
+        "windows": 4,
+        "activity": 5
+      },
+      "pros": [
+        "浏览器内直接跑 Manim 风格场景，无需 Python",
+        "可导出 gif/webm，适合嵌网页做交互演示",
+        "API 贴近 Manim，迁移成本低"
+      ],
+      "cons": [
+        "vite dev 在本机卡在 bundling dependencies，需改用 build",
+        "WebM 导出只写出 110B 空文件，本次退回 GIF",
+        "2026-01 建仓、510 stars，导出链路仍不稳"
+      ],
+      "bestFor": "想在网页里演示 Manim 动画、不介意导出格式受限的人",
+      "pitfalls": [
+        "vite dev 卡住时直接 vite build 出 dist 再引",
+        "WebM 导出空文件是已知坑，GIF 可用"
+      ],
+      "alternatives": [
+        "ManimCommunity__manim",
+        "academa-labs__manimgx",
+        "yongkyuns__noon"
+      ],
+      "tags": [
+        "浏览器渲染",
+        "Manim 风格",
+        "GIF 导出"
+      ]
+    },
+    {
+      "id": "LBEILC__Multiplane",
+      "owner": "LBEILC",
+      "repo": "Multiplane",
+      "url": "https://github.com/LBEILC/Multiplane",
+      "homepage": "https://github.com/LBEILC/Multiplane#readme",
+      "stars": 147,
+      "forks": null,
+      "openIssues": null,
+      "license": "Apache-2.0",
+      "language": "JavaScript",
+      "createdAt": "2026-10-11",
+      "updatedAt": null,
+      "pushedAt": "2026-10-25",
+      "descriptionZh": "分层 HTML 页面渲染成 MP4 的 CLI",
+      "category": "网页/H5 录屏",
+      "techStack": [
+        "JavaScript",
+        "Playwright",
+        "Chromium",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "WebGL",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "webm"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 258562,
+        "frames": 60,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/LBEILC__Multiplane/sample.mp4",
+        "thumbPath": "_samples/LBEILC__Multiplane/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30,
+          "durationSec": 19.9,
+          "frames": 597,
+          "bytes": 2897299,
+          "codec": "h264"
+        },
+        "noteZh": "npx multiplane render 自带 examples/animation.html，2 worker 出 2s 片"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 4,
+        "performance": 1,
+        "docs": 4,
+        "windows": 5,
+        "activity": 5
+      },
+      "pros": [
+        "把 HTML 拆成多层做视差/景深，直接渲染成 MP4",
+        "CLI 参数完整：--duration/--fps/--scale/--encoder",
+        "支持 nvenc-h264，GPU 编码可省时间"
+      ],
+      "cons": [
+        "实测 0.23fps：2s 素材要 258s，长片不现实",
+        "默认 workers 会开 6 个 Chromium 打爆 8GB 显存",
+        "2026-10 新建、147 stars，文档以示例为主"
+      ],
+      "bestFor": "做短视频片头/多层视差动效、能接受慢渲染的人",
+      "pitfalls": [
+        "必须把 --workers 降到 2，否则显存/CPU 抖动甚至失败",
+        "并发数受显存限制，不是 CPU 核数越多越快"
+      ],
+      "alternatives": [
+        "wx4766__html-to-video",
+        "simonw__shot-scraper",
+        "nexu-io__html-video"
+      ],
+      "tags": [
+        "HTML 转视频",
+        "分层视差",
+        "NVENC"
+      ]
+    },
+    {
+      "id": "SkyeShark__eidoverse-video",
+      "owner": "SkyeShark",
+      "repo": "eidoverse-video",
+      "url": "https://github.com/SkyeShark/eidoverse-video",
+      "homepage": null,
+      "stars": 117,
+      "forks": null,
+      "openIssues": null,
+      "license": "AGPL-3.0",
+      "language": "JavaScript",
+      "createdAt": "2026-07-06",
+      "updatedAt": null,
+      "pushedAt": "2026-10-19",
+      "descriptionZh": "WebGPU 驱动的 3D 数字人视频生成",
+      "category": "动画引擎",
+      "techStack": [
+        "JavaScript",
+        "Deno",
+        "three.js TSL",
+        "WebGPU"
+      ],
+      "renderBackends": [
+        "WebGPU",
+        "three.js",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "required",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 4,
+      "renderPerf": {
+        "totalMs": 258385,
+        "frames": 300,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/SkyeShark__eidoverse-video/sample.mp4",
+        "thumbPath": "_samples/SkyeShark__eidoverse-video/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 21.5,
+          "frames": 645,
+          "bytes": 21771807,
+          "codec": "h264"
+        },
+        "noteZh": "bootstrap + doctor 后渲染 basic_vrm.json，300 帧/10s"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 3,
+        "performance": 1,
+        "docs": 3,
+        "windows": 5,
+        "activity": 5
+      },
+      "pros": [
+        "原生 WebGPU 链路，Windows + RTX 4060 实测可跑",
+        "自带 doctor 自检硬件适配器与 compute readback",
+        "支持 VRM 数字人、口型与 3D 场景，h264_nvenc 出片"
+      ],
+      "cons": [
+        "首次 bootstrap 拉 deno 依赖 785s，冷启动很重",
+        "渲染总时长被模块图加载/编译主导，不是纯渲染耗时",
+        "2026-07 建仓、117 stars，示例偏少"
+      ],
+      "bestFor": "要做 3D 数字人/虚拟主播短片、且有独显的团队",
+      "pitfalls": [
+        "bootstrap 需缓存到 F 盘 deno_cache，否则重装一次 13 分钟",
+        "doctor 拿不到 hardware 适配器时渲染会失败"
+      ],
+      "alternatives": [
+        "0xS4N4TG__kinetograph",
+        "patriciogonzalezvivo__glslViewer",
+        "AzurIce__ranim"
+      ],
+      "tags": [
+        "WebGPU",
+        "3D 数字人",
+        "Deno",
+        "GPU 渲染"
+      ]
+    },
+    {
+      "id": "Matheart__manim-physics",
+      "owner": "Matheart",
+      "repo": "manim-physics",
+      "url": "https://github.com/Matheart/manim-physics",
+      "homepage": null,
+      "stars": 412,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "Python",
+      "createdAt": "2021-06-29",
+      "updatedAt": null,
+      "pushedAt": "2026-10-15",
+      "descriptionZh": "给 Manim 加 pymunk 物理刚体与碰撞",
+      "category": "代码动画",
+      "techStack": [
+        "Python",
+        "Manim",
+        "pymunk",
+        "shapely"
+      ],
+      "renderBackends": [
+        "Cairo",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "gif"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 2,
+      "renderPerf": {
+        "totalMs": 13503,
+        "frames": 201,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/Matheart__manim-physics/sample.mp4",
+        "thumbPath": "_samples/Matheart__manim-physics/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 22.7,
+          "frames": 681,
+          "bytes": 3179829,
+          "codec": "h264"
+        },
+        "noteZh": "自写 SpaceScene（pymunk 刚体碰撞），manim -qm 渲染 201 帧"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 4,
+        "performance": 4,
+        "docs": 3,
+        "windows": 5,
+        "activity": 5
+      },
+      "pros": [
+        "pymunk 刚体/碰撞/重力直接映射成 Manim 对象",
+        "API 简单，几行代码就能做小球碰撞场景",
+        "实测 14.9fps，在 Manim 插件里算很快"
+      ],
+      "cons": [
+        "元数据要求 Python <3.13，本机需 --ignore-requires-python",
+        "文档以 README 示例为主，缺完整参数说明",
+        "与 Manim 版本耦合，0.19 之外未验证"
+      ],
+      "bestFor": "要做物理/力学演示动画、且能控制 Python 版本的人",
+      "pitfalls": [
+        "Python 3.13 下直接 pip install 会被 Requires-Python 拒绝",
+        "需补 pymunk/shapely，--no-deps 装插件后自行补齐"
+      ],
+      "alternatives": [
+        "ManimCommunity__manim",
+        "UnMolDeQuimica__manim-Chemistry",
+        "F4bbi__manim-dsa"
+      ],
+      "tags": [
+        "物理引擎",
+        "Manim 插件",
+        "pymunk"
+      ]
+    },
+    {
+      "id": "simonw__shot-scraper",
+      "owner": "simonw",
+      "repo": "shot-scraper",
+      "url": "https://github.com/simonw/shot-scraper",
+      "homepage": "https://shot-scraper.datasette.io/",
+      "stars": 2602,
+      "forks": null,
+      "openIssues": null,
+      "license": "Apache-2.0",
+      "language": "Python",
+      "createdAt": "2022-03-08",
+      "updatedAt": null,
+      "pushedAt": "2026-10-14",
+      "descriptionZh": "Playwright 截图/录屏 CLI，支持分镜脚本",
+      "category": "网页/H5 录屏",
+      "techStack": [
+        "Python",
+        "Playwright",
+        "FFmpeg",
+        "Click"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "webm",
+        "png"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 131043,
+        "frames": 255,
+        "width": 1280,
+        "height": 720,
+        "fps": 25,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/simonw__shot-scraper/sample.mp4",
+        "thumbPath": "_samples/simonw__shot-scraper/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30,
+          "durationSec": 20.33,
+          "frames": 610,
+          "bytes": 1918112,
+          "codec": "h264"
+        },
+        "noteZh": "storyboard 录自建 demo.html 得 webm，再 NVENC 转 1280x720 mp4"
+      },
+      "scores": {
+        "maturity": 5,
+        "usability": 3,
+        "performance": 1,
+        "docs": 5,
+        "windows": 4,
+        "activity": 5
+      },
+      "pros": [
+        "成熟 CLI：截图、录制、storyboard 分镜都在一条命令里",
+        "storyboard.yml 描述点击/等待/场景，可脚本化",
+        "Simon Willison 维护，文档与示例质量高"
+      ],
+      "cons": [
+        "需 python -m playwright install ffmpeg，否则录制直接报错",
+        "storyboard 的 fps 字段在已装版本不支持，只能默认 25fps",
+        "浏览器实时录制约 1x 速度，10s 视频要 131s"
+      ],
+      "bestFor": "要录网页操作演示/产品 walkthrough、喜欢 CLI 的开发者",
+      "pitfalls": [
+        "缺 ffmpeg-win64.exe 时录制失败，需先装 playwright ffmpeg",
+        "fps 字段不被支持，写上会报错，删掉用默认"
+      ],
+      "alternatives": [
+        "wx4766__html-to-video",
+        "LBEILC__Multiplane",
+        "nexu-io__html-video"
+      ],
+      "tags": [
+        "网页录屏",
+        "storyboard",
+        "CLI",
+        "文档优秀"
+      ]
+    },
+    {
+      "id": "spite__ccapture.js",
+      "owner": "spite",
+      "repo": "ccapture.js",
+      "url": "https://github.com/spite/ccapture.js",
+      "homepage": "https://github.com/spite/ccapture.js#readme",
+      "stars": 3780,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "JavaScript",
+      "createdAt": "2012-09-03",
+      "updatedAt": null,
+      "pushedAt": "2026-10-13",
+      "descriptionZh": "老牌 canvas 逐帧捕获库，可导 mp4/webm",
+      "category": "网页/H5 录屏",
+      "techStack": [
+        "JavaScript",
+        "Canvas",
+        "WebM",
+        "Whammy"
+      ],
+      "renderBackends": [
+        "Canvas",
+        "WebGL",
+        "WebCodecs"
+      ],
+      "outputFormats": [
+        "mp4",
+        "webm",
+        "gif"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "no",
+      "windowsSupport": "works",
+      "installComplexity": 2,
+      "renderPerf": {
+        "totalMs": 3460,
+        "frames": 120,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/spite__ccapture.js/sample.mp4",
+        "thumbPath": "_samples/spite__ccapture.js/preview.png",
+        "pipeline": "wrapper",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 23.9,
+          "frames": 717,
+          "bytes": 16191745,
+          "codec": "h264"
+        },
+        "noteZh": "Playwright 打开 demo 页，CCapture 录 120 帧，监听下载保存"
+      },
+      "scores": {
+        "maturity": 4,
+        "usability": 3,
+        "performance": 5,
+        "docs": 3,
+        "windows": 5,
+        "activity": 5
+      },
+      "pros": [
+        "极轻量：一个库 + capturer.record 回调即可录 canvas",
+        "逐帧确定性推进，帧率不受 rAF 抖动影响",
+        "实测 120 帧 3.46s，编码速度最快一档"
+      ],
+      "cons": [
+        "是库不是 CLI，必须自建宿主页面与下载逻辑",
+        "2012 年的老库，依赖浏览器内置编码器与 polyfill",
+        "文档停留在 README，缺少现代 WebCodecs 方案"
+      ],
+      "bestFor": "已有 canvas/WebGL 作品、想低成本加「导出视频」按钮的项目",
+      "pitfalls": [
+        "手动 rAF 推进 + capturing 判断会让 frameCount 卡 0，改用库内 record 回调",
+        "WebM/GIF 编码器依赖额外 js，需自行打包"
+      ],
+      "alternatives": [
+        "dmnsgn__canvas-record",
+        "wx4766__html-to-video",
+        "ybouane__VideoFlow"
+      ],
+      "tags": [
+        "canvas 录制",
+        "逐帧确定",
+        "轻量库"
+      ]
+    },
+    {
+      "id": "cth9191__animate",
+      "owner": "cth9191",
+      "repo": "animate",
+      "url": "https://github.com/cth9191/animate",
+      "homepage": null,
+      "stars": 1467,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "JavaScript",
+      "createdAt": "2026-10-04",
+      "updatedAt": null,
+      "pushedAt": "2026-10-05",
+      "descriptionZh": "Claude 技能：分镜 HTML 动画导出竖屏视频",
+      "category": "模板与 CLI 工具",
+      "techStack": [
+        "JavaScript",
+        "Playwright",
+        "FFmpeg",
+        "TTS"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "Canvas",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "partial",
+      "windowsSupport": "works",
+      "installComplexity": 1,
+      "renderPerf": {
+        "totalMs": 21800,
+        "frames": 144,
+        "width": 1080,
+        "height": 1920,
+        "fps": 24,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/cth9191__animate/sample.mp4",
+        "thumbPath": "_samples/cth9191__animate/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1080,
+          "height": 1920,
+          "fps": 30,
+          "durationSec": 23.87,
+          "frames": 716,
+          "bytes": 18400572,
+          "codec": "h264"
+        },
+        "noteZh": "复用仓库 tools/export.mjs 导出 math demo，144 帧/24fps 带音轨"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 4,
+        "performance": 3,
+        "docs": 3,
+        "windows": 5,
+        "activity": 5
+      },
+      "pros": [
+        "技能包自带 export.mjs：逐帧截图 + 音轨 + ffmpeg 合成",
+        "含 TTS、stem-music/sfx 分轨，竖屏短视频流水线完整",
+        "仓库自带 math 风格 demo，可直接复跑"
+      ],
+      "cons": [
+        "不是独立 npm 工程，依赖 Claude 技能宿主",
+        "默认 1080x1920 竖屏，横屏需改配置",
+        "2026-10 建仓，1467 stars 但迭代仅数日"
+      ],
+      "bestFor": "要做竖屏知识/科普短视频、愿意用技能包工作流的人",
+      "pitfalls": [
+        "无 package.json，需直接调 skills/animate/tools/export.mjs",
+        "音轨与画面时长不一致时 ffmpeg mux 会报错，需先对齐"
+      ],
+      "alternatives": [
+        "iart-ai__motion-skills",
+        "bangtutorial__bang-motion",
+        "ybouane__VideoFlow"
+      ],
+      "tags": [
+        "竖屏视频",
+        "TTS",
+        "Claude 技能"
+      ]
+    },
+    {
+      "id": "leonid-shevtsov__headless",
+      "owner": "leonid-shevtsov",
+      "repo": "headless",
+      "url": "https://github.com/leonid-shevtsov/headless",
+      "homepage": null,
+      "stars": 969,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "Ruby",
+      "createdAt": "2010-08-06",
+      "updatedAt": null,
+      "pushedAt": "2026-09-30",
+      "descriptionZh": "Ruby 终端录屏 gem，依赖 Xvfb 与 PTY",
+      "category": "终端录制",
+      "techStack": [
+        "Ruby",
+        "Xvfb",
+        "PTY",
+        "headless browser"
+      ],
+      "renderBackends": [
+        "Chromium"
+      ],
+      "outputFormats": [
+        "mp4",
+        "gif"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "yes",
+      "windowsSupport": "broken",
+      "installComplexity": 5,
+      "renderPerf": null,
+      "sample": {
+        "status": "skipped",
+        "videoPath": null,
+        "thumbPath": null,
+        "pipeline": "none",
+        "spec": null,
+        "noteZh": "未执行：Windows 缺 Xvfb/PTY，按规则记 skip"
+      },
+      "scores": {
+        "maturity": 4,
+        "usability": 1,
+        "performance": 1,
+        "docs": 4,
+        "windows": 1,
+        "activity": 5
+      },
+      "pros": [
+        "Ruby 生态里少有的终端录屏方案",
+        "真实抓取终端输出而非模拟，保真度高",
+        "2010 年建仓，API 稳定"
+      ],
+      "cons": [
+        "依赖 Linux/macOS 的 Xvfb 与 Unix PTY，Windows 无实现",
+        "无预编译发行版，需自建 Ruby 环境",
+        "本次直接 skip，无产物可验证"
+      ],
+      "bestFor": "在 Linux CI 里自动生成终端演示的 Ruby 项目",
+      "pitfalls": [
+        "Windows 没有 Xvfb/PTY，WSL 也要额外发行版环境",
+        "无 gem 预编译包，安装需编译链"
+      ],
+      "alternatives": [
+        "asciinema__asciinema",
+        "charmbracelet__vhs",
+        "asciinema__agg"
+      ],
+      "tags": [
+        "Ruby",
+        "终端录屏",
+        "Windows 不可用"
+      ]
+    },
+    {
+      "id": "3b1b__videos",
+      "owner": "3b1b",
+      "repo": "videos",
+      "url": "https://github.com/3b1b/videos",
+      "homepage": null,
+      "stars": 11457,
+      "forks": null,
+      "openIssues": null,
+      "license": "NOASSERTION",
+      "language": "Python",
+      "createdAt": "2020-12-31",
+      "updatedAt": null,
+      "pushedAt": "2026-09-29",
+      "descriptionZh": "3Blue1Brown 视频源码合集（内容仓库）",
+      "category": "代码动画",
+      "techStack": [
+        "Python",
+        "ManimGL",
+        "LaTeX"
+      ],
+      "renderBackends": [
+        "OpenGL",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "partial",
+      "windowsSupport": "unknown",
+      "installComplexity": 5,
+      "renderPerf": null,
+      "sample": {
+        "status": "skipped",
+        "videoPath": null,
+        "thumbPath": null,
+        "pipeline": "none",
+        "spec": null,
+        "noteZh": "未执行：内容仓库，依赖 LaTeX/字体/音频全量环境，记 skip"
+      },
+      "scores": {
+        "maturity": 4,
+        "usability": 1,
+        "performance": 1,
+        "docs": 3,
+        "windows": 3,
+        "activity": 5
+      },
+      "pros": [
+        "真实生产级 manimgl 场景源码，可逐视频对照学习",
+        "覆盖 3D、相机、公式排版等高级用法",
+        "11.4k stars，是最权威的 Manim 用例库"
+      ],
+      "cons": [
+        "不是框架/工具，没有统一入口",
+        "依赖 manimgl + 全量 LaTeX + 专用字体与音频资产",
+        "单场景引用跨文件常量，难以孤立运行"
+      ],
+      "bestFor": "已会 ManimGL、想临摹 3b1b 镜头写法的创作者",
+      "pitfalls": [
+        "每个 .py 依赖同目录常量与资产，单独拷出跑不起来",
+        "LaTeX 全套体积巨大，Windows 配置成本高"
+      ],
+      "alternatives": [
+        "3b1b__manim",
+        "ManimCommunity__manim",
+        "academa-labs__manimgx"
+      ],
+      "tags": [
+        "内容仓库",
+        "ManimGL",
+        "学习素材"
+      ]
+    },
+    {
+      "id": "dmnsgn__canvas-record",
+      "owner": "dmnsgn",
+      "repo": "canvas-record",
+      "url": "https://github.com/dmnsgn/canvas-record",
+      "homepage": "https://github.com/dmnsgn/canvas-record",
+      "stars": 433,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "JavaScript",
+      "createdAt": "2019-06-18",
+      "updatedAt": null,
+      "pushedAt": "2026-09-17",
+      "descriptionZh": "Canvas 录制库，支持 mp4/gif/webm 导出",
+      "category": "网页/H5 录屏",
+      "techStack": [
+        "JavaScript",
+        "mediabunny",
+        "WebCodecs",
+        "h264-mp4-encoder"
+      ],
+      "renderBackends": [
+        "Canvas",
+        "WebGL",
+        "WebCodecs",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "gif",
+        "webm",
+        "png 序列"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "no",
+      "windowsSupport": "works",
+      "installComplexity": 2,
+      "renderPerf": {
+        "totalMs": 29526,
+        "frames": 120,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/dmnsgn__canvas-record/sample.mp4",
+        "thumbPath": "_samples/dmnsgn__canvas-record/preview.png",
+        "pipeline": "wrapper",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 20.67,
+          "frames": 620,
+          "bytes": 11966216,
+          "codec": "h264"
+        },
+        "noteZh": "Playwright 打开 demo.html，Recorder 固定 120 次 step 后保存 mp4"
+      },
+      "scores": {
+        "maturity": 4,
+        "usability": 3,
+        "performance": 2,
+        "docs": 4,
+        "windows": 5,
+        "activity": 4
+      },
+      "pros": [
+        "一个 Recorder 覆盖 mp4/gif/webm/png，换 extension 即可",
+        "step() 逐帧推进，适配任意 canvas/WebGL/WebGPU 内容",
+        "模块化 encoder，可按需换 mediabunny 或 wasm 编码器"
+      ],
+      "cons": [
+        "裸模块依赖，页面必须加 import-map 才能跑",
+        "RecorderStatus 未导出，靠状态判断容易只跑 1 帧",
+        "实测 4.1fps，长片编码慢"
+      ],
+      "bestFor": "已有 canvas 渲染器、想在浏览器里直接导出视频的开发者",
+      "pitfalls": [
+        "缺 import-map 会报裸模块解析失败",
+        "RecorderStatus 未导出，改为固定次数 step()"
+      ],
+      "alternatives": [
+        "spite__ccapture.js",
+        "wx4766__html-to-video",
+        "spite__ccapture.js"
+      ],
+      "tags": [
+        "canvas 录制",
+        "WebCodecs",
+        "多格式"
+      ]
+    },
+    {
+      "id": "ybouane__VideoFlow",
+      "owner": "ybouane",
+      "repo": "VideoFlow",
+      "url": "https://github.com/ybouane/VideoFlow",
+      "homepage": "https://videoflow.dev/",
+      "stars": 170,
+      "forks": null,
+      "openIssues": null,
+      "license": "Apache-2.0",
+      "language": "TypeScript",
+      "createdAt": "2026-03-30",
+      "updatedAt": null,
+      "pushedAt": "2026-09-16",
+      "descriptionZh": "在浏览器里用 DOM 合成视频的 JS 框架",
+      "category": "动画引擎",
+      "techStack": [
+        "TypeScript",
+        "Chromium",
+        "Canvas",
+        "WebCodecs"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "Canvas",
+        "WebCodecs"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 294370,
+        "frames": 93,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/ybouane__VideoFlow/sample.mp4",
+        "thumbPath": "_samples/ybouane__VideoFlow/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 20.9,
+          "frames": 627,
+          "bytes": 2529291,
+          "codec": "h264"
+        },
+        "noteZh": "Node 24 直跑 examples/01-basic-text.ts，NVENC 缩放到 720p"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 3,
+        "performance": 1,
+        "docs": 4,
+        "windows": 5,
+        "activity": 4
+      },
+      "pros": [
+        "用 DOM/Canvas 写画面，框架负责逐帧合成与 mp4 编码",
+        "自带 examples 与 CLI，Node 24 可直接跑 .ts",
+        "无需 React，前端知识即可上手"
+      ],
+      "cons": [
+        "浏览器内渲染 294s 才 3.1s 片，0.32fps 太慢",
+        "默认 1920x1080，降分辨率需自己加 ffmpeg 步骤",
+        "2026-03 建仓、170 stars，文档偏产品介绍"
+      ],
+      "bestFor": "要快速做数据可视化短片、能接受慢渲染的 Node 开发者",
+      "pitfalls": [
+        "逐帧 1x 超采样 + 元素截取是主要瓶颈，务必降 scale",
+        "输出默认 1080p，需要 720p 得二次转码"
+      ],
+      "alternatives": [
+        "remotion-dev__remotion",
+        "motion-canvas__motion-canvas",
+        "cth9191__animate"
+      ],
+      "tags": [
+        "DOM 合成",
+        "浏览器渲染",
+        "慢"
+      ]
+    },
+    {
+      "id": "av__remotion-bits",
+      "owner": "av",
+      "repo": "remotion-bits",
+      "url": "https://github.com/av/remotion-bits",
+      "homepage": null,
+      "stars": 508,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "TypeScript",
+      "createdAt": "2026-01-23",
+      "updatedAt": null,
+      "pushedAt": "2026-09-15",
+      "descriptionZh": "Remotion 动画组件集（MatrixRain 等）",
+      "category": "模板与 CLI 工具",
+      "techStack": [
+        "TypeScript",
+        "React",
+        "Remotion",
+        "Three.js"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "Canvas",
+        "WebGL"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 86892,
+        "frames": 150,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/av__remotion-bits/sample.mp4",
+        "thumbPath": "_samples/av__remotion-bits/preview.png",
+        "pipeline": "wrapper",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 23.9,
+          "frames": 717,
+          "bytes": 17069296,
+          "codec": "h264"
+        },
+        "noteZh": "新建 entry-lite.tsx 只注册 MatrixRain，Remotion 渲染 1080p 后 NVENC 缩放"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 3,
+        "performance": 1,
+        "docs": 3,
+        "windows": 4,
+        "activity": 4
+      },
+      "pros": [
+        "组件自带复杂动效（矩阵雨、粒子、标题渐隐），可直接进 Remotion",
+        "源码自包含，按需拷单个组件即可",
+        "Three.js 组件可做 3D 背景"
+      ],
+      "cons": [
+        "demo 入口引用不存在的 MotionTransition/Particles，直接渲染报模块缺失",
+        "需另装 three 并用 junction 解决跨目录解析",
+        "2026-01 建仓、508 stars，组件与文档仍在补"
+      ],
+      "bestFor": "已用 Remotion、想要即插即用复杂动效组件的项目",
+      "pitfalls": [
+        "原 demo 缺组件，需新建只注册目标组件的入口",
+        "跨目录 node_modules 需 junction，中文路径下可能解析失败"
+      ],
+      "alternatives": [
+        "Remocn__remocn",
+        "shadcn-labs__snapcn",
+        "remotion-dev__template-three"
+      ],
+      "tags": [
+        "Remotion 组件",
+        "MatrixRain",
+        "Three.js"
+      ]
+    },
+    {
+      "id": "bangtutorial__bang-motion",
+      "owner": "bangtutorial",
+      "repo": "bang-motion",
+      "url": "https://github.com/bangtutorial/bang-motion",
+      "homepage": null,
+      "stars": 1025,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "HTML",
+      "createdAt": "2026-09-05",
+      "updatedAt": null,
+      "pushedAt": "2026-09-15",
+      "descriptionZh": "给 LLM 的 motion 设计规范与模板（无渲染入口）",
+      "category": "其他",
+      "techStack": [
+        "HTML",
+        "Markdown",
+        "Prompt"
+      ],
+      "renderBackends": [],
+      "outputFormats": [],
+      "gpuAcceleration": "unknown",
+      "cliHeadless": "no",
+      "windowsSupport": "unknown",
+      "installComplexity": 5,
+      "renderPerf": null,
+      "sample": {
+        "status": "skipped",
+        "videoPath": null,
+        "thumbPath": null,
+        "pipeline": "none",
+        "spec": null,
+        "noteZh": "未执行：纯文档仓库，无渲染入口，记 skip"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 1,
+        "performance": 1,
+        "docs": 2,
+        "windows": 3,
+        "activity": 4
+      },
+      "pros": [
+        "提供成体系的动效原则与提示词模板，可直接喂 LLM",
+        "1k stars，说明 doc-only 形态有受众",
+        "内容轻量，易嵌进其他工作流"
+      ],
+      "cons": [
+        "没有 package.json / Remotion / Playwright 工程，无法出片",
+        "README 指向的 starters/ 在仓库中不存在",
+        "属技能文档仓库，不是视频工具"
+      ],
+      "bestFor": "只想拿提示词与动效规范、渲染交给别的工具的人",
+      "pitfalls": [
+        "README 里的 starters 路径缺失，照做会 404",
+        "无渲染入口，任何「出片」预期都不成立"
+      ],
+      "alternatives": [
+        "iart-ai__motion-skills",
+        "cth9191__animate",
+        "ybouane__VideoFlow"
+      ],
+      "tags": [
+        "提示词",
+        "动效规范",
+        "不可渲染"
+      ]
+    },
+    {
+      "id": "UnMolDeQuimica__manim-Chemistry",
+      "owner": "UnMolDeQuimica",
+      "repo": "manim-Chemistry",
+      "url": "https://github.com/UnMolDeQuimica/manim-Chemistry",
+      "homepage": "https://github.com/UnMolDeQuimica/manim-Chemistry",
+      "stars": 95,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "Python",
+      "createdAt": "2023-04-29",
+      "updatedAt": null,
+      "pushedAt": "2026-09-11",
+      "descriptionZh": "Manim 化学插件：分子结构与反应动画",
+      "category": "代码动画",
+      "techStack": [
+        "Python",
+        "Manim",
+        "RDKit",
+        "setuptools_scm"
+      ],
+      "renderBackends": [
+        "Cairo",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "gif",
+        "svg"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 2,
+      "renderPerf": {
+        "totalMs": 7200,
+        "frames": 150,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/UnMolDeQuimica__manim-Chemistry/sample.mp4",
+        "thumbPath": "_samples/UnMolDeQuimica__manim-Chemistry/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 26.07,
+          "frames": 782,
+          "bytes": 1351741,
+          "codec": "h264"
+        },
+        "noteZh": "pip 装插件后渲染自带 morphine_2d.mol + BohrAtom 场景，150 帧"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 4,
+        "performance": 5,
+        "docs": 3,
+        "windows": 5,
+        "activity": 4
+      },
+      "pros": [
+        "直接读 .mol 分子文件，把结构式渲染成 Manim 对象",
+        "实测 20.8fps，是本次 Manim 系插件里最快的",
+        "可与 BohrAtom 等原生对象叠加，做化学反应演示"
+      ],
+      "cons": [
+        "无 .git 的归档仓库下 setuptools_scm 取版本失败，安装需打补丁",
+        "README 旧示例的 filename= 已过时，实际是 filepath=",
+        "95 stars，覆盖的化学对象有限"
+      ],
+      "bestFor": "做化学结构/反应机理教学动画、已在用 Manim 的人",
+      "pitfalls": [
+        "装插件前需临时设置 SETUPTOOLS_SCM_PRETEND_VERSION",
+        "照 README 旧示例写 filename= 会报参数错误"
+      ],
+      "alternatives": [
+        "Matheart__manim-physics",
+        "ManimCommunity__manim",
+        "F4bbi__manim-dsa"
+      ],
+      "tags": [
+        "化学",
+        "Manim 插件",
+        "分子结构"
+      ]
+    },
+    {
+      "id": "3b1b__manim",
+      "owner": "3b1b",
+      "repo": "manim",
+      "url": "https://github.com/3b1b/manim",
+      "homepage": null,
+      "stars": 96097,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "Python",
+      "createdAt": "2015-03-22",
+      "updatedAt": null,
+      "pushedAt": "2026-09-09",
+      "descriptionZh": "ManimGL：3b1b 的实时 OpenGL 动画引擎",
+      "category": "动画引擎",
+      "techStack": [
+        "Python",
+        "OpenGL",
+        "moderngl",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "OpenGL",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "gif"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 56600,
+        "frames": 360,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/3b1b__manim/sample.mp4",
+        "thumbPath": "_samples/3b1b__manim/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30,
+          "durationSec": 25.8,
+          "frames": 774,
+          "bytes": 864189,
+          "codec": "h264"
+        },
+        "noteZh": "manimgl 1.7.2 独立 venv 渲染 example_scenes.py 的 TextExample"
+      },
+      "scores": {
+        "maturity": 5,
+        "usability": 3,
+        "performance": 3,
+        "docs": 4,
+        "windows": 4,
+        "activity": 4
+      },
+      "pros": [
+        "实时预览可拖动时间轴，调镜头最快",
+        "96k stars、11 年演进，3b1b 视频同源引擎",
+        "OpenGL 实时渲染，比 Cairo 版更适合复杂 3D 场景"
+      ],
+      "cons": [
+        "Python 3.13 下需补 audioop-lts 与 setuptools<81",
+        "与 ManimCE API 不兼容，社区教程大多不能直接用",
+        "LaTeX 场景依赖完整 TeX 发行版"
+      ],
+      "bestFor": "做高质量数学视频、需要实时调镜头与 3D 相机的创作者",
+      "pitfalls": [
+        "py3.13 缺 pyaudioop/pkg_resources，需补 audioop-lts 与 setuptools<81",
+        "manimgl 需 GLFW/OpenGL 上下文，远程无显示环境不可用"
+      ],
+      "alternatives": [
+        "ManimCommunity__manim",
+        "academa-labs__manimgx",
+        "yongkyuns__noon"
+      ],
+      "tags": [
+        "实时预览",
+        "OpenGL",
+        "数学动画",
+        "3b1b"
+      ]
+    },
+    {
+      "id": "codedbytahir__motionforge",
+      "owner": "codedbytahir",
+      "repo": "motionforge",
+      "url": "https://github.com/codedbytahir/motionforge",
+      "homepage": null,
+      "stars": 97,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "TypeScript",
+      "createdAt": "2026-02-14",
+      "updatedAt": null,
+      "pushedAt": "2026-08-29",
+      "descriptionZh": "Next.js 视频编辑器：时间轴 + Remotion 组件",
+      "category": "可视化编辑器",
+      "techStack": [
+        "TypeScript",
+        "Next.js",
+        "Prisma",
+        "Remotion",
+        "Vite"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "Canvas",
+        "WebGL"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "partial",
+      "windowsSupport": "workaround",
+      "installComplexity": 5,
+      "renderPerf": {
+        "totalMs": 2400000,
+        "frames": 300,
+        "width": 880,
+        "height": 532,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/codedbytahir__motionforge/sample.mp4",
+        "thumbPath": "_samples/codedbytahir__motionforge/preview.png",
+        "pipeline": "wrapper",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 30,
+          "frames": 900,
+          "bytes": 376320,
+          "codec": "h264"
+        },
+        "noteZh": "最小 Vite 宿主引仓库 Remotion 组件，Playwright 逐帧截 300 帧"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 2,
+        "performance": 1,
+        "docs": 3,
+        "windows": 4,
+        "activity": 4
+      },
+      "pros": [
+        "时间轴、图层、媒体面板齐全，可可视化编排",
+        "动画内核复用 Remotion 组件（KineticTypography/LiquidText）",
+        "可导出 30fps 视频"
+      ],
+      "cons": [
+        "无 CLI 导出，本次靠 Playwright 逐帧截图",
+        "1001 个包 pnpm 安装两次都超时，需最小 Vite 宿主",
+        "97 stars，文档无 demo 链接"
+      ],
+      "bestFor": "想要 Web 版动效编辑器、能自己搭构建链路的团队",
+      "pitfalls": [
+        "整仓安装 40 分钟仍 socket timeout，改用最小宿主",
+        "需 alias '@mf' 指向仓库源码并补 Tailwind @source"
+      ],
+      "alternatives": [
+        "openvideodev__react-video-editor",
+        "motion-canvas__motion-canvas",
+        "remotion-dev__remotion"
+      ],
+      "tags": [
+        "Web 编辑器",
+        "时间轴",
+        "Remotion 内核"
+      ]
+    },
+    {
+      "id": "Zulko__moviepy",
+      "owner": "Zulko",
+      "repo": "moviepy",
+      "url": "https://github.com/Zulko/moviepy",
+      "homepage": null,
+      "stars": 15104,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "Python",
+      "createdAt": "2013-08-12",
+      "updatedAt": null,
+      "pushedAt": "2026-08-26",
+      "descriptionZh": "Python 视频剪辑：拼接/转场/调色/字幕",
+      "category": "剪辑与合成",
+      "techStack": [
+        "Python",
+        "FFmpeg",
+        "NumPy",
+        "imageio"
+      ],
+      "renderBackends": [
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "gif",
+        "webm"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "no",
+      "windowsSupport": "works",
+      "installComplexity": 1,
+      "renderPerf": {
+        "totalMs": 36182,
+        "frames": 90,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/Zulko__moviepy/sample.mp4",
+        "thumbPath": "_samples/Zulko__moviepy/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30,
+          "durationSec": 28,
+          "frames": 840,
+          "bytes": 4282386,
+          "codec": "h264"
+        },
+        "noteZh": "用仓库 media/doc_medias/example.mp4 做 CrossFadeIn + 调色合成"
+      },
+      "scores": {
+        "maturity": 5,
+        "usability": 4,
+        "performance": 2,
+        "docs": 5,
+        "windows": 5,
+        "activity": 4
+      },
+      "pros": [
+        "Clip 组合模型直观，几行代码完成剪切/拼接/转场",
+        "13 年维护、15k stars，教程与 StackOverflow 答案最多",
+        "与 PIL/NumPy 互通，可做逐像素特效"
+      ],
+      "cons": [
+        "CPU 逐帧处理，720p 实测 2.5fps，长片慢",
+        "2.x 是破坏性大版本，旧教程代码大量失效",
+        "大文件易吃内存，需手动分块"
+      ],
+      "bestFor": "用 Python 做批量剪辑/合成、需要成熟文档的开发者",
+      "pitfalls": [
+        "2.x 改了导入与方法名，1.x 代码不能直接跑",
+        "长视频内存占用高，建议分段渲染再拼接"
+      ],
+      "alternatives": [
+        "mowshon__moviego",
+        "h2non__videoshow",
+        "mifi__editly"
+      ],
+      "tags": [
+        "Python 剪辑",
+        "生态成熟",
+        "CPU 合成"
+      ]
+    },
+    {
+      "id": "showlab__Code2Video",
+      "owner": "showlab",
+      "repo": "Code2Video",
+      "url": "https://github.com/showlab/Code2Video",
+      "homepage": null,
+      "stars": 2236,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "Python",
+      "createdAt": "2025-09-29",
+      "updatedAt": null,
+      "pushedAt": "2026-08-24",
+      "descriptionZh": "用 LLM 把题目自动生成 Manim 讲解视频",
+      "category": "模板与 CLI 工具",
+      "techStack": [
+        "Python",
+        "Manim",
+        "LLM API",
+        "VLM"
+      ],
+      "renderBackends": [
+        "Cairo",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "yes",
+      "windowsSupport": "unknown",
+      "installComplexity": 5,
+      "renderPerf": null,
+      "sample": {
+        "status": "skipped",
+        "videoPath": null,
+        "thumbPath": null,
+        "pipeline": "none",
+        "spec": null,
+        "noteZh": "未执行：缺 LLM/VLM API Key，按规则记 skip"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 1,
+        "performance": 1,
+        "docs": 3,
+        "windows": 3,
+        "activity": 4
+      },
+      "pros": [
+        "题目→脚本→Manim 代码→渲染的全自动流水线",
+        "2.2k stars，配套论文与提示词工程",
+        "ManimCE 0.19 可直接承接其产出"
+      ],
+      "cons": [
+        "必须填 LLM（推荐 Claude-4-Opus）与 VLM API Key",
+        "仓库无离线可复跑的 CASES 产物，缺 Key 完全不可用",
+        "生成质量依赖模型与提示词，需人工复核"
+      ],
+      "bestFor": "有 LLM API 预算、想把题目批量转成教学视频的团队",
+      "pitfalls": [
+        "api_config.json 不填 Key 时流程第一步就停",
+        "本机仅缺 Key，Manim 环境本身已就绪"
+      ],
+      "alternatives": [
+        "Vincentwei1021__video-shotcraft",
+        "3b1b__manim",
+        "ManimCommunity__manim"
+      ],
+      "tags": [
+        "LLM 生成",
+        "Manim",
+        "需 API Key"
+      ]
+    },
+    {
+      "id": "JazonJiao__Manim.js",
+      "owner": "JazonJiao",
+      "repo": "Manim.js",
+      "url": "https://github.com/JazonJiao/Manim.js",
+      "homepage": null,
+      "stars": 454,
+      "forks": null,
+      "openIssues": null,
+      "license": "未知",
+      "language": "JavaScript",
+      "createdAt": "2018-10-31",
+      "updatedAt": null,
+      "pushedAt": "2026-08-22",
+      "descriptionZh": "p5.js 复刻 Manim 的老项目（浏览器端）",
+      "category": "代码动画",
+      "techStack": [
+        "JavaScript",
+        "p5.js",
+        "Canvas"
+      ],
+      "renderBackends": [
+        "Canvas"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "no",
+      "windowsSupport": "workaround",
+      "installComplexity": 2,
+      "renderPerf": {
+        "totalMs": 9000,
+        "frames": 325,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/JazonJiao__Manim.js/sample.mp4",
+        "thumbPath": "_samples/JazonJiao__Manim.js/preview.png",
+        "pipeline": "wrapper",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 30,
+          "frames": 900,
+          "bytes": 803137,
+          "codec": "h264"
+        },
+        "noteZh": "Playwright 在本地 http 服务下录 Graph Algorithms 示例 9s，缩放 720p"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 3,
+        "performance": 5,
+        "docs": 2,
+        "windows": 4,
+        "activity": 4
+      },
+      "pros": [
+        "浏览器里用 p5.js 写数学动画，无需 Python 环境",
+        "自带 Graph Algorithms 等示例，打开即看",
+        "录制即实时播放，10s 片约 9s 抓完"
+      ],
+      "cons": [
+        "2018 年后基本停更，API 与现代 Manim 差距大",
+        "file:// 打开会被 CORS 阻断字体加载，需本地 http",
+        "是示例集合而非可安装库，无 CLI"
+      ],
+      "bestFor": "想在浏览器里快速做算法图解、不介意老代码的人",
+      "pitfalls": [
+        "必须起本地 http 服务，file:// 会因 CORS 加载失败",
+        "录制按实时 rAF 推进，掉帧即丢帧"
+      ],
+      "alternatives": [
+        "3b1b__manim",
+        "ManimCommunity__manim",
+        "ybouane__VideoFlow"
+      ],
+      "tags": [
+        "p5.js",
+        "算法图解",
+        "老项目"
+      ]
+    },
+    {
+      "id": "midrender__revideo",
+      "owner": "midrender",
+      "repo": "revideo",
+      "url": "https://github.com/midrender/revideo",
+      "homepage": null,
+      "stars": 4174,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "TypeScript",
+      "createdAt": "2024-03-11",
+      "updatedAt": null,
+      "pushedAt": "2026-07-15",
+      "descriptionZh": "Motion Canvas 分支：代码生成视频的渲染器",
+      "category": "动画引擎",
+      "techStack": [
+        "TypeScript",
+        "Vite",
+        "Chromium",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "Canvas",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 5,
+      "renderPerf": {
+        "totalMs": 8400,
+        "frames": 223,
+        "width": 1080,
+        "height": 1080,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/midrender__revideo/sample.mp4",
+        "thumbPath": "_samples/midrender__revideo/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 29.08,
+          "frames": 872,
+          "bytes": 820884,
+          "codec": "h264"
+        },
+        "noteZh": "构建 packages 后用 @revideo/core/ffmpeg 导出模板，223 帧"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 2,
+        "performance": 5,
+        "docs": 4,
+        "windows": 4,
+        "activity": 4
+      },
+      "pros": [
+        "实测 26.5fps，1080 方片 7.4s 渲染 8.4s，接近实时",
+        "Motion Canvas 语法 + 独立 renderer，可脚本化批量出片",
+        "packages/template 提供完整模板"
+      ],
+      "cons": [
+        "npm ci 拉 1734 个包耗时约 1 小时",
+        "默认 wasm 导出器只产出 156B 空 mp4，需换 @revideo/core/ffmpeg",
+        "中文路径下 @revideo/ui junction 解析失败，需实体副本"
+      ],
+      "bestFor": "要批量生成代码驱动视频、能忍受一次长安装的团队",
+      "pitfalls": [
+        "中文路径导致 junction 解析失败，改为复制实体目录",
+        "mp4-wasm 导出空文件，导致后续音轨时长取到 N/A"
+      ],
+      "alternatives": [
+        "motion-canvas__motion-canvas",
+        "remotion-dev__remotion",
+        "ybouane__VideoFlow"
+      ],
+      "tags": [
+        "Motion Canvas",
+        "渲染快",
+        "TypeScript",
+        "Windows 有坑"
+      ]
+    },
+    {
+      "id": "F4bbi__manim-dsa",
+      "owner": "F4bbi",
+      "repo": "manim-dsa",
+      "url": "https://github.com/F4bbi/manim-dsa",
+      "homepage": null,
+      "stars": 91,
+      "forks": null,
+      "openIssues": null,
+      "license": "未知",
+      "language": "Python",
+      "createdAt": "2024-08-30",
+      "updatedAt": null,
+      "pushedAt": "2026-07-13",
+      "descriptionZh": "Manim 数据结构/算法动画插件",
+      "category": "代码动画",
+      "techStack": [
+        "Python",
+        "Manim",
+        "Cairo"
+      ],
+      "renderBackends": [
+        "Cairo",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "gif"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 1,
+      "renderPerf": {
+        "totalMs": 21000,
+        "frames": 162,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/F4bbi__manim-dsa/sample.mp4",
+        "thumbPath": "_samples/F4bbi__manim-dsa/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 24,
+          "frames": 720,
+          "bytes": 548485,
+          "codec": "h264"
+        },
+        "noteZh": "pip 装插件后跑 README 示例（数组/栈/图），字体改 Consolas"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 4,
+        "performance": 3,
+        "docs": 3,
+        "windows": 5,
+        "activity": 4
+      },
+      "pros": [
+        "数组/栈/图等数据结构组件开箱即用",
+        "与 Manim 0.19 兼容，官方示例可直接跑",
+        "无外部依赖，pip 装完即可用"
+      ],
+      "cons": [
+        "仅 91 stars，组件覆盖范围有限",
+        "README 标 MIT badge 但仓库无 LICENSE 文件",
+        "与 Manim 版本耦合，升级需回归"
+      ],
+      "bestFor": "做算法可视化/数据结构讲解、已在用 Manim 的老师",
+      "pitfalls": [
+        "字体需换成系统可用字体，默认字体可能缺字",
+        "无 LICENSE 文件，商用前需向作者确认"
+      ],
+      "alternatives": [
+        "ManimCommunity__manim",
+        "Matheart__manim-physics",
+        "UnMolDeQuimica__manim-Chemistry"
+      ],
+      "tags": [
+        "算法可视化",
+        "Manim 插件",
+        "轻量"
+      ]
+    },
+    {
+      "id": "motion-canvas__motion-canvas",
+      "owner": "motion-canvas",
+      "repo": "motion-canvas",
+      "url": "https://github.com/motion-canvas/motion-canvas",
+      "homepage": null,
+      "stars": 19676,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "TypeScript",
+      "createdAt": "2022-08-03",
+      "updatedAt": null,
+      "pushedAt": "2026-07-02",
+      "descriptionZh": "带可视化编辑器的 TS 动画框架",
+      "category": "动画引擎",
+      "techStack": [
+        "TypeScript",
+        "Vite",
+        "Canvas",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Canvas",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "png 序列"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 4,
+      "renderPerf": {
+        "totalMs": 900000,
+        "frames": 120,
+        "width": 960,
+        "height": 540,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/motion-canvas__motion-canvas/sample.mp4",
+        "thumbPath": "_samples/motion-canvas__motion-canvas/preview.png",
+        "pipeline": "wrapper",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30,
+          "durationSec": 19,
+          "frames": 570,
+          "bytes": 529732,
+          "codec": "h264"
+        },
+        "noteZh": "自建最小工程 + Playwright 逐帧 stage.render，120 帧 ffmpeg 合成"
+      },
+      "scores": {
+        "maturity": 4,
+        "usability": 2,
+        "performance": 1,
+        "docs": 4,
+        "windows": 4,
+        "activity": 3
+      },
+      "pros": [
+        "可视化时间轴编辑器 + 强类型场景图，调动画直观",
+        "19.6k stars，文档与示例质量高",
+        "代码即时间轴，适合版本化维护复杂动效"
+      ],
+      "cons": [
+        "官方编辑器构建缺失，本次需自建最小工程",
+        "FFmpegBridge 依赖编辑器 UI，CLI 导出链路不完整",
+        "120 帧耗 900s，生产批量渲染成本高"
+      ],
+      "bestFor": "要做复杂 UI/数据动效、需要可视化时间轴的前端团队",
+      "pitfalls": [
+        "官方项目构建后编辑器缺失，需直接引 @motion-canvas/core",
+        "FullSceneDescription 需补 onReplaced，否则渲染中断"
+      ],
+      "alternatives": [
+        "midrender__revideo",
+        "remotion-dev__remotion",
+        "ManimCommunity__manim"
+      ],
+      "tags": [
+        "可视化编辑器",
+        "TypeScript",
+        "时间轴"
+      ]
+    },
+    {
+      "id": "openvideodev__react-video-editor",
+      "owner": "openvideodev",
+      "repo": "react-video-editor",
+      "url": "https://github.com/openvideodev/react-video-editor",
+      "homepage": null,
+      "stars": 1830,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "TypeScript",
+      "createdAt": "2024-08-02",
+      "updatedAt": null,
+      "pushedAt": "2026-06-30",
+      "descriptionZh": "Next.js+Pixi+WebCodecs 的 Web 剪辑器",
+      "category": "可视化编辑器",
+      "techStack": [
+        "TypeScript",
+        "Next.js",
+        "PixiJS",
+        "WebCodecs"
+      ],
+      "renderBackends": [
+        "WebGL",
+        "Pixi",
+        "WebCodecs"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "partial",
+      "windowsSupport": "broken",
+      "installComplexity": 5,
+      "renderPerf": null,
+      "sample": {
+        "status": "failed",
+        "videoPath": null,
+        "thumbPath": null,
+        "pipeline": "none",
+        "spec": null,
+        "noteZh": "pnpm 装完起 dev server，UI 挂载但 CanvasPanel 不 ready，无产物"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 1,
+        "performance": 1,
+        "docs": 3,
+        "windows": 1,
+        "activity": 3
+      },
+      "pros": [
+        "编辑器 UI 完整：Home/Menu/Export、Timeline、媒体面板",
+        "Pixi + WebCodecs 现代栈，潜在导出性能好",
+        "1.8k stars，架构设计可参考"
+      ],
+      "cons": [
+        "依赖外网字体 CDN，不可达时永久停在 Initializing Studio",
+        "Next 16 Turbopack 在 F 盘首编译约 7 分钟",
+        "无 CLI 导出，headless 与 headful 都无法 ready"
+      ],
+      "bestFor": "研究 Web 剪辑器架构、能自己修初始化链路的人",
+      "pitfalls": [
+        "字体 CDN 不可达导致 CanvasPanel 永不 onReady",
+        "Studio.ready 不收敛，替换字体后依然白屏"
+      ],
+      "alternatives": [
+        "codedbytahir__motionforge",
+        "motion-canvas__motion-canvas",
+        "remotion-dev__remotion"
+      ],
+      "tags": [
+        "Web 编辑器",
+        "Pixi",
+        "WebCodecs",
+        "不可用"
+      ]
+    },
+    {
+      "id": "mowshon__moviego",
+      "owner": "mowshon",
+      "repo": "moviego",
+      "url": "https://github.com/mowshon/moviego",
+      "homepage": null,
+      "stars": 303,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "Go",
+      "createdAt": "2022-04-18",
+      "updatedAt": null,
+      "pushedAt": "2026-06-22",
+      "descriptionZh": "Go 写的 FFmpeg 视频合成库",
+      "category": "剪辑与合成",
+      "techStack": [
+        "Go",
+        "FFmpeg",
+        "CLI"
+      ],
+      "renderBackends": [
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "partial",
+      "windowsSupport": "works",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 4569,
+        "frames": 150,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/mowshon__moviego/sample.mp4",
+        "thumbPath": "_samples/mowshon__moviego/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 25.01,
+          "frames": 750,
+          "bytes": 3392644,
+          "codec": "h264"
+        },
+        "noteZh": "go run 样例：lavfi testsrc2 背景 + 渐变卡片做画中画，150 帧"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 3,
+        "performance": 5,
+        "docs": 3,
+        "windows": 5,
+        "activity": 3
+      },
+      "pros": [
+        "Go 原生 API 拼图层/画中画/淡入，32.8fps 出片快",
+        "封装 FFmpeg 命令，无需记复杂滤镜串",
+        "2022 年起维护，示例可直接跑"
+      ],
+      "cons": [
+        "303 stars，文档以 README 示例为主",
+        "仍需自装 ffmpeg 与 Go 工具链",
+        "复杂时间轴/音轨能力有限"
+      ],
+      "bestFor": "用 Go 做批量视频合成、想要轻量 FFmpeg 封装的服务端",
+      "pitfalls": [
+        "首次 go mod tidy 走代理约 132s",
+        "本机无 Go 需装便携版并设 GOROOT/GOPATH"
+      ],
+      "alternatives": [
+        "welovemedia__ffmate",
+        "h2non__videoshow",
+        "Zulko__moviepy"
+      ],
+      "tags": [
+        "Go",
+        "FFmpeg 封装",
+        "画中画"
+      ]
+    },
+    {
+      "id": "nexu-io__html-video",
+      "owner": "nexu-io",
+      "repo": "html-video",
+      "url": "https://github.com/nexu-io/html-video",
+      "homepage": "https://github.com/nexu-io/html-video",
+      "stars": 4803,
+      "forks": null,
+      "openIssues": null,
+      "license": "Apache-2.0",
+      "language": "HTML",
+      "createdAt": "2026-05-27",
+      "updatedAt": null,
+      "pushedAt": "2026-06-21",
+      "descriptionZh": "模板市场 + CLI，把 HTML 渲染成短视频",
+      "category": "网页/H5 录屏",
+      "techStack": [
+        "TypeScript",
+        "Playwright",
+        "Chromium",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "webm"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 4,
+      "renderPerf": {
+        "totalMs": 55000,
+        "frames": 1690,
+        "width": 1920,
+        "height": 1080,
+        "fps": 60,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/nexu-io__html-video/sample.mp4",
+        "thumbPath": "_samples/nexu-io__html-video/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 60,
+          "durationSec": 29.85,
+          "frames": 1791,
+          "bytes": 959501,
+          "codec": "h264"
+        },
+        "noteZh": "CLI 用 frame-product-promo-30s 模板渲染，1080p60 28s 成片"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 1,
+        "performance": 5,
+        "docs": 4,
+        "windows": 5,
+        "activity": 3
+      },
+      "pros": [
+        "CLI + 模板市场，选模板即可出一条完整宣传片",
+        "Playwright 录 webm → ffmpeg 转 mp4，1080p60 实测 30.7fps",
+        "4.8k stars，模板体系完整"
+      ],
+      "cons": [
+        "pnpm 安装约 10 分钟，首次跑要 pnpm -r build",
+        "部分模板只产出 261B 空 MP4，需换模板",
+        "Windows 下 cli 的 chmod 步骤失败（不影响 tsc 产物）"
+      ],
+      "bestFor": "需要成套短视频模板、用 CLI 批量出片的运营/前端团队",
+      "pitfalls": [
+        "frame-bold-poster 等模板出空文件，改用 frame-product-promo-30s",
+        "chmod 在 Windows 报错可忽略，但需确认 dist 已构建"
+      ],
+      "alternatives": [
+        "remotion-dev__remotion",
+        "wx4766__html-to-video",
+        "LBEILC__Multiplane"
+      ],
+      "tags": [
+        "模板市场",
+        "HTML 转视频",
+        "CLI",
+        "1080p60"
+      ]
+    },
+    {
+      "id": "ManimCommunity__manim-voiceover",
+      "owner": "ManimCommunity",
+      "repo": "manim-voiceover",
+      "url": "https://github.com/ManimCommunity/manim-voiceover",
+      "homepage": "https://voiceover.manim.community",
+      "stars": 326,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "Python",
+      "createdAt": "2022-10-13",
+      "updatedAt": null,
+      "pushedAt": "2026-06-15",
+      "descriptionZh": "Manim 配音插件：TTS/录音/字幕",
+      "category": "代码动画",
+      "techStack": [
+        "Python",
+        "Manim",
+        "pyttsx3",
+        "moviepy"
+      ],
+      "renderBackends": [
+        "Cairo",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "srt"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 2,
+      "renderPerf": {
+        "totalMs": 58000,
+        "frames": 336,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/ManimCommunity__manim-voiceover/sample.mp4",
+        "thumbPath": "_samples/ManimCommunity__manim-voiceover/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 29.6,
+          "frames": 888,
+          "bytes": 1115946,
+          "codec": "h264"
+        },
+        "noteZh": "复刻 pyttsx3 示例，用 Windows SAPI 配音 + 自动字幕，336 帧"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 3,
+        "performance": 3,
+        "docs": 4,
+        "windows": 4,
+        "activity": 3
+      },
+      "pros": [
+        "离线 Windows SAPI TTS 即可配音，不需要 API Key",
+        "自动生成同名 .srt 字幕",
+        "与 Manim 场景无缝：with self.voiceover(...) 包住动画"
+      ],
+      "cons": [
+        "SAPI 实际写 WAV 而插件按 .mp3 命名，moviepy 报 HeaderNotFoundError",
+        "同进程二次 runAndWait 死锁，需独立子进程",
+        "离线音色机械，商用配音仍需外部 TTS"
+      ],
+      "bestFor": "做带旁白的数学/科普动画、想离线配音的人",
+      "pitfalls": [
+        "SAPI 输出格式与扩展名不一致，需子类修正",
+        "多次调用 TTS 会死锁，必须每段独立进程"
+      ],
+      "alternatives": [
+        "ManimCommunity__manim",
+        "jeertmans__manim-slides",
+        "F4bbi__manim-dsa"
+      ],
+      "tags": [
+        "配音",
+        "TTS",
+        "字幕",
+        "Manim 插件"
+      ]
+    },
+    {
+      "id": "krassowski__jupyter-manim",
+      "owner": "krassowski",
+      "repo": "jupyter-manim",
+      "url": "https://github.com/krassowski/jupyter-manim",
+      "homepage": null,
+      "stars": 198,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "Python",
+      "createdAt": "2019-05-22",
+      "updatedAt": null,
+      "pushedAt": "2026-04-13",
+      "descriptionZh": "在 Jupyter 单元格里渲染 Manim 动画",
+      "category": "代码动画",
+      "techStack": [
+        "Python",
+        "Jupyter",
+        "ManimCairo"
+      ],
+      "renderBackends": [
+        "Cairo"
+      ],
+      "outputFormats": [
+        "mp4",
+        "png"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "no",
+      "windowsSupport": "unknown",
+      "installComplexity": 5,
+      "renderPerf": null,
+      "sample": {
+        "status": "skipped",
+        "videoPath": null,
+        "thumbPath": null,
+        "pipeline": "none",
+        "spec": null,
+        "noteZh": "未执行：本机只有 ManimCE/ManimGL，缺 cairo-backend manimlib"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 1,
+        "performance": 1,
+        "docs": 4,
+        "windows": 3,
+        "activity": 3
+      },
+      "pros": [
+        "单元格内即时渲染，适合教学 notebook",
+        "文档明确写出支持范围，避免误用",
+        "与 Jupyter 生态集成度高"
+      ],
+      "cons": [
+        "只支持 3b1b 的 ManimCairo（cairo-backend 分支）",
+        "不适用于 ManimCE 与 ManimGL，本机无可用后端",
+        "更新缓慢，生态接近停更"
+      ],
+      "bestFor": "仍在维护 cairo-backend manimlib 的老教学环境",
+      "pitfalls": [
+        "README 明确「不适用于 ManimCE」，装错 Manim 版本必失败",
+        "cairo-backend 分支需单独安装，pip 默认装不到"
+      ],
+      "alternatives": [
+        "ManimCommunity__manim",
+        "3b1b__manim",
+        "jeertmans__manim-slides"
+      ],
+      "tags": [
+        "Jupyter",
+        "ManimCairo",
+        "后端受限"
+      ]
+    },
+    {
+      "id": "transitive-bullshit__ffmpeg-concat",
+      "owner": "transitive-bullshit",
+      "repo": "ffmpeg-concat",
+      "url": "https://github.com/transitive-bullshit/ffmpeg-concat",
+      "homepage": null,
+      "stars": 991,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "JavaScript",
+      "createdAt": "2018-04-04",
+      "updatedAt": null,
+      "pushedAt": "2026-01-24",
+      "descriptionZh": "用 GL 转场把多个视频片段拼成一条",
+      "category": "剪辑与合成",
+      "techStack": [
+        "JavaScript",
+        "FFmpeg",
+        "headless-gl"
+      ],
+      "renderBackends": [
+        "FFmpeg",
+        "WebGL"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 3,
+      "renderPerf": {
+        "totalMs": 10145,
+        "frames": 266,
+        "width": 640,
+        "height": 360,
+        "fps": 25,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/transitive-bullshit__ffmpeg-concat/sample.mp4",
+        "thumbPath": "_samples/transitive-bullshit__ffmpeg-concat/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30,
+          "durationSec": 18.42,
+          "frames": 552,
+          "bytes": 2533061,
+          "codec": "h264"
+        },
+        "noteZh": "用仓库 media 0/1/2 三段 + circleopen 转场，输出 640x360 10.6s"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 3,
+        "performance": 5,
+        "docs": 3,
+        "windows": 4,
+        "activity": 2
+      },
+      "pros": [
+        "circleopen 等 GL 转场效果，一行命令拼多段",
+        "CLI 直接传多个输入片段，实测 26fps",
+        "与 ffmpeg 生态兼容，输出标准 mp4"
+      ],
+      "cons": [
+        "该版本 CLI 无 --width/--height，输出沿用源尺寸",
+        "gl 需 node-gyp 或手动复制 webgl.node，Windows 无 MSVC 时麻烦",
+        "2018 年老库，更新节奏慢"
+      ],
+      "bestFor": "需要给多段素材加转场、能配好 node-gyp 的开发者",
+      "pitfalls": [
+        "gl 默认装源码版，无 MSVC 需复制预编译 webgl.node",
+        "--ignore-scripts 后要 npm rebuild sharp/ffmpeg-static"
+      ],
+      "alternatives": [
+        "mifi__editly",
+        "h2non__videoshow",
+        "welovemedia__ffmate"
+      ],
+      "tags": [
+        "GL 转场",
+        "多段拼接",
+        "node-gyp"
+      ]
+    },
+    {
+      "id": "h2non__videoshow",
+      "owner": "h2non",
+      "repo": "videoshow",
+      "url": "https://github.com/h2non/videoshow",
+      "homepage": null,
+      "stars": 903,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "JavaScript",
+      "createdAt": "2015-02-07",
+      "updatedAt": null,
+      "pushedAt": "2026-01-21",
+      "descriptionZh": "图片/视频拼成幻灯片视频的 FFmpeg 封装",
+      "category": "剪辑与合成",
+      "techStack": [
+        "JavaScript",
+        "FFmpeg",
+        "fluent-ffmpeg"
+      ],
+      "renderBackends": [
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "gif"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "partial",
+      "windowsSupport": "workaround",
+      "installComplexity": 2,
+      "renderPerf": {
+        "totalMs": 14781,
+        "frames": 300,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/h2non__videoshow/sample.mp4",
+        "thumbPath": "_samples/h2non__videoshow/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30,
+          "durationSec": 23.6,
+          "frames": 708,
+          "bytes": 2960003,
+          "codec": "h264"
+        },
+        "noteZh": "用仓库 test/fixtures 5 张 PNG 合成 720p 幻灯片，带淡入淡出"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 4,
+        "performance": 5,
+        "docs": 3,
+        "windows": 4,
+        "activity": 2
+      },
+      "pros": [
+        "5 张图 + 转场几行代码出片，API 极简",
+        "实测 20fps，编码速度不错",
+        "2015 年起维护，示例与 fixtures 齐全"
+      ],
+      "cons": [
+        "fluent-ffmpeg 2.1.2 与 ffmpeg 7 能力解析不兼容，需关预校验",
+        "仅封装 ffmpeg，复杂剪辑能力有限",
+        "文档停留在 README，更新慢"
+      ],
+      "bestFor": "把一组截图/图片快速做成带转场短视频的人",
+      "pitfalls": [
+        "必须关掉能力预校验，否则 fluent-ffmpeg 直接报错",
+        "输出尺寸需与输入图一致，否则画面被裁"
+      ],
+      "alternatives": [
+        "mowshon__moviego",
+        "mifi__editly",
+        "transitive-bullshit__ffmpeg-concat"
+      ],
+      "tags": [
+        "图片转视频",
+        "FFmpeg 封装",
+        "轻量"
+      ]
+    },
+    {
+      "id": "mifi__editly",
+      "owner": "mifi",
+      "repo": "editly",
+      "url": "https://github.com/mifi/editly",
+      "homepage": null,
+      "stars": 5579,
+      "forks": null,
+      "openIssues": null,
+      "license": "MIT",
+      "language": "TypeScript",
+      "createdAt": "2020-04-15",
+      "updatedAt": null,
+      "pushedAt": "2025-05-12",
+      "descriptionZh": "JSON 配置式视频剪辑，GL 转场",
+      "category": "剪辑与合成",
+      "techStack": [
+        "TypeScript",
+        "Canvas",
+        "WebGL",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Canvas",
+        "WebGL",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 4,
+      "renderPerf": {
+        "totalMs": 1200000,
+        "frames": 91,
+        "width": 640,
+        "height": 640,
+        "fps": 25,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/mifi__editly/sample.mp4",
+        "thumbPath": "_samples/mifi__editly/preview.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30,
+          "durationSec": 18.6,
+          "frames": 558,
+          "bytes": 2169512,
+          "codec": "h264"
+        },
+        "noteZh": "Node20 + tsx 直跑 src/cli.ts，渲染 examples/gradients 示例"
+      },
+      "scores": {
+        "maturity": 4,
+        "usability": 2,
+        "performance": 1,
+        "docs": 3,
+        "windows": 4,
+        "activity": 1
+      },
+      "pros": [
+        "JSON/JSON5 声明式剪辑，图层、字幕、转场都有字段",
+        "GL 转场丰富，5.6k stars",
+        "CLI 一条命令读配置出片"
+      ],
+      "cons": [
+        "canvas@2.11 无 Windows 预编译且无 MSVC，需转发到 @napi-rs/canvas",
+        "安装与修复耗时约 20 分钟",
+        "2025-05 后更新放缓"
+      ],
+      "bestFor": "想用声明式配置批量出片、能自己修 native 依赖的人",
+      "pitfalls": [
+        "canvas/gl 都需要本地编译，无 MSVC 时用 @napi-rs/canvas 转发",
+        "Node 版本需 20，tsx 直跑 src/cli.ts 才能绕过缺构建"
+      ],
+      "alternatives": [
+        "transitive-bullshit__ffmpeg-concat",
+        "h2non__videoshow",
+        "mowshon__moviego"
+      ],
+      "tags": [
+        "声明式剪辑",
+        "GL 转场",
+        "native 依赖"
+      ]
+    },
+    {
+      "id": "heygen-com__hyperframes",
+      "owner": "heygen-com",
+      "repo": "hyperframes",
+      "url": "https://github.com/heygen-com/hyperframes",
+      "homepage": "https://hyperframes.heygen.com",
+      "stars": 79071,
+      "forks": 7277,
+      "openIssues": 211,
+      "license": "Apache-2.0",
+      "language": "TypeScript",
+      "createdAt": "2026-03-10",
+      "updatedAt": "2026-11-05",
+      "pushedAt": "2026-11-05",
+      "descriptionZh": "HTML 写页面，CLI 逐帧渲成视频，专为 Agent 设计",
+      "category": "网页/H5 录屏",
+      "techStack": [
+        "TypeScript",
+        "Node.js",
+        "Chromium",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 2,
+      "renderPerf": {
+        "totalMs": 200000,
+        "frames": 239,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/heygen-com__hyperframes/sample.mp4",
+        "thumbPath": "showcase/app/dist/thumbs/heygen-com__hyperframes.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 22.3,
+          "frames": 669,
+          "bytes": 1406383,
+          "codec": "h264"
+        },
+        "noteZh": "根因：默认 workers=auto（22 进程）+ 自动下载浏览器，首个 Chrome 拉不起来导致 20 分钟 0 帧。改 --workers 1、本地 chrome-headless-shell（PUPPETEER_EXECUTABLE_PATH），并用官方 warm-grain 示例渲染 0–8s 成功"
+      },
+      "scores": {
+        "maturity": 4,
+        "usability": 3,
+        "performance": 3,
+        "docs": 4,
+        "windows": 2,
+        "activity": 5
+      },
+      "pros": [
+        "官方背景（HeyGen），仓库自带 Agent 技能与渲染约定",
+        "脚手架即含时间轴、字体、音频说明，不是纯文档",
+        "Apache-2.0，商用限制比 PolyForm 类许可宽松"
+      ],
+      "cons": [
+        "本次实测：init 正常；默认 workers=auto 在 Windows 上拉 22 个进程却 0 帧，改 --workers 1 + 本地 chrome-headless-shell 后 8s 出片",
+        "脚手架从 CDN 拉 GSAP，内网/弱网会降级（本次日志有 fetch failed 警告）",
+        "首次使用会自动下载浏览器并缓存到用户目录（本次落在 C:\\Users\\ROG\\.cache\\hyperframes）",
+        "依赖 Chromium 与 FFmpeg，CI 需自备浏览器"
+      ],
+      "bestFor": "产品发布短片：不需要剪辑软件，改 HTML 就能改片",
+      "pitfalls": [
+        "本次实测：init 正常；默认 workers=auto 在 Windows 上拉 22 个进程却 0 帧，改 --workers 1 + 本地 chrome-headless-shell 后 8s 出片",
+        "脚手架从 CDN 拉 GSAP，内网/弱网会降级（本次日志有 fetch failed 警告）"
+      ],
+      "alternatives": [
+        "wx4766__html-to-video",
+        "nexu-io__html-video",
+        "remotion-dev__remotion"
+      ],
+      "tags": [
+        "Agent 原生",
+        "HTML 动效",
+        "浏览器渲染",
+        "HeyGen",
+        "文章新增"
+      ],
+      "source": "article:Te14wRPAJiVpJ1k4O9pcpgX3nHg"
+    },
+    {
+      "id": "feitangyuan__onetake",
+      "owner": "feitangyuan",
+      "repo": "onetake",
+      "url": "https://github.com/feitangyuan/onetake",
+      "homepage": "https://onetakemotion.com",
+      "stars": 3763,
+      "forks": 259,
+      "openIssues": 9,
+      "license": "NOASSERTION",
+      "language": "Python",
+      "createdAt": "2026-09-26",
+      "updatedAt": "2026-11-05",
+      "pushedAt": "2026-11-05",
+      "descriptionZh": "一镜到底的 Web 动效片生成技能：镜头连续生长，8–15 秒发布片",
+      "category": "网页/H5 录屏",
+      "techStack": [
+        "HTML",
+        "JavaScript",
+        "Python",
+        "Playwright",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 2,
+      "renderPerf": {
+        "totalMs": 1520000,
+        "frames": 303,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/feitangyuan__onetake/sample.mp4",
+        "thumbPath": "showcase/app/dist/thumbs/feitangyuan__onetake.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30,
+          "durationSec": 21.8,
+          "frames": 654,
+          "bytes": 1406930,
+          "codec": "h264"
+        },
+        "noteZh": "官方 templates/comp.html（一镜到底模板，window.__seek 逐帧抓图）渲染 0–303 帧（1920×1080@30fps），因逐帧耗时过长截取前 ~10s，由 ffmpeg 编码后缩到 720p 入库"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 3,
+        "performance": 3,
+        "docs": 3,
+        "windows": 3,
+        "activity": 5
+      },
+      "pros": [
+        "强制“不切镜”的连续镜头语法，与常规分镜模板区分明显",
+        "渲染器自带运动模糊采样（--samples/--gap）",
+        "仓库带成片质检脚本，不只渲染"
+      ],
+      "cons": [
+        "本次实测：模板缺 lib/motion.js 时 window.__seek 未定义、渲染直接报错，补齐后才出片",
+        "逐帧抓图极慢（约 4–8 帧/分钟，默认 shutter 180° 每帧多次采样），12s 模板未在预算内跑完，本次截前 10s 编码",
+        "案例成片源码不随仓库分发，商用需确认 PolyForm Noncommercial 许可",
+        "Playwright 需匹配版本的 Chromium，环境不齐会直接失败"
+      ],
+      "bestFor": "产品发布 8–15s 片：没有剪辑软件也能出连续镜头",
+      "pitfalls": [
+        "本次实测：模板缺 lib/motion.js 时 window.__seek 未定义、渲染直接报错，补齐后才出片",
+        "逐帧抓图极慢（约 4–8 帧/分钟，默认 shutter 180° 每帧多次采样），12s 模板未在预算内跑完，本次截前 10s 编码"
+      ],
+      "alternatives": [
+        "wx4766__html-to-video",
+        "alchaincyf__huashu-motion"
+      ],
+      "tags": [
+        "一镜到底",
+        "Web 动效",
+        "Agent 技能",
+        "发布片",
+        "文章新增"
+      ],
+      "source": "article:Te14wRPAJiVpJ1k4O9pcpgX3nHg"
+    },
+    {
+      "id": "lemomo-ai__lemo-opuscar",
+      "owner": "lemomo-ai",
+      "repo": "lemo-opuscar",
+      "url": "https://github.com/lemomo-ai/lemo-opuscar",
+      "homepage": "https://lemomo-ai.github.io/lemo-opuscar/",
+      "stars": 12339,
+      "forks": 1424,
+      "openIssues": 15,
+      "license": "MIT",
+      "language": "JavaScript",
+      "createdAt": "2026-09-26",
+      "updatedAt": "2026-11-05",
+      "pushedAt": "2026-10-31",
+      "descriptionZh": "59 种视觉风格的代码化短片引擎，含渲染工具链与风格规范",
+      "category": "代码动画",
+      "techStack": [
+        "HTML",
+        "Canvas",
+        "WebGL",
+        "Node.js",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "Canvas",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "partial",
+      "windowsSupport": "workaround",
+      "installComplexity": 2,
+      "renderPerf": {
+        "totalMs": 246000,
+        "frames": 149,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/lemomo-ai__lemo-opuscar/sample.mp4",
+        "thumbPath": "showcase/app/dist/thumbs/lemomo-ai__lemo-opuscar.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1280,
+          "height": 720,
+          "fps": 30,
+          "durationSec": 20.2,
+          "frames": 606,
+          "bytes": 4927853,
+          "codec": "h264"
+        },
+        "noteZh": "仓库无示例工程，自写最小调用脚本（官方 core/render/page.mjs openDemo + 逐帧截图 + ffmpeg 合片），取 styles/ascii-crt/demo 前 5s；缺失字体按 fetch.sh 的做法本地补 VT323 后跑通"
+      },
+      "scores": {
+        "maturity": 4,
+        "usability": 2,
+        "performance": 3,
+        "docs": 3,
+        "windows": 2,
+        "activity": 5
+      },
+      "pros": [
+        "风格数量与体系化程度在同类里突出（59 套）",
+        "渲染层与内容层分离，风格可复用",
+        "MIT 许可，商用友好"
+      ],
+      "cons": [
+        "仓库不含可直接运行的示例工程，需自写调用脚本（本次用官方 core/render/page.mjs 写最小脚本跑通）",
+        "示例字体/素材按 fetch.sh 在线拉取，离线环境需自备字体文件",
+        "示例成片源码不随仓库分发"
+      ],
+      "bestFor": "品牌风格短片：需要统一视觉语言",
+      "pitfalls": [
+        "仓库不含可直接运行的示例工程，需自写调用脚本（本次用官方 core/render/page.mjs 写最小脚本跑通）",
+        "示例字体/素材按 fetch.sh 在线拉取，离线环境需自备字体文件"
+      ],
+      "alternatives": [
+        "alchaincyf__huashu-art-motion",
+        "remotion-dev__remotion"
+      ],
+      "tags": [
+        "风格库",
+        "Canvas/WebGL",
+        "代码短片",
+        "Agent 技能",
+        "文章新增"
+      ],
+      "source": "article:Te14wRPAJiVpJ1k4O9pcpgX3nHg"
+    },
+    {
+      "id": "alchaincyf__huashu-motion",
+      "owner": "alchaincyf",
+      "repo": "huashu-motion",
+      "url": "https://github.com/alchaincyf/huashu-motion",
+      "homepage": "https://github.com/alchaincyf/huashu-motion",
+      "stars": 2374,
+      "forks": 237,
+      "openIssues": 4,
+      "license": "MIT",
+      "language": "JavaScript",
+      "createdAt": "2026-10-18",
+      "updatedAt": "2026-11-05",
+      "pushedAt": "2026-10-22",
+      "descriptionZh": "花叔的 Web 动效片 CLI：om new/render，模板直接出片",
+      "category": "模板与 CLI 工具",
+      "techStack": [
+        "HTML",
+        "JavaScript",
+        "Node.js",
+        "Chromium",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 1,
+      "renderPerf": {
+        "totalMs": 626000,
+        "frames": 430,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/alchaincyf__huashu-motion/sample.mp4",
+        "thumbPath": "showcase/app/dist/thumbs/alchaincyf__huashu-motion.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 22.3,
+          "frames": 669,
+          "bytes": 8745430,
+          "codec": "h264"
+        },
+        "noteZh": "修复点：Chrome 全量浏览器在本机启动即静默退出（Chrome exited 0），改用 Playwright 的 chrome-headless-shell（OM_CHROME 指向）后官方 om render 正常出片，14.37s/1080p30"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 3,
+        "performance": 3,
+        "docs": 3,
+        "windows": 3,
+        "activity": 4
+      },
+      "pros": [
+        "CLI 设计完整（new/render/studio/doctor）",
+        "模板即工程，无需 React/Remotion 依赖",
+        "中文文档与示例对齐国内容创作习惯"
+      ],
+      "cons": [
+        "本次实测：doctor 全绿；本机 Chrome 156 启动即静默退出（Chrome exited 0），把 OM_CHROME 指向 Playwright 的 chrome-headless-shell 后正常出片",
+        "依赖本机 Chrome/Chromium，版本与全量浏览器在 Windows 上有兼容坑",
+        "模板风格偏信息型，纪录片/实拍类不适用"
+      ],
+      "bestFor": "知识口播片头：没有剪辑软件，改 HTML 就改片",
+      "pitfalls": [
+        "本次实测：doctor 全绿；本机 Chrome 156 启动即静默退出（Chrome exited 0），把 OM_CHROME 指向 Playwright 的 chrome-headless-shell 后正常出片",
+        "依赖本机 Chrome/Chromium，版本与全量浏览器在 Windows 上有兼容坑"
+      ],
+      "alternatives": [
+        "wx4766__html-to-video",
+        "alchaincyf__huashu-art-motion",
+        "feitangyuan__onetake"
+      ],
+      "tags": [
+        "CLI",
+        "模板",
+        "分镜",
+        "动效",
+        "文章新增"
+      ],
+      "source": "article:Te14wRPAJiVpJ1k4O9pcpgX3nHg"
+    },
+    {
+      "id": "alchaincyf__huashu-art-motion",
+      "owner": "alchaincyf",
+      "repo": "huashu-art-motion",
+      "url": "https://github.com/alchaincyf/huashu-art-motion",
+      "homepage": null,
+      "stars": 6260,
+      "forks": 626,
+      "openIssues": 8,
+      "license": "MIT",
+      "language": "JavaScript",
+      "createdAt": "2026-10-06",
+      "updatedAt": "2026-11-05",
+      "pushedAt": "2026-10-16",
+      "descriptionZh": "Kurzgesagt/Vox 风格代码动画：spec JSON 逐帧渲染",
+      "category": "代码动画",
+      "techStack": [
+        "HTML",
+        "JavaScript",
+        "Canvas",
+        "Python",
+        "Playwright",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4",
+        "ProRes(alpha)"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 2,
+      "renderPerf": {
+        "totalMs": 42000,
+        "frames": 299,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/alchaincyf__huashu-art-motion/sample.mp4",
+        "thumbPath": "showcase/app/dist/thumbs/alchaincyf__huashu-art-motion.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 22.5,
+          "frames": 675,
+          "bytes": 2261371,
+          "codec": "h264"
+        },
+        "noteZh": "官方 examples/t1_3b1b.json（数学讲解语法），10s 1920×1080@30fps，缩到 720p 入库；渲染器自带版式/转场/相机"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 4,
+        "performance": 4,
+        "docs": 3,
+        "windows": 4,
+        "activity": 4
+      },
+      "pros": [
+        "spec 是强契约：时长严格等于 duration×fps，便于流水线拼接",
+        "示例与版式演示数量多且可直接跑",
+        "支持透明通道导出"
+      ],
+      "cons": [
+        "画风偏欧美科普，中文排版需自行调字体",
+        "需要 Python + Playwright + FFmpeg 三件套",
+        "无 GUI，改片靠改 JSON/页面"
+      ],
+      "bestFor": "知识/科普讲解：需要稳重版式与清晰层级",
+      "pitfalls": [
+        "画风偏欧美科普，中文排版需自行调字体",
+        "需要 Python + Playwright + FFmpeg 三件套"
+      ],
+      "alternatives": [
+        "ManimCommunity__manim",
+        "3b1b__videos",
+        "motion-canvas__motion-canvas"
+      ],
+      "tags": [
+        "讲解视频",
+        "分镜语法",
+        "逐帧渲染",
+        "示例齐全",
+        "文章新增"
+      ],
+      "source": "article:Te14wRPAJiVpJ1k4O9pcpgX3nHg"
+    },
+    {
+      "id": "threerocks__sweety-handdraw-video",
+      "owner": "threerocks",
+      "repo": "sweety-handdraw-video",
+      "url": "https://github.com/threerocks/sweety-handdraw-video",
+      "homepage": null,
+      "stars": 1055,
+      "forks": 176,
+      "openIssues": 2,
+      "license": "MIT",
+      "language": "JavaScript",
+      "createdAt": "2026-10-12",
+      "updatedAt": "2026-11-05",
+      "pushedAt": "2026-11-03",
+      "descriptionZh": "手绘讲解视频流水线：美术图 → 本地描线渲染 → TTS 配音",
+      "category": "其他",
+      "techStack": [
+        "JavaScript",
+        "Python(可选)",
+        "Remotion/HTML",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "本地 compositor"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "partial",
+      "windowsSupport": "unknown",
+      "installComplexity": 3,
+      "renderPerf": null,
+      "sample": {
+        "status": "skipped",
+        "videoPath": null,
+        "thumbPath": null,
+        "pipeline": "none",
+        "spec": null,
+        "noteZh": "缺宿主生图工具与完整 job/design/art-direction/旁白对齐，构造 simulated 任务超预算，未出片"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 2,
+        "performance": 3,
+        "docs": 3,
+        "windows": 2,
+        "activity": 4
+      },
+      "pros": [
+        "手绘描线而非纯剪贴，质感与常见 AI 视频区分",
+        "流水线覆盖美术→动画→配音",
+        "MIT 许可"
+      ],
+      "cons": [
+        "核心美术步骤依赖宿主生图工具（Codex/Gemini 等），本轮无凭据未跑通",
+        "完整 job 还需 design.json、art-direction 哈希记录、旁白对齐 JSON 与本地 TTS 模型，构造 simulated 任务超预算",
+        "仓库体量大（41MB 下载/60MB 解压），依赖链未验证"
+      ],
+      "bestFor": "教育/科普讲解：需要手绘质感",
+      "pitfalls": [
+        "核心美术步骤依赖宿主生图工具（Codex/Gemini 等），本轮无凭据未跑通",
+        "完整 job 还需 design.json、art-direction 哈希记录、旁白对齐 JSON 与本地 TTS 模型，构造 simulated 任务超预算"
+      ],
+      "alternatives": [
+        "kaomei__stickman-video-director",
+        "iart-ai__motion-skills"
+      ],
+      "tags": [
+        "手绘风",
+        "美术流水线",
+        "配音",
+        "讲解视频",
+        "文章新增"
+      ],
+      "source": "article:Te14wRPAJiVpJ1k4O9pcpgX3nHg"
+    },
+    {
+      "id": "browser-use__video-use",
+      "owner": "browser-use",
+      "repo": "video-use",
+      "url": "https://github.com/browser-use/video-use",
+      "homepage": "https://video-use.com",
+      "stars": 30559,
+      "forks": 3544,
+      "openIssues": 164,
+      "license": "MIT",
+      "language": "Python",
+      "createdAt": "2026-04-12",
+      "updatedAt": "2026-11-05",
+      "pushedAt": "2026-10-08",
+      "descriptionZh": "Agent 驱动的自动剪辑：转录 → 删废话 → 动画/字幕/调色",
+      "category": "剪辑与合成",
+      "techStack": [
+        "Python",
+        "FFmpeg",
+        "ElevenLabs",
+        "Claude/Codex"
+      ],
+      "renderBackends": [
+        "FFmpeg",
+        "Manim(可选)"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "yes",
+      "windowsSupport": "unknown",
+      "installComplexity": 2,
+      "renderPerf": {
+        "totalMs": 95000,
+        "frames": 210,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/browser-use__video-use/sample.mp4",
+        "thumbPath": "showcase/app/dist/thumbs/browser-use__video-use.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 20.63,
+          "frames": 619,
+          "bytes": 3452269,
+          "codec": "h264"
+        },
+        "noteZh": "缺口：云端 Scribe 转录需 ElevenLabs Key。用本机 SAPI 合成本地配音 + 手写词级时间轴代替转录，走官方 render.py 的裁切/调色/字幕合成链路；字幕合成步骤因仓库 ffmpeg 转义在本机报错，按同一命令手工完成（base.mp4 + master.srt）"
+      },
+      "scores": {
+        "maturity": 4,
+        "usability": 3,
+        "performance": 3,
+        "docs": 4,
+        "windows": 2,
+        "activity": 4
+      },
+      "pros": [
+        "把剪辑决策显式交给 Agent，流程可审计",
+        "转录/字幕/切分脚本齐全",
+        "browser-use 团队维护，文档规范"
+      ],
+      "cons": [
+        "官方转录链路需 ElevenLabs API Key；本轮用本机 SAPI 配音 + 手写词级时间轴替代转录，才跑通剪辑/调色/字幕链路",
+        "不做画面生成，纯剪辑自动化",
+        "长视频成本取决于转录服务计费"
+      ],
+      "bestFor": "播客/访谈切片：长素材快速出多条",
+      "pitfalls": [
+        "官方转录链路需 ElevenLabs API Key；本轮用本机 SAPI 配音 + 手写词级时间轴替代转录，才跑通剪辑/调色/字幕链路",
+        "不做画面生成，纯剪辑自动化"
+      ],
+      "alternatives": [
+        "Zulko__moviepy",
+        "welovemedia__ffmate",
+        "mifi__editly"
+      ],
+      "tags": [
+        "自动剪辑",
+        "Agent",
+        "转录",
+        "字幕",
+        "文章新增"
+      ],
+      "source": "article:Te14wRPAJiVpJ1k4O9pcpgX3nHg"
+    },
+    {
+      "id": "pedrovelasquez9__fragua",
+      "owner": "pedrovelasquez9",
+      "repo": "fragua",
+      "url": "https://github.com/pedrovelasquez9/fragua",
+      "homepage": "https://programacion-es.dev/redes",
+      "stars": 13,
+      "forks": 0,
+      "openIssues": 0,
+      "license": "MIT",
+      "language": "Python",
+      "createdAt": "2026-08-13",
+      "updatedAt": "2026-11-04",
+      "pushedAt": "2026-10-30",
+      "descriptionZh": "竖屏口播自动去静默 + 烧录字幕的 FFmpeg/Whisper 流水线",
+      "category": "剪辑与合成",
+      "techStack": [
+        "Python",
+        "FFmpeg",
+        "Whisper",
+        "Remotion"
+      ],
+      "renderBackends": [
+        "FFmpeg",
+        "Remotion(卡片)"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 3,
+      "renderPerf": null,
+      "sample": {
+        "status": "skipped",
+        "videoPath": null,
+        "thumbPath": null,
+        "pipeline": "none",
+        "spec": null,
+        "noteZh": "setup 需拉取约 1.6GB Whisper 模型并通过系统包管理安装依赖，超出本轮基础验证预算"
+      },
+      "scores": {
+        "maturity": 1,
+        "usability": 2,
+        "performance": 3,
+        "docs": 2,
+        "windows": 2,
+        "activity": 3
+      },
+      "pros": [
+        "专注竖屏口播的端到端流水线",
+        "本地 Whisper，不依赖云服务",
+        "卡片式字幕有专门模板"
+      ],
+      "cons": [
+        "安装脚本会拉 1.6GB 模型并调用系统包管理，本轮未执行（skipped）",
+        "星标极少（13），成熟度与文档覆盖有限",
+        "Windows 兼容性未验证"
+      ],
+      "bestFor": "竖屏口播：批量去停顿",
+      "pitfalls": [
+        "安装脚本会拉 1.6GB 模型并调用系统包管理，本轮未执行（skipped）",
+        "星标极少（13），成熟度与文档覆盖有限"
+      ],
+      "alternatives": [
+        "welovemedia__ffmate",
+        "transitive-bullshit__ffmpeg-concat"
+      ],
+      "tags": [
+        "竖屏",
+        "去静默",
+        "字幕",
+        "Whisper",
+        "文章新增"
+      ],
+      "source": "article:Te14wRPAJiVpJ1k4O9pcpgX3nHg"
+    },
+    {
+      "id": "yihui-dev__awesome-opus5-5-videos",
+      "owner": "yihui-dev",
+      "repo": "awesome-opus5-5-videos",
+      "url": "https://github.com/yihui-dev/awesome-opus5-5-videos",
+      "homepage": "https://skillry.dev/ai-videos/opus-5-5",
+      "stars": 13606,
+      "forks": 1431,
+      "openIssues": 11,
+      "license": "MIT",
+      "language": null,
+      "createdAt": "2026-09-27",
+      "updatedAt": "2026-11-05",
+      "pushedAt": "2026-10-13",
+      "descriptionZh": "703 条“Claude 出视频”提示词合集，按风格分类",
+      "category": "其他",
+      "techStack": [
+        "Markdown",
+        "提示词工程",
+        "AI 视频"
+      ],
+      "renderBackends": [],
+      "outputFormats": [],
+      "gpuAcceleration": "none",
+      "cliHeadless": "no",
+      "windowsSupport": "works",
+      "installComplexity": 1,
+      "renderPerf": null,
+      "sample": {
+        "status": "skipped",
+        "videoPath": null,
+        "thumbPath": null,
+        "pipeline": "none",
+        "spec": null,
+        "noteZh": "纯提示词合集，无渲染入口，本轮不出片"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 3,
+        "performance": 1,
+        "docs": 2,
+        "windows": 5,
+        "activity": 4
+      },
+      "pros": [
+        "体量大（703 条）且分类清晰",
+        "适合作为风格字典",
+        "MIT 许可"
+      ],
+      "cons": [
+        "无可执行代码与渲染器，本轮未出片（skipped）",
+        "提示词质量参差，需要人工筛选",
+        "依赖外部模型与渲染框架"
+      ],
+      "bestFor": "提示词选型：需要稳定的风格描述",
+      "pitfalls": [
+        "无可执行代码与渲染器，本轮未出片（skipped）",
+        "提示词质量参差，需要人工筛选"
+      ],
+      "alternatives": [
+        "iart-ai__motion-skills",
+        "Vincentwei1021__video-shotcraft"
+      ],
+      "tags": [
+        "提示词",
+        "合集",
+        "索引",
+        "文章新增"
+      ],
+      "source": "article:Te14wRPAJiVpJ1k4O9pcpgX3nHg"
+    },
+    {
+      "id": "remotion-dev__skills",
+      "owner": "remotion-dev",
+      "repo": "skills",
+      "url": "https://github.com/remotion-dev/skills",
+      "homepage": null,
+      "stars": 6373,
+      "forks": 694,
+      "openIssues": 23,
+      "license": "未知",
+      "language": "TypeScript",
+      "createdAt": "2026-01-19",
+      "updatedAt": "2026-11-05",
+      "pushedAt": "2026-11-02",
+      "descriptionZh": "Remotion 官方 Agent 技能：教模型写 Remotion 组件并渲片",
+      "category": "其他",
+      "techStack": [
+        "TypeScript",
+        "React",
+        "Remotion"
+      ],
+      "renderBackends": [
+        "Remotion 渲染器"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "no",
+      "windowsSupport": "works",
+      "installComplexity": 2,
+      "renderPerf": null,
+      "sample": {
+        "status": "skipped",
+        "videoPath": null,
+        "thumbPath": null,
+        "pipeline": "none",
+        "spec": null,
+        "noteZh": "纯技能文档仓库，无可运行工程，本轮不出片"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 3,
+        "performance": 1,
+        "docs": 4,
+        "windows": 4,
+        "activity": 5
+      },
+      "pros": [
+        "官方维护，和 Remotion 版本同步",
+        "规则文档化，便于团队统一",
+        "与现有 Remotion 工程零冲突"
+      ],
+      "cons": [
+        "仓库不含可运行示例工程，本轮未出片（skipped）",
+        "许可未声明（license=None）",
+        "必须已有 Remotion 环境"
+      ],
+      "bestFor": "React 视频工程：已有 Remotion 项目",
+      "pitfalls": [
+        "仓库不含可运行示例工程，本轮未出片（skipped）",
+        "许可未声明（license=None）"
+      ],
+      "alternatives": [
+        "remotion-dev__remotion",
+        "Remocn__remocn"
+      ],
+      "tags": [
+        "Remotion",
+        "官方技能",
+        "Agent",
+        "文章新增"
+      ],
+      "source": "article:Te14wRPAJiVpJ1k4O9pcpgX3nHg"
+    },
+    {
+      "id": "vincentsch__explainroo",
+      "owner": "vincentsch",
+      "repo": "explainroo",
+      "url": "https://github.com/vincentsch/explainroo",
+      "homepage": "https://www.explainroo.com",
+      "stars": 844,
+      "forks": 61,
+      "openIssues": 0,
+      "license": "MIT",
+      "language": "JavaScript",
+      "createdAt": "2026-09-25",
+      "updatedAt": "2026-11-05",
+      "pushedAt": "2026-10-20",
+      "descriptionZh": "本地优先的讲解视频生成器：Agent 写场景 + 本地 TTS 配音",
+      "category": "代码动画",
+      "techStack": [
+        "Node.js",
+        "JavaScript",
+        "Kokoro TTS",
+        "Chromium",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "本地 TTS",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 2,
+      "renderPerf": null,
+      "sample": {
+        "status": "failed",
+        "videoPath": null,
+        "thumbPath": null,
+        "pipeline": "none",
+        "spec": null,
+        "noteZh": "npm install 成功（25 分钟）；doctor --fetch 两次（含 hf-mirror 镜像）均拉取 ~400MB 语音模型失败（fetch failed），未能出片"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 2,
+        "performance": 3,
+        "docs": 3,
+        "windows": 2,
+        "activity": 3
+      },
+      "pros": [
+        "本地 TTS，不需要云配音",
+        "仓库自带完整示例工程",
+        "单进程 CLI，流程短"
+      ],
+      "cons": [
+        "本次实测：npm install 25 分钟；doctor --fetch 两次（含 HF_ENDPOINT=hf-mirror）均报 fetch failed，模型下载不通，未出片",
+        "模型体积约 400MB，弱网/内网需预先离线放置",
+        "本地 TTS 首次调用还要拉语音检查模型",
+        "首次使用需下载约 400MB 模型，弱网成本高"
+      ],
+      "bestFor": "知识讲解：不想付 TTS 费用",
+      "pitfalls": [
+        "本次实测：npm install 25 分钟；doctor --fetch 两次（含 HF_ENDPOINT=hf-mirror）均报 fetch failed，模型下载不通，未出片",
+        "模型体积约 400MB，弱网/内网需预先离线放置"
+      ],
+      "alternatives": [
+        "kaomei__stickman-video-director",
+        "Vincentwei1021__video-shotcraft"
+      ],
+      "tags": [
+        "讲解视频",
+        "本地 TTS",
+        "Agent",
+        "CLI",
+        "文章新增"
+      ],
+      "source": "article:Te14wRPAJiVpJ1k4O9pcpgX3nHg"
+    },
+    {
+      "id": "kaomei__stickman-video-director",
+      "owner": "kaomei",
+      "repo": "stickman-video-director",
+      "url": "https://github.com/kaomei/stickman-video-director",
+      "homepage": null,
+      "stars": 4299,
+      "forks": 668,
+      "openIssues": 1,
+      "license": "MIT",
+      "language": "JavaScript",
+      "createdAt": "2026-08-03",
+      "updatedAt": "2026-11-05",
+      "pushedAt": "2026-11-04",
+      "descriptionZh": "火柴人讲解视频导演技能：本地 canvas 渲染 + 配音字幕",
+      "category": "代码动画",
+      "techStack": [
+        "JavaScript",
+        "Canvas",
+        "@napi-rs/canvas",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Canvas",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 1,
+      "renderPerf": null,
+      "sample": {
+        "status": "failed",
+        "videoPath": null,
+        "thumbPath": null,
+        "pipeline": "none",
+        "spec": null,
+        "noteZh": "doctor 全绿；autopilot preview examples/b1 报 EISDIR（输出目录被当文件读取），未生成 mp4"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 3,
+        "performance": 4,
+        "docs": 3,
+        "windows": 3,
+        "activity": 5
+      },
+      "pros": [
+        "纯 CPU canvas 渲染，不占 GPU，可与其他任务并行",
+        "720p30 原生输出，不用降采样",
+        "带 validate/preview/approve 审核流"
+      ],
+      "cons": [
+        "本次实测：doctor 全绿，但 preview 报 EISDIR（读取输出目录当成文件），未出片",
+        "preview 需要先 approve 才能 render，流程较严",
+        "风格单一（火柴人)"
+      ],
+      "bestFor": "科普/教育讲解：低配机器也能批量出片",
+      "pitfalls": [
+        "本次实测：doctor 全绿，但 preview 报 EISDIR（读取输出目录当成文件），未出片",
+        "preview 需要先 approve 才能 render，流程较严"
+      ],
+      "alternatives": [
+        "threerocks__sweety-handdraw-video",
+        "vincentsch__explainroo"
+      ],
+      "tags": [
+        "火柴人",
+        "本地渲染",
+        "讲解视频",
+        "无 GPU",
+        "文章新增"
+      ],
+      "source": "article:Te14wRPAJiVpJ1k4O9pcpgX3nHg"
+    },
+    {
+      "id": "lovisdotio__motion2code",
+      "owner": "lovisdotio",
+      "repo": "motion2code",
+      "url": "https://github.com/lovisdotio/motion2code",
+      "homepage": null,
+      "stars": 330,
+      "forks": 32,
+      "openIssues": 2,
+      "license": "MIT",
+      "language": "HTML",
+      "createdAt": "2026-10-20",
+      "updatedAt": "2026-11-04",
+      "pushedAt": "2026-10-20",
+      "descriptionZh": "从动效视频反推可逐帧复现的 HTML/GSAP/SVG 代码",
+      "category": "代码动画",
+      "techStack": [
+        "HTML",
+        "GSAP",
+        "SVG",
+        "Python",
+        "Playwright"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "none",
+      "cliHeadless": "yes",
+      "windowsSupport": "works",
+      "installComplexity": 1,
+      "renderPerf": {
+        "totalMs": 52320,
+        "frames": 299,
+        "width": 1280,
+        "height": 720,
+        "fps": 30,
+        "source": "meta.json"
+      },
+      "sample": {
+        "status": "ok",
+        "videoPath": "_samples/lovisdotio__motion2code/sample.mp4",
+        "thumbPath": "showcase/app/dist/thumbs/lovisdotio__motion2code.png",
+        "pipeline": "official",
+        "spec": {
+          "width": 1920,
+          "height": 1080,
+          "fps": 30,
+          "durationSec": 23.8,
+          "frames": 714,
+          "bytes": 7031793,
+          "codec": "h264"
+        },
+        "noteZh": "官方 gallery/think-big 示例页（window.anim.seek 逐帧截屏），300 帧 1920×1080@30fps，缩到 720p 后入库"
+      },
+      "scores": {
+        "maturity": 2,
+        "usability": 4,
+        "performance": 4,
+        "docs": 3,
+        "windows": 4,
+        "activity": 3
+      },
+      "pros": [
+        "少见的“视频→代码”方向，产出可维护的 HTML/GSAP",
+        "自带复刻示例与帧差工具",
+        "渲染脚本轻量（Playwright）"
+      ],
+      "cons": [
+        "本次只验证官方示例渲染，未验证“从任意视频反推”的完整链路",
+        "示例资产依赖 gallery 目录结构",
+        "星标 330，社区小"
+      ],
+      "bestFor": "动效学习/复刻：需要可维护的动效代码",
+      "pitfalls": [
+        "本次只验证官方示例渲染，未验证“从任意视频反推”的完整链路",
+        "示例资产依赖 gallery 目录结构"
+      ],
+      "alternatives": [
+        "wx4766__html-to-video",
+        "spite__ccapture.js"
+      ],
+      "tags": [
+        "动效逆向",
+        "GSAP",
+        "逐帧",
+        "对照",
+        "文章新增"
+      ],
+      "source": "article:Te14wRPAJiVpJ1k4O9pcpgX3nHg"
+    },
+    {
+      "id": "JohnHeibel__PDoomVideo",
+      "owner": "JohnHeibel",
+      "repo": "PDoomVideo",
+      "url": "https://github.com/JohnHeibel/PDoomVideo",
+      "homepage": null,
+      "stars": 2837,
+      "forks": 276,
+      "openIssues": 4,
+      "license": "未知",
+      "language": "JavaScript",
+      "createdAt": "2026-09-22",
+      "updatedAt": "2026-11-05",
+      "pushedAt": "2026-09-25",
+      "descriptionZh": "p5.js MV 源码：render.mjs 逐帧渲染 + FFmpeg 合音轨",
+      "category": "代码动画",
+      "techStack": [
+        "JavaScript",
+        "p5.js",
+        "Canvas",
+        "FFmpeg"
+      ],
+      "renderBackends": [
+        "Chromium",
+        "Canvas",
+        "FFmpeg"
+      ],
+      "outputFormats": [
+        "mp4"
+      ],
+      "gpuAcceleration": "optional",
+      "cliHeadless": "yes",
+      "windowsSupport": "workaround",
+      "installComplexity": 1,
+      "renderPerf": null,
+      "sample": {
+        "status": "failed",
+        "videoPath": null,
+        "thumbPath": null,
+        "pipeline": "none",
+        "spec": null,
+        "noteZh": "官方 --stills 正常；--clip 片段渲染两次挂死（无帧输出，约 3s/帧），未生成 mp4"
+      },
+      "scores": {
+        "maturity": 3,
+        "usability": 2,
+        "performance": 1,
+        "docs": 2,
+        "windows": 2,
+        "activity": 3
+      },
+      "pros": [
+        "交付的是完整作品源码，不是框架",
+        "p5.brush 笔触质感突出",
+        "支持片段/单帧快速迭代"
+      ],
+      "cons": [
+        "本次实测：--stills 成功；--clip 两次无帧产出后卡死，未能出片",
+        "约 3s/帧，12s 片段接近 20 分钟",
+        "无 LICENSE 文件，商用需联系作者"
+      ],
+      "bestFor": "学逐帧渲染管线：想做音乐可视化",
+      "pitfalls": [
+        "本次实测：--stills 成功；--clip 两次无帧产出后卡死，未能出片",
+        "约 3s/帧，12s 片段接近 20 分钟"
+      ],
+      "alternatives": [
+        "spite__ccapture.js",
+        "dmnsgn__canvas-record"
+      ],
+      "tags": [
+        "MV",
+        "音乐可视化",
+        "p5.js",
+        "源码即作品",
+        "文章新增"
+      ],
+      "source": "article:Te14wRPAJiVpJ1k4O9pcpgX3nHg"
+    }
+  ]
+}

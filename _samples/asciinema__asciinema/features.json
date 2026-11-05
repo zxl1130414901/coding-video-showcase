@@ -1,0 +1,63 @@
+{
+  "id": "asciinema__asciinema",
+  "durationSec": 26.1,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 8.7,
+      "capabilityZh": "rec 录制为 asciicast v2",
+      "proofZh": "终端输出与时间戳逐事件写入 demo.cast，7.9 秒 152 帧事件流"
+    },
+    {
+      "start": 8.7,
+      "end": 17.4,
+      "capabilityZh": "回放调速与 idle 压缩",
+      "proofZh": "-s 2 倍速 + --idle-time-limit 0.5，同一份 cast 从 22s 压到 8s 且时序不乱"
+    },
+    {
+      "start": 17.4,
+      "end": 26.1,
+      "capabilityZh": "cast 纯文本格式",
+      "proofZh": "header + [时间,类型,数据] 事件行，可 diff / sed 裁剪 / 交给 agg 或网页播放器"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.5,
+      "dur": 4.2,
+      "titleZh": "能力 1｜rec 录制成 cast",
+      "descZh": "asciinema rec demo.cast：终端输出 + 时序一起写入 asciicast v2，非视频文件"
+    },
+    {
+      "t": 5.0,
+      "dur": 3.4,
+      "titleZh": "能力 2｜播放与录制解耦",
+      "descZh": "同一份 cast 可终端回放（asciinema play）、网页播放器、agg 转 GIF"
+    },
+    {
+      "t": 8.8,
+      "dur": 4.4,
+      "titleZh": "能力 3｜回放调速",
+      "descZh": "-s 2 倍速 + --idle-time-limit 0.5：22s 会话压缩到 8s 仍保持逐帧时序"
+    },
+    {
+      "t": 13.4,
+      "dur": 3.4,
+      "titleZh": "能力 4｜空闲压缩",
+      "descZh": "idle 段按阈值折叠，事件时间戳仍是绝对秒，不破坏 diff/裁剪"
+    },
+    {
+      "t": 17.2,
+      "dur": 4.2,
+      "titleZh": "能力 5｜纯文本事件流",
+      "descZh": "一行 header + N 行 [时间,类型,数据]：可 diff、可 sed 裁剪、可复用到任意渲染器"
+    }
+  ],
+  "renderMs": 112000,
+  "pipeline": "wrapper",
+  "knownLimitsZh": [
+    "asciinema 录制端只支持 Linux/macOS/FreeBSD（依赖 Unix PTY），Windows 无法直接 rec，本样例用等价 cast v2 事件流 + agg 渲染",
+    "cast 宽度 140 列 34 行，agg 输出 1874x1176，合成时轻微拉伸到 1920x1080",
+    "agg 会合并相同帧，平均帧率约 19fps，转 30fps 时有帧复制"
+  ]
+}

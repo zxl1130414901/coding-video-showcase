@@ -1,0 +1,63 @@
+{
+  "id": "dmnsgn__canvas-record",
+  "durationSec": 20.8,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 8.0,
+      "capabilityZh": "帧精确 step 录制",
+      "proofZh": "先绘制再 await step()，240 帧严格对应 8.000s，不依赖真实时间"
+    },
+    {
+      "start": 8.0,
+      "end": 16.0,
+      "capabilityZh": "WebGL 上下文直录",
+      "proofZh": "直接把 gl 上下文交给 Recorder，VP9 webm 无二次转绘"
+    },
+    {
+      "start": 16.0,
+      "end": 20.8,
+      "capabilityZh": "多编码器矩阵",
+      "proofZh": "同一 API 按 extension 自动选编码器：mp4 / webm / gif 三种容器直出"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.5,
+      "dur": 4.2,
+      "titleZh": "frame-accurate step()",
+      "descZh": "每帧先绘制再 await step()：240 帧严格对应 8.000s，与机器性能无关"
+    },
+    {
+      "t": 4.8,
+      "dur": 3.4,
+      "titleZh": "进度与自动停止",
+      "descZh": "duration=8s → frameTotal=240，到达后自动 stop 并触发下载"
+    },
+    {
+      "t": 8.4,
+      "dur": 4.0,
+      "titleZh": "WebGL 上下文直录",
+      "descZh": "把 gl 上下文直接交给 Recorder，输出 VP9 webm，无二次转绘"
+    },
+    {
+      "t": 12.8,
+      "dur": 3.2,
+      "titleZh": "编码器矩阵",
+      "descZh": "同一套 API 按 extension 自动选 WebCodecs / GIF 编码器"
+    },
+    {
+      "t": 17.0,
+      "dur": 3.8,
+      "titleZh": "GIF 直出",
+      "descZh": "12fps / 60 帧调色板 GIF 直接下载，适合文档与聊天嵌入"
+    }
+  ],
+  "renderMs": 26127,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "GIF 段为 1280×720@12fps（GIF 调色板与体积限制），成片时放大到 1920×1080，会略软",
+    "GIF 编码在浏览器主线程完成，1080p 长 GIF 会明显卡顿，因此控制在 60 帧",
+    "WebGL 段依赖 preserveDrawingBuffer=true，否则 readback 可能拿到空帧"
+  ]
+}

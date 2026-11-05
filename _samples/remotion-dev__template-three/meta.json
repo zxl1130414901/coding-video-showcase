@@ -1,0 +1,51 @@
+{
+  "repo": "remotion-dev/template-three",
+  "category": "Remotion 生态模板/组件",
+  "status": "success",
+  "render_ms": 46812,
+  "total_ms": 666000,
+  "cmd": "npx remotion render src/index.ts Scene ... --gl=vulkan --frames=0-149",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 5.0,
+    "nb_frames": 150,
+    "codec": "h264",
+    "pix_fmt": "yuvj420p",
+    "fps": "30/1",
+    "size_bytes": 209447
+  },
+  "notes_zh": "Three.js WebGL 模板，取前 150 帧，GPU: --gl=vulkan",
+  "preview": {
+    "at_s": 2.5,
+    "mean_rgb": [
+      250.87,
+      251.28,
+      251.88
+    ],
+    "stddev_rgb": [
+      30.98,
+      27.94,
+      23.5
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "spec": {
+      "width": 1920,
+      "height": 1080,
+      "fps": 30.0,
+      "nb_frames": 897,
+      "codec": "h264",
+      "pix_fmt": "yuv420p",
+      "duration_s": 29.9,
+      "size_bytes": 3898173
+    },
+    "render_ms": 330000,
+    "segments": 3,
+    "callouts": 6,
+    "pipeline": "official",
+    "methodZh": "新建 ThreeCapabilities 组合（900 帧三段式），Remotion CLI 单 worker + 系统 Chrome --gl=vulkan 渲染 1920x1080@30，poster.py 烧入中文标注",
+    "generatedAt": "2026-11-05T16:03:31+08:00"
+  }
+}

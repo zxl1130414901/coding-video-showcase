@@ -1,0 +1,74 @@
+{
+  "id": "mifi__editly",
+  "taglineZh": "用一份 JSON 声明剪辑：图片、视频、标题、GL 转场、混音，一条命令流式出片",
+  "summaryZh": "Editly（约 5.6k stars）是声明式非线性剪辑工具：写一份 JSON5，描述 clips（图片、视频、标题、Canvas/Fabric 自定义层、GL shader 背景）、转场时长与音轨，CLI 一条命令流式渲染出 mp4；它自述受 ffmpeg-concat 启发，但用流式处理所以更快、更省盘。它能自动缩放/信箱、变速对齐、多音源混音与 ducking、透明图层叠加、画中画与暗角。与 ffmpeg-concat 的本质差别是它是「剪辑 DSL」而非「转场拼接器」。实测 640×640 的 91 帧花了 1200 秒（0.076fps），瓶颈在 Windows 的 canvas 原生依赖。它适合模板化批量出片，例如日更短视频与数据卡片。",
+  "whatItMakes": [
+    {"type": "声明式批量剪辑", "exampleZh": "JSON5 描述 10 个 clip，改字段换素材，模板化出片", "strength": "核心能力"},
+    {"type": "GL shader 背景与转场", "exampleZh": "直接引用 shadertoy 着色器做动态背景，转场可逐段指定", "strength": "核心能力"},
+    {"type": "标题与字幕层", "exampleZh": "Overlay 文字、字幕、透明图片/视频层", "strength": "核心能力"},
+    {"type": "多音轨混音", "exampleZh": "多音频源自动交叉淡化、ducking 与响度标准化", "strength": "核心能力"},
+    {"type": "画中画/B-roll/暗角", "exampleZh": "PiP 叠加、同一 clip 内切子片段、Vignette", "strength": "可用"},
+    {"type": "复杂动画编排", "exampleZh": "图层动效要写 Canvas/Fabric JS，缺少关键帧曲线", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "模板化批量出片", "whoZh": "运营、后端服务团队", "whyZh": "JSON 模板换数据即出片，CLI 可被队列调用", "deliverableZh": "1080p 的 15–60 秒 MP4，按模板批量", "fit": "高度契合"},
+    {"scenarioZh": "播客配图视频", "whoZh": "播客制作", "whyZh": "音频 ducking 与交叉淡化现成，配封面图与字幕即可", "deliverableZh": "方形/横屏音频视频", "fit": "高度契合"},
+    {"scenarioZh": "数据卡片视频", "whoZh": "数据内容团队", "whyZh": "标题 + 数字 + shader 背景，一条 JSON 生成一批", "deliverableZh": "15–30 秒数据卡片片", "fit": "适合"},
+    {"scenarioZh": "GIF 动图", "whoZh": "文档作者", "whyZh": "支持 GIF 输出，适合文档与网页", "deliverableZh": "3–8 秒 GIF", "fit": "适合"},
+    {"scenarioZh": "Windows 本地高频出片", "whoZh": "个人创作者", "whyZh": "canvas 原生依赖在 Windows 上装不顺，实测 0.076fps", "deliverableZh": "可用但极慢", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "可输出任意尺寸与比例，实测 640×640；输入支持 4K 视频与单反照片，自动缩放与信箱",
+    "maxFpsZh": "可配，实测 25fps；输入帧率不一致会自动转换",
+    "durationZh": "由 clips 与转场时长决定，无硬上限；流式处理避免磁盘爆掉",
+    "effectsZh": ["GL shader 背景与转场", "Canvas/Fabric 自定义图层", "画中画、B-roll、暗角", "自动缩放/信箱/变速", "透明视频与图片叠加"],
+    "audioZh": "多音源保留与混合、自动交叉淡化、ducking、响度标准化；无 TTS",
+    "interactivityZh": "无编辑器；fast 模式可低质快速预览",
+    "automationZh": "强：CLI + JS API，JSON 模板天然适合批量；依赖原生 canvas",
+    "assetsZh": "图片/视频/音频/字体/HTML 字体；无模板市场",
+    "exportFormatsZh": ["mp4（默认）", "gif"],
+    "realtimePreviewZh": "fast 模式低分辨率快速出片，用于预览",
+    "ciFriendlyZh": "中等：需 ffmpeg 与原生 canvas；Windows 安装是主要障碍"
+  },
+  "ceilingZh": "能力上限在声明式剪辑里算高：任意尺寸比例、4K 输入、GL shader 背景、多音轨自动混音、透明层与画中画，理论上能覆盖大部分模板化视频。但实测吞吐极差：91 帧 640×640 用了 1200 秒，约 0.076fps，3.6 秒的片子跑了 20 分钟；瓶颈不是 ffmpeg，而是 Windows 上 canvas@2.11 没有预编译包、GL 上下文转发也慢。最复杂的用法是 Canvas/Fabric 自定义层配 shader 背景做动态卡片。边界：canvas 原生依赖需用 @napi-rs/canvas 转发；Node 20 需 tsx 直跑 TS 版；项目 2025 年中后活动明显放缓；没有可视化编辑器，复杂动效仍要写 JS。另外它没有关键帧曲线，图层动效要靠 Canvas 代码逐帧算；GL shader 首次加载需编译，短片段里会明显拖慢首帧。",
+  "workflow": [
+    {"stepZh": "装环境", "detailZh": "Node 20+、ffmpeg；Windows 建议用 @napi-rs/canvas 转发替代 canvas@2.11", "effortZh": "30–60 分钟"},
+    {"stepZh": "装 editly", "detailZh": "npm i -g editly 或源码安装；确认 gl 与 canvas 能加载", "effortZh": "约 15 分钟"},
+    {"stepZh": "写 JSON5", "detailZh": "定义 width/height/fps、clips 数组、每段 transitions 与 audio 轨道", "effortZh": "首个模板 1–2 小时"},
+    {"stepZh": "快速预览", "detailZh": "editly spec.json5 --fast，低质快速看节奏", "effortZh": "数分钟"},
+    {"stepZh": "正式出片", "detailZh": "editly spec.json5，流式渲染 mp4；本机实测非常慢，建议先用低分辨率试跑", "effortZh": "实测 3.6 秒片约 20 分钟"}
+  ],
+  "differentiators": [
+    "JSON 声明式剪辑，模板即配置文件，天然适合批量",
+    "支持 GL shader 背景与逐段转场，视觉不呆板",
+    "音频自动交叉淡化、ducking 与响度标准化",
+    "流式处理，比拆帧方案省盘且更快"
+  ],
+  "limits": [
+    "原生 canvas 依赖，Windows 安装与渲染都慢",
+    "实测仅 0.076fps，长片基本不可行",
+    "无可视化编辑器，复杂动效要写 JS",
+    "项目更新放缓，文档以 README 为主"
+  ],
+  "compareTips": [
+    {"vs": "transitive-bullshit__ffmpeg-concat", "adviceZh": "Editly 是升级版：流式、省盘、支持字幕与混音；只想要 GL 转场拼接且环境已就绪，老工具更简单"},
+    {"vs": "h2non__videoshow", "adviceZh": "纯图片幻灯片用 videoshow；要视频素材、shader 与多音轨用 Editly"},
+    {"vs": "mowshon__moviego", "adviceZh": "要后端高吞吐与 Go 部署选 moviego；要声明式 JSON 模板与 shader 背景选 Editly，但要接受 Windows 慢"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①JSON5 定义 5 个 clip 与逐段转场，一条命令出片；②GL shader 动态背景 + 标题层；③多音轨交叉淡化与 ducking，对比处理前后；④--fast 预览与正式渲染的耗时对比，标注 Windows 下 0.076fps",
+    "featureCallouts": [
+      {"titleZh": "JSON5 声明", "descZh": "clips/transitions/audio 一份配置"},
+      {"titleZh": "GL shader 背景", "descZh": "可直接引用 shadertoy 着色器"},
+      {"titleZh": "音频自动化", "descZh": "交叉淡化、ducking、响度标准化"},
+      {"titleZh": "流式渲染", "descZh": "不拆帧，省盘且更快"},
+      {"titleZh": "fast 预览", "descZh": "低质快速出片看节奏"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L5-L9", "noteZh": "自述为声明式 NLE，CLI 与 JS API，受 ffmpeg-concat 启发但流式处理更快更省盘"},
+    {"field": "capabilities.effectsZh", "source": "README.md#L15-L34", "noteZh": "任意尺寸、GL shader、透明层、画中画、暗角、多音轨与 ducking 全在此清单"},
+    {"field": "limits 第 2 条", "source": "_samples/mifi__editly/meta.json", "noteZh": "实测 640×640/25fps/91 帧耗时 1200s，约 0.076fps"},
+    {"field": "limits 第 1 条", "source": "_reports/", "noteZh": "本批报告记录 Windows 下 canvas 无预编译包，需 @napi-rs/canvas 转发"}
+  ]
+}

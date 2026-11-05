@@ -1,0 +1,63 @@
+{
+  "id": "LBEILC__Multiplane",
+  "durationSec": 19.9,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.37,
+      "capabilityZh": "确定性 render(t) 纯函数镜头 + 硬切（cuts）",
+      "proofZh": "shots-v2/geo-blur.html 的 render(t) 只读 t，2.7s 处 cuts 切到深色底/绿色圆，切点无跨切混合"
+    },
+    {
+      "start": 5.37,
+      "end": 12.53,
+      "capabilityZh": "任意 HTML/CSS/字体即镜头（DOM 排版动画）",
+      "proofZh": "shots-v2/type.html 用 fonts:[...] 预注册 Roboto 可变字体，标题位移+下划线增长；7.2s 216 帧"
+    },
+    {
+      "start": 12.53,
+      "end": 19.9,
+      "capabilityZh": "多图层视差镜头 + 逐帧截图编码",
+      "proofZh": "shots-v2/layers.html 自写四层视差（网格/圆环/光条/光点），--workers 1、--encoder nvenc-h264 出 1280x720@30"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.3,
+      "dur": 3.6,
+      "titleZh": "① 确定性 render(t) + 硬切",
+      "descZh": "画面只是 t 的函数；cuts 声明处不跨切混合，lint 会拦 Date.now/Math.random"
+    },
+    {
+      "t": 3.9,
+      "dur": 3.2,
+      "titleZh": "② 运动模糊尊重硬切",
+      "descZh": "post motionBlur 4 采样 / shutter 0.8，切点两侧各自独立"
+    },
+    {
+      "t": 7.1,
+      "dur": 4.0,
+      "titleZh": "③ 字体就绪再截帧",
+      "descZh": "fonts:[...] 注册本地可变字体，标题位移与下划线生长全部由 t 推导"
+    },
+    {
+      "t": 11.6,
+      "dur": 4.0,
+      "titleZh": "④ 任意 HTML/CSS 当镜头源",
+      "descZh": "四层视差镜头（网格/圆环/光条/光点）零后期，只靠 DOM 变换"
+    },
+    {
+      "t": 16.2,
+      "dur": 3.4,
+      "titleZh": "⑤ 逐帧截图 + NVENC",
+      "descZh": "--workers 1 单浏览器逐帧截图，nvenc-h264 直接封装成 MP4"
+    }
+  ],
+  "renderMs": 604600,
+  "pipeline": "native",
+  "knownLimitsZh": [
+    "1920x1080 需 2.25 倍时间，本机 8GB 显存 + 逐帧截图成本限制，交付 1280x720",
+    "three-cards.html（3D 卡片 + 累积景深）需要可选依赖 three，本机未安装，未收录该镜头",
+    "运动模糊镜头 4 采样约 4.6s/帧，第一段压到 5.4s（162 帧）以控总时长"
+  ]
+}

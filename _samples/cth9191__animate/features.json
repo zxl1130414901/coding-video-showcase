@@ -1,0 +1,71 @@
+{
+  "id": "cth9191__animate",
+  "durationSec": 23.867,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.97,
+      "capabilityZh": "四套美术风格同一引擎",
+      "proofZh": "math / isometric / pixel / riso 四个 piece 走同一 kit（core+morph+board+score），每段 6s 144 帧，风格只换 style/kit.js"
+    },
+    {
+      "start": 5.97,
+      "end": 11.93,
+      "capabilityZh": "逐帧确定性渲染 + 程序化配乐",
+      "proofZh": "export.mjs 逐帧 139ms 截取 canvas，score.js 用 WebAudio 合成 pad/pluck/chime 并混流进 final.mp4"
+    },
+    {
+      "start": 11.93,
+      "end": 17.9,
+      "capabilityZh": "分镜与文案系统",
+      "proofZh": "mathTag/mathCaption 输出镜头标签与字幕，isometric 的 02 server 分镜编号由 piece 数据自动编排"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.4,
+      "dur": 4.2,
+      "titleZh": "四套美术风格，一个引擎",
+      "descZh": "四个 piece 共用同一 kit，只替换 style/kit.js"
+    },
+    {
+      "t": 4.6,
+      "dur": 3.6,
+      "titleZh": "数学风：公式与单位圆",
+      "descZh": "transformTex 把 a²+b²=c² 变形成 cos²θ+sin²θ=1"
+    },
+    {
+      "t": 6.8,
+      "dur": 4.0,
+      "titleZh": "等距风：线稿机架场景",
+      "descZh": "等距投影画机架，零填充线稿 + 02 server 分镜"
+    },
+    {
+      "t": 11.2,
+      "dur": 3.8,
+      "titleZh": "像素风：NES 调色板 HUD",
+      "descZh": "图形吸附像素网格，SCORE 001200 / LV2 全程序生成"
+    },
+    {
+      "t": 15.4,
+      "dur": 4.0,
+      "titleZh": "双色印刷：riso 网点套印",
+      "descZh": "两色网点叠加 + 套色偏移，条纹与颗粒全代码生成"
+    },
+    {
+      "t": 19.6,
+      "dur": 4.0,
+      "titleZh": "自带 score.js 程序化配乐",
+      "descZh": "score.js 用 WebAudio 合成 pad/pluck/chime 并混流"
+    }
+  ],
+  "renderMs": 277217,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "仓库原生 9:16 竖屏 1080×1920，本次保留竖屏，未改成横屏",
+    "piece 默认 24fps（bpm 120 对齐），交付前整体转 30fps，存在重复帧",
+    "四个 style demo 的文案是仓库自带示例（rack / market / unit circle），本次只换风格未重写剧本",
+    "成片为控制体积去掉了音轨；各 piece 的 renders/final.mp4 保留原声",
+    "export.mjs 依赖 require('playwright')，需先设 NODE_PATH=F:\\coding视频\\_env\\pw\\node_modules"
+  ]
+}

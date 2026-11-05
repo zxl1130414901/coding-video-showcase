@@ -1,0 +1,48 @@
+{
+  "repo": "transitive-bullshit/ffmpeg-concat",
+  "category": "编程式视频合成（GL 转场）",
+  "status": "success",
+  "render_ms": 10145,
+  "total_ms": 10766,
+  "cmd": "node lib\\cli.js -o sample.mp4 -t circleopen -d 700 media\\0.mp4 media\\1.mp4 media\\2.mp4",
+  "artifact": "F:\\coding视频\\_samples\\transitive-bullshit__ffmpeg-concat\\sample.mp4",
+  "ffprobe": {
+    "width": 640,
+    "height": 360,
+    "duration_s": 10.64,
+    "fps": 25.0,
+    "nb_frames": 266,
+    "codec": "h264",
+    "size_kb": 828.3
+  },
+  "preview_frame": {
+    "path": "F:\\coding视频\\_samples\\transitive-bullshit__ffmpeg-concat\\preview.png",
+    "pixel_std": 60.3,
+    "unique_colors": 37622
+  },
+  "notes_zh": "用仓库自带 media/0.mp4、1.mp4、2.mp4 三个片段，circleopen GL 转场串成一条片。输出沿用源片尺寸 640x360@25fps（该版本 CLI 无 --width/--height 选项）。Windows 适配要点：gl@8.1.6 有预编译包但 npm 默认装的是源码，需要用 node-gyp 编译（本机无 MSVC），改为从已装好的 node20 环境复制 build/Release/webgl.node；同时 --ignore-scripts 安装后要 npm rebuild sharp ffmpeg-static 才拿到二进制。",
+  "sample_v2": {
+    "spec": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "duration_sec": 18.417
+    },
+    "render_ms": 676000,
+    "ffprobe": {
+      "duration_sec": 18.417,
+      "codec": "h264",
+      "nb_frames": 552,
+      "has_audio": true,
+      "size_kb": 2473.7,
+      "stddev_10_50_90": {
+        "0.10": 29.306,
+        "0.50": 25.912,
+        "0.90": 27.231
+      }
+    },
+    "generator": "ffmpeg-concat（fluent-ffmpeg + gl-transitions），4 段 720p30 片段，circleopen / directionalwarp / fadegrays 各 1200ms，GL 转场逐帧渲染后编码；ffmpeg drawtext 烧录中文标注",
+    "segments_count": 4,
+    "pipeline": "official"
+  }
+}

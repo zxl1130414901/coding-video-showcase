@@ -1,0 +1,73 @@
+{
+  "id": "av__remotion-bits",
+  "taglineZh": "给 Remotion 工程即插即用的动效组件库：矩阵雨、粒子、3D 场景、渐变转场",
+  "summaryZh": "面向 Remotion 的动画组件集合，不是引擎：提供文本特效、渐变转场、粒子系统、Three.js 3D 场景，以及颜色与运动处理的底层工具，按 bit 组织，可以用 CLI 或 MCP 单拉某个组件进项目，也可以整包安装。它解决的问题是「Remotion 里从零写矩阵雨/粒子太费时间」，本质是素材与组件库，成片质量仍取决于宿主工程的编排。本次实测发现 demo 入口引用了未导出的 MotionTransition 与 Particles，只能自建最小 entry 才渲染成功；150 帧 720p30 用了 86.9 秒。",
+  "whatItMakes": [
+    {"type": "矩阵雨/粒子背景", "exampleZh": "MatrixRain 全屏下落字符、粒子场作为背景层", "strength": "核心能力"},
+    {"type": "3D 文字与场景", "exampleZh": "Three.js 驱动的立体字、镜头推进、空间卡片", "strength": "核心能力"},
+    {"type": "文字特效与转场", "exampleZh": "逐字淡入、渐变遮罩转场、卡片掀开", "strength": "可用"},
+    {"type": "科技感片头", "exampleZh": "把粒子 + 3D 字 + 转场叠在 Remotion 时间线上", "strength": "可用"},
+    {"type": "整片叙事", "exampleZh": "组件库不含剧本/分镜/音频编排，需要自己搭 Composition", "strength": "受限"}
+  ],
+  "useCases": [
+    {"scenarioZh": "Remotion 项目加片头背景", "whoZh": "前端视频开发者", "whyZh": "省去自己写粒子与 3D 场景的时间，组件可直接挂在 Sequence 里", "deliverableZh": "5 秒 720p30 片头段，可嵌进整片", "fit": "高度契合"},
+    {"scenarioZh": "科技感数据视频", "whoZh": "数据内容团队", "whyZh": "矩阵雨与粒子做背景，前面叠 Remotion 原生图表组件", "deliverableZh": "30–60 秒 1080p MP4", "fit": "适合"},
+    {"scenarioZh": "Three.js 3D 片头", "whoZh": "创意开发者", "whyZh": "3D 场景组件自带相机与灯光参数，省掉建模到渲染的胶水代码", "deliverableZh": "10–20 秒 3D 片头", "fit": "适合"},
+    {"scenarioZh": "源码级二次开发", "whoZh": "组件库维护者", "whyZh": "每个 bit 独立，可 fork 后改成自己品牌风格", "deliverableZh": "定制组件包", "fit": "适合"},
+    {"scenarioZh": "完整教学片", "whoZh": "教师", "whyZh": "完全没有 LaTeX/公式/字幕/配音链路，做不了数学讲解", "deliverableZh": "不适用", "fit": "勉强"}
+  ],
+  "capabilities": {
+    "maxResolutionZh": "由宿主 Remotion 的 Composition 决定；实测渲染 1280×720，理论可到 4K（受组件内固定像素参数影响）",
+    "maxFpsZh": "由 Composition 的 fps 决定；实测 30fps",
+    "durationZh": "由 Composition durationInFrames 决定；实测 5 秒 150 帧，组件本身不设时长上限",
+    "effectsZh": ["MatrixRain 矩阵雨", "粒子系统（Particles）", "渐变/遮罩转场（MotionTransition）", "Three.js 3D 场景与文字", "颜色与运动底层工具"],
+    "audioZh": "依赖 Remotion 的音频组件（Audio/staticFile），组件库本身不提供配音与混音",
+    "interactivityZh": "Remotion Studio 实时预览与参数面板，无自有编辑器",
+    "automationZh": "Remotion CLI 渲染 + remotion-bits find/fetch/mcp 拉取单个 bit",
+    "assetsZh": "组件自带纹理与着色器；图片/视频素材通过 Remotion staticFile 提供",
+    "exportFormatsZh": ["mp4（Remotion 渲染）", "图片序列（Remotion still）"],
+    "realtimePreviewZh": "有，Remotion Studio 可拖时间轴",
+    "ciFriendlyZh": "中等：Remotion + three 依赖较重，跨目录引用在 Windows 需 junction"
+  },
+  "ceilingZh": "它的天花板不是自己画片，而是把 Remotion 的复杂效果成本降下来：矩阵雨、粒子、Three.js 3D 场景都能直接挂进 Composition，配合渐变转场做 10–20 秒的高级感片头。但实测性能是硬约束：720p30 的 150 帧（5 秒）用了 86.9 秒，约 1.7fps，一分钟片子接近 20 分钟，4K 会更慢；3D 与粒子叠加时最吃性能。能力边界也很清楚：没有剧本编排、没有字幕、没有配音混流，这些都要宿主工程自己补；项目体量小（约 240 stars），文档仍在补全，demo 入口本身引用了未导出的 MotionTransition/Particles，跨目录引用在 Windows 还需 junction 才能解析。若宿主已用 Remotion，它能把 3D 与粒子的实现成本压到几行组件；没有 Remotion 时则一步都走不了。",
+  "workflow": [
+    {"stepZh": "确认宿主", "detailZh": "先建 Remotion 工程（Node>=18、React>=18、Remotion>=4），组件必须跑在 Remotion 里", "effortZh": "约 20 分钟"},
+    {"stepZh": "安装或单拉", "detailZh": "npm install remotion-bits，或 npx remotion-bits find 3d cards 后 fetch 单个 bit", "effortZh": "约 5 分钟"},
+    {"stepZh": "写 Composition", "detailZh": "把组件放进 Sequence，按帧数调参；3D 组件需额外处理依赖解析", "effortZh": "约 1 小时"},
+    {"stepZh": "Studio 预览", "detailZh": "npx remotion studio 拖时间轴确认节奏与性能", "effortZh": "约 10 分钟"},
+    {"stepZh": "渲染成片", "detailZh": "npx remotion render 出 mp4；本次因 demo 缺组件，另建最小 entry 才成功", "effortZh": "150 帧实测 87 秒"}
+  ],
+  "differentiators": [
+    "按 bit 粒度分发，CLI/MCP 可只拉需要的组件，不整包引入",
+    "自带 Three.js 3D 场景与粒子，不止文字动效",
+    "组件源码可读可改，适合二次开发成品牌素材",
+    "与 Remotion 生态无缝，可直接用其音频、字幕、批量渲染能力"
+  ],
+  "limits": [
+    "不是独立渲染器，离开 Remotion 工程完全不可用",
+    "实测 1.7fps，3D 与粒子叠加更慢",
+    "demo 入口引用未导出组件，照抄跑不起来",
+    "无配音、字幕、剧本编排，需宿主补齐"
+  ],
+  "compareTips": [
+    {"vs": "Remocn__remocn", "adviceZh": "两者都是 Remotion 组件库；remotion-bits 偏 3D/粒子/矩阵雨，Remocn 偏 shadcn 风格界面与转场，按视觉需求组合使用"},
+    {"vs": "shadcn-labs__snapcn", "adviceZh": "要 UI 质感组件选 snapcn；要粒子与 Three.js 大场景选 remotion-bits"},
+    {"vs": "remotion-dev__remotion", "adviceZh": "Remotion 是引擎，bits 是插件；必须先有 Remotion 工程再谈 bits"}
+  ],
+  "showcase": {
+    "demoBriefZh": "四段：①MatrixRain 全屏背景 5 秒；②粒子场 + 渐变转场做片头；③Three.js 3D 文字推镜；④对比 720p 下加粒子前后的渲染耗时，说明 1.7fps 的成本",
+    "featureCallouts": [
+      {"titleZh": "MatrixRain", "descZh": "可调密度、速度、字符集的矩阵雨"},
+      {"titleZh": "Particles", "descZh": "粒子背景层，可叠在任意 Remotion 画面上"},
+      {"titleZh": "Three.js 场景", "descZh": "3D 文字与空间卡片，自带相机参数"},
+      {"titleZh": "bit 级分发", "descZh": "CLI find/fetch 与 MCP 单拉组件"},
+      {"titleZh": "MotionTransition", "descZh": "渐变遮罩转场（官方 demo 中该导出缺失）"}
+    ]
+  },
+  "evidence": [
+    {"field": "taglineZh", "source": "README.md#L12", "noteZh": "自述为 Remotion 专用组件与工具集合：文字特效、渐变转场、粒子、3D 场景"},
+    {"field": "differentiators 第 1 条", "source": "README.md#L29-L44", "noteZh": "CLI find/fetch 与 MCP 单拉 bit 的使用方式"},
+    {"field": "capabilities.maxFpsZh", "source": "package.json#L37-L44", "noteZh": "peer 依赖要求 React>=18、Remotion>=4、Node>=18"},
+    {"field": "limits 第 3 条", "source": "_samples/av__remotion-bits/meta.json", "noteZh": "demo 入口缺 MotionTransition/Particles 导出，改最小 entry 后 150 帧耗时 86880ms"}
+  ]
+}

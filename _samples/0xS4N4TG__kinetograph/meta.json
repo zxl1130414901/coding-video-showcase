@@ -1,0 +1,57 @@
+{
+  "repo": "0xS4N4TG/kinetograph",
+  "category": "代码驱动/声明式框架",
+  "status": "success",
+  "render_ms": 56504,
+  "total_ms": 131000,
+  "cmd": "npx kinetograph render src/index.tsx -o ... --encoder h264_nvenc",
+  "ffprobe": {
+    "width": 1280,
+    "height": 720,
+    "duration_s": 2.0,
+    "nb_frames": 60,
+    "codec": "h264",
+    "pix_fmt": "yuv420p",
+    "fps": "30/1",
+    "size_bytes": 25705
+  },
+  "notes_zh": "预编译 win64 二进制 + kinetograph init 默认工程，Vulkan 渲染，60 帧（29 帧静态复用）",
+  "preview": {
+    "at_s": 1.0,
+    "mean_rgb": [
+      25.3,
+      28.74,
+      35.91
+    ],
+    "stddev_rgb": [
+      36.98,
+      34.12,
+      30.71
+    ],
+    "flat": false
+  },
+  "sample_v2": {
+    "spec": {
+      "width": 1280,
+      "height": 720,
+      "fps": 30.0,
+      "duration_sec": 18.0
+    },
+    "render_ms": 17241,
+    "ffprobe": {
+      "duration_sec": 18.0,
+      "codec": "h264",
+      "nb_frames": 540,
+      "has_audio": false,
+      "size_kb": 587.8,
+      "stddev_10_50_90": {
+        "0.10": 36.04,
+        "0.50": 39.254,
+        "0.90": 29.825
+      }
+    },
+    "generator": "kinetograph CLI 原生渲染（Skia + Vulkan GPU，h264_nvenc 编码）：3 个 Composition 各 180 帧 1280x720/30fps，--concurrency 1，ffmpeg concat 后 drawtext 烧中文标注",
+    "segments_count": 3,
+    "pipeline": "native"
+  }
+}

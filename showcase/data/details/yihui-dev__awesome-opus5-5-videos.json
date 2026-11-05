@@ -1,0 +1,115 @@
+{
+  "id": "yihui-dev__awesome-opus5-5-videos",
+  "taglineZh": "703 条可直接复用的“让模型写视频页面”提示词索引",
+  "summaryZh": "awesome-opus5-5-videos 是提示词合集：按风格/场景索引 703 条 prompt，每条描述画面、节奏与技术要求，供 Agent 生成 HTML/Canvas 视频代码时参考。它不是可执行工程，也没有渲染器。",
+  "whatItMakes": [
+    {
+      "type": "提示词索引",
+      "exampleZh": "703 条 prompt，按风格分类",
+      "strength": "选型与改写快"
+    },
+    {
+      "type": "风格参考",
+      "exampleZh": "带效果描述与关键词",
+      "strength": "便于对齐审美"
+    }
+  ],
+  "useCases": [
+    {
+      "scenarioZh": "提示词选型",
+      "whoZh": "内容创作者",
+      "whyZh": "需要稳定的风格描述",
+      "deliverableZh": "Prompt 库",
+      "fit": "中"
+    }
+  ],
+  "capabilities": {
+    "maxResolutionZh": "无（非渲染项目）",
+    "maxFpsZh": "无",
+    "durationZh": "无",
+    "effectsZh": [
+      "提示词"
+    ],
+    "audioZh": "无",
+    "interactivityZh": "无",
+    "automationZh": "无",
+    "assetsZh": "Markdown",
+    "exportFormatsZh": [
+      "无（纯提示词合集）"
+    ],
+    "realtimePreviewZh": "无",
+    "ciFriendlyZh": "无"
+  },
+  "ceilingZh": "只是提示词，最终画面仍取决于承接的渲染框架与模型能力。",
+  "workflow": [
+    {
+      "stepZh": "检索",
+      "detailZh": "按风格标签找 prompt",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "改写",
+      "detailZh": "替换主题与文案",
+      "effortZh": "低"
+    },
+    {
+      "stepZh": "接入",
+      "detailZh": "交给渲染框架执行",
+      "effortZh": "中"
+    }
+  ],
+  "differentiators": [
+    "体量大（703 条）且分类清晰",
+    "适合作为风格字典",
+    "MIT 许可"
+  ],
+  "limits": [
+    "无可执行代码与渲染器，本轮未出片（skipped）",
+    "提示词质量参差，需要人工筛选",
+    "依赖外部模型与渲染框架"
+  ],
+  "compareTips": [
+    {
+      "vs": "vs lemo-opuscar",
+      "adviceZh": "lemo 是风格 + 渲染工具链；本仓库只有提示词"
+    },
+    {
+      "vs": "vs huashu-*",
+      "adviceZh": "huashu 提供模板/引擎，本仓库给灵感"
+    }
+  ],
+  "showcase": {
+    "demoBriefZh": "演示重点：1) 风格分类索引；2) 同一主题多风格 prompt 对比。",
+    "featureCallouts": [
+      {
+        "titleZh": "规模",
+        "descZh": "703 条覆盖广"
+      },
+      {
+        "titleZh": "分类",
+        "descZh": "按风格/场景组织"
+      },
+      {
+        "titleZh": "可改写",
+        "descZh": "模板化句式"
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "field": "stars",
+      "source": "GitHub API",
+      "noteZh": "13,606 stars"
+    },
+    {
+      "field": "内容",
+      "source": "本地实测",
+      "noteZh": "Markdown 提示词，无渲染代码"
+    },
+    {
+      "field": "样例",
+      "source": "本地实测",
+      "noteZh": "无可执行渲染入口，skipped"
+    }
+  ]
+}

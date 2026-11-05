@@ -1,0 +1,63 @@
+{
+  "id": "Zulko__moviepy",
+  "durationSec": 28.003,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 7.0,
+      "capabilityZh": "subclipped 裁剪 + with_speed_scaled 变速 + 交叉淡入",
+      "proofZh": "3.6s 片段 1.6× 加速后重复 4 次补满 7s，CrossFadeIn 0.8s 入场"
+    },
+    {
+      "start": 7.0,
+      "end": 14.0,
+      "capabilityZh": "多层合成 + 画中画 + 定时出现",
+      "proofZh": "底片 MultiplyColor 0.55 压暗，画中画 0.38 倍定位 (820,70)，第 3.6s 标题贴片"
+    },
+    {
+      "start": 14.0,
+      "end": 21.0,
+      "capabilityZh": "CrossFadeIn 转场 + 调色",
+      "proofZh": "两条同源片段 MultiplyColor 0.75/1.15，1.6s 交叉淡化叠化"
+    },
+    {
+      "start": 21.0,
+      "end": 28.0,
+      "capabilityZh": "圆形蒙版 + 黑白滤镜 + numpy 正弦音轨",
+      "proofZh": "560px 圆形遮罩按 sin/cos 轨迹移动，BlackAndWhite + LumContrast，220/440Hz 混音"
+    }
+  ],
+  "callouts": [
+    {
+      "t": 0.5,
+      "dur": 4.0,
+      "titleZh": "① subclipped + 1.6× 变速",
+      "descZh": "3.6s 片段加速到 2.25s，重复 4 次补满 7s，再叠 0.8s 交叉淡入"
+    },
+    {
+      "t": 7.6,
+      "dur": 4.0,
+      "titleZh": "② 图层 + 画中画",
+      "descZh": "底片压暗到 0.55，画中画缩到 0.38 倍固定在右上角，3.6s 后出现标题贴片"
+    },
+    {
+      "t": 14.6,
+      "dur": 4.0,
+      "titleZh": "③ 交叉淡化 + 双路调色",
+      "descZh": "0.75 / 1.15 两种调色叠加，1.6s CrossFadeIn 形成叠化转场"
+    },
+    {
+      "t": 21.6,
+      "dur": 4.2,
+      "titleZh": "④ 圆形蒙版 + 黑白 + numpy 音轨",
+      "descZh": "560px 圆形 mask 走 sin/cos 轨迹，220+440Hz 正弦音轨由 numpy 现场合成"
+    }
+  ],
+  "renderMs": 168000,
+  "pipeline": "official",
+  "knownLimitsZh": [
+    "1080p 编码在本机曾出现 BrokenPipeError，本次按 1280x720 稳定出片",
+    "标题贴片用 PIL 预渲染 PNG，不是 MoviePy 原生 TextClip（原生需要 ImageMagick）",
+    "合成全部在 CPU，4 段 28s 渲染约 168s"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "repo": "bangtutorial/bang-motion",
+  "category": "Agent/LLM 代码视频工作流（边缘）",
+  "status": "skip",
+  "render_ms": 0,
+  "total_ms": 0,
+  "cmd": "",
+  "ffprobe": null,
+  "notes_zh": "纯技能/提示词仓库：内容是给 LLM 的 motion 设计规范与模板文档，README 指向的 starters/ 目录在下载的仓库中不存在，也没有 package.json 或任何可执行渲染入口（无 Remotion/Playwright 工程）。无法产出真实视频，记 skip 并注明「非框架，属技能文档仓库」。"
+}
