@@ -1,0 +1,3914 @@
+{
+  "updatedAt": "2026-11-06",
+  "repos": {
+    "yongkyuns__noon": [
+      {
+        "q": "想把公式推导做成能点着玩的网页课件",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "网页里放一段能暂停能拖动的数学动画",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "想用 Rust 做数学动画但不想装 Python",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "几何变换想让学生自己点击触发",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "数学课件要能导出带背景音乐的备份视频",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "老 Manim 项目想搬到浏览器里实时跑",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "想在网页里嵌一段不用服务器的教学动画",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "做个可交互的坐标系演示给大学生看",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "不想维护渲染服务器，课件直接开网页看",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "教学短片要 1080p 还能自己配乐",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "做一套能点击高亮的线性代数演示",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "科普账号要两三分钟带配乐的概念片",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "想给教育产品加一个可交互动画模块",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "写惯了 Python，有没有浏览器端的 Manim",
+        "scenario": "math-physics"
+      }
+    ],
+    "remotion-dev__remotion": [
+      {
+        "q": "用 React 组件做一条产品发布会开场片",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "每次发版自动生成一条更新日志视频",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "给上千个客户各生成一条带名字的短片",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "数据报告想按月自动出成视频",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "团队前端熟 React，能不能直接写视频",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "想在 CI 里自动跑视频渲染",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "需要竖屏投放素材批量替换文案",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "课程片头片尾想一次批量出几十条",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "想让动画里的图表跟着数据按帧长出来",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "公司多人用要买授权吗",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "想从网页界面直接录成宣传片",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "代码高亮镜头想嵌进现有 React 工程",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "长片要云端按帧分片横向扩展",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "3D 场景想挂到 React 时间轴上",
+        "scenario": "three-d-fx"
+      }
+    ],
+    "BintzGavin__helios": [
+      {
+        "q": "官网改版想做一条三十秒宣传片",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "不装 React 也想把网页 CSS 动画录成视频",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "真实的页面点击滚动想录成功能演示",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "设计师的动效提案要出多个版本",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "Canvas 画的粒子动画想直接录下来",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "CSS 关键帧想逐帧确定地渲成视频",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "每次发版自动生成官网功能演示",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "网页播放器要能拖动进度条预览",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "视频要混入外部配乐并保持声画同步",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "批量出竖屏和方形的社媒切片",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "产品功能演示想录真实交互而不是模拟",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "想把渲染能力托管成对外服务，授权怎么算",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "WebGL 着色器短片想拍成 MP4",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "不想装浏览器自动化也能逐帧渲染",
+        "scenario": "html-to-video"
+      }
+    ],
+    "0xS4N4TG__kinetograph": [
+      {
+        "q": "已有 Remotion 工程嫌浏览器慢想换原生合成",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "不想装浏览器，Node 直接跑代码出片",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "Windows 本地每天批量出几十条短片",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "无浏览器环境的 CI 里自动渲宣传片",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "TSX 写 3D 和着色器混在一条片子里",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "想把 HTML 动效页当 composition 直接渲",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "需要带音轨的成片一次合成出来",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "批量改参数重复渲染同一条模板",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "想要 GPU 合成比无头浏览器快一点",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "只有预编译平台，其他系统要自己编译",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "渲染想用 NVENC 硬编节省时间",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "做一条胶片质感的复古产品片",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "Windows 上不用装浏览器就能批量出片",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "想省掉浏览器启动那几秒开销",
+        "scenario": "html-to-video"
+      }
+    ],
+    "dmtrKovalenko__fframes": [
+      {
+        "q": "想用 Rust 画信息图解说动画",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "每帧返回一棵 SVG 树，静态部分自动复用",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "数据解说片要柱状图和数字滚动",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "把 Shadertoy 着色器当背景图层",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "品牌字体动效想用代码精确控制字距",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "128 秒长片想接近实时渲完",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "让 Agent 按模板批量出三十秒短片",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "带配乐成片要能看 LUFS 和削波",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "不想引入场景图和运行时，只想画矢量",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "做长片时静态图层不要重复计算",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "需要 1080p30 的一到三分钟解说片",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "做品牌动态图形但只会一点 Rust",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "矢量图形入场和场景切换要能写代码",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "没有 3D 需求，只要平面动效",
+        "scenario": "data-viz"
+      }
+    ],
+    "Remocn__remocn": [
+      {
+        "q": "想给 Remotion 工程加打字机标题",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "两百多段成品动效想直接复制进来",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "产品 Demo 要模拟光标和终端窗口",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "图表动画要条形图和数字滚轮",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "发布预告片想要六套整片模板",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "团队已有 Remotion，想快点出片",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "需要故障风转场和纸张撕裂效果",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "竖屏短视频想套模板改文案",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "不想从零写动效，只想挑组件",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "商用前要确认 Remotion 授权范围",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "做一套和品牌色一致的动效库",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "AI 自动拼片需要稳定可复用的组件",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "想做 Logo 组装和发布会收尾镜头",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "只有普通前端工程，没有 Remotion 能用吗",
+        "scenario": "react-stack"
+      }
+    ],
+    "wx4766__html-to-video": [
+      {
+        "q": "会写 HTML 想直接把它渲成视频",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "一个文件写完整多镜头讲解片",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "一条命令出抖音小红书油管三套比例",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "知识科普竖屏短视频要关键词字幕卡",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "产品功能演示想 60fps 的 1080p",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "批量投放素材要能跑任务表",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "需要带透明通道的叠加层",
+        "scenario": "post-production"
+      },
+      {
+        "q": "只要 GIF 和封面图发到文档里",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "不想学 React，也不想装渲染框架",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "用 Canvas 画不了真 3D，够用就行",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "八秒片子要八种转场和持续运镜",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "让大模型生成 HTML 后自动出片",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "数据分析师想把 KPI 做成短动画",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "Windows 本地一条命令就能出 MP4",
+        "scenario": "html-to-video"
+      }
+    ],
+    "shadcn-labs__snapcn": [
+      {
+        "q": "AI 聊天逐字流式想做成产品 Demo",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "终端执行命令的镜头想直接放进视频",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "手机和笔记本设备框要入画",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "卡拉 OK 式的逐词高亮字幕",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "发布片要 hero 标题和 Logo 组装",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "用 shadcn 设计变量保持品牌一致",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "关注者涌入这种增长动效",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "输入框和光标的界面动画",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "想要一套产品 Demo 的现成组件",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "三十秒产品介绍片要 1080p",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "官网首屏想放一条动态短视频",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "已有 Remotion 想装组件就出片",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "它不带音频轨道，配音得自己补",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "想用假终端演示 AI 编程产品的能力",
+        "scenario": "ai-generated"
+      }
+    ],
+    "academa-labs__manimgx": [
+      {
+        "q": "想要 Manim 的写法但出片快很多",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "1080p60 的数学推导动画要几十秒渲完",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "不想装 LaTeX 就能出公式动画",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "做 3D 曲面和 Hopf 纤维化教学",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "洛伦兹吸引子和动力系统可视化",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "物理课件要有移动相机和环绕镜头",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "想让配音和动画节点自动对齐",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "网页里嵌一段 3D 教学场景",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "大学课程单条三到十分钟 1080p60",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "Agent 自动生成整套教学片",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "需要 4K 但官方还没给实测数据",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "用 Python 写，GPU 加速要能吃得满",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "冷门 Manim API 可能缺失怎么办",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "想给科普号做一条 3D 概念短片",
+        "scenario": "math-physics"
+      }
+    ],
+    "jeertmans__manim-slides": [
+      {
+        "q": "想把 Manim 动画切成可翻页的幻灯片",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "讲课时每页停下来讲完再继续",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "一段动画想循环到学生听懂为止",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "要导出 PPTX 到教室电脑现场放映",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "任何浏览器打开就能演示",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "同一份代码既要出片又要能讲课",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "学术报告需要按页控制的动画",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "录课和课件想一次做两套交付",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "不想装 Qt 也能网页放映",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "它不能直接把 mp4 当转换目标",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "用 ManimGL 的 3b1b 风格做演示",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "课上想随时回退到上一页动画",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "需要离线投屏不依赖网络",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "复杂 3D 现场性能看本机显卡",
+        "scenario": "math-physics"
+      }
+    ],
+    "patriciogonzalezvivo__glslViewer": [
+      {
+        "q": "想做 raymarching 视觉背景短片",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "噪声流场和液体金属效果怎么实现",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "把一段视频当纹理喂进着色器",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "用相机 CSV 固定运镜拍特效镜头",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "有 3D 模型想套自定义材质旋转展示",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "生成艺术要 1080p 循环背景",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "图形学课上实时演示着色器",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "无窗口服务器批量渲序列帧",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "想要接近实时的录制速度",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "Windows 发行包缺 FFmpeg 要自己补",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "要完整叙事片它做不了",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "输出 PNG 序列交给 AE 后期合成",
+        "scenario": "post-production"
+      },
+      {
+        "q": "做 VJ 现场用的视觉素材",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "分形和粒子视觉想直接录成 MP4",
+        "scenario": "three-d-fx"
+      }
+    ],
+    "charmbracelet__vhs": [
+      {
+        "q": "开源 CLI 的 README 想要一段演示动图",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "终端命令逐字敲出来还能复现",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "录终端 GIF 要固定主题和窗口栏",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "CI 里重放终端脚本做视觉回归",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "想把终端演示转成 MP4 再剪辑",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "分屏终端和隐藏光标的演示",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "录 git 操作和安装脚本的过程",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "把终端命令演示录成 GIF 放进文档",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "用 WSL 或 Docker 绕过录制环境",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "教学课件需要分步操作的 GIF",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "终端产品发布想配一段演示",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "GIF 太大想改成 MP4 输出",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "品牌化终端窗口要加边距和字体",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "要录 GUI 操作它做不到",
+        "scenario": "code-terminal"
+      }
+    ],
+    "remotion-dev__template-code-hike": [
+      {
+        "q": "想逐行高亮讲解一段源码",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "代码 diff 让删除变红插入变绿",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "同一文件多个函数依次推镜聚焦",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "技术发布片要代码镜头加标题卡",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "编程课程三到十分钟一段",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "多语言 SDK 用法演示",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "代码超过四十行滚动和高亮会错位",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "想把代码和高亮旁注同步起来",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "竖屏代码镜头要 1106 宽",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "需要音频字幕还得自己加",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "API 用法教学要按步骤聚焦",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "重构前后对比做成动画",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "开源项目发布想要代码短片",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "纯模板没有可复用组件包",
+        "scenario": "code-terminal"
+      }
+    ],
+    "remotion-dev__template-three": [
+      {
+        "q": "3D 产品要绕着相机转一圈展示",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "3D 物件上叠标题和参数标签",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "抽象几何阵列缩放位移的片头",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "金属和玻璃材质逐帧变化",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "技术概念可视化想要三维讲解",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "3D 图标和 Logo 动效五到十五秒",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "想在 React 时间轴里摆 Three.js 场景",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "高面数模型掉帧怎么办",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "需要真实 GI 和后期合成",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "硬件产品十五到六十秒介绍片",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "想用着色器做流动金属片头",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "3D 和 2D 标题混排在一个 Composition",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "4K 需要更多显存和渲染时间",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "没有模型资产和贴图优化怎么办",
+        "scenario": "three-d-fx"
+      }
+    ],
+    "ManimCommunity__manim": [
+      {
+        "q": "想让公式一项一项变形推导出来",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "做线性代数里矩阵作用于网格的演示",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "3D 曲面和参数方程要能环绕看",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "函数图像上切线沿着曲线滑动",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "大学数学课件要 1080p60 长片",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "科普频道的数学短片要讲得透",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "论文答辩配图想要几段动画",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "公式动画要能离线渲染不联网",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "想用 add_sound 给动画挂背景音乐",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "Cairo 渲染器不支持真 3D 怎么办",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "需要 4K60 的出版级课程",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "十分钟的长片渲染要按小时算",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "想要可视化编辑器调公式动画",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "做微积分求导步骤的分步讲解",
+        "scenario": "math-physics"
+      }
+    ],
+    "AzurIce__ranim": [
+      {
+        "q": "纯 Rust 写数学动画图形入场",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "默认就要 1080p60 的 MP4",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "分步出现的图形箭头和标注",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "用 Rust 循环批量生成图形阵列",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "多场景串联的教学短片",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "Rust 技术演示视频要一镜到底",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "几何和算法可视化的短片",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "想摆脱 Python 环境做 2D 教学片",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "CI 里按固定模板生成短动画",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "首次编译拉了九百个 crate 等两小时",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "需要 LaTeX 公式排版但它不支持",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "调一段动画要重跑编译很慢",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "想要 3D 曲面和相机运镜",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "做程序化动态图形批量出片",
+        "scenario": "data-viz"
+      }
+    ],
+    "Vincentwei1021__video-shotcraft": [
+      {
+        "q": "截真实产品页面做成发布会宣传片",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "功能演示要 UI 入场和卡片堆叠",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "竖屏社媒切片要卡点转场和音效",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "开源项目介绍用仓库截图加数据卡",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "想要可继续编辑的剪映草稿",
+        "scenario": "post-production"
+      },
+      {
+        "q": "独立开发者三十到六十秒发布片",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "SaaS 功能更新要做十五到四十五秒视频",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "投放素材要快速迭代多版本",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "必须有 Claude Code 和 Remotion 环境",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "镜头库不够用，想自己写配方卡",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "抓取真实页面要登录态怎么办",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "想要一百多个镜头和配方卡",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "帧级 QA 只查技术问题不保创意",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "让 Agent 自己选镜头卡点配乐",
+        "scenario": "ai-generated"
+      }
+    ],
+    "welovemedia__ffmate": [
+      {
+        "q": "批量转码要支持 NVENC 硬编",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "素材流水线要裁剪加水印混音",
+        "scenario": "post-production"
+      },
+      {
+        "q": "监听目录发现新文件自动处理",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "多个实例共享队列做多机渲染",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "任务失败要能重试并查状态",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "课程视频批量压制还要生成缩略图",
+        "scenario": "post-production"
+      },
+      {
+        "q": "媒体运维要自动转码后的成片",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "渲染农场要一个编码后端",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "CI 里的媒体任务要能调 REST",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "需要可视化剪辑界面它做不到",
+        "scenario": "post-production"
+      },
+      {
+        "q": "Windows 上要能稳定跑媒体批处理",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "闲置半小时后数据库锁死 panic",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "AGPLv3 闭源商用有传染性",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "每天几百条素材要自动排队处理",
+        "scenario": "post-production"
+      }
+    ],
+    "asciinema__asciinema": [
+      {
+        "q": "把终端会话录成可回放的文本录像",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "文档里嵌一段能暂停能拖动的终端演示",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "学生想按自己节奏回看命令操作",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "录像要能复制里面的命令文本",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "先录 cast 再转 GIF 或 MP4",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "终端直播把会话实时推给观众",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "CI 里记录安装过程成构建日志",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "终端会话要能生成可分享的回放链接",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "彩色输出和光标定位要按原速还原",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "要交付 MP4 给市场或课程团队",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "录 TUI 界面和窗口尺寸变化",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "录像要带音频它不支持",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "转视频时事件稀疏导致节奏不对",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "教学培训要一份 .cast 加在线回放链接",
+        "scenario": "code-terminal"
+      }
+    ],
+    "asciinema__agg": [
+      {
+        "q": "把 cast 转成高质量终端 GIF",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "README 动图要统一主题和字号",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "教学步骤动图要压缩停顿",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "同一份录像出多套主题版本",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "先渲 GIF 快速检查会话内容",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "单文件工具装一分钟就能用",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "CI 产物想生成演示 GIF",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "要 MP4 投放素材得再转码一次",
+        "scenario": "post-production"
+      },
+      {
+        "q": "GIF 只有 256 色够不够用",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "原始 cast 长时间不动帧率会掉",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "Windows 上下载单文件就能把录像转 GIF",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "GIF 体积随分辨率快速膨胀",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "想给终端录像加主题和边距",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "十到二十秒的终端 GIF 发聊天工具",
+        "scenario": "code-terminal"
+      }
+    ],
+    "iart-ai__motion-skills": [
+      {
+        "q": "让 Agent 按技能包自动做投放素材",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "竖屏内容要 TikTok 节奏剪辑",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "数据驱动图表和地图动画",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "动态排版和 Logo 下三分之一",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "用 Manim 技能做公式几何讲解",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "Three.js 场景和着色器背景",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "透明通道的 B-roll 素材给后期",
+        "scenario": "post-production"
+      },
+      {
+        "q": "内容创作者要批量竖屏短视频",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "分析师想把图表做成横屏数据片",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "它只是索引，十九个包都在外部仓库",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "没有统一渲染器和质量基线怎么办",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "想给 coding agent 一套动效流程",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "教育者要 1080p 教学片段",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "复杂片子还是要人来审片",
+        "scenario": "ai-generated"
+      }
+    ],
+    "maloyan__manim-web": [
+      {
+        "q": "把 Manim 动画放进网页里播放",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "数学教材要可交互的浏览器动画",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "分子和 DNA 双螺旋可视化",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "地图和地理流向动画怎么画",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "想直接导出 GIF 发到课件里",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "CDN 引入后在 canvas 里播放",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "老师想快速做个几何演示",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "React 项目里嵌一段动画模块",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "WebCodecs 导出只得到空文件",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "720p 动画导 GIF 花了四十三秒",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "它没有 3D 相机和曲面",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "复杂 LaTeX 公式浏览器端能不能排",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "想要 CLI 批量离线渲染视频",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "原型验证想用网页版 Manim 对齐 API",
+        "scenario": "math-physics"
+      }
+    ],
+    "LBEILC__Multiplane": [
+      {
+        "q": "三维卡片和多层视差镜头",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "快速旋转要带运动模糊拖尾",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "硬切转场处模糊不能跨切点",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "高质量静帧和海报要同一套超采样",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "透明通道片头要叠到实拍上",
+        "scenario": "post-production"
+      },
+      {
+        "q": "Agent 自动做产品动效片",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "设计师要 1080p 动效交付和 alpha 版",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "产品展示想要景深和焦点切换",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "批量模板要出多版本成片",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "八 GB 显存笔记本跑批量要降并发",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "两秒成片渲了四分钟太慢",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "需要逐像素校验渲染确定性",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "要音频和字幕系统它没有",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "页面写 render(t) 想逐帧拍下来",
+        "scenario": "html-to-video"
+      }
+    ],
+    "SkyeShark__eidoverse-video": [
+      {
+        "q": "想生成一个数字人讲解视频",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "VRM 角色要有走路和手势动作",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "数字人讲解要能对上口型",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "带物理和天气的 3D 场景短片",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "程序化生成四足动物和机器人",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "工业制造仿真镜头像打印和铣削",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "地形植被雨雪雾的氛围镜头",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "Agent 一条命令独立生成 3D 短片",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "企业培训要虚拟人 1080p 讲解片",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "预 alpha 版本接口和文档会变",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "AGPLv3 做闭源商用要额外评估",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "没有 GPU 软件渲染能用但很慢",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "角色特写缺少面部微表情",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "想要配乐音效和对白的完整片",
+        "scenario": "three-d-fx"
+      }
+    ],
+    "Matheart__manim-physics": [
+      {
+        "q": "物理课要小球落地和方块堆叠",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "斜面滑动要画出受力和摩擦力箭头",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "点电荷场线和带电粒子轨迹",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "波的传播干涉和折射路径",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "公式文字和物理对象要在同一场景",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "高中物理课件要 1080p 教学片",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "物理科普短视频一两分钟",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "电磁学可视化要 1080p60 片段",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "需要 3D 物理场景它只有 2D",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "Python 3.13 装不上这个插件",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "Manim 0.19 移除了 Space 类",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "刚体多了会掉帧还穿透",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "弹簧约束和碰撞形状要真实",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "透镜与面镜成像怎么动画化",
+        "scenario": "math-physics"
+      }
+    ],
+    "simonw__shot-scraper": [
+      {
+        "q": "用 YAML 分镜指挥浏览器点按钮",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "真实网页操作要录成演示视频",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "填表提交等待结果再展示成功页",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "多个网址批量截图和整页 PDF",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "导出无障碍树和渲染后的 HTML",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "产品经理要三分钟功能演示",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "技术文档要配图和操作回放",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "自动化验收要录操作过程",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "需要景深和程序化转场它做不到",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "fps 不能在分镜里设置",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "要控制页面里的 Canvas 动画时间",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "网页录屏要能按步骤改页面状态",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "内网系统要登录态才能录",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "想录真实的滚动和主题切换",
+        "scenario": "html-to-video"
+      }
+    ],
+    "spite__ccapture.js": [
+      {
+        "q": "给 canvas 作品加一个导出视频按钮",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "p5.js 画的数学动画想直接导成 MP4",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "Three.js 场景想逐帧捕获不进浏览器录屏",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "想要接近电影级的运动模糊",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "导出 256 色循环 GIF 放文档里",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "图片序列打包交给 AE 后期",
+        "scenario": "post-production"
+      },
+      {
+        "q": "带音轨的 canvas 成片要混音频",
+        "scenario": "post-production"
+      },
+      {
+        "q": "生成艺术四秒 720p 要几百 KB",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "课程演示动画要 720p MP4 和 GIF",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "WebGL 作品要批量导出 1080p",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "CI 里自动产出 MP4 附件",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "浏览器不支持 WebCodecs 只能退回 webm",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "GIF 延时按厘秒取整 60fps 变 50",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "没有 CLI 和时间轴要自己写宿主页",
+        "scenario": "html-to-video"
+      }
+    ],
+    "cth9191__animate": [
+      {
+        "q": "用 canvas 代码画分镜做竖屏科普",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "黑底坐标轴彩色变量的数学讲解",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "剪纸孔版速写本五种画风的讲解片",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "一次出九比十六和十六比九多个比例",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "脚本分句逐词对时配旁白",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "给参考视频仿出同款配色和线宽",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "长片按场景拆分并行构建",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "知识类竖屏短视频要 1080x1920",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "中学数学课件要十六比九 1080p",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "历史时间线视频要剪纸风转场",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "需要精细卡点的广告片",
+        "scenario": "post-production"
+      },
+      {
+        "q": "它没有字幕渲染器只能画进画面",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "依赖 Claude Code 宿主和人工审美",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "音轨时长不一致 ffmpeg 混流报错",
+        "scenario": "post-production"
+      }
+    ],
+    "leonid-shevtsov__headless": [
+      {
+        "q": "Ruby 测试失败时自动保存屏幕录像",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "远程 Linux 上录浏览器操作过程",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "在虚拟显示器里跑 GUI 程序",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "网页截图和 PDF 批处理",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "wkhtmltopdf 要独立显示避免抢焦点",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "十二帧每秒的整屏 mov 片段",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "CI 里按用例命名保存录像",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "运维要在无头服务器跑有界面程序",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "文档流水线批量出 PNG 和 PDF",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "教程作者想录整屏 shell 演示",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "Windows 没有 Xvfb 直接跳过",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "只有录屏没有合成字幕和音轨",
+        "scenario": "post-production"
+      },
+      {
+        "q": "录出的 mov 要自己转成 mp4",
+        "scenario": "post-production"
+      },
+      {
+        "q": "多线程测试共享一个虚拟显示",
+        "scenario": "batch-production"
+      }
+    ],
+    "3b1b__videos": [
+      {
+        "q": "想临摹 3b1b 的相机推拉和转场",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "Optics 系列的 3D 光场怎么实现",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "微积分和线性代数的场景能改参数复用",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "想要 3b1b 同款 1080p 长片风格",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "学习高级 ManimGL 写法找例子",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "3D 曲面参数化和相机绕行参考",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "仓库不给成片要自己搭渲染剪辑",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "CC BY-NC-SA 禁止商用怎么办",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "老项目依赖旧版 manim 跑不起来",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "单场景十二秒要渲五十六秒",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "想学公式逐行变换的镜头语言",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "缺少依赖清单只能从旧 commit 倒推",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "科普频道要十到三十分钟一集",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "每个场景依赖同目录常量单独拷出必失败",
+        "scenario": "math-physics"
+      }
+    ],
+    "dmnsgn__canvas-record": [
+      {
+        "q": "一个录制器要能出七种编码格式",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "Three.js 场景逐帧 step 录制",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "同一段动画要 mp4 webm gif 各一版",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "PNG 序列打包给 AE 精修",
+        "scenario": "post-production"
+      },
+      {
+        "q": "4K 或 8K 超出 AVC 上限怎么办",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "实时录 canvas 流用 MediaCapture",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "生成艺术四秒要 2.45MB 的 mp4",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "产品 demo 想加个录制分享按钮",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "教学动画转成三到八秒 GIF",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "CI 自动出片要直接写本地文件",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "WebCodecs 比 wasm 编码快多少",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "720p 一百二十帧要二十九秒太慢",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "它没有音轨字幕和时间轴",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "状态没导出一不小心只录了一帧",
+        "scenario": "html-to-video"
+      }
+    ],
+    "ybouane__VideoFlow": [
+      {
+        "q": "TypeScript 编排时间轴再编译成 JSON",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "数字滚动和图表图层按时间线进出场",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "片头要 blurResolve 和 glitch 预设",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "bloom 色差调色参数逐帧动画",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "一份布局在 720p 1080p 4K 等比排布",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "编辑器改文案就能换一条片子",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "服务端每小时批量出几十条短片",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "运营要做十到六十秒数据可视化短片",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "发布会五到十五秒片头加配乐",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "它按元素逐层截图只有 0.32fps",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "一分钟长片要渲一小时半",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "一堆数据想做成会动的柱状图",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "没有音轨 API 要自己补",
+        "scenario": "post-production"
+      },
+      {
+        "q": "想要浏览器和 Node 双端同一份 JSON",
+        "scenario": "html-to-video"
+      }
+    ],
+    "av__remotion-bits": [
+      {
+        "q": "MatrixRain 矩阵雨当全屏背景",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "粒子场作为科技感片头底层",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "Three.js 立体字和镜头推进",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "逐字淡入和渐变遮罩转场",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "卡片掀开的空间感转场",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "粒子加 3D 字和转场叠在时间线上",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "Remotion 工程加五秒片头背景",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "科技感数据视频要三十到六十秒",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "十到二十秒 3D 片头怎么出",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "组件库要能单拉一个组件",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "它没有剧本分镜和音频编排",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "demo 入口引用了未导出的组件",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "五分钟片子渲了八十七秒",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "没有 Remotion 宿主就一步都走不了",
+        "scenario": "react-stack"
+      }
+    ],
+    "bangtutorial__bang-motion": [
+      {
+        "q": "品牌 opener 要 logo 揭示和口号",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "SaaS 演示用真实截图做推拉高亮",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "动态字体逐词冲击和字形变形",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "九宫格漫画分格讲解每格一句台词",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "交付物就是一个自动播放的 HTML",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "发布会竖屏十五到四十秒单页",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "产品市场要二十到六十秒功能演示",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "活动动态字体十到三十秒",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "想用 export-frames 导 MP4 但没验证",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "它没有 package.json 和渲染入口",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "设计上限一百二十秒没有章节字幕",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "画面依赖 CDN 的 GSAP 断网就废",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "设计规则要写死字号和主体运动",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "教学课程长片它不适合",
+        "scenario": "math-physics"
+      }
+    ],
+    "UnMolDeQuimica__manim-Chemistry": [
+      {
+        "q": "把 mol 文件直接变成分子结构动画",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "双键方向和原子编号要能修正",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "三维球棍模型配相机环绕",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "元素周期表按族和周期高亮",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "大学有机化学课件要三十秒片段",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "药物和分子科普要带旁白",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "中学化学结构讲解做五到三十秒",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "论文插图要 GIF 或 MP4",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "复杂反应机理要大量手写代码",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "想让分子真的变形而不是只旋转",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "项目是 WIP 没有最终版本计划",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "README 里的旧参数示例已失效",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "配音字幕要另装 voiceover",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "一百五十帧 720p 只要七秒",
+        "scenario": "math-physics"
+      }
+    ],
+    "3b1b__manim": [
+      {
+        "q": "想在窗口里拖时间轴实时调镜头",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "OpenGL 实时预览数学动画",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "三维曲面和空间曲线相机绕行",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "公式项级变换用 TransformMatchingTex",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "热重载单段代码反复试镜头",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "大学网课要十到二十分钟一集",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "科普频道三到十分钟 1080p",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "需要带 GPU 或虚拟 GL 的 CI runner",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "无头服务器没有 OpenGL 跑不起来",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "它的 API 和 ManimCE 完全分离",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "Windows 要装 FFmpeg 和 MiKTeX",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "想要配音字幕得另装 voiceover",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "换机器后同一场景构图有差异",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "三维几何教学要三十秒到三分钟",
+        "scenario": "math-physics"
+      }
+    ],
+    "codedbytahir__motionforge": [
+      {
+        "q": "团队想自建带时间轴的 Web 剪辑器",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "速度驱动的字距错位标题",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "液态填充文字和 3D 景深画廊",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "Perlin 噪声抖动转场",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "FLIP 缩略图展开到全屏",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "浏览器内多轨预览拖拽调顺序",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "视觉设计师要十秒电影感动效",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "内部营销短片想复用组件",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "组件要拆出来单独二次开发",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "没有导出 CLI 得自己接 Remotion",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "装一千零一个包两次超时",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "三百帧渲染要四十分钟太慢",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "Prisma 数据库是启动前置条件",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "想要真正的云渲染批量出片",
+        "scenario": "batch-production"
+      }
+    ],
+    "Zulko__moviepy": [
+      {
+        "q": "按目录批量裁头尾再拼成合集",
+        "scenario": "post-production"
+      },
+      {
+        "q": "用 TextClip 烧中文字幕",
+        "scenario": "post-production"
+      },
+      {
+        "q": "逐像素调色和故障风特效",
+        "scenario": "post-production"
+      },
+      {
+        "q": "多层视频用遮罩叠加合成",
+        "scenario": "post-production"
+      },
+      {
+        "q": "音量包络和混音要对齐视频",
+        "scenario": "post-production"
+      },
+      {
+        "q": "课程视频批处理每集十到六十分钟",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "素材按规则自动剪成片段合集",
+        "scenario": "post-production"
+      },
+      {
+        "q": "科研数据视频要三十秒到三分钟",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "每天几十条 720p 短视频批量生产",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "它没有矢量时间轴和缓动体系",
+        "scenario": "post-production"
+      },
+      {
+        "q": "2.x 和 1.x API 断裂教程全过时",
+        "scenario": "post-production"
+      },
+      {
+        "q": "Windows 上想用 Python 批量剪素材",
+        "scenario": "post-production"
+      },
+      {
+        "q": "一分钟 30fps 片子渲染接近十二分钟",
+        "scenario": "post-production"
+      },
+      {
+        "q": "想要预览低分辨率小样确认节奏",
+        "scenario": "post-production"
+      }
+    ],
+    "showlab__Code2Video": [
+      {
+        "q": "输入线性变换自动生成讲解视频",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "题库产品要批量把知识点转成视频",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "Planner 按引入推导结论排故事板",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "Critic 用视觉模型修正重叠和越界",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "生成代码可人工改一行再重渲",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "教育机构每条一到三分钟按知识点命名",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "教师想单题快速成片并拿到可编辑 py",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "算法数学短视频六十到一百二十秒",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "论文对比实验要评测表格和视频集",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "没有 API Key 就完全跑不动",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "想用扩散模型生成写实画面它做不到",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "生成代码布局重叠要人工兜底",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "没有配音字幕链路要另接",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "批量十条以上建议人工抽检",
+        "scenario": "batch-production"
+      }
+    ],
+    "JazonJiao__Manim.js": [
+      {
+        "q": "排序和最短路的逐步高亮图解",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "图和树的节点按帧出现连线",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "数学函数曲线和向量用 p5 画",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "浏览器打开 HTML 就能现场演示",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "算法课要 1200 宽的现场演示页",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "前端想参考 canvas 动画类的写法",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "刷题讲解要一到三分钟录屏",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "学生自学 Manim 原理找可跑示例",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "想要相机和 3D 还有 LaTeX 它没有",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "仓库没有 npm 包和 CLI",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "file:// 打开被 CORS 拦掉字体",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "实时录制机器一卡就丢帧",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "改一个颜色会影响别的页面",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "面试辅导要图算法短视频",
+        "scenario": "code-terminal"
+      }
+    ],
+    "midrender__revideo": [
+      {
+        "q": "TypeScript generator 写场景出 MP4",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "音轨和动画按帧精确同步",
+        "scenario": "post-production"
+      },
+      {
+        "q": "服务端并发多个 worker 批量出片",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "浏览器里拖时间轴实时预览",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "用几何自绘 3D 魔方不依赖 Three.js",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "自动化营销按 SKU 批量生成视频",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "播客配字幕做成方形或竖屏视频",
+        "scenario": "post-production"
+      },
+      {
+        "q": "数据记者要六十到一百二十秒动画",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "Serverless 渲染服务按请求返回 MP4",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "想要影视级视觉合成它不推荐",
+        "scenario": "post-production"
+      },
+      {
+        "q": "默认导出器只产出 156B 空文件",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "npm 拉了 1734 个包耗时一小时",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "网页剪辑器要能拖时间轴导出成片",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "223 帧 1080 只要 8.4 秒接近实时",
+        "scenario": "batch-production"
+      }
+    ],
+    "F4bbi__manim-dsa": [
+      {
+        "q": "数组带索引栈的压入弹出动画",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "带权图按坐标布点逐帧高亮",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "指针和索引位置要标得一眼看清",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "数据结构和文字箭头公式混排",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "算法课要十到六十秒片段",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "刷题讲解要一到三分钟竖屏",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "数据结构整章五到十五分钟分段渲",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "训练营直播要短片段 GIF 或 MP4",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "需要队列堆链表树它都没有",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "算法步骤要自己写 self.play",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "和 Manim 0.19 强耦合怎么升版本",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "README 说 MIT 却没有 LICENSE 文件",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "162 帧 720p 用 21 秒批量可行",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "想要 3D 算法可视化它不支持",
+        "scenario": "three-d-fx"
+      }
+    ],
+    "motion-canvas__motion-canvas": [
+      {
+        "q": "信息图里图表增长和节点连线",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "UI 元素位移缩放和遮罩揭示",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "配音和时间线同步的讲解片",
+        "scenario": "post-production"
+      },
+      {
+        "q": "代码块和公式排版的插件",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "强类型 scene graph 算图形",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "技术解说要一到三分钟 1080p",
+        "scenario": "code-terminal"
+      },
+      {
+        "q": "产品功能演示三十到九十秒",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "报告和论文动画十到三十秒",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "教师要做带旁白的两到五分钟课件",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "导出 CLI 不完整无头批处理不可用",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "120 帧花了 900 秒只有 0.13fps",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "编辑器包构建后缺失要补回调",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "想要 3D 得自己接 Three.js",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "信号系统学习曲线有点高",
+        "scenario": "react-stack"
+      }
+    ],
+    "openvideodev__react-video-editor": [
+      {
+        "q": "自建一个多轨时间轴 Web 剪辑器",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "视频音频文字轨并行拖拽裁剪",
+        "scenario": "post-production"
+      },
+      {
+        "q": "Pixi 滤镜和自定义 shader 转场",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "WebCodecs 浏览器内编码不上传素材",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "本地导出 MP4 省服务端成本",
+        "scenario": "post-production"
+      },
+      {
+        "q": "做剪辑 SaaS 想找可演进骨架",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "研究 Pixi 加 WebCodecs 架构",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "企业内部素材要本地剪辑",
+        "scenario": "post-production"
+      },
+      {
+        "q": "商业项目需要稳定出片，风险较高",
+        "scenario": "post-production"
+      },
+      {
+        "q": "字体 CDN 不可达就停在 Initializing",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "启动还依赖 R2 和 Deepgram 三套 Key",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "没有关键帧曲线和调色台",
+        "scenario": "post-production"
+      },
+      {
+        "q": "三人以上团队要商业授权",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "CI 自动化批量出片完全不可用",
+        "scenario": "batch-production"
+      }
+    ],
+    "mowshon__moviego": [
+      {
+        "q": "Go 写的脚本化剪辑要拼图层",
+        "scenario": "post-production"
+      },
+      {
+        "q": "画中画把视频图片文字叠在背景上",
+        "scenario": "post-production"
+      },
+      {
+        "q": "图片幻灯片拼接加淡入淡出",
+        "scenario": "post-production"
+      },
+      {
+        "q": "字幕要支持样式位置和时间区间",
+        "scenario": "post-production"
+      },
+      {
+        "q": "多音轨混音和静音段处理",
+        "scenario": "post-production"
+      },
+      {
+        "q": "透明背景导出叠到别的工程",
+        "scenario": "post-production"
+      },
+      {
+        "q": "服务端批量合成十五条六十秒",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "电商商品视频方形和竖屏 1080p",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "社媒模板视频十五到三十秒多比例",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "监控素材要拼成长时段 MP4",
+        "scenario": "post-production"
+      },
+      {
+        "q": "没有 shader 转场和关键帧曲线",
+        "scenario": "post-production"
+      },
+      {
+        "q": "时间轴必须写 Go 没有声明式 DSL",
+        "scenario": "post-production"
+      },
+      {
+        "q": "跨片段拼接有半帧误差要手动对齐",
+        "scenario": "post-production"
+      },
+      {
+        "q": "150 帧 720p 只用 4.6 秒",
+        "scenario": "batch-production"
+      }
+    ],
+    "nexu-io__html-video": [
+      {
+        "q": "选模板贴内容就出产品宣传片",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "公众号文章想转成三十秒讲解视频",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "开源项目介绍片二十到四十秒",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "数据类模板要渲染图表和数字滚动",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "MiniMax 生成配乐和旁白混进 MP4",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "1080p60 二十八秒片五十五秒渲完",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "内容图谱决定帧序还能逐帧改文案",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "MCN 要按账号批量出短视频",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "模板偏营销没有 LaTeX 和长片结构",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "部分模板产出 261B 空文件要验片",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "pnpm 安装十分钟还要递归 build",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "模板之外的自定义帧要手写 HTML",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "课程和教学长片不推荐用模板",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "想要横屏竖屏方形三套发布素材",
+        "scenario": "product-promo"
+      }
+    ],
+    "ManimCommunity__manim-voiceover": [
+      {
+        "q": "旁白讲完自动进入下一步推导",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "讲到某个词时高亮对应公式项",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "每条配音要自动生成同名 srt",
+        "scenario": "post-production"
+      },
+      {
+        "q": "翻译后重新配音出多语言版本",
+        "scenario": "post-production"
+      },
+      {
+        "q": "教师本人边渲边录真人讲解",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "网课讲师要一到十分钟旁白课件",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "科普频道五到十五分钟 1080p",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "国际化课程一套课件出多语版",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "无障碍字幕要 MP4 加 SRT 成对交付",
+        "scenario": "post-production"
+      },
+      {
+        "q": "Whisper 逐词时间戳绑动画",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "配音要能全本地离线合成",
+        "scenario": "post-production"
+      },
+      {
+        "q": "同进程二次 runAndWait 会死锁",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "我只要画面特效不要配音",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "背景音乐和配音混音只有基础能力",
+        "scenario": "post-production"
+      }
+    ],
+    "krassowski__jupyter-manim": [
+      {
+        "q": "在 Jupyter 单元格里用魔法命令渲动画",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "公式和动画写在同一页学生改参数即看",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "notebook 变量 pickle 传给渲染进程",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "Binder 或 Colab 打开就能跑",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "还在用 ManimCairo 的老课程要维护",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "教材出版要带输出的 ipynb",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "初学者想短片段预览试手",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "它不支持 ManimCE 和 ManimGL",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "没有音频字幕剪辑只出原始视频",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "同步渲染会卡住 notebook 内核",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "输出落在默认 media 目录路径不直观",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "现代 Manim 项目基本不会选它",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "Jupyter 升级后魔法命令可能失效",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "教学 demo 想用可分享的 notebook",
+        "scenario": "math-physics"
+      }
+    ],
+    "transitive-bullshit__ffmpeg-concat": [
+      {
+        "q": "三段到十段素材加转场拼成一条",
+        "scenario": "post-production"
+      },
+      {
+        "q": "gl-transitions 几百种转场逐段指定",
+        "scenario": "post-production"
+      },
+      {
+        "q": "不同来源片段统一到第一段规格",
+        "scenario": "post-production"
+      },
+      {
+        "q": "传一个音频覆盖整条成片音轨",
+        "scenario": "post-production"
+      },
+      {
+        "q": "片头片尾拼接成完整 mp4",
+        "scenario": "post-production"
+      },
+      {
+        "q": "播客片段合并加单音轨",
+        "scenario": "post-production"
+      },
+      {
+        "q": "代运营要按批次产出的拼片",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "输出尺寸被第一段视频锁死",
+        "scenario": "post-production"
+      },
+      {
+        "q": "只支持 mp4 其他容器要再转码",
+        "scenario": "post-production"
+      },
+      {
+        "q": "没有字幕文字和图层的处理",
+        "scenario": "post-production"
+      },
+      {
+        "q": "按 JSON 顺序把多段素材拼成一条",
+        "scenario": "post-production"
+      },
+      {
+        "q": "每帧写 PNG 临时文件吃掉几 GB",
+        "scenario": "post-production"
+      },
+      {
+        "q": "640 宽 266 帧只用 10.6 秒",
+        "scenario": "post-production"
+      },
+      {
+        "q": "转场时长超过片段长度会报错",
+        "scenario": "post-production"
+      }
+    ],
+    "h2non__videoshow": [
+      {
+        "q": "十到五十张图配字幕做幻灯片",
+        "scenario": "post-production"
+      },
+      {
+        "q": "每张图配一句说明文字",
+        "scenario": "post-production"
+      },
+      {
+        "q": "相邻图片交叉淡入淡出",
+        "scenario": "post-production"
+      },
+      {
+        "q": "直接输出循环 GIF 动图",
+        "scenario": "post-production"
+      },
+      {
+        "q": "配乐按图集时长铺底还能调音量",
+        "scenario": "post-production"
+      },
+      {
+        "q": "电商商品图集要十到三十秒",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "纪念相册三到五分钟 MP4",
+        "scenario": "post-production"
+      },
+      {
+        "q": "图文课件五到十五分钟",
+        "scenario": "post-production"
+      },
+      {
+        "q": "社媒轮播图做成一比一或竖屏",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "它不接受视频输入没有画中画",
+        "scenario": "post-production"
+      },
+      {
+        "q": "图片比例不一致会被裁掉两边",
+        "scenario": "post-production"
+      },
+      {
+        "q": "Windows 上想用脚本把图集做成视频",
+        "scenario": "post-production"
+      },
+      {
+        "q": "字幕是烧进画面不能外挂",
+        "scenario": "post-production"
+      },
+      {
+        "q": "300 帧 720p 用 14.8 秒",
+        "scenario": "post-production"
+      }
+    ],
+    "mifi__editly": [
+      {
+        "q": "用 JSON 声明十个 clip 换素材换模板",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "直接引用 shadertoy 着色器做动态背景",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "Overlay 文字字幕和透明图片层",
+        "scenario": "post-production"
+      },
+      {
+        "q": "多音轨自动交叉淡化和响度标准化",
+        "scenario": "post-production"
+      },
+      {
+        "q": "画中画 B-roll 和暗角效果",
+        "scenario": "post-production"
+      },
+      {
+        "q": "运营要按模板批量出十五条六十秒",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "播客配图视频方形或横屏",
+        "scenario": "post-production"
+      },
+      {
+        "q": "十五到三十秒数据卡片片",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "三到八秒 GIF 给文档作者",
+        "scenario": "post-production"
+      },
+      {
+        "q": "批量出片要能复用同一套 JSON 模板",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "91 帧花了 1200 秒只有 0.076fps",
+        "scenario": "post-production"
+      },
+      {
+        "q": "canvas 原生依赖要用 napi-rs 转发",
+        "scenario": "post-production"
+      },
+      {
+        "q": "没有关键帧曲线动效要逐帧算",
+        "scenario": "post-production"
+      },
+      {
+        "q": "4K 输入和透明层理论上都能覆盖",
+        "scenario": "post-production"
+      }
+    ],
+    "heygen-com__hyperframes": [
+      {
+        "q": "把 HTML 动效页当工程用命令渲 MP4",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "GSAP 或 CSS 写时间轴再生成工程骨架",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "CLI 逐帧渲染要能选帧率和质量档",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "附带技能文档让 Agent 按约定改页面",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "产品发布要十六比九 marketing 视频",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "团队想做流水线化的网页出片",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "复杂 WebGL 场景每帧成本线性上升",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "八秒 720p 实测一百五十七秒",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "运行时要拉外部 CDN 内网会白屏",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "仓库里 gif 和 mp4 走 LFS 要 pull",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "Agent 原生想一条命令完成渲染",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "网页动效交给作者写，工程只负责渲",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "需要透明通道叠加到实拍",
+        "scenario": "post-production"
+      },
+      {
+        "q": "想按模板快速改一版发布短片",
+        "scenario": "product-promo"
+      }
+    ],
+    "feitangyuan__onetake": [
+      {
+        "q": "一镜到底每个节拍从上一拍长出来",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "发布片不想硬切要连续推进镜头",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "逐帧 seek 渲染带运动模糊采样",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "八到十五秒竖屏或横屏发布片",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "有校验脚本检查节奏和画面差异",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "个人创作者想低成本做发布会片",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "叙事密度靠写时间轴引擎只保一致",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "素材和音轨要自己准备",
+        "scenario": "post-production"
+      },
+      {
+        "q": "十秒片渲染要二十五分钟",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "HTML 动效页想逐帧抓图出片",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "镜头连续运动不能出现跳帧",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "想在片子里做一次情绪最高点硬切",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "设计团队要做品牌发布动效",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "需要多版本对比但不想换引擎",
+        "scenario": "product-promo"
+      }
+    ],
+    "lemomo-ai__lemo-opuscar": [
+      {
+        "q": "五十九套视觉语法按风格写页面",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "风格化短片要有可复用规范",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "拼贴和 3D 风格参考图库",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "数据可视化风格也要能套",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "渲染工具链负责起浏览器抓帧编码",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "社媒十五到三十秒风格片",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "品牌短片要统一视觉语言",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "仓库不含成片源码质量看 Agent",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "想要风格提示词和参考图配套",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "Canvas 和 WebGL 页面逐帧输出",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "设计团队想批量试不同画风",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "给创意团队一套可改的视觉模板",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "三到五秒风格片段先做测试",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "需要离线渲染不依赖云服务",
+        "scenario": "html-to-video"
+      }
+    ],
+    "alchaincyf__huashu-motion": [
+      {
+        "q": "一条命令新建工程再渲出成片",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "模板就是可改的动效分镜",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "改文案就能换一版 kinetic type",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "CDP 抓帧渲染要能控制并发",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "studio 打开时间轴预览分镜",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "知识口播片头要竖屏或横屏",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "运营团队十五到六十秒信息型动效",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "重 3D 会撞页面性能上限",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "模板改文案就能批量出片",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "想要分镜预览和最终渲染一致",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "命令行工具要能塞进脚本流水线",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "团队没设计师也想出一条片头",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "十到三十秒品牌短片先出草稿",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "安装别太复杂，最好一条命令",
+        "scenario": "product-promo"
+      }
+    ],
+    "alchaincyf__huashu-art-motion": [
+      {
+        "q": "把分镜写成 spec 让引擎渲讲解动画",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "想要 Kurzgesagt 那种科普版式",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "Vox 风格的数据讲解片段",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "白板和动态字体八套风格可换",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "透明素材导出 ProRes 叠到口播上",
+        "scenario": "post-production"
+      },
+      {
+        "q": "十秒数学讲解示例改改就能用",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "内容团队要知识科普讲解片",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "相机运动和转场版式自带",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "复杂 3D 和实拍合成不在射程",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "风格偏欧美科普适不适合中文内容",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "想要图表和讲解混排的短片",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "分镜语法要能版本化复用",
+        "scenario": "data-viz"
+      },
+      {
+        "q": "给运营一套可改文案的讲解模板",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "透明通道叠加层要交付给剪辑",
+        "scenario": "post-production"
+      }
+    ],
+    "threerocks__sweety-handdraw-video": [
+      {
+        "q": "手绘风讲解片要先出美术图再描线",
+        "scenario": "post-production"
+      },
+      {
+        "q": "美术流水线产出图层再交给渲染",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "配音和字幕要跟时间轴同步",
+        "scenario": "post-production"
+      },
+      {
+        "q": "教育科普要三到五分钟讲解",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "知识博主要白板手绘风格",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "本地渲染器精准描线动画",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "想让画面像老师手写逐步出现",
+        "scenario": "math-physics"
+      },
+      {
+        "q": "上限在美术质量和描线调度",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "流水线编排强但不擅长单镜头炫技",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "TTS 配音要能直接混进片子里",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "想复刻某个手绘博主的视觉风格",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "科普系列要统一画风和字幕样式",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "需要中文手写字体和纸纹质感",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "先做一段三十秒样片看效果",
+        "scenario": "product-promo"
+      }
+    ],
+    "browser-use__video-use": [
+      {
+        "q": "口播视频自动转录后删停顿跳剪",
+        "scenario": "post-production"
+      },
+      {
+        "q": "按语义删段再重排顺序",
+        "scenario": "post-production"
+      },
+      {
+        "q": "自动字幕加图形和 Manim 叠加",
+        "scenario": "post-production"
+      },
+      {
+        "q": "脚本化处理多条素材批量交付",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "播客和访谈要切成社媒短视频",
+        "scenario": "post-production"
+      },
+      {
+        "q": "内容运营每天要处理一堆口播",
+        "scenario": "post-production"
+      },
+      {
+        "q": "它不生成新画面，炫技动效要另接",
+        "scenario": "post-production"
+      },
+      {
+        "q": "官方转录需要 ElevenLabs Key",
+        "scenario": "post-production"
+      },
+      {
+        "q": "已有视频想自动加字幕",
+        "scenario": "post-production"
+      },
+      {
+        "q": "把长口播压成三十秒精华",
+        "scenario": "post-production"
+      },
+      {
+        "q": "想让 Agent 自己判断哪里该剪",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "七秒片处理用六十二秒",
+        "scenario": "post-production"
+      },
+      {
+        "q": "字幕样式要能做成动效卡",
+        "scenario": "post-production"
+      },
+      {
+        "q": "批量交付要保证每条时长一致",
+        "scenario": "batch-production"
+      }
+    ],
+    "pedrovelasquez9__fragua": [
+      {
+        "q": "一条命令把竖屏口播剪干净",
+        "scenario": "post-production"
+      },
+      {
+        "q": "去静默加跳剪再烧字幕卡片",
+        "scenario": "post-production"
+      },
+      {
+        "q": "Whisper 本地转写不依赖云",
+        "scenario": "post-production"
+      },
+      {
+        "q": "Remotion 渲样式化字幕卡片",
+        "scenario": "post-production"
+      },
+      {
+        "q": "个人创作者九比十六短视频",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "想把录了半小时的口播压成三分钟",
+        "scenario": "post-production"
+      },
+      {
+        "q": "只做口播清理不适合创意画面",
+        "scenario": "post-production"
+      },
+      {
+        "q": "需要批量处理一周的素材",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "字幕要跟语音逐句对齐",
+        "scenario": "post-production"
+      },
+      {
+        "q": "本地跑不想上传素材到云",
+        "scenario": "post-production"
+      },
+      {
+        "q": "剪辑完想要统一的竖屏版式",
+        "scenario": "post-production"
+      },
+      {
+        "q": "长停顿和口误要自动识别",
+        "scenario": "post-production"
+      },
+      {
+        "q": "想先看一条样片再决定用不用",
+        "scenario": "post-production"
+      },
+      {
+        "q": "Windows 上 Whisper 装得动吗",
+        "scenario": "post-production"
+      }
+    ],
+    "yihui-dev__awesome-opus5-5-videos": [
+      {
+        "q": "找能直接复用的视频页面提示词",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "七百条 prompt 按风格分类",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "想要带效果描述和关键词的索引",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "内容创作者挑提示词做短片",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "它只是提示词画面看渲染框架",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "想做科技感提示词合集",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "想要可搜索的 prompt 库",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "给团队沉淀一套出片提示词规范",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "没有渲染器，光有提示词不够",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "想快速比较不同风格的提示写法",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "运营想按模板批量生成视频页面",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "想要带中文提示词的示例合集",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "先找参考再决定用哪个框架",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "希望能离线查阅这份索引",
+        "scenario": "ai-generated"
+      }
+    ],
+    "remotion-dev__skills": [
+      {
+        "q": "让模型按官方约定写 Composition",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "Agent 要会调用 Remotion CLI 出片",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "约束组件写法和序列组织方式",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "前端团队要一套视频组件规范",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "它只是技能文档画面能力继承 Remotion",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "想让 AI 少写错 Remotion API",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "团队新人要快速上手视频工程",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "希望生成代码符合官方最佳实践",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "需要组件化视频的目录约定",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "想减少 Agent 反复试错次数",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "已有 Remotion 工程想接入技能包",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "TypeScript 项目要类型安全的写法",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "给 coding agent 补充领域知识",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "能不能不装 Node 直接用",
+        "scenario": "react-stack"
+      }
+    ],
+    "vincentsch__explainroo": [
+      {
+        "q": "Agent 写场景脚本本地配音一条命令出片",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "Kokoro 本地 TTS 不依赖云",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "Chromium 抓帧加 FFmpeg 编码",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "两到五分钟知识讲解片",
+        "scenario": "post-production"
+      },
+      {
+        "q": "黑板讲解类内容要全本地跑",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "零 API 成本适合个人创作者",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "视觉复杂度低于专业动效框架",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "想要 script.md 加 scenes.js 的完整示例",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "配音要能完全离线合成不花钱",
+        "scenario": "post-production"
+      },
+      {
+        "q": "让 Agent 按剧本自动配画面",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "安装要能一次装好不折腾",
+        "scenario": "ai-generated"
+      },
+      {
+        "q": "想给课程做一条样片测试流程",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "本地配音音色够不够自然",
+        "scenario": "post-production"
+      },
+      {
+        "q": "画面太复杂它能不能撑住",
+        "scenario": "ai-generated"
+      }
+    ],
+    "kaomei__stickman-video-director": [
+      {
+        "q": "火柴人讲解片要有旁白和逐句字幕",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "project.json 定义镜头图层和关键帧",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "校验预览批准渲染四段式流程",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "零 GPU 只靠本地 canvas 出片",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "科普教育要三到八分钟讲解",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "720p30 原生版式适合大批量",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "知识博主想做风格统一的系列",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "风格锁定火柴人不能换画风",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "想先预览再批准最后渲染",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "没有独显也能批量出讲解片",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "逐句字幕要和配音对齐",
+        "scenario": "post-production"
+      },
+      {
+        "q": "一天要出十条教育短视频",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "项目结构要方便非程序员改文案",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "需要复杂动效它表现力有限",
+        "scenario": "product-promo"
+      }
+    ],
+    "lovisdotio__motion2code": [
+      {
+        "q": "把一条动效视频拆成可 seek 的代码",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "复刻原动效后逐帧对照差异",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "GSAP 加 SVG 复刻品牌动效",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "render_anim 输出 mp4 可调 fps 和宽度",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "do 十秒 UI 动效学习例",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "前端和动效设计师要复刻参考视频",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "想在任意帧停住看细节",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "不适合复杂 3D 和实拍合成",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "需要帧差脚本量化还原度",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "把别人的动效变成自己工程的代码",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "想学习 GSAP 时间轴的写法",
+        "scenario": "react-stack"
+      },
+      {
+        "q": "复刻后要能一键重新出片",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "五到十五秒短片拿来练手复刻",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "没有原片素材只有成片怎么拆",
+        "scenario": "post-production"
+      }
+    ],
+    "JohnHeibel__PDoomVideo": [
+      {
+        "q": "想拿一支完整 MV 的源码学习",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "p5.js 逐帧画音乐可视化",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "render.mjs 按时间段出短片段",
+        "scenario": "post-production"
+      },
+      {
+        "q": "单帧导出快速抓关键帧",
+        "scenario": "post-production"
+      },
+      {
+        "q": "创意开发要参考逐帧渲染管线",
+        "scenario": "html-to-video"
+      },
+      {
+        "q": "音乐和画面节奏要一起设计",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "想学 MV 片段怎么拆镜头",
+        "scenario": "product-promo"
+      },
+      {
+        "q": "实测约三秒一帧渲染成本很高",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "长片要提前算好渲染算力预算",
+        "scenario": "batch-production"
+      },
+      {
+        "q": "需要音频和画面同步输出",
+        "scenario": "post-production"
+      },
+      {
+        "q": "想做一支复古像素风 MV",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "p5 代码要能改颜色和节奏",
+        "scenario": "three-d-fx"
+      },
+      {
+        "q": "标题和字幕得在外部另外加",
+        "scenario": "post-production"
+      },
+      {
+        "q": "先渲八秒测试片段再决定",
+        "scenario": "three-d-fx"
+      }
+    ]
+  },
+  "scenarios": {
+    "math-physics": [
+      "想把公式一步一步推出来讲给学生看",
+      "做一条解释傅里叶变换的科普短片",
+      "物理课要演示小球碰撞和斜面受力",
+      "想让人看懂矩阵是怎么变换平面的",
+      "做化学分子结构的三维旋转展示",
+      "要一段能看清推导过程的数学动画",
+      "给大学课程配 1080p60 的公式讲解",
+      "想用动画解释光的折射和干涉",
+      "做一道题的分步解法动画",
+      "用代码画数学图形，最好不用装 LaTeX"
+    ],
+    "code-terminal": [
+      "想看代码一行行高亮讲明白",
+      "把终端里的命令录成动图放文档",
+      "做一节编程课，讲数组和栈怎么变",
+      "要展示 git 提交过程的操作录像",
+      "代码 diff 前后对比怎么讲清楚",
+      "命令行工具发布想配一段演示",
+      "录一段安装过程发给同事看",
+      "算法视频要能看清指针怎么移动",
+      "想边讲 API 边推近镜头",
+      "把一段脚本跑起来录成 GIF"
+    ],
+    "data-viz": [
+      "一堆报表数据想做成会动的柱状图",
+      "KPI 数字从零滚到目标值",
+      "发布会要一张图表逐项长出来",
+      "把月度趋势做成折线动画",
+      "数据卡片式短片要有质感",
+      "在地图上标出各区域变化",
+      "给老板汇报用的 30 秒数据视频",
+      "想让数字和图表跟着解说走",
+      "财报数据想做得不那么枯燥",
+      "柱线图生长、标注线逐步出现"
+    ],
+    "product-promo": [
+      "公司新品发布会要 30 秒开场动画",
+      "做一条 SaaS 功能上线的宣传片",
+      "产品官网首屏想放一段动态视频",
+      "给 App 做一条投放用的短视频",
+      "发布会大屏需要 1080p60 的片头",
+      "把真实产品页面截下来做成演示",
+      "品牌宣传片要有镜头推拉和卡点配乐",
+      "一条 15 秒的融资预告片",
+      "希望贴几张截图和文案就能出片",
+      "需要横屏竖屏各一套发布素材"
+    ],
+    "three-d-fx": [
+      "想做个有 3D 场景的片头",
+      "产品展示要金属和玻璃质感",
+      "做一段粒子星空的背景动画",
+      "着色器液体金属效果怎么出片",
+      "3D 文字旋转加相机推进",
+      "想要带景深和运动模糊的镜头",
+      "给硬件产品做三维环绕展示",
+      "想把 Three.js 场景录成视频",
+      "透明通道的 3D 素材要叠到实拍",
+      "特效短片要 60fps 不卡"
+    ],
+    "ai-generated": [
+      "想生成一个数字人讲解视频",
+      "让 AI 直接帮我把知识点做成视频",
+      "虚拟人站在场景里讲产品",
+      "想要 agent 自动截页面做宣传片",
+      "用大模型写动画代码再渲染",
+      "AI 出片要能批量跑题库",
+      "数字人要能对口型",
+      "让 agent 按技能包自己剪片子",
+      "输入一句话就出一条教学短片",
+      "没有 API Key 能不能本地跑"
+    ],
+    "post-production": [
+      "已有视频想剪掉停顿自动加字幕",
+      "把口播视频去静默再跳剪",
+      "给素材批量加水印和转码",
+      "多段视频想加转场拼成一条",
+      "图片加字幕做成幻灯片视频",
+      "录的课程要去掉口误和长停顿",
+      "播客音频想配图做成视频",
+      "视频要统一分辨率和帧率",
+      "剪辑完想直接烧中文字幕",
+      "每天几百条素材要自动处理"
+    ],
+    "html-to-video": [
+      "已经写好的网页想直接渲成视频",
+      "HTML 动画页面要一键出 MP4",
+      "想让网页里的 render 函数逐帧拍下来",
+      "CSS 动画不模拟浏览器也能录",
+      "设计师交付的动效页要变成片子",
+      "网页转视频要支持透明通道",
+      "官网首屏动效要出 4K",
+      "想用 playwright 逐帧截图再合成",
+      "给 agent 一个 HTML 它就能出片",
+      "网页录屏想有景深和运动模糊"
+    ],
+    "batch-production": [
+      "我有一批素材要自动拼成短视频，一天几百条",
+      "按模板给每个商品生成一条视频",
+      "渲染任务要进队列多机并行",
+      "watchfolder 丢文件就自动处理",
+      "每天夜里跑批早上收片",
+      "参数化生成上千条个性化短片",
+      "批量转码还要生成缩略图",
+      "接进 CI 每次发版自动出片",
+      "需要 REST 接口提交渲染任务",
+      "几十条片子要能重试和查状态"
+    ],
+    "react-stack": [
+      "我们团队用 React，想直接用组件做视频",
+      "用 React 写视频，能进 CI 自动出片",
+      "想要 shadcn 风格的动效组件",
+      "Remotion 工程里加现成的字幕组件",
+      "前端不想学新语言，就用 TSX 写片",
+      "组件库要能复制进项目直接用",
+      "React 项目要批量生成营销短片",
+      "想在浏览器里拖时间轴预览",
+      "团队要一套统一的视频组件规范",
+      "用 Next.js 做内部剪辑工具"
+    ]
+  },
+  "global": [
+    "有没有不写代码就能出片的",
+    "Windows 上不想装一堆依赖",
+    "最好双击就能出片",
+    "预算为零，不想买 API Key",
+    "要能离线跑，不联网",
+    "希望一条命令从素材到成片",
+    "不想学新框架，用我会的语言",
+    "能在 CI 里自动跑吗",
+    "有没有现成模板直接改文案",
+    "要能批量跑两百条",
+    "电脑没有独显能跑吗",
+    "公司商用授权要注意什么",
+    "想先看样例再决定",
+    "安装别超过十分钟",
+    "中文路径会不会出问题"
+  ]
+}

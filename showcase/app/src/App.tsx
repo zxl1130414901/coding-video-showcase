@@ -94,6 +94,7 @@ export default function App() {
   const features = datasetState.status === 'ready' ? datasetState.data.features : {};
   const sampleSizes = datasetState.status === 'ready' ? datasetState.data.sampleSizes : {};
   const discovery = datasetState.status === 'ready' ? datasetState.data.discovery : null;
+  const intents = datasetState.status === 'ready' ? datasetState.data.intents : null;
   const isSample = datasetState.status === 'ready' ? datasetState.data.source.isSample : false;
   const dataFile = datasetState.status === 'ready' ? datasetState.data.source.file : '';
   const detailCount = Object.keys(details).length;
@@ -271,6 +272,13 @@ export default function App() {
                 quickPicks: [],
                 synonyms: {},
                 warnings: [],
+              }
+            }
+            intents={
+              intents ?? {
+                repos: {},
+                scenarios: {},
+                global: [],
               }
             }
             onOpenScenario={handleOpenScenario}

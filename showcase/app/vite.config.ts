@@ -7,6 +7,7 @@ import { defineConfig, type Plugin } from 'vitest/config';
 import { viteSingleFile } from 'vite-plugin-singlefile';
 import type { Dataset, Repo, RepoDetail, SampleFeatures } from './src/types/repo';
 import { emptyDiscovery, type DiscoveryDoc } from './src/types/discovery';
+import { emptyIntents, type IntentDoc } from './src/types/intents';
 
 const ROOT = fileURLToPath(new URL('.', import.meta.url));
 const PUBLIC_DIR = path.resolve(ROOT, 'public');
@@ -190,14 +191,26 @@ function dataPlugin(): Plugin {
       } else {
         console.warn(`[showcase-data] 选型数据缺失，首页将显示空态：${discoveryFile}`);
       }
+      const intentsFile = path.resolve(root, '../data/intents.json');
+      let intents: IntentDoc = emptyIntents();
+      if (fs.existsSync(intentsFile)) {
+        const parsedIntents = readJson(intentsFile);
+        if (!parsedIntents || typeof parsedIntents !== 'object') {
+          throw formatError(`无法解析意图语料：${intentsFile}`);
+        }
+        intents = { ...emptyIntents(), ...(parsedIntents as Partial<IntentDoc>) };
+      } else {
+        console.warn(`[showcase-data] 意图语料缺失，长句检索将退回关键词检索：${intentsFile}`);
+      }
       console.warn(
-        `[showcase-data] ${isSample ? '占位数据' : '真实数据'}：${file} · ${parsed.repos.length} 个项目 · 档案 ${Object.keys(archive.details).length} 份 · 能力分段 ${Object.keys(archive.features).length} 份`,
+        `[showcase-data] ${isSample ? '占位数据' : '真实数据'}：${file} · ${parsed.repos.length} 个项目 · 档案 ${Object.keys(archive.details).length} 份 · 能力分段 ${Object.keys(archive.features).length} 份 · 意图 ${Object.values(intents.repos).reduce((sum, list) => sum + list.length, 0)} 条`,
       );
       return `export const reposPayload = ${JSON.stringify(parsed)};
 export const detailsPayload = ${JSON.stringify(archive.details)};
 export const featuresPayload = ${JSON.stringify(archive.features)};
 export const sampleSizesPayload = ${JSON.stringify(sampleSizes)};
 export const discoveryPayload = ${JSON.stringify(discovery)};
+export const intentsPayload = ${JSON.stringify(intents)};
 export const dataSource = ${JSON.stringify({
         file: file.replace(/\\/g, '/'),
         detailsDir: detailsDir.replace(/\\/g, '/'),

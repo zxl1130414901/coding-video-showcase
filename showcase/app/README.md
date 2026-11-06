@@ -1,12 +1,12 @@
 # 代码转视频项目横评（Code → Video Showcase）
 
-面向「代码生成视频」赛道的本地评测前端：把 65 个开源项目（原有 51 + 飞书文章新增 14）的仓库信息、实测渲染数据、65 份深度档案、样例成片与踩坑结论汇总到同一界面。**默认入口是「按需求选型」首页**：说一句需求、选几个硬条件或直接搜索，就能拿到首选方案与备选对比；65 行矩阵保留为进阶视图。支持独立详情页（`#/repo/<id>`）、样例能力分段播放、2–3 项并排对比与活跃度时间线。全中文 UI、全离线可用、无外部 CDN 与远程字体。
+面向「代码生成视频」赛道的本地评测前端：把 65 个开源项目（原有 51 + 飞书文章新增 14）的仓库信息、实测渲染数据、65 份深度档案、样例成片与踩坑结论汇总到同一界面。**默认入口是「按需求选型」首页**：可以直接输入一整句口语需求（本地长句检索 + 场景识别）、选几个硬条件或直接搜索，就能拿到首选方案与备选对比；65 行矩阵保留为进阶视图。支持独立详情页（`#/repo/<id>`）、样例能力分段播放、2–3 项并排对比与活跃度时间线。全中文 UI、全离线可用、无外部 CDN 与远程字体。
 
 ## 路由
 
 | 路由               | 作用                                                                                                |
 | ------------------ | --------------------------------------------------------------------------------------------------- |
-| `#/`（默认）       | 选型首页：大搜索框、10 张「你想做什么」场景卡、11 个约束 chip（AND 叠加）、8 条 quickPick、对比入口 |
+| `#/`（默认）       | 选型首页：大搜索框、口语需求输入框（长句检索 + 场景识别）、10 张「你想做什么」场景卡、11 个约束 chip（AND 叠加）、8 条 quickPick、对比入口 |
 | `#/scenario/<id>`  | 场景页：首选大卡（可播放）、备选对比、该场景全部符合条件的仓库                                      |
 | `#/all`            | 全部项目：原有 65 行可排序矩阵 + 筛选 + 关键词，顶部提供「回到选型首页」                            |
 | `#/repo/<id>`      | 详情页；返回按钮按 `fromView` 回到场景页或全部项目                                                  |
@@ -27,7 +27,7 @@ npm run preview             # 预览构建产物，http://127.0.0.1:4173
 
 ```powershell
 npm run lint                # ESLint（typescript-eslint）+ 零报错
-npm run test                # Vitest，含 14 条选型搜索 / 约束 / 场景匹配用例
+npm run test                # Vitest：78 条（选型搜索 / 约束 / 场景匹配 14 条 + 口语长句检索 16 条 + 其余模块）
 npm run format:check        # Prettier 检查（需要时用 npm run format 修复）
 npm run smoke               # 需先 build；Playwright preview + file:// 双模式冒烟 + 六张 v2 截图
 npx tsc --noEmit            # 类型检查
@@ -40,6 +40,7 @@ node scripts/verify-v4.mjs      # 选型入口验收：场景卡 / 约束叠加 
 
 - 数据由独立数据流程生成，前端**只读消费** `F:\coding视频\showcase\data\repos.json` 与 `discovery.json`，不写该目录。
 - `discovery.json` 是选型契约：`scenarios[] / constraints[] / quickPicks[] / synonyms{} / warnings[]`，字段名不可改；`npm run build` 缺失会直接失败并给出中文提示。
+- `intents.json` 是口语长句语料（`repos / scenarios / global`，当前 910 + 100 + 15 条），只读注入为 `intentsPayload`；缺失时构建只警告并回退为空语料，关键词搜索与约束筛选不受影响。
 - 结构为 `{ "meta": { ... }, "repos": [ ... ] }`，字段严格遵循约定（`id/owner/repo/url/stars/sample/scores/...`），枚举字段按真实数据取值：
   - `gpuAcceleration`：`required | optional | none | unknown`
   - `cliHeadless`：`yes | partial | no`
@@ -66,11 +67,11 @@ npm run link:samples
 
 ## 单文件离线版
 
-`npm run build` 会产出 `dist/index.html`（用 `vite-plugin-singlefile` 内联全部 JS/CSS/数据，当前约 866 KB），可直接双击打开：
+`npm run build` 会产出 `dist/index.html`（用 `vite-plugin-singlefile` 内联全部 JS/CSS/数据，当前约 1.0 MB），可直接双击打开：
 
 - **经典脚本交付**：构建末尾由 `offlineClassicPlugin` 把 ESM 内联脚本改为尾部经典 `<script>`（IIFE + strict），移除 `type="module"` 与 `crossorigin`，并校验产物零残留；因此 `file://` 下不受模块 CORS 限制。数据仍为构建期内联，运行时无 `fetch`。
 - **路由兼容**：只用 hash；`syncLocationHash` 的 `history.replaceState` 带 try/catch，被 `file://` 拒绝时回退到 `location.hash`，初始解析也做兜底，不再因路由异常白屏。
-- 数据（`repos.json` 65 条 + 65 份 `details/*.json` + 51 份 `features.json`）已内联进 HTML，`file://` 下无需服务器。
+- 数据（`repos.json` 65 条 + 65 份 `details/*.json` + 51 份 `features.json` + `intents.json` 1,025 条）已内联进 HTML，`file://` 下无需服务器。
 - 缩略图使用 `./thumbs/`（随构建复制）；视频使用 `../../../_samples/`（构建期写入 `window.__SAMPLE_BASE__`）。
 - **分发要求**：必须整目录拷贝 `dist`（含 `thumbs/`）；播放视频还需保持到 `_samples` 的三层相对结构。单拷 `index.html` 时 UI 与数据仍可用，缩略图/视频缺失会显示「资源未随文件一起拷贝」，并有顶部离线横幅说明。
 - **file:// 实测结论（2026-11-05，Chromium + Edge，启动参数为空）**：dist 原位双击 65 行 / 51 图 / 播放 `currentTime` 1.41s（Edge 1.28s）/ `readyState=4` / 0 error；整目录拷贝与单文件拷贝均为 65 行、无 JS 错误。双击模式无 HTTP Range（拖动进度条不保证）；需要稳定拖拽时用 `start.ps1` 预览模式。
@@ -97,7 +98,7 @@ app/
 
 | 模块       | 能力                                                                                                            |
 | ---------- | --------------------------------------------------------------------------------------------------------------- |
-| 选型首页   | 口语搜索（同义词展开 / 零结果给推荐词）、10 张需求场景卡、11 个约束 chip（AND 叠加 + 解释标签）、8 条 quickPick |
+| 选型首页   | 口语长句检索（长句分段 / 场景识别 + 置信度 / 约束型 rerank / 匹配短语 / 3 近邻兜底）、关键词搜索（同义词展开）、10 张需求场景卡、11 个约束 chip（AND 叠加 + 解释标签）、8 条 quickPick |
 | 场景页     | 首选大卡（视频 / 上手时间 / 六维评分 / 能力标签）、备选「为什么不是首选 / 什么时候选它」、场景符合清单          |
 | 总览       | 总数 / 出片成功 / 未出片 / 总体积指标卡，分类与 Star 区间环形图，分类快捷入口                                   |
 | 全部项目   | 65 行、15 列、表头吸顶、点击表头升降序、行悬浮高亮、样例状态与综合分，行可键盘进入详情                          |
@@ -122,3 +123,6 @@ app/
 - 默认 Chrome + `file://` 实测可播放（`currentTime` 推进、`readyState=4`、0 error）；无 Range，拖拽体验建议走 `start.ps1` 预览模式。
 - 51 条 `sample.spec` 已按 ffprobe 实测回写；`validate-data.mjs` 为 0 error / 0 warning；缩略图 51 张由当前 `sample.mp4` 中间帧重抽。
 - 前端不写入 `..\data\`；数据更新后重新 `npm run build` 即可。
+- 口语长句检索（v5）：`intents.json` 910 + 100 + 15 条语料已内联；三条真实长句实测 1.4–2.4 ms/次；10 条回归句的正确场景全部进 top2。
+- 约束型 rerank（v5.1）：安装成本 / Windows 可通过性 / 官方链路 / CLI 入口作为结构化信号，「Windows 上不想装一堆依赖，最好双击就能出片」的 top3 变为 ffmate / agg / html-to-video，需独显与重安装的项目被扣分挤出 top3。
+- v5 `file://` 裸测（Chrome，仅 `--headless=new` + CDP）：约束句 8 条结果、科普句 12 条（场景 51%）、后期句 7 条（场景 67%）、零结果 3 近邻 + 3 推荐说法、控制台 0 error；截图见 `docs/screenshots/v5-search-longtext.png` 与 `v5-search-empty.png`。

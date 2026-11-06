@@ -1,15 +1,21 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Repo, RepoDetail } from '../../types/repo';
 import type { DiscoveryDoc } from '../../types/discovery';
+import type { IntentDoc } from '../../types/intents';
 import {
   FALLBACK_QUERIES,
+  SCENARIO_CONFIDENCE_THRESHOLD,
+  SCENARIO_MIN_SCORE,
+  SCENARIO_MIN_SCORE_LIGHTWEIGHT,
   applyConstraints,
+  createLongTextSearch,
   matchesConstraint,
   orderedRecommendations,
   quickPickRepos,
   repoByIdMap,
   searchRepos,
   suggestScenarios,
+  type LongTextHit,
 } from '../../lib/discovery';
 import { computeOverallScore } from '../../lib/scores';
 import { RepoThumb } from '../../components/RepoThumb';
@@ -19,6 +25,7 @@ interface HomeViewProps {
   repos: Repo[];
   details: Record<string, RepoDetail>;
   discovery: DiscoveryDoc;
+  intents: IntentDoc;
   onOpenScenario: (id: string) => void;
   onOpenRepo: (id: string) => void;
   onGoAll: () => void;
@@ -34,13 +41,16 @@ export function HomeView({
   repos,
   details,
   discovery,
+  intents,
   onOpenScenario,
   onOpenRepo,
   onGoAll,
 }: HomeViewProps) {
   const [query, setQuery] = useState('');
+  const [intentText, setIntentText] = useState('');
   const [selectedConstraints, setSelectedConstraints] = useState<string[]>([]);
   const searchRef = useRef<HTMLInputElement>(null);
+  const intentRef = useRef<HTMLTextAreaElement>(null);
   const repoById = useMemo(() => repoByIdMap(repos), [repos]);
   const scenarios = discovery.scenarios;
   const constraints = discovery.constraints;
@@ -48,6 +58,15 @@ export function HomeView({
   const activeConstraints = useMemo(
     () => constraints.filter((constraint) => selectedConstraints.includes(constraint.id)),
     [constraints, selectedConstraints],
+  );
+
+  const longSearch = useMemo(
+    () => createLongTextSearch(repos, details, discovery, intents),
+    [repos, details, discovery, intents],
+  );
+  const longResult = useMemo(
+    () => (intentText.trim() ? longSearch.search(intentText) : null),
+    [longSearch, intentText],
   );
 
   const searchHits = useMemo(
@@ -59,17 +78,49 @@ export function HomeView({
     [query, scenarios, discovery.synonyms],
   );
 
-  const constraintResults = useMemo(() => {
+  const keywordResults = useMemo(() => {
     const base = query ? searchHits.map((hit) => hit.repo) : repos;
     const matched = applyConstraints(base, constraints, selectedConstraints);
-    if (query) return matched;
-    return [...matched].sort(
-      (a, b) => computeOverallScore(b.repo.scores) - computeOverallScore(a.repo.scores),
-    );
+    if (query) return matched.map((row) => ({ ...row, matchedPhrase: null as string | null }));
+    return [...matched]
+      .sort((a, b) => computeOverallScore(b.repo.scores) - computeOverallScore(a.repo.scores))
+      .map((row) => ({ ...row, matchedPhrase: null as string | null }));
   }, [query, searchHits, repos, constraints, selectedConstraints]);
 
-  const searching = query.trim().length > 0;
+  const intentResults = useMemo(() => {
+    if (!longResult) return [];
+    const hitById = new Map<string, LongTextHit>(
+      longResult.hits.map((hit) => [hit.repo.id, hit]),
+    );
+    return applyConstraints(
+      longResult.hits.map((hit) => hit.repo),
+      constraints,
+      selectedConstraints,
+    ).map((row) => ({
+      ...row,
+      matchedPhrase: hitById.get(row.repo.id)?.matchedPhrase ?? null,
+    }));
+  }, [longResult, constraints, selectedConstraints]);
+
+  const intentActive = intentText.trim().length > 0;
+  const searching = query.trim().length > 0 || intentActive;
   const filtering = activeConstraints.length > 0;
+  const visibleResults = (intentActive ? intentResults : keywordResults).slice(0, MAX_RESULTS);
+  const resultCount = intentActive ? intentResults.length : keywordResults.length;
+  const leadSuggestion = intentActive ? null : suggestions[0] ?? null;
+
+  const intentChars = intentText.replace(/\s+/g, '').length;
+  const scenarioFloor = longResult?.lightweight
+    ? SCENARIO_MIN_SCORE_LIGHTWEIGHT
+    : SCENARIO_MIN_SCORE;
+  const understanding =
+    intentActive &&
+    intentChars > 8 &&
+    longResult?.scenario &&
+    longResult.scenario.score >= scenarioFloor &&
+    longResult.scenario.confidence >= SCENARIO_CONFIDENCE_THRESHOLD
+      ? longResult.scenario
+      : null;
 
   useEffect(() => {
     const handler = (event: KeyboardEvent) => {
@@ -83,6 +134,9 @@ export function HomeView({
       if (event.key === 'Escape' && document.activeElement === searchRef.current) {
         setQuery('');
       }
+      if (event.key === 'Escape' && document.activeElement === intentRef.current) {
+        setIntentText('');
+      }
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
@@ -94,12 +148,9 @@ export function HomeView({
     );
   };
 
-  const visibleResults = constraintResults.slice(0, MAX_RESULTS);
-  const leadSuggestion = suggestions[0] ?? null;
-
   const resultSummary = filtering
-    ? `满足全部 ${activeConstraints.length} 条 · 剩余 ${constraintResults.length} 个`
-    : `${searchHits.length} 个结果`;
+    ? `满足全部 ${activeConstraints.length} 条 · 剩余 ${resultCount} 个`
+    : `${resultCount} 个结果`;
 
   return (
     <div className="view home-view">
@@ -137,13 +188,59 @@ export function HomeView({
             ) : null}
           </div>
           <span className={`home-search-count${searching ? ' is-active' : ''}`}>
-            {searching ? `${searchHits.length} 个结果` : '支持 / 聚焦、Esc 清空'}
+            {searching ? `${resultCount} 个结果` : '支持 / 聚焦、Esc 清空'}
           </span>
         </div>
+
+        <label className="intent-field">
+          <span className="intent-field-label">
+            描述你的需求
+            <span className="intent-field-hint">可以是一整句口语，越长越好</span>
+          </span>
+          <textarea
+            ref={intentRef}
+            rows={2}
+            value={intentText}
+            onChange={(event) => setIntentText(event.target.value)}
+            placeholder="我想做个把卷积神经网络讲清楚的科普视频，竖屏发抖音"
+            aria-label="用一句话描述你的需求"
+          />
+          {intentText ? (
+            <button
+              type="button"
+              className="intent-field-clear"
+              onClick={() => setIntentText('')}
+              aria-label="清空需求描述"
+            >
+              <Icon name="close" size={14} />
+              清空
+            </button>
+          ) : null}
+        </label>
       </section>
 
       {searching ? (
         <section className="home-results" aria-live="polite" aria-label="搜索结果">
+          {understanding ? (
+            <div className="intent-understanding" role="status">
+              <span>
+                我理解为：
+                <strong className="accent-text">{understanding.scenario.titleZh}</strong>
+                <span className="intent-confidence mono">
+                  {Math.round(understanding.confidence * 100)}%
+                </span>
+              </span>
+              <button
+                type="button"
+                className="ghost-button"
+                onClick={() => onOpenScenario(understanding.scenario.id)}
+              >
+                {understanding.scenario.questionZh}
+                <Icon name="arrow-right" size={14} />
+              </button>
+            </div>
+          ) : null}
+
           {leadSuggestion ? (
             <div className="scenario-suggest">
               <span>
@@ -162,19 +259,26 @@ export function HomeView({
           ) : null}
 
           <div className="results-head">
-            <h2>搜索结果</h2>
-            <span className="results-count mono">{resultSummary}</span>
+            <h2>{intentActive ? '我先按你说的找' : '搜索结果'}</h2>
+            <span className="results-count mono" role="status" aria-live="polite">
+              {resultSummary}
+            </span>
           </div>
 
           {visibleResults.length > 0 ? (
             <ul className="result-list">
-              {visibleResults.map(({ repo, matched }) => (
+              {visibleResults.map(({ repo, matched, matchedPhrase }) => (
                 <li key={repo.id}>
                   <button type="button" className="result-row" onClick={() => onOpenRepo(repo.id)}>
                     <RepoThumb repo={repo} size="md" />
                     <span className="result-main">
                       <span className="result-name">{displayName(repo)}</span>
                       <span className="result-desc">{repo.descriptionZh}</span>
+                      {matchedPhrase ? (
+                        <span className="result-intent">
+                          匹配到你说的：{matchedPhrase}
+                        </span>
+                      ) : null}
                       <span className="result-tags">
                         <span className="tag">{repo.category}</span>
                         {matched.slice(0, 2).map((constraint) => (
@@ -197,6 +301,47 @@ export function HomeView({
                 </li>
               ))}
             </ul>
+          ) : intentActive && longResult ? (
+            <div className="home-empty">
+              <Icon name="search" size={22} />
+              <strong>没有特别对得上的</strong>
+              <p>也许你在找：</p>
+              <ul className="nearby-list">
+                {longResult.nearest.map((hit) => (
+                  <li key={hit.repo.id}>
+                    <button
+                      type="button"
+                      className="nearby-row"
+                      onClick={() => onOpenRepo(hit.repo.id)}
+                    >
+                      <RepoThumb repo={hit.repo} size="sm" />
+                      <span className="nearby-main">
+                        <span className="result-name">{displayName(hit.repo)}</span>
+                        <span className="result-desc">{hit.repo.descriptionZh}</span>
+                      </span>
+                      <Icon name="arrow-right" size={15} />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+              {longResult.suggestions.length > 0 ? (
+                <>
+                  <p>或者换个说法：</p>
+                  <div className="fallback-terms">
+                    {longResult.suggestions.map((phrase) => (
+                      <button
+                        type="button"
+                        className="chip chip-large"
+                        key={phrase}
+                        onClick={() => setIntentText(phrase)}
+                      >
+                        {phrase}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              ) : null}
+            </div>
           ) : (
             <div className="home-empty">
               <Icon name="search" size={22} />
@@ -217,7 +362,7 @@ export function HomeView({
             </div>
           )}
 
-          {searchHits.length > MAX_RESULTS ? (
+          {!intentActive && searchHits.length > MAX_RESULTS ? (
             <div className="results-more">
               <button type="button" className="ghost-button" onClick={onGoAll}>
                 在全部项目里继续筛
@@ -341,10 +486,10 @@ export function HomeView({
                   <p>取消一条最严格的条件，或去全部项目里逐项放宽。</p>
                 </div>
               )}
-              {constraintResults.length > MAX_RESULTS ? (
+              {keywordResults.length > MAX_RESULTS ? (
                 <div className="results-more">
                   <span className="muted">
-                    仅显示前 {MAX_RESULTS} 个，共 {constraintResults.length} 个
+                    仅显示前 {MAX_RESULTS} 个，共 {keywordResults.length} 个
                   </span>
                   <button type="button" className="ghost-button" onClick={onGoAll}>
                     在全部项目里继续筛

@@ -1,5 +1,6 @@
 import type { Dataset, RepoDetail, SampleFeatures } from '../types/repo';
 import type { DiscoveryDoc } from '../types/discovery';
+import { emptyIntents, type IntentDoc } from '../types/intents';
 
 export interface DataSourceMeta {
   file: string;
@@ -22,6 +23,7 @@ export interface LoadedDataset {
   features: Record<string, SampleFeatures>;
   sampleSizes: Record<string, SampleSizes>;
   discovery: DiscoveryDoc;
+  intents: IntentDoc;
   source: DataSourceMeta;
 }
 
@@ -36,6 +38,7 @@ export async function loadDataset(): Promise<LoadedDataset> {
     features: module.featuresPayload ?? {},
     sampleSizes: module.sampleSizesPayload ?? {},
     discovery: module.discoveryPayload,
+    intents: module.intentsPayload ?? emptyIntents(),
     source: module.dataSource,
   };
 }
