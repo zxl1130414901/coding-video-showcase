@@ -33,8 +33,25 @@ describe('深链解析与生成', () => {
     expect(parsed.filters.categories).toEqual(['数学动画']);
   });
 
-  it('默认状态收敛为 #/', () => {
+  it('#/ 是选型首页，默认状态收敛为 #/', () => {
+    expect(parseRouteHash('').view).toBe('home');
+    expect(parseRouteHash('#/').view).toBe('home');
     expect(buildRouteHash(createDefaultRoute())).toBe('#/');
+  });
+
+  it('#/all 进入全部项目矩阵', () => {
+    const parsed = parseRouteHash('#/all');
+    expect(parsed.view).toBe('matrix');
+    expect(buildRouteHash({ ...parsed, filters: { ...parsed.filters, q: 'manim' } })).toBe(
+      '#/all?q=manim',
+    );
+  });
+
+  it('#/scenario/<id> 深链可还原场景页', () => {
+    const parsed = parseRouteHash('#/scenario/math-explainer');
+    expect(parsed.view).toBe('scenario');
+    expect(parsed.scenarioId).toBe('math-explainer');
+    expect(buildRouteHash(parsed)).toBe('#/scenario/math-explainer');
   });
 
   it('#/repo/<id> 直接进入详情页并保留返回来源', () => {

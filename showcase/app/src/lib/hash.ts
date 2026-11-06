@@ -2,7 +2,7 @@ import type { FilterState, RouteState, SortDirection, SortKey, ViewKey } from '.
 import { createEmptyFilters } from './filter';
 import { sanitizeSelection } from './selection';
 
-const VIEWS: readonly ViewKey[] = ['overview', 'matrix', 'timeline', 'detail'];
+const VIEWS: readonly ViewKey[] = ['home', 'scenario', 'overview', 'matrix', 'timeline', 'detail'];
 const SORTS: readonly SortKey[] = [
   'name',
   'stars',
@@ -25,8 +25,9 @@ export const DEFAULT_SORT_DIR: SortDirection = 'desc';
 
 export function createDefaultRoute(): RouteState {
   return {
-    view: 'overview',
+    view: 'home',
     repoId: null,
+    scenarioId: null,
     fromView: null,
     filters: createEmptyFilters(),
     sortKey: DEFAULT_SORT_KEY,
@@ -56,14 +57,20 @@ function parseTri(value: string | null): 'all' | 'yes' | 'no' {
   return value === 'yes' || value === 'no' ? value : 'all';
 }
 
-/** 解析 #/repo/<id> 与 #/?category=... 两类深链。 */
+/** 解析 #/、#/all、#/scenario/<id>、#/repo/<id> 四类路由与旧版查询参数。 */
 export function parseRouteHash(hash: string): RouteState {
   const state = createDefaultRoute();
   const raw = hash.replace(/^#/, '');
   const queryIndex = raw.indexOf('?');
-  const pathPart = (queryIndex >= 0 ? raw.slice(0, queryIndex) : raw).replace(/^\//, '');
+  const pathPart = (queryIndex >= 0 ? raw.slice(0, queryIndex) : raw).replace(/^\/+/, '');
   const queryPart = queryIndex >= 0 ? raw.slice(queryIndex + 1) : '';
   const params = new URLSearchParams(queryPart);
+
+  const hasScenarioPath = pathPart.startsWith('scenario/') && pathPart.length > 'scenario/'.length;
+  if (hasScenarioPath) {
+    state.scenarioId = decodeURIComponent(pathPart.slice('scenario/'.length));
+    state.view = 'scenario';
+  }
 
   const hasRepoPath = pathPart.startsWith('repo/') && pathPart.length > 'repo/'.length;
   if (hasRepoPath) {
@@ -71,6 +78,9 @@ export function parseRouteHash(hash: string): RouteState {
     state.repoId = decodeURIComponent(encoded);
     state.view = 'detail';
   }
+
+  const isAllPath = pathPart === 'all';
+  if (isAllPath) state.view = 'matrix';
 
   const hasQueryFilters = Boolean(
     params.get('q') ||
@@ -82,21 +92,18 @@ export function parseRouteHash(hash: string): RouteState {
       params.get('gpu'),
   );
 
-  if (!hasRepoPath) {
+  if (!hasRepoPath && !hasScenarioPath && !isAllPath) {
     const viewParam = params.get('view');
     if (isView(viewParam)) state.view = viewParam;
     else if (hasQueryFilters) state.view = 'matrix';
   }
 
   const fromParam = params.get('from');
-  if (
-    fromParam === 'overview' ||
-    fromParam === 'matrix' ||
-    fromParam === 'timeline' ||
-    fromParam === 'detail'
-  ) {
+  if (isView(fromParam) && fromParam !== 'detail') {
     state.fromView = fromParam;
   }
+  const scenarioParam = params.get('scenario');
+  if (!state.scenarioId && scenarioParam) state.scenarioId = scenarioParam;
 
   const sortParam = params.get('sort');
   if (isSortKey(sortParam)) state.sortKey = sortParam;
@@ -117,13 +124,27 @@ export function parseRouteHash(hash: string): RouteState {
   return state;
 }
 
-/** 生成稳定、可分享的 hash；空状态收敛为 #/。 */
+/** 生成稳定、可分享的 hash：首页收敛为 #/，矩阵为 #/all。 */
 export function buildRouteHash(state: RouteState): string {
-  const path = state.repoId ? `/repo/${encodeURIComponent(state.repoId)}` : '/';
-  const params = new URLSearchParams();
+  let path = '/';
+  if (state.repoId) path = `/repo/${encodeURIComponent(state.repoId)}`;
+  else if (state.view === 'matrix') path = '/all';
+  else if (state.view === 'scenario' && state.scenarioId) {
+    path = `/scenario/${encodeURIComponent(state.scenarioId)}`;
+  }
 
-  if (!state.repoId && state.view !== 'overview') params.set('view', state.view);
+  const params = new URLSearchParams();
+  const isHome = !state.repoId && state.view === 'home';
+  if (
+    !state.repoId &&
+    !isHome &&
+    state.view !== 'matrix' &&
+    !(state.view === 'scenario' && state.scenarioId)
+  ) {
+    params.set('view', state.view);
+  }
   if (state.fromView && state.fromView !== 'detail') params.set('from', state.fromView);
+  if (state.scenarioId && state.repoId) params.set('scenario', state.scenarioId);
   if (state.sortKey !== DEFAULT_SORT_KEY) params.set('sort', state.sortKey);
   if (state.sortDir !== DEFAULT_SORT_DIR) params.set('dir', state.sortDir);
   if (state.filters.q.trim()) params.set('q', state.filters.q.trim());

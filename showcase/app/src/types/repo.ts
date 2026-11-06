@@ -91,7 +91,7 @@ export interface Dataset {
   repos: Repo[];
 }
 
-export type ViewKey = 'overview' | 'matrix' | 'timeline' | 'detail';
+export type ViewKey = 'home' | 'scenario' | 'overview' | 'matrix' | 'timeline' | 'detail';
 
 /* ================================================================
    深度档案：与 ..\data\details\<id>.json 严格对齐
@@ -231,6 +231,8 @@ export interface FilterState {
 export interface RouteState {
   view: ViewKey;
   repoId: string | null;
+  /** 场景页当前场景 id（#/scenario/<id>）。 */
+  scenarioId: string | null;
   /** 从哪个视图进入详情，用于返回时保留上下文。 */
   fromView: ViewKey | null;
   filters: FilterState;

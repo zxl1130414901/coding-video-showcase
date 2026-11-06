@@ -6,6 +6,7 @@ import react from '@vitejs/plugin-react';
 import { defineConfig, type Plugin } from 'vitest/config';
 import { viteSingleFile } from 'vite-plugin-singlefile';
 import type { Dataset, Repo, RepoDetail, SampleFeatures } from './src/types/repo';
+import { emptyDiscovery, type DiscoveryDoc } from './src/types/discovery';
 
 const ROOT = fileURLToPath(new URL('.', import.meta.url));
 const PUBLIC_DIR = path.resolve(ROOT, 'public');
@@ -176,6 +177,19 @@ function dataPlugin(): Plugin {
       const detailsDir = path.resolve(root, '../data/details');
       const archive = collectArchive(parsed.repos, detailsDir);
       const sampleSizes = collectSampleSizes(parsed.repos);
+      const discoveryFile = path.resolve(root, '../data/discovery.json');
+      let discovery: DiscoveryDoc = emptyDiscovery();
+      if (fs.existsSync(discoveryFile)) {
+        const parsedDiscovery = readJson(discoveryFile);
+        if (!parsedDiscovery || typeof parsedDiscovery !== 'object') {
+          throw formatError(`无法解析选型数据：${discoveryFile}`);
+        }
+        discovery = { ...emptyDiscovery(), ...(parsedDiscovery as Partial<DiscoveryDoc>) };
+      } else if (isBuild && !allowSample) {
+        throw formatError(`未找到选型数据文件：${discoveryFile}\n请先生成 discovery.json。`);
+      } else {
+        console.warn(`[showcase-data] 选型数据缺失，首页将显示空态：${discoveryFile}`);
+      }
       console.warn(
         `[showcase-data] ${isSample ? '占位数据' : '真实数据'}：${file} · ${parsed.repos.length} 个项目 · 档案 ${Object.keys(archive.details).length} 份 · 能力分段 ${Object.keys(archive.features).length} 份`,
       );
@@ -183,6 +197,7 @@ function dataPlugin(): Plugin {
 export const detailsPayload = ${JSON.stringify(archive.details)};
 export const featuresPayload = ${JSON.stringify(archive.features)};
 export const sampleSizesPayload = ${JSON.stringify(sampleSizes)};
+export const discoveryPayload = ${JSON.stringify(discovery)};
 export const dataSource = ${JSON.stringify({
         file: file.replace(/\\/g, '/'),
         detailsDir: detailsDir.replace(/\\/g, '/'),
@@ -364,16 +379,21 @@ function offlineClassicPlugin(): Plugin {
         }
         const close = html.indexOf('</script>', start);
         if (close < 0) throw formatError('离线构建失败：module 脚本未闭合。');
-        const code = html
-          .slice(start + startTag.length, close)
-          .replace(/import\.meta\.url/g, '""');
+        const code = html.slice(start + startTag.length, close).replace(/import\.meta\.url/g, '""');
         if (/\bimport\.meta\b/.test(code)) {
           throw formatError('离线构建失败：脚本仍含 import.meta，无法转为经典脚本。');
         }
         const classic = `<script>(function(){"use strict";\n${code}\n})();</script>`;
         const stripped = html.slice(0, start) + html.slice(close + '</script>'.length);
-        const out = stripped.replace('</body>', () => `${classic}\n  </body>`);
-        if (/<script[^>]*type="module"/.test(out) || /<(?:script|link)[^>]*crossorigin/.test(out)) {
+        const withoutCrossOrigin = stripped.replace(
+          /<(script|link|style)[^>]*crossorigin[^>]*>/g,
+          (tag) => tag.replace(/ crossorigin(="[^"]*")?/, ''),
+        );
+        const out = withoutCrossOrigin.replace('</body>', () => `${classic}\n  </body>`);
+        if (
+          /<script[^>]*type="module"/.test(out) ||
+          /<(?:script|link|style)[^>]*crossorigin/.test(out)
+        ) {
           throw formatError('离线构建失败：产物仍残留 module 或 crossorigin。');
         }
         fs.writeFileSync(file, out);

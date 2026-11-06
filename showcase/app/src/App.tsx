@@ -7,6 +7,8 @@ import { nextSortDirection, sortRepos } from './lib/sort';
 import { canCompare, toggleSelection, MAX_COMPARE } from './lib/selection';
 import { parseRouteHash, syncLocationHash } from './lib/hash';
 import { OverviewView } from './features/overview/OverviewView';
+import { HomeView } from './features/home/HomeView';
+import { ScenarioView } from './features/scenario/ScenarioView';
 import { MatrixView } from './features/matrix/MatrixView';
 import { TimelineView } from './features/timeline/TimelineView';
 import { RepoDetailLanding, RepoDetailPage } from './features/detail/RepoDetailPage';
@@ -18,10 +20,10 @@ import { resolveDetail } from './lib/detail';
 import { isFileProtocol } from './lib/sample';
 
 const NAV: Array<{ view: ViewKey; label: string; icon: IconName }> = [
+  { view: 'home', label: '选型首页', icon: 'search' },
+  { view: 'matrix', label: '全部项目', icon: 'table' },
   { view: 'overview', label: '总览', icon: 'grid' },
-  { view: 'matrix', label: '对比矩阵', icon: 'table' },
   { view: 'timeline', label: '时间线', icon: 'clock' },
-  { view: 'detail', label: '详情', icon: 'film' },
 ];
 
 function BootScreen() {
@@ -91,6 +93,7 @@ export default function App() {
   const details = datasetState.status === 'ready' ? datasetState.data.details : {};
   const features = datasetState.status === 'ready' ? datasetState.data.features : {};
   const sampleSizes = datasetState.status === 'ready' ? datasetState.data.sampleSizes : {};
+  const discovery = datasetState.status === 'ready' ? datasetState.data.discovery : null;
   const isSample = datasetState.status === 'ready' ? datasetState.data.source.isSample : false;
   const dataFile = datasetState.status === 'ready' ? datasetState.data.source.file : '';
   const detailCount = Object.keys(details).length;
@@ -116,6 +119,10 @@ export default function App() {
     () => (detailRepo ? resolveDetail(detailRepo, details) : null),
     [detailRepo, details],
   );
+  const scenario = useMemo(
+    () => discovery?.scenarios.find((item) => item.id === route.scenarioId) ?? null,
+    [discovery, route.scenarioId],
+  );
 
   if (datasetState.status === 'loading') return <BootScreen />;
   if (datasetState.status === 'error') return <ErrorScreen message={datasetState.message} />;
@@ -127,6 +134,10 @@ export default function App() {
       repoId: view === 'detail' ? prev.repoId : null,
     }));
 
+  const handleOpenScenario = (id: string) => {
+    setRoute((prev) => ({ ...prev, view: 'scenario', scenarioId: id, repoId: null }));
+  };
+
   const handleSort = (key: SortKey) => {
     setRoute((prev) => ({
       ...prev,
@@ -136,7 +147,7 @@ export default function App() {
   };
 
   const handleFiltersChange = (filters: FilterState) => {
-    setRoute((prev) => ({ ...prev, filters, view: 'matrix', repoId: null }));
+    setRoute((prev) => ({ ...prev, filters, view: 'matrix', repoId: null, scenarioId: null }));
   };
 
   const handleResetFilters = () => {
@@ -208,10 +219,12 @@ export default function App() {
               key={item.view}
               className={`nav-button${route.view === item.view ? ' is-active' : ''}`}
               aria-current={route.view === item.view ? 'page' : undefined}
+              aria-label={item.label}
+              title={item.label}
               onClick={() => setView(item.view)}
             >
               <Icon name={item.icon} size={16} />
-              {item.label}
+              <span className="nav-label">{item.label}</span>
             </button>
           ))}
         </nav>
@@ -247,6 +260,51 @@ export default function App() {
       ) : null}
 
       <main id="main">
+        {route.view === 'home' ? (
+          <HomeView
+            repos={repos}
+            details={details}
+            discovery={
+              discovery ?? {
+                scenarios: [],
+                constraints: [],
+                quickPicks: [],
+                synonyms: {},
+                warnings: [],
+              }
+            }
+            onOpenScenario={handleOpenScenario}
+            onOpenRepo={handleOpenRepo}
+            onGoAll={() => setView('matrix')}
+          />
+        ) : null}
+
+        {route.view === 'scenario' && scenario ? (
+          <ScenarioView
+            scenario={scenario}
+            repos={repos}
+            details={details}
+            warnings={discovery?.warnings ?? []}
+            onBackHome={() => setView('home')}
+            onOpenRepo={handleOpenRepo}
+          />
+        ) : null}
+
+        {route.view === 'scenario' && !scenario ? (
+          <div className="view scenario-view" role="alert">
+            <div className="archive-warning">
+              <Icon name="alert" size={16} />
+              <span>
+                <strong>未找到该场景</strong>：深链中的 id <code>{route.scenarioId}</code>{' '}
+                不在选型数据中，已回到选型首页。
+              </span>
+            </div>
+            <button type="button" className="primary-button" onClick={() => setView('home')}>
+              回到选型首页
+            </button>
+          </div>
+        ) : null}
+
         {route.view === 'overview' ? (
           <OverviewView
             repos={repos}
@@ -277,6 +335,7 @@ export default function App() {
             onSort={handleSort}
             onOpenRepo={handleOpenRepo}
             onToggleSelect={handleToggleSelect}
+            onGoHome={() => setView('home')}
           />
         ) : null}
 

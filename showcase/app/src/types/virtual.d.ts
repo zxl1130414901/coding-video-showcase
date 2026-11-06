@@ -1,10 +1,12 @@
 declare module 'virtual:repos' {
   import type { Dataset, RepoDetail, SampleFeatures } from './repo';
+  import type { DiscoveryDoc } from './discovery';
 
   export const reposPayload: Dataset;
   export const detailsPayload: Record<string, RepoDetail>;
   export const featuresPayload: Record<string, SampleFeatures>;
   export const sampleSizesPayload: Record<string, { mainBytes?: number; basicBytes?: number }>;
+  export const discoveryPayload: DiscoveryDoc;
   export const dataSource: {
     file: string;
     detailsDir: string;

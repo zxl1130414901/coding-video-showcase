@@ -1,0 +1,624 @@
+{
+  "updatedAt": "2026-11-06",
+  "scenarios": [
+    {
+      "id": "math-physics",
+      "titleZh": "数学物理讲解动画",
+      "descZh": "给要讲公式推导、几何关系或物理过程的课程与科普内容用",
+      "questionZh": "我想把一段公式推导或物理过程讲清楚",
+      "recommended": [
+        {
+          "repoId": "ManimCommunity__manim",
+          "verdict": "first",
+          "whyZh": "公式/坐标系/3D 曲面可逐项 Transform，-qh 直出 1080p60；3 秒 720p30 实测 73 秒",
+          "timeZh": "pip+TeX 装完约 10 分钟，3 秒片渲 73 秒"
+        },
+        {
+          "repoId": "academa-labs__manimgx",
+          "verdict": "alt",
+          "whyZh": "同一套 Manim Python API，Rust+wgpu 加速免 LaTeX；27 秒 1080p60 渲 42 秒",
+          "timeZh": "pip 装完约 10 分钟，42 秒出片"
+        },
+        {
+          "repoId": "Matheart__manim-physics",
+          "verdict": "alt",
+          "whyZh": "pymunk 刚体、斜面、弹簧与电磁场真跑物理，可与公式文字混排；1080p30 约 30 帧每秒",
+          "timeZh": "pip 装完约 3 分钟，13.5 秒出片"
+        },
+        {
+          "repoId": "UnMolDeQuimica__manim-Chemistry",
+          "verdict": "alt",
+          "whyZh": "直接读 .mol/.sdf 生成二维或三维可动画分子结构，与 Manim Transform 混用；5 秒片 7.2 秒",
+          "timeZh": "pip 装完约 3 分钟，7 秒出片"
+        },
+        {
+          "repoId": "3b1b__manim",
+          "verdict": "heavy",
+          "whyZh": "实时 OpenGL 可拖时间轴调镜头，但 Windows 需绕路、无头 CI 易失败，适合当镜头参考",
+          "timeZh": "装完约 10 分钟，还需可用 OpenGL 环境"
+        }
+      ],
+      "filters": {
+        "categories": ["动画引擎", "代码动画"],
+        "tags": ["数学动画", "Manim 插件", "物理引擎", "化学"]
+      }
+    },
+    {
+      "id": "code-terminal",
+      "titleZh": "代码讲解与终端演示",
+      "descZh": "给编程课程、开源项目 README 演示和终端操作录制用的动画与录屏",
+      "questionZh": "我想把一段代码或终端操作讲清楚",
+      "recommended": [
+        {
+          "repoId": "remotion-dev__template-code-hike",
+          "verdict": "first",
+          "whyZh": "Code Hike 逐 token 高亮、按步骤聚焦代码行并推镜；12 秒片实测渲 96 秒",
+          "timeZh": "装完约 30 分钟，渲 96 秒"
+        },
+        {
+          "repoId": "charmbracelet__vhs",
+          "verdict": "alt",
+          "whyZh": ".tape 脚本可复现打字、等待与按键，直出 GIF/MP4；Windows 需 ttyd 与 Chrome 桥接",
+          "timeZh": "装完约 30 分钟，绕路链路约 15 分钟"
+        },
+        {
+          "repoId": "asciinema__agg",
+          "verdict": "alt",
+          "whyZh": "cast 转 GIF 的单文件 Rust 工具，主题、字号与空闲压缩都能配；30 秒录像 30 秒转完",
+          "timeZh": "装 1 分钟，转 GIF 30 秒"
+        },
+        {
+          "repoId": "F4bbi__manim-dsa",
+          "verdict": "alt",
+          "whyZh": "MArray/MStack/MGraph 三类对象开箱即用，专做数组、栈与图算法过程动画；5.4 秒片 21 秒出",
+          "timeZh": "装 1 分钟，渲 21 秒"
+        },
+        {
+          "repoId": "motion-canvas__motion-canvas",
+          "verdict": "heavy",
+          "whyZh": "代码高亮与 LaTeX 插件加可视化时间轴，但无头导出链路不完整，120 帧实测 900 秒",
+          "timeZh": "装完约 30 分钟，120 帧 900 秒"
+        }
+      ],
+      "filters": {
+        "categories": ["代码动画", "终端录制", "模板与 CLI 工具"],
+        "tags": ["代码视频", "终端录屏", "算法可视化"]
+      }
+    },
+    {
+      "id": "data-viz",
+      "titleZh": "数据可视化与图表动画",
+      "descZh": "给要把报表、指标和涨跌趋势做成会动的图表短片的需求用",
+      "questionZh": "我想让这组数据和图表动起来",
+      "recommended": [
+        {
+          "repoId": "ybouane__VideoFlow",
+          "verdict": "first",
+          "whyZh": "25+ 预设含 numberCountUp 与 WebGL bloom，时间线编排数据镜头；21 秒片实测 508 秒",
+          "timeZh": "装完约 10 分钟，21 秒片渲 8 分钟"
+        },
+        {
+          "repoId": "remotion-dev__remotion",
+          "verdict": "alt",
+          "whyZh": "React 组件直接画图表与数字动画，CLI/Lambda 可按帧分片；5 秒 1080p30 实测 62 秒",
+          "timeZh": "装完约 10 分钟，渲 62 秒"
+        },
+        {
+          "repoId": "alchaincyf__huashu-art-motion",
+          "verdict": "alt",
+          "whyZh": "分镜语法原生支持图表与数据可视化版式，还能做相机运动；10 秒片总耗时 42 秒",
+          "timeZh": "装完约 3 分钟，42 秒出片"
+        },
+        {
+          "repoId": "nexu-io__html-video",
+          "verdict": "alt",
+          "whyZh": "21 套模板含数据可视化版式，逐帧 HTML 直出 1080p60；28 秒片实测渲 55 秒",
+          "timeZh": "装完约 10 分钟，55 秒出片"
+        },
+        {
+          "repoId": "LBEILC__Multiplane",
+          "verdict": "heavy",
+          "whyZh": "逐帧 seek 加超采样、运动模糊与景深，数据卡片质感强；720p 20 秒片实测 605 秒",
+          "timeZh": "装完约 10 分钟，20 秒片渲 10 分钟"
+        }
+      ],
+      "filters": {
+        "categories": ["动画引擎", "模板与 CLI 工具"],
+        "tags": ["1080p60", "HTML 转视频", "Remotion 模板"]
+      }
+    },
+    {
+      "id": "product-promo",
+      "titleZh": "产品与品牌宣传片",
+      "descZh": "给产品发布、SaaS 功能演示和社媒投放做几十秒宣传片的需求用",
+      "questionZh": "我想做一条产品发布用的宣传片",
+      "recommended": [
+        {
+          "repoId": "nexu-io__html-video",
+          "verdict": "first",
+          "whyZh": "21 套发布与社媒模板，贴内容就出 1080p60，还带 MiniMax 配乐；28 秒片实测渲 55 秒",
+          "timeZh": "装完约 10 分钟，55 秒出片"
+        },
+        {
+          "repoId": "Vincentwei1021__video-shotcraft",
+          "verdict": "alt",
+          "whyZh": "agent 截真实页面、选 10 类镜头并按节拍卡点配乐；36 秒 1080p 片实测 408 秒",
+          "timeZh": "装完约 10 分钟，渲 7 分钟"
+        },
+        {
+          "repoId": "feitangyuan__onetake",
+          "verdict": "alt",
+          "whyZh": "一镜到底，每个节拍从上一拍长出来，适合 8–15 秒发布片；10 秒片实测渲染 1500 秒",
+          "timeZh": "装完约 3 分钟，渲 25 分钟"
+        },
+        {
+          "repoId": "heygen-com__hyperframes",
+          "verdict": "alt",
+          "whyZh": "把 HTML 动效页当工程，CLI 一条命令渲 MP4，可接 Agent 技能；8 秒 720p 实测 157 秒",
+          "timeZh": "装完约 3 分钟，157 秒出片"
+        },
+        {
+          "repoId": "LBEILC__Multiplane",
+          "verdict": "heavy",
+          "whyZh": "超采样、运动模糊与透明通道齐全，agent 可 lint/verify 逐像素校验；20 秒片 605 秒",
+          "timeZh": "装完约 10 分钟，20 秒片渲 10 分钟"
+        }
+      ],
+      "filters": {
+        "categories": ["网页/H5 录屏", "模板与 CLI 工具"],
+        "tags": ["宣传片", "发布片", "Agent"]
+      }
+    },
+    {
+      "id": "three-d-fx",
+      "titleZh": "3D 与视觉特效",
+      "descZh": "给需要三维场景、粒子、着色器或镜头光效的片头与广告用",
+      "questionZh": "我想做有 3D 场景或特效的镜头",
+      "recommended": [
+        {
+          "repoId": "remotion-dev__template-three",
+          "verdict": "first",
+          "whyZh": "Three.js 几何、材质、灯光与相机运动都挂在 React 时间轴上；5 秒 720p 实测渲 47 秒",
+          "timeZh": "装完约 30 分钟，47 秒出片"
+        },
+        {
+          "repoId": "patriciogonzalezvivo__glslViewer",
+          "verdict": "alt",
+          "whyZh": "任意 GLSL 着色器配 3D 模型、视频纹理与相机 CSV，录制接近实时；5 秒片只花 11.7 秒",
+          "timeZh": "装完约 10 分钟，11.7 秒出片"
+        },
+        {
+          "repoId": "SkyeShark__eidoverse-video",
+          "verdict": "alt",
+          "whyZh": "VRM 骨骼、Rapier 物理、天气粒子与 Bloom/SSR 后处理全在内；21.5 秒片实测 1280 秒",
+          "timeZh": "装完约 30 分钟，渲 21 分钟"
+        },
+        {
+          "repoId": "av__remotion-bits",
+          "verdict": "alt",
+          "whyZh": "MatrixRain、粒子系统、Three.js 场景与渐变转场组件即插即用；24 秒片实测 68 秒",
+          "timeZh": "装完约 10 分钟，68 秒出片"
+        },
+        {
+          "repoId": "codedbytahir__motionforge",
+          "verdict": "heavy",
+          "whyZh": "ShaderImageReveal/Dithering/TextStack3D 特效齐全，但装 1001 包、实测超时",
+          "timeZh": "装 30 分钟以上，实测安装超时"
+        }
+      ],
+      "filters": {
+        "categories": ["动画引擎", "模板与 CLI 工具"],
+        "tags": ["3D", "GLSL", "Three.js", "GPU 渲染"]
+      }
+    },
+    {
+      "id": "ai-generated",
+      "titleZh": "AI 生成与数字人",
+      "descZh": "给想让 Agent 直接出片、或要虚拟人讲解与唇形同步的需求用",
+      "questionZh": "我想让 AI 帮我直接生成一条视频",
+      "recommended": [
+        {
+          "repoId": "SkyeShark__eidoverse-video",
+          "verdict": "first",
+          "whyZh": "VRM 数字人、viseme 唇形同步与物理天气，agent 一条命令出片；21.5 秒实测 1280 秒",
+          "timeZh": "装完约 30 分钟，渲 21 分钟"
+        },
+        {
+          "repoId": "Vincentwei1021__video-shotcraft",
+          "verdict": "alt",
+          "whyZh": "agent 截真实页面、选镜头、卡点配乐，直出 1080p 发布片；36 秒片实测 408 秒",
+          "timeZh": "装完约 10 分钟，渲 7 分钟"
+        },
+        {
+          "repoId": "iart-ai__motion-skills",
+          "verdict": "alt",
+          "whyZh": "56 个 agent 动效技能覆盖图表、3D 与透明通道叠加，按 SKILL.md 执行；24 秒片约 2 分钟",
+          "timeZh": "装完约 10 分钟，渲 2 分钟"
+        },
+        {
+          "repoId": "browser-use__video-use",
+          "verdict": "alt",
+          "whyZh": "口播自动转录、删停顿、加图形字幕，全走代码；7 秒片 62 秒，官方转录需 ElevenLabs Key",
+          "timeZh": "装完约 3 分钟，62 秒出片"
+        },
+        {
+          "repoId": "showlab__Code2Video",
+          "verdict": "heavy",
+          "whyZh": "Planner/Coder/Critic 三智能体写 Manim 教学片，但必须自备付费 LLM/VLM Key",
+          "timeZh": "装完约 30 分钟，另需付费 Key"
+        }
+      ],
+      "filters": {
+        "categories": ["动画引擎", "代码动画", "剪辑与合成"],
+        "tags": ["AI 生成", "3D 数字人", "Agent 技能", "LLM 生成"]
+      }
+    },
+    {
+      "id": "post-production",
+      "titleZh": "已有视频后期处理",
+      "descZh": "给剪素材、加字幕、去静默、配音和批量转码这类成片后处理需求用",
+      "questionZh": "我手上已有素材，想剪好并加字幕配音",
+      "recommended": [
+        {
+          "repoId": "Zulko__moviepy",
+          "verdict": "first",
+          "whyZh": "numpy 逐帧改画面，裁剪、变速、转场与 TextClip 字幕都能写；3 秒 720p 片实测 36 秒",
+          "timeZh": "装 1 分钟，渲 36 秒"
+        },
+        {
+          "repoId": "welovemedia__ffmate",
+          "verdict": "alt",
+          "whyZh": "FFmpeg 包成队列加 REST 和 watchfolder，支持 NVENC 硬编；22 秒片实测 53 秒完成",
+          "timeZh": "装 3 分钟，53 秒完成"
+        },
+        {
+          "repoId": "mowshon__moviego",
+          "verdict": "alt",
+          "whyZh": "Go 类型化 clip 图做画中画、字幕与调色，可嵌进 HTTP 服务；5 秒片 4.6 秒出",
+          "timeZh": "装完约 10 分钟，5 秒出片"
+        },
+        {
+          "repoId": "browser-use__video-use",
+          "verdict": "alt",
+          "whyZh": "转录后跳剪、删停顿、加图形字幕；官方转录需 ElevenLabs Key，7 秒片实测 62 秒",
+          "timeZh": "装 3 分钟，62 秒出片"
+        },
+        {
+          "repoId": "mifi__editly",
+          "verdict": "heavy",
+          "whyZh": "JSON 声明剪辑加 GL 转场，模板化批量强；但原生 canvas 在 Windows 安装易失败，整链 20 分钟",
+          "timeZh": "装完约 30 分钟，整链 20 分钟"
+        }
+      ],
+      "filters": {
+        "categories": ["剪辑与合成"],
+        "tags": ["FFmpeg", "字幕", "自动剪辑", "画中画"]
+      }
+    },
+    {
+      "id": "html-to-video",
+      "titleZh": "HTML 网页转视频",
+      "descZh": "给已会写网页、想把 HTML 动效页直接渲成 MP4 的前端与设计需求用",
+      "questionZh": "我已经写好了网页，想把它直接渲成视频",
+      "recommended": [
+        {
+          "repoId": "wx4766__html-to-video",
+          "verdict": "first",
+          "whyZh": "一个 HTML 写 frame(t)，无头浏览器逐帧截图，8 种转场加透明叠加层；6 秒 720p 实测 54 秒",
+          "timeZh": "装 3 分钟，54 秒出片"
+        },
+        {
+          "repoId": "LBEILC__Multiplane",
+          "verdict": "alt",
+          "whyZh": "页面写 render(t)，超采样/运动模糊/alpha 都能拍；20 秒 720p 实测 605 秒",
+          "timeZh": "装完约 10 分钟，20 秒片渲 10 分钟"
+        },
+        {
+          "repoId": "BintzGavin__helios",
+          "verdict": "alt",
+          "whyZh": "不模拟浏览器，直接驱动 CSS/WAAPI 时间轴逐帧 seek；5 秒 720p 实测 91 秒，注意 ELv2",
+          "timeZh": "装完约 10 分钟，91 秒出片"
+        },
+        {
+          "repoId": "heygen-com__hyperframes",
+          "verdict": "alt",
+          "whyZh": "把 HTML 动效页当工程，CLI 一条命令出 MP4，Agent 原生；8 秒 720p 实测 157 秒",
+          "timeZh": "装 3 分钟，157 秒出片"
+        },
+        {
+          "repoId": "ybouane__VideoFlow",
+          "verdict": "heavy",
+          "whyZh": "时间轴编译成 JSON，浏览器与 Node 双端渲染；1080p 21 秒实测 508 秒，长片偏慢",
+          "timeZh": "装完约 10 分钟，21 秒片渲 8 分钟"
+        }
+      ],
+      "filters": {
+        "categories": ["网页/H5 录屏"],
+        "tags": ["HTML 转视频", "浏览器渲染", "WebCodecs"]
+      }
+    },
+    {
+      "id": "batch-production",
+      "titleZh": "批量程序化生产",
+      "descZh": "给要按模板一次生成几十上百条片、并接进队列或 CI 的工程需求用",
+      "questionZh": "我要一次批量生成很多条视频",
+      "recommended": [
+        {
+          "repoId": "welovemedia__ffmate",
+          "verdict": "first",
+          "whyZh": "REST 加 watchfolder 投任务，队列多机并行，支持 NVENC/QSV 硬编；22 秒片编码 53 秒",
+          "timeZh": "装 3 分钟，单条 53 秒"
+        },
+        {
+          "repoId": "remotion-dev__remotion",
+          "verdict": "alt",
+          "whyZh": "React 工程可参数化成百条个性化短片，CLI 与 Lambda 按帧分片；5 秒 1080p 实测 62 秒",
+          "timeZh": "装完约 10 分钟，62 秒出片"
+        },
+        {
+          "repoId": "Zulko__moviepy",
+          "verdict": "alt",
+          "whyZh": "纯 Python API 可循环批量，ffmpeg 只管编码；3 秒 720p 片实测 36 秒",
+          "timeZh": "装 1 分钟，36 秒出片"
+        },
+        {
+          "repoId": "mowshon__moviego",
+          "verdict": "alt",
+          "whyZh": "Go worker pool 并行渲染，单二进制易容器化，go test -race 保证结果一致；5 秒片 4.6 秒",
+          "timeZh": "装完约 10 分钟，5 秒出片"
+        },
+        {
+          "repoId": "mifi__editly",
+          "verdict": "heavy",
+          "whyZh": "JSON 模板天然适合批量，但 Windows 原生 canvas 常装不上，整条链路实测 20 分钟",
+          "timeZh": "装完约 30 分钟，整链 20 分钟"
+        }
+      ],
+      "filters": {
+        "categories": ["剪辑与合成", "动画引擎"],
+        "tags": ["任务队列", "REST", "适合 CI", "FFmpeg"]
+      }
+    },
+    {
+      "id": "react-stack",
+      "titleZh": "React 项目出片",
+      "descZh": "给已用 React/TypeScript、想复用组件和工程链出片的团队用",
+      "questionZh": "我们团队用 React，想直接用组件做视频",
+      "recommended": [
+        {
+          "repoId": "remotion-dev__remotion",
+          "verdict": "first",
+          "whyZh": "React 组件即帧，CSS/Canvas/Three.js 都能用，CLI 可进 CI；5 秒 1080p 62 秒",
+          "timeZh": "装完约 10 分钟，62 秒出片"
+        },
+        {
+          "repoId": "Remocn__remocn",
+          "verdict": "alt",
+          "whyZh": "npx 把两百多段 shadcn 式动效复制进工程，免手写；21 秒 720p 组件片实测 137 秒",
+          "timeZh": "装完约 10 分钟，137 秒出片"
+        },
+        {
+          "repoId": "shadcn-labs__snapcn",
+          "verdict": "alt",
+          "whyZh": "AI 聊天流式光标、终端模拟器、手机与笔电设备框组件，装进 Remotion 即用；3.6 秒片 127 秒",
+          "timeZh": "装完约 10 分钟，127 秒出片"
+        },
+        {
+          "repoId": "av__remotion-bits",
+          "verdict": "alt",
+          "whyZh": "MatrixRain、粒子、Three.js 场景与渐变转场，可 find/fetch 单拉；24 秒片实测 68 秒",
+          "timeZh": "装完约 10 分钟，68 秒出片"
+        },
+        {
+          "repoId": "codedbytahir__motionforge",
+          "verdict": "heavy",
+          "whyZh": "Next.js 可视化时间轴加 Remotion 内核，适合团队自建 Web 剪辑器；装 1001 包、实测两次超时",
+          "timeZh": "装 30 分钟以上，实测安装超时"
+        }
+      ],
+      "filters": {
+        "categories": ["动画引擎", "模板与 CLI 工具", "可视化编辑器"],
+        "tags": ["React", "Remotion 生态", "组件库"]
+      }
+    }
+  ],
+  "constraints": [
+    {
+      "id": "win-native",
+      "titleZh": "Windows 直接可用",
+      "descZh": "本机 Windows 11 实测能装能出片，不需要 WSL、Docker 或替身方案",
+      "apply": { "type": "field", "field": "windowsTier", "op": "in", "value": ["works"] }
+    },
+    {
+      "id": "win-workable",
+      "titleZh": "Windows 有可行路径",
+      "descZh": "原生可用或按实测绕路方案能出片，实测 broken 的不计入",
+      "apply": { "type": "field", "field": "windowsTier", "op": "in", "value": ["works", "workaround"] }
+    },
+    {
+      "id": "no-gpu",
+      "titleZh": "没有 GPU 也要能跑",
+      "descZh": "gpuAcceleration 为 none，纯 CPU 渲染即可出片",
+      "apply": { "type": "field", "field": "needsGpu", "op": "eq", "value": "none" }
+    },
+    {
+      "id": "gpu-optional",
+      "titleZh": "不强制 GPU",
+      "descZh": "gpuAcceleration 为 none 或 optional，有无独显都能出片",
+      "apply": { "type": "field", "field": "needsGpu", "op": "in", "value": ["none", "optional"] }
+    },
+    {
+      "id": "gpu-required",
+      "titleZh": "必须有 GPU 加速",
+      "descZh": "gpuAcceleration 为 required，无可用 GPU 或驱动时不建议采用",
+      "apply": { "type": "field", "field": "needsGpu", "op": "eq", "value": "required" }
+    },
+    {
+      "id": "install-5min",
+      "titleZh": "5 分钟内装完",
+      "descZh": "installComplexity ≤ 2，约 3 分钟内一条命令出片",
+      "apply": { "type": "field", "field": "installComplexity", "op": "lte", "value": 2 }
+    },
+    {
+      "id": "install-10min",
+      "titleZh": "10 分钟内装完",
+      "descZh": "installComplexity ≤ 3，允许小幅修补但不需 native 编译",
+      "apply": { "type": "field", "field": "installComplexity", "op": "lte", "value": 3 }
+    },
+    {
+      "id": "official-pipeline",
+      "titleZh": "官方链路直出",
+      "descZh": "sample.pipeline 为 official，按仓库自带命令即可出片，不靠外部替身录制",
+      "apply": { "type": "field", "field": "pipeline", "op": "eq", "value": "official" }
+    },
+    {
+      "id": "has-cli",
+      "titleZh": "有 CLI 可脚本化",
+      "descZh": "cliHeadless 为 yes，能把渲染写进 shell 或 CI 流水线",
+      "apply": { "type": "field", "field": "hasCli", "op": "eq", "value": "yes" }
+    },
+    {
+      "id": "batchable",
+      "titleZh": "可无人值守批量",
+      "descZh": "有 CLI 且不依赖对话式 Agent 确认，可循环投任务、夜间跑批",
+      "apply": { "type": "field", "field": "batchable", "op": "eq", "value": true }
+    },
+    {
+      "id": "heavy-install",
+      "titleZh": "重安装代价预警",
+      "descZh": "installComplexity ≥ 4，需 native 编译或 30 分钟以上，临时试用不建议",
+      "apply": { "type": "field", "field": "installComplexity", "op": "gte", "value": 4 }
+    }
+  ],
+  "quickPicks": [
+    {
+      "needZh": "30 分钟内交一条产品演示片",
+      "repoId": "nexu-io__html-video",
+      "whyZh": "21 套模板选一套贴内容，直出 1080p60，28 秒样片实测渲 55 秒",
+      "timeZh": "装约 10 分钟，渲 1 分钟"
+    },
+    {
+      "needZh": "5 分钟内把终端录成 GIF",
+      "repoId": "asciinema__agg",
+      "whyZh": "单文件 Rust，把现成 cast 转成带主题的 GIF，30 秒录像 30 秒转完",
+      "timeZh": "装 1 分钟，转 30 秒"
+    },
+    {
+      "needZh": "现在要一条竖屏知识短片",
+      "repoId": "cth9191__animate",
+      "whyZh": "canvas 画分镜加 TTS 配音，原生 9:16，24 秒片实测 277 秒",
+      "timeZh": "装 1 分钟，渲 5 分钟"
+    },
+    {
+      "needZh": "把几张产品图做成视频",
+      "repoId": "h2non__videoshow",
+      "whyZh": "图片加字幕与淡入淡出，API 极简，10 秒 720p 只渲 15 秒",
+      "timeZh": "装 3 分钟，渲 15 秒"
+    },
+    {
+      "needZh": "3 段素材拼一条带转场",
+      "repoId": "transitive-bullshit__ffmpeg-concat",
+      "whyZh": "gl-transitions 全库转场，Node 一条命令拼段，10 秒片 10 秒出",
+      "timeZh": "装 3 分钟，拼 10 秒"
+    },
+    {
+      "needZh": "给网页面录一条操作演示",
+      "repoId": "simonw__shot-scraper",
+      "whyZh": "YAML 写点击、滚动与等待，直接录 WebM/MP4，20 秒演示录 2 分钟",
+      "timeZh": "装 3 分钟，录 2 分钟"
+    },
+    {
+      "needZh": "10 分钟出一条数学讲解",
+      "repoId": "academa-labs__manimgx",
+      "whyZh": "Manim API 加 GPU 加速免 LaTeX，27 秒 1080p60 只渲 42 秒",
+      "timeZh": "装 10 分钟，渲 42 秒"
+    },
+    {
+      "needZh": "批量转码并加水印",
+      "repoId": "welovemedia__ffmate",
+      "whyZh": "REST 提交加 watchfolder，NVENC 硬编，22 秒片 53 秒完成",
+      "timeZh": "装 3 分钟，单条 53 秒"
+    }
+  ],
+  "synonyms": {
+    "数学动画": ["ManimCommunity__manim", "academa-labs__manimgx", "3b1b__manim", "数学动画"],
+    "公式": ["ManimCommunity__manim", "academa-labs__manimgx", "LaTeX"],
+    "物理": ["Matheart__manim-physics", "物理引擎", "manim-physics"],
+    "化学": ["UnMolDeQuimica__manim-Chemistry", "化学", "分子结构"],
+    "手绘动画": ["threerocks__sweety-handdraw-video", "手绘风"],
+    "白板动画": ["threerocks__sweety-handdraw-video", "手绘风"],
+    "代码动画": ["remotion-dev__template-code-hike", "F4bbi__manim-dsa", "代码视频", "代码短片"],
+    "代码讲解": ["remotion-dev__template-code-hike", "Code2Video", "讲解视频"],
+    "终端录屏": ["charmbracelet__vhs", "asciinema__asciinema", "asciinema__agg", "终端录屏"],
+    "终端": ["charmbracelet__vhs", "asciinema__agg", "终端录制"],
+    "录屏": ["simonw__shot-scraper", "网页录屏", "终端录屏"],
+    "字幕": ["ManimCommunity__manim-voiceover", "browser-use__video-use", "字幕"],
+    "配音": ["ManimCommunity__manim-voiceover", "vincentsch__explainroo", "TTS", "配音"],
+    "数字人": ["SkyeShark__eidoverse-video", "3D 数字人"],
+    "3D": ["remotion-dev__template-three", "SkyeShark__eidoverse-video", "3D", "Three.js"],
+    "特效": ["patriciogonzalezvivo__glslViewer", "remotion-dev__template-three", "GLSL"],
+    "着色器": ["patriciogonzalezvivo__glslViewer", "GLSL"],
+    "React": ["remotion-dev__remotion", "Remocn__remocn", "shadcn-labs__snapcn", "React"],
+    "前端": ["remotion-dev__remotion", "motion-canvas__motion-canvas", "React", "TypeScript"],
+    "Python": ["ManimCommunity__manim", "Zulko__moviepy", "Python", "manim"],
+    "Rust": ["AzurIce__ranim", "yongkyuns__noon", "Rust", "wgpu"],
+    "批量": ["welovemedia__ffmate", "Zulko__moviepy", "任务队列", "适合 CI"],
+    "CI": ["welovemedia__ffmate", "remotion-dev__remotion", "适合 CI", "REST"],
+    "GIF": ["asciinema__agg", "charmbracelet__vhs", "GIF", "GIF 导出"],
+    "竖屏": ["cth9191__animate", "feitangyuan__onetake", "竖屏视频", "竖屏"],
+    "短视频": ["cth9191__animate", "wx4766__html-to-video", "竖屏视频", "代码短片"],
+    "数据可视化": ["ybouane__VideoFlow", "alchaincyf__huashu-art-motion", "remotion-dev__remotion"],
+    "图表": ["remotion-dev__remotion", "ybouane__VideoFlow", "alchaincyf__huashu-art-motion"],
+    "宣传片": ["nexu-io__html-video", "Vincentwei1021__video-shotcraft", "宣传片", "发布片"],
+    "产品演示": ["nexu-io__html-video", "shadcn-labs__snapcn", "Remocn__remocn"],
+    "网页转视频": ["wx4766__html-to-video", "LBEILC__Multiplane", "HTML 转视频"],
+    "HTML": ["wx4766__html-to-video", "nexu-io__html-video", "HTML 转视频", "HTML 动效"],
+    "Remotion": ["remotion-dev__remotion", "Remocn__remocn", "Remotion 生态", "Remotion 模板"],
+    "Manim": ["ManimCommunity__manim", "3b1b__manim", "Manim 插件", "Manim 风格"],
+    "视频剪辑": ["Zulko__moviepy", "welovemedia__ffmate", "mifi__editly", "FFmpeg"],
+    "Agent": ["Vincentwei1021__video-shotcraft", "iart-ai__motion-skills", "Agent", "Agent 技能"],
+    "AI 生成": ["SkyeShark__eidoverse-video", "Vincentwei1021__video-shotcraft", "AI 生成", "LLM 生成"]
+  },
+  "warnings": [
+    {
+      "scopeZh": "charmbracelet__vhs、heygen-com__hyperframes",
+      "riskZh": "仓库内 gif/mp4/webm 走 Git LFS，未装 git-lfs 或未 pull 时克隆到的是指针文件，示例跑不起来"
+    },
+    {
+      "scopeZh": "0xS4N4TG__kinetograph",
+      "riskZh": "PolyForm Small Business 许可：100 人以上或年收入 100 万美元以上需商业授权，商用前必须确认"
+    },
+    {
+      "scopeZh": "remotion-dev__remotion 及其模板与组件（Remocn、snapcn、remotion-bits）",
+      "riskZh": "许可证不是 MIT：个人免费，公司与团队商用按规模购买，5.0 起条款还会调整"
+    },
+    {
+      "scopeZh": "3b1b__videos",
+      "riskZh": "CC BY-NC-SA 4.0 仅限学习参考，禁止商用；且依赖全量 LaTeX、专用字体与音频资产"
+    },
+    {
+      "scopeZh": "showlab__Code2Video、browser-use__video-use、openvideodev__react-video-editor",
+      "riskZh": "必须自备付费云 Key（Claude/Gemini、ElevenLabs、R2/S3 与 Deepgram），无 Key 直接跑不动"
+    },
+    {
+      "scopeZh": "charmbracelet__vhs、asciinema__asciinema、dmtrKovalenko__fframes、mifi__editly",
+      "riskZh": "Windows 上需 ttyd/Chrome 桥接、WSL 或 native 编译替身；asciinema 与 fframes 本机实测不可用"
+    },
+    {
+      "scopeZh": "heygen-com__hyperframes、maloyan__manim-web、openvideodev__react-video-editor、bangtutorial__bang-motion",
+      "riskZh": "运行时要拉外部 CDN（GSAP、字体或模块），内网与弱网会白屏或降级，需提前内联资源"
+    },
+    {
+      "scopeZh": "BintzGavin__helios",
+      "riskZh": "Elastic License 2.0 禁止未经授权把能力托管成服务，做 SaaS 或对外服务前需评估授权"
+    },
+    {
+      "scopeZh": "openvideodev__react-video-editor",
+      "riskZh": "个人免费、3 人以上团队需商业授权；且依赖字体 CDN，本机 headless 实测不可用"
+    },
+    {
+      "scopeZh": "yongkyuns__noon、F4bbi__manim-dsa、JazonJiao__Manim.js、JohnHeibel__PDoomVideo",
+      "riskZh": "仓库许可证未知或缺失（README 标 MIT 但无 LICENSE 文件），商用前必须核实授权范围"
+    }
+  ]
+}

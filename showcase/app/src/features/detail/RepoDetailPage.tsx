@@ -55,8 +55,10 @@ interface RepoDetailPageProps {
 
 const BASE_TITLE = 'Code → Video · 65 个开源项目横评';
 const VIEW_LABELS: Record<Exclude<ViewKey, 'detail'>, string> = {
+  home: '选型首页',
+  scenario: '场景页',
   overview: '总览',
-  matrix: '对比矩阵',
+  matrix: '全部项目',
   timeline: '时间线',
 };
 

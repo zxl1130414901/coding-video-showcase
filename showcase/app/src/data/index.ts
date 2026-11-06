@@ -1,4 +1,5 @@
 import type { Dataset, RepoDetail, SampleFeatures } from '../types/repo';
+import type { DiscoveryDoc } from '../types/discovery';
 
 export interface DataSourceMeta {
   file: string;
@@ -20,6 +21,7 @@ export interface LoadedDataset {
   details: Record<string, RepoDetail>;
   features: Record<string, SampleFeatures>;
   sampleSizes: Record<string, SampleSizes>;
+  discovery: DiscoveryDoc;
   source: DataSourceMeta;
 }
 
@@ -33,6 +35,7 @@ export async function loadDataset(): Promise<LoadedDataset> {
     details: module.detailsPayload ?? {},
     features: module.featuresPayload ?? {},
     sampleSizes: module.sampleSizesPayload ?? {},
+    discovery: module.discoveryPayload,
     source: module.dataSource,
   };
 }

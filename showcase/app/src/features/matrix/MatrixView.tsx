@@ -19,6 +19,7 @@ interface MatrixViewProps {
   onSort: (key: SortKey) => void;
   onOpenRepo: (id: string) => void;
   onToggleSelect: (id: string) => void;
+  onGoHome: () => void;
 }
 
 export function MatrixView({
@@ -33,11 +34,20 @@ export function MatrixView({
   onSort,
   onOpenRepo,
   onToggleSelect,
+  onGoHome,
 }: MatrixViewProps) {
   const options = collectFilterOptions(allRepos);
 
   return (
     <div className="view matrix-view">
+      <div className="matrix-home-link">
+        <span className="muted">不确定选哪个？按需求挑比逐列对比更快。</span>
+        <button type="button" className="ghost-button" onClick={onGoHome}>
+          回到选型首页
+          <Icon name="arrow-right" size={14} />
+        </button>
+      </div>
+
       <section className="view-head">
         <div>
           <span className="eyebrow">横向对比矩阵</span>
