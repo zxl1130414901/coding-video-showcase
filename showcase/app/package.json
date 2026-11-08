@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "51 个代码转视频开源项目横向对比与样例播放前端",
+  "description": "65 个代码转视频开源项目横向对比与样例播放前端",
   "scripts": {
     "predev": "node scripts/prepare-thumbs.mjs --allow-sample",
     "dev": "vite",

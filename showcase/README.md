@@ -70,7 +70,7 @@ showcase/
 ├─ data/                    只读数据
 │  ├─ repos.json            65 条仓库主数据（前端构建期注入，含文章新增 14 条）
 │  ├─ details/              65 份深度档案
-│  ├─ evidence.json         645 条取证记录（原有 51 条；新增 14 条以档案内 evidence 为准）
+│  ├─ evidence.json         729 条取证记录（65/65 仓库；文章新增 14 条 84 条逐字引文）
 │  └─ repos.sample.json     3 条开发占位数据（仅 dev / build:sample 回退）
 ├─ scripts/
 │  └─ validate-data.mjs     repos.json / evidence.json / manifest.json 自洽性校验
@@ -87,7 +87,7 @@ showcase/
 - **能力分段**：`_samples/<id>/features.json` 已覆盖全部 **51/51** 个 ok 仓库；7 个升级仓库为 3 段能力 + 6 个 callout（20–24s 三段式 `sample.mp4`，旧片保留 `sample_basic.mp4`），详情页可切换「能力演示 / 基础样例」。
 - **旧片覆盖**：51 个 ok 中 **44 个**保留 `sample_basic.mp4`；7 个没有旧片（6 个原本只有单段直出，`maloyan/manim-web` 为 GIF 源），这些仓库切换「基础样例」会显示缺口提示。
 - **规格口径**：`sample.spec`（`width/height/fps/durationSec/frames/bytes/codec`）全部由 2026-11-05 的 `ffprobe` 实测回写；缩略图由构建期从当前 `sample.mp4` 的 40%/50%/60% 帧中择优生成。
-- **取证**：`data/evidence.json` 保留原有 51 条的 **645** 条取证（`filesRead`、`sampleRef`、`scoreBasis`、`claims`）；新增 14 条不另建取证，改以各自详情档案的 `evidence` 为准。
+- **取证**：`data/evidence.json` 覆盖 **65/65** 个仓库、共 **729** 条取证（`filesRead`、`sampleRef`、`scoreBasis`、`claims`）：原有 51 条 645 条；2026-11-08 为文章新增 14 条补 **84** 条，每条含 `claim + source + quote`，新增引文逐字命中 **84/84**（复核脚本 `_reports/verify_evidence_quotes.mjs`，结果 `_reports/evidence_quotes_check.json`）。
 - **样例验收**（数据流程侧）：ffprobe 可读、时长 ≥ 2s、帧率 ≥ 24fps、中间帧非纯色；不达标的产物不计入 `ok`。
 - **评分口径**：`scores` 是本次在 **Windows 11 + RTX 4060 Laptop** 环境下的实测评分，不是官方排名、也不代表代码质量评测。`installComplexity` 按本次实测总耗时（含依赖安装）定档：1 ≈ 1 分钟、2 ≈ 3 分钟、3 ≈ 10 分钟、4 ≈ 30 分钟、5 超过 30 分钟或装不上。
 - **未采集字段**：原有 51 条的 `forks`、`openIssues`、`updatedAt` 写 `null`，不做猜测；文章新增的 14 条带 GitHub API 实值。详情页与表格对空值有占位处理。
@@ -107,7 +107,7 @@ showcase/
    cd F:\coding视频\showcase
    node scripts/validate-data.mjs
    ```
-   当前结果：`ok: true`，**0 error / 0 warning**；counts 65 / ok 51 / failed 5 / skipped 9；645 条原有取证 + 14 份档案；51 条 `sample.spec` 已按 2026-11-05 ffprobe 实测回写，`spec.bytes` 漂移归零。
+   当前结果：`ok: true`，**0 error / 0 warning**；counts 65 / ok 51 / failed 5 / skipped 9；evidence 65/65（729 条取证，新增 84 条引文全命中）+ 14 份档案；51 条 `sample.spec` 已按 2026-11-05 ffprobe 实测回写，`spec.bytes` 漂移归零。
 3. **重建前端**
    ```powershell
    cd F:\coding视频\showcase\app

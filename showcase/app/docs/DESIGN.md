@@ -240,3 +240,13 @@
 - 产物仍为经典脚本：无 `type="module"`、无 `crossorigin`、无 `import.meta`，`file://` 直接双击可用。
 - 默认 Chrome `file://` 裸启动（3 条长句）：约束句 8 条结果、无错误的场景判断；科普句 12 条、场景 51%；后期句 7 条、场景 67%；空态 0 条 + 3 近邻 + 3 说法；控制台 0 error。
 - 截图：`docs/screenshots/v5-search-longtext.png`、`docs/screenshots/v5-search-empty.png`。
+
+### 9.5 证据覆盖补齐（2026-11-08）
+
+- 问题：`showcase/data/evidence.json` 原先只覆盖 51/65，飞书文章新增的 14 个仓库没有取证记录，详情页无法展示「实测证据」。
+- 处理：为 14 个仓库各补 `filesRead / sampleRef / scoreBasis / claims`，共 **84 条** claim，每条含 `claim + source（本地真实文件路径）+ quote`；覆盖「能做什么」（README / LICENSE / demo-brief）与「边界限制」（README 依赖段、`_samples/<id>/meta.json` 的实测记录与 `known_limits_zh`）。找不到逐字原文的论点不写，宁缺不造。
+- 覆盖：`evidence.json` 现为 **65/65** 个仓库、**729 条** claim（原有 51 条 645 条 + 新增 14 条 84 条）。
+- 引文复核：`_reports/verify_evidence_quotes.mjs` 逐条在本地文件里做 `includes` 校验，结果写入 `_reports/evidence_quotes_check.json`。新增 14 条 **84/84 命中（100.00%）**；原有 51 条为早期汇总式写法（如「README.md 共 476 行」「pushed_at=…（距今 1 天）」），353/645 逐字命中（54.73%），本次未改写，属已知历史欠账。
+- 校验规则：`showcase/scripts/validate-data.mjs` 的 `EXPECTED_BASE = 51` 取消，改为 `evidence 仓库数 = 65`；文章新增 14 条按「≥1 条 pros 证据 + ≥1 条 cons 证据、claims ≥ 3」验收（上游多为英文长句，逐字引文无法覆盖全部 pro/con，故不强制逐条覆盖）；原有 51 条仍要求 pros/cons 逐条有证据指向。
+- 构建体积：`evidence.json` 不进站点包（只被详情页构建期读取），新增取证不改变产物；`dist/index.html` 仍为 **1,029,317 字节（1.03 MB / 0.98 MiB）**。
+- 回归：`validate-data.mjs` / `validate-details.mjs` / `validate-discovery.mjs` 全部 `ok: true`、0 error 0 warning；`npm run test` 78 条全绿；`npm run build` 正常产出。
