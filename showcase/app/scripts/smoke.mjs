@@ -211,15 +211,20 @@ async function previewSmoke(browser, repos, missingRepo, featureRepo) {
   page.on('request', (request) => diagnostics.externalRequests.push(request.url()));
 
   await page.goto(`${previewBase}/#/`, { waitUntil: 'networkidle' });
-  await page.locator('.metric-card').first().waitFor({ state: 'visible' });
+  // v4 起默认路由是「选型首页」，不再是总览页：断言首页真实存在的搜索框、口语输入框与 10 个场景入口
+  await page.locator('.home-view').waitFor({ state: 'visible' });
+  await page.locator('input[type="search"]').waitFor({ state: 'visible' });
+  await page.locator('.intent-field textarea').waitFor({ state: 'visible' });
+  const sceneCards = await page.locator('.scenario-card').count();
+  assert(sceneCards === 10, `选型首页应有 10 个场景入口，实际 ${sceneCards}`);
   const navLabels = await page.locator('.nav-button').allInnerTexts();
   assert(
-    ['总览', '对比矩阵', '时间线', '详情'].every((label) =>
+    ['选型首页', '全部项目', '总览', '时间线'].every((label) =>
       navLabels.some((text) => text.includes(label)),
     ),
     `顶部导航应包含四项，实际 ${navLabels.join(' / ')}`,
   );
-  mark('总览与四项导航验证完成');
+  mark('选型首页与四项导航验证完成');
 
   await page.goto(`${previewBase}/#/?view=matrix`, { waitUntil: 'networkidle' });
   await page.locator('table.repo-table tbody tr').first().waitFor({ state: 'visible' });
@@ -245,10 +250,9 @@ async function previewSmoke(browser, repos, missingRepo, featureRepo) {
   });
   const filteredRows = await page.locator('tbody tr').count();
   await page.locator('tbody tr').first().click();
-  await page.waitForURL(/#\/repo\//);
   await waitForDetail(page);
   await page.locator('.detail-back').click();
-  await page.waitForURL(/#\/\?/);
+  await page.waitForFunction(() => !window.location.hash.startsWith('#/repo/'));
   await page.locator('input[type="search"]').waitFor({ state: 'visible' });
   assert(
     (await page.locator('input[type="search"]').inputValue()) === 'remotion',

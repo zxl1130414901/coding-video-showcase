@@ -1,0 +1,3108 @@
+{
+  "newEntries": [
+    {
+      "id": "heygen-com__hyperframes",
+      "claims": 8,
+      "hits": 8,
+      "miss": 0,
+      "missingSources": 0
+    },
+    {
+      "id": "feitangyuan__onetake",
+      "claims": 6,
+      "hits": 6,
+      "miss": 0,
+      "missingSources": 0
+    },
+    {
+      "id": "lemomo-ai__lemo-opuscar",
+      "claims": 5,
+      "hits": 5,
+      "miss": 0,
+      "missingSources": 0
+    },
+    {
+      "id": "alchaincyf__huashu-motion",
+      "claims": 5,
+      "hits": 5,
+      "miss": 0,
+      "missingSources": 0
+    },
+    {
+      "id": "alchaincyf__huashu-art-motion",
+      "claims": 5,
+      "hits": 5,
+      "miss": 0,
+      "missingSources": 0
+    },
+    {
+      "id": "threerocks__sweety-handdraw-video",
+      "claims": 6,
+      "hits": 6,
+      "miss": 0,
+      "missingSources": 0
+    },
+    {
+      "id": "browser-use__video-use",
+      "claims": 6,
+      "hits": 6,
+      "miss": 0,
+      "missingSources": 0
+    },
+    {
+      "id": "pedrovelasquez9__fragua",
+      "claims": 6,
+      "hits": 6,
+      "miss": 0,
+      "missingSources": 0
+    },
+    {
+      "id": "yihui-dev__awesome-opus5-5-videos",
+      "claims": 6,
+      "hits": 6,
+      "miss": 0,
+      "missingSources": 0
+    },
+    {
+      "id": "remotion-dev__skills",
+      "claims": 6,
+      "hits": 6,
+      "miss": 0,
+      "missingSources": 0
+    },
+    {
+      "id": "vincentsch__explainroo",
+      "claims": 7,
+      "hits": 7,
+      "miss": 0,
+      "missingSources": 0
+    },
+    {
+      "id": "kaomei__stickman-video-director",
+      "claims": 6,
+      "hits": 6,
+      "miss": 0,
+      "missingSources": 0
+    },
+    {
+      "id": "lovisdotio__motion2code",
+      "claims": 6,
+      "hits": 6,
+      "miss": 0,
+      "missingSources": 0
+    },
+    {
+      "id": "JohnHeibel__PDoomVideo",
+      "claims": 6,
+      "hits": 6,
+      "miss": 0,
+      "missingSources": 0
+    }
+  ],
+  "legacy": [
+    {
+      "id": "yongkyuns__noon",
+      "claims": 12,
+      "hits": 7,
+      "miss": 5,
+      "missingSources": 0
+    },
+    {
+      "id": "remotion-dev__remotion",
+      "claims": 14,
+      "hits": 8,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "BintzGavin__helios",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "0xS4N4TG__kinetograph",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "dmtrKovalenko__fframes",
+      "claims": 11,
+      "hits": 7,
+      "miss": 4,
+      "missingSources": 0
+    },
+    {
+      "id": "Remocn__remocn",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "wx4766__html-to-video",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "shadcn-labs__snapcn",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "academa-labs__manimgx",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "jeertmans__manim-slides",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "patriciogonzalezvivo__glslViewer",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "charmbracelet__vhs",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "remotion-dev__template-code-hike",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "remotion-dev__template-three",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "ManimCommunity__manim",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "AzurIce__ranim",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "Vincentwei1021__video-shotcraft",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "welovemedia__ffmate",
+      "claims": 13,
+      "hits": 6,
+      "miss": 7,
+      "missingSources": 0
+    },
+    {
+      "id": "asciinema__asciinema",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "asciinema__agg",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "iart-ai__motion-skills",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "maloyan__manim-web",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "LBEILC__Multiplane",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "SkyeShark__eidoverse-video",
+      "claims": 13,
+      "hits": 6,
+      "miss": 7,
+      "missingSources": 0
+    },
+    {
+      "id": "Matheart__manim-physics",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "simonw__shot-scraper",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "spite__ccapture.js",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "cth9191__animate",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "leonid-shevtsov__headless",
+      "claims": 10,
+      "hits": 7,
+      "miss": 3,
+      "missingSources": 0
+    },
+    {
+      "id": "3b1b__videos",
+      "claims": 10,
+      "hits": 7,
+      "miss": 3,
+      "missingSources": 0
+    },
+    {
+      "id": "dmnsgn__canvas-record",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "ybouane__VideoFlow",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "av__remotion-bits",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "bangtutorial__bang-motion",
+      "claims": 10,
+      "hits": 7,
+      "miss": 3,
+      "missingSources": 0
+    },
+    {
+      "id": "UnMolDeQuimica__manim-Chemistry",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "3b1b__manim",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "codedbytahir__motionforge",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "Zulko__moviepy",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "showlab__Code2Video",
+      "claims": 11,
+      "hits": 7,
+      "miss": 4,
+      "missingSources": 0
+    },
+    {
+      "id": "JazonJiao__Manim.js",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "midrender__revideo",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "F4bbi__manim-dsa",
+      "claims": 13,
+      "hits": 6,
+      "miss": 7,
+      "missingSources": 1
+    },
+    {
+      "id": "motion-canvas__motion-canvas",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "openvideodev__react-video-editor",
+      "claims": 10,
+      "hits": 5,
+      "miss": 5,
+      "missingSources": 0
+    },
+    {
+      "id": "mowshon__moviego",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "nexu-io__html-video",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "ManimCommunity__manim-voiceover",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "krassowski__jupyter-manim",
+      "claims": 11,
+      "hits": 7,
+      "miss": 4,
+      "missingSources": 0
+    },
+    {
+      "id": "transitive-bullshit__ffmpeg-concat",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "h2non__videoshow",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    },
+    {
+      "id": "mifi__editly",
+      "claims": 13,
+      "hits": 7,
+      "miss": 6,
+      "missingSources": 0
+    }
+  ],
+  "counts": {
+    "reposTotal": 65,
+    "evidenceEntries": 65,
+    "covered": 65,
+    "coverage": "65/65",
+    "uncovered": [],
+    "newEntries": 14,
+    "newClaims": 84,
+    "newHits": 84,
+    "newHitRate": "100.00%",
+    "legacyClaims": 645,
+    "legacyHits": 353,
+    "legacyHitRate": "54.73%",
+    "allClaims": 729,
+    "allHits": 437,
+    "allHitRate": "59.95%"
+  },
+  "misses": [
+    {
+      "id": "yongkyuns__noon",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-11-04（截至 2026-11-05 距今 1 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "yongkyuns__noon",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2022-02-28，stars=138，更新至 2026-11-04",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "yongkyuns__noon",
+      "target": "scores.performance",
+      "source": "_samples/yongkyuns__noon/meta.json",
+      "resolved": "_samples/yongkyuns__noon/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=40000；ffprobe=1280x720@30.0fps，298 帧；实测吞吐≈7.5 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "yongkyuns__noon",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "yongkyuns__noon/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 476 行；examples 目录=无；LICENSE 文件=无",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "yongkyuns__noon",
+      "target": "sample.status",
+      "source": "_samples/yongkyuns__noon/meta.json",
+      "resolved": "_samples/yongkyuns__noon/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（257651 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__remotion",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-11-03（截至 2026-11-05 距今 2 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__remotion",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2020-06-23，stars=70471，更新至 2026-11-03",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__remotion",
+      "target": "scores.usability",
+      "source": "_samples/remotion-dev__remotion/meta.json",
+      "resolved": "_samples/remotion-dev__remotion/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=npx remotion render src/index.ts HelloWorld ... --gl=vulkan --concurrency=2；total_ms=330000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__remotion",
+      "target": "scores.performance",
+      "source": "_samples/remotion-dev__remotion/meta.json",
+      "resolved": "_samples/remotion-dev__remotion/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=61972；ffprobe=1920x1080@30.0fps，150 帧；实测吞吐≈2.4 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__remotion",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "remotion-dev__remotion/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 97 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__remotion",
+      "target": "sample.status",
+      "source": "_samples/remotion-dev__remotion/meta.json",
+      "resolved": "_samples/remotion-dev__remotion/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（873041 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "BintzGavin__helios",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-11-03（截至 2026-11-05 距今 2 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "BintzGavin__helios",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2025-08-12，stars=123，更新至 2026-11-03",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "BintzGavin__helios",
+      "target": "scores.usability",
+      "source": "_samples/BintzGavin__helios/meta.json",
+      "resolved": "_samples/BintzGavin__helios/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=python capture_helios.py（Playwright+系统Chrome, --use-angle=vulkan, 写 window.__HELIOS_VIRTUAL_TIME__ 逐帧推进, ffmpeg libx264 ；total_ms=91158",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "BintzGavin__helios",
+      "target": "scores.performance",
+      "source": "_samples/BintzGavin__helios/meta.json",
+      "resolved": "_samples/BintzGavin__helios/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=91158；ffprobe=1280x720@30.0fps，150 帧；实测吞吐≈1.6 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "BintzGavin__helios",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "BintzGavin__helios/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 693 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "BintzGavin__helios",
+      "target": "sample.status",
+      "source": "_samples/BintzGavin__helios/meta.json",
+      "resolved": "_samples/BintzGavin__helios/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（77242 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "0xS4N4TG__kinetograph",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-11-03（截至 2026-11-05 距今 2 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "0xS4N4TG__kinetograph",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2026-10-23，stars=452，更新至 2026-11-03",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "0xS4N4TG__kinetograph",
+      "target": "scores.usability",
+      "source": "_samples/0xS4N4TG__kinetograph/meta.json",
+      "resolved": "_samples/0xS4N4TG__kinetograph/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=npx kinetograph render src/index.tsx -o ... --encoder h264_nvenc；total_ms=131000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "0xS4N4TG__kinetograph",
+      "target": "scores.performance",
+      "source": "_samples/0xS4N4TG__kinetograph/meta.json",
+      "resolved": "_samples/0xS4N4TG__kinetograph/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=56504；ffprobe=1280x720@30.0fps，60 帧；实测吞吐≈1.1 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "0xS4N4TG__kinetograph",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "0xS4N4TG__kinetograph/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 107 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "0xS4N4TG__kinetograph",
+      "target": "sample.status",
+      "source": "_samples/0xS4N4TG__kinetograph/meta.json",
+      "resolved": "_samples/0xS4N4TG__kinetograph/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（25705 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "dmtrKovalenko__fframes",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-11-03（截至 2026-11-05 距今 2 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "dmtrKovalenko__fframes",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2021-11-22，stars=3162，更新至 2026-11-03",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "dmtrKovalenko__fframes",
+      "target": "scores.usability",
+      "source": "_samples/dmtrKovalenko__fframes/meta.json",
+      "resolved": "_samples/dmtrKovalenko__fframes/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=FFMPEG_DIR=_env/ffmpeg9/ffmpeg-n9.0-*-shared  LIBCLANG_PATH=_env/libclang/clang/native  SKIA_BINARIES_URL=file://F:/_ski；total_ms=4500000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "dmtrKovalenko__fframes",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "dmtrKovalenko__fframes/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 488 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Remocn__remocn",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-11-03（截至 2026-11-05 距今 2 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Remocn__remocn",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2026-04-07，stars=1667，更新至 2026-11-03",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Remocn__remocn",
+      "target": "scores.usability",
+      "source": "_samples/Remocn__remocn/meta.json",
+      "resolved": "_samples/Remocn__remocn/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=最小 Remotion 4.0.540 宿主工程(_host)：复制 registry/remocn/synthwave 组件源码（仅依赖 react+remotion），node @remotion/cli render src/inde；total_ms=76377",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Remocn__remocn",
+      "target": "scores.performance",
+      "source": "_samples/Remocn__remocn/meta.json",
+      "resolved": "_samples/Remocn__remocn/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=76377；ffprobe=1280x720@30.0fps，120 帧；实测吞吐≈1.6 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Remocn__remocn",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "Remocn__remocn/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 76 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Remocn__remocn",
+      "target": "sample.status",
+      "source": "_samples/Remocn__remocn/meta.json",
+      "resolved": "_samples/Remocn__remocn/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（1602433 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "wx4766__html-to-video",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-11-03（截至 2026-11-05 距今 2 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "wx4766__html-to-video",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2026-10-11，stars=179，更新至 2026-11-03",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "wx4766__html-to-video",
+      "target": "scores.usability",
+      "source": "_samples/wx4766__html-to-video/meta.json",
+      "resolved": "_samples/wx4766__html-to-video/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=node scripts/render-video-seek.js docs/demo-hero.html --duration=6 --fps=30 --width=1280 --height=720 --out=...；total_ms=60000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "wx4766__html-to-video",
+      "target": "scores.performance",
+      "source": "_samples/wx4766__html-to-video/meta.json",
+      "resolved": "_samples/wx4766__html-to-video/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=54177；ffprobe=1280x720@30.0fps，180 帧；实测吞吐≈3.3 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "wx4766__html-to-video",
+      "target": "scores.docs",
+      "source": "README.en.md",
+      "resolved": "wx4766__html-to-video/README.en.md",
+      "kind": "repo",
+      "quote": "README.en.md 共 490 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "wx4766__html-to-video",
+      "target": "sample.status",
+      "source": "_samples/wx4766__html-to-video/meta.json",
+      "resolved": "_samples/wx4766__html-to-video/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（168098 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "shadcn-labs__snapcn",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-11-03（截至 2026-11-05 距今 2 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "shadcn-labs__snapcn",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2026-07-24，stars=560，更新至 2026-11-03",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "shadcn-labs__snapcn",
+      "target": "scores.usability",
+      "source": "_samples/shadcn-labs__snapcn/meta.json",
+      "resolved": "_samples/shadcn-labs__snapcn/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=最小 Remotion 宿主工程(_host)：复制 registry/snap-cn/cut-lockup 组件源码，node @remotion/cli render src/index.tsx CutLockup --concurre；total_ms=126805",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "shadcn-labs__snapcn",
+      "target": "scores.performance",
+      "source": "_samples/shadcn-labs__snapcn/meta.json",
+      "resolved": "_samples/shadcn-labs__snapcn/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=126805；ffprobe=1280x720@30.0fps，108 帧；实测吞吐≈0.9 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "shadcn-labs__snapcn",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "shadcn-labs__snapcn/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 172 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "shadcn-labs__snapcn",
+      "target": "sample.status",
+      "source": "_samples/shadcn-labs__snapcn/meta.json",
+      "resolved": "_samples/shadcn-labs__snapcn/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（86203 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "academa-labs__manimgx",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-11-02（截至 2026-11-05 距今 3 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "academa-labs__manimgx",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2026-10-05，stars=2506，更新至 2026-11-02",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "academa-labs__manimgx",
+      "target": "scores.usability",
+      "source": "_samples/academa-labs__manimgx/meta.json",
+      "resolved": "_samples/academa-labs__manimgx/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=python -m manimgx render derivative.py；total_ms=415000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "academa-labs__manimgx",
+      "target": "scores.performance",
+      "source": "_samples/academa-labs__manimgx/meta.json",
+      "resolved": "_samples/academa-labs__manimgx/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=41700；ffprobe=1920x1080@60.0fps，1507 帧；实测吞吐≈36.1 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "academa-labs__manimgx",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "academa-labs__manimgx/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 202 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "academa-labs__manimgx",
+      "target": "sample.status",
+      "source": "_samples/academa-labs__manimgx/meta.json",
+      "resolved": "_samples/academa-labs__manimgx/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（1092970 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "jeertmans__manim-slides",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-11-02（截至 2026-11-05 距今 3 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "jeertmans__manim-slides",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2022-07-12，stars=974，更新至 2026-11-02",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "jeertmans__manim-slides",
+      "target": "scores.usability",
+      "source": "_samples/jeertmans__manim-slides/meta.json",
+      "resolved": "_samples/jeertmans__manim-slides/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=manim-slides render example.py BasicExample -qm --media_dir F:\\...；total_ms=35000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "jeertmans__manim-slides",
+      "target": "scores.performance",
+      "source": "_samples/jeertmans__manim-slides/meta.json",
+      "resolved": "_samples/jeertmans__manim-slides/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=22169；ffprobe=1280x720@30.0fps，120 帧；实测吞吐≈5.4 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "jeertmans__manim-slides",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "jeertmans__manim-slides/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 240 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "jeertmans__manim-slides",
+      "target": "sample.status",
+      "source": "_samples/jeertmans__manim-slides/meta.json",
+      "resolved": "_samples/jeertmans__manim-slides/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（89217 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "patriciogonzalezvivo__glslViewer",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-11-02（截至 2026-11-05 距今 3 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "patriciogonzalezvivo__glslViewer",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2014-11-25，stars=5353，更新至 2026-11-02",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "patriciogonzalezvivo__glslViewer",
+      "target": "scores.usability",
+      "source": "_samples/patriciogonzalezvivo__glslViewer/meta.json",
+      "resolved": "_samples/patriciogonzalezvivo__glslViewer/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=glslViewer examples/test.frag --headless -w 1280 -h 720 -E record,out.mp4,0,5,30；total_ms=200000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "patriciogonzalezvivo__glslViewer",
+      "target": "scores.performance",
+      "source": "_samples/patriciogonzalezvivo__glslViewer/meta.json",
+      "resolved": "_samples/patriciogonzalezvivo__glslViewer/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=11706；ffprobe=1280x720@30.0fps，150 帧；实测吞吐≈12.8 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "patriciogonzalezvivo__glslViewer",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "patriciogonzalezvivo__glslViewer/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 96 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "patriciogonzalezvivo__glslViewer",
+      "target": "sample.status",
+      "source": "_samples/patriciogonzalezvivo__glslViewer/meta.json",
+      "resolved": "_samples/patriciogonzalezvivo__glslViewer/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（11496587 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "charmbracelet__vhs",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-11-02（截至 2026-11-05 距今 3 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "charmbracelet__vhs",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2022-07-19，stars=21261，更新至 2026-11-02",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "charmbracelet__vhs",
+      "target": "scores.usability",
+      "source": "_samples/charmbracelet__vhs/meta.json",
+      "resolved": "_samples/charmbracelet__vhs/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=vhs 0.12.1 源码构建 + ttyd.win32 失败；兜底：@napi-rs/canvas 逐帧终端模拟 → ffmpeg；total_ms=900000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "charmbracelet__vhs",
+      "target": "scores.performance",
+      "source": "_samples/charmbracelet__vhs/meta.json",
+      "resolved": "_samples/charmbracelet__vhs/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=900000；ffprobe=1280x720@30.0fps，408 帧；实测吞吐≈0.5 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "charmbracelet__vhs",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "charmbracelet__vhs/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 894 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "charmbracelet__vhs",
+      "target": "sample.status",
+      "source": "_samples/charmbracelet__vhs/meta.json",
+      "resolved": "_samples/charmbracelet__vhs/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（105933 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__template-code-hike",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-11-02（截至 2026-11-05 距今 3 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__template-code-hike",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2024-06-11，stars=222，更新至 2026-11-02",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__template-code-hike",
+      "target": "scores.usability",
+      "source": "_samples/remotion-dev__template-code-hike/meta.json",
+      "resolved": "_samples/remotion-dev__template-code-hike/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=npx remotion render src/index.ts Main ... --gl=vulkan；total_ms=849000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__template-code-hike",
+      "target": "scores.performance",
+      "source": "_samples/remotion-dev__template-code-hike/meta.json",
+      "resolved": "_samples/remotion-dev__template-code-hike/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=95834；ffprobe=1106x1080@30.0fps，360 帧；实测吞吐≈3.8 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__template-code-hike",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "remotion-dev__template-code-hike/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 63 行；examples 目录=无；LICENSE 文件=无",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__template-code-hike",
+      "target": "sample.status",
+      "source": "_samples/remotion-dev__template-code-hike/meta.json",
+      "resolved": "_samples/remotion-dev__template-code-hike/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（572167 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__template-three",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-11-02（截至 2026-11-05 距今 3 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__template-three",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2021-06-01，stars=117，更新至 2026-11-02",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__template-three",
+      "target": "scores.usability",
+      "source": "_samples/remotion-dev__template-three/meta.json",
+      "resolved": "_samples/remotion-dev__template-three/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=npx remotion render src/index.ts Scene ... --gl=vulkan --frames=0-149；total_ms=666000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__template-three",
+      "target": "scores.performance",
+      "source": "_samples/remotion-dev__template-three/meta.json",
+      "resolved": "_samples/remotion-dev__template-three/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=46812；ffprobe=1280x720@30.0fps，150 帧；实测吞吐≈3.2 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__template-three",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "remotion-dev__template-three/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 61 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "remotion-dev__template-three",
+      "target": "sample.status",
+      "source": "_samples/remotion-dev__template-three/meta.json",
+      "resolved": "_samples/remotion-dev__template-three/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（209447 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ManimCommunity__manim",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-11-02（截至 2026-11-05 距今 3 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ManimCommunity__manim",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2020-05-19，stars=42215，更新至 2026-11-02",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ManimCommunity__manim",
+      "target": "scores.usability",
+      "source": "_samples/ManimCommunity__manim/meta.json",
+      "resolved": "_samples/ManimCommunity__manim/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=python -m manim -qm --media_dir F:\\coding视频\\_samples\\ManimCommunity__manim\\media basic.py SquareToCircle；total_ms=350000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ManimCommunity__manim",
+      "target": "scores.performance",
+      "source": "_samples/ManimCommunity__manim/meta.json",
+      "resolved": "_samples/ManimCommunity__manim/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=73089；ffprobe=1280x720@30.0fps，90 帧；实测吞吐≈1.2 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ManimCommunity__manim",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "ManimCommunity__manim/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 140 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ManimCommunity__manim",
+      "target": "sample.status",
+      "source": "_samples/ManimCommunity__manim/meta.json",
+      "resolved": "_samples/ManimCommunity__manim/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（53525 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "AzurIce__ranim",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-10-31（截至 2026-11-05 距今 5 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "AzurIce__ranim",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2024-11-13，stars=662，更新至 2026-10-31",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "AzurIce__ranim",
+      "target": "scores.usability",
+      "source": "_samples/AzurIce__ranim/meta.json",
+      "resolved": "_samples/AzurIce__ranim/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=cargo run --example hello_ranim → hello_ranim.exe render hello_ranim；total_ms=6629000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "AzurIce__ranim",
+      "target": "scores.performance",
+      "source": "_samples/AzurIce__ranim/meta.json",
+      "resolved": "_samples/AzurIce__ranim/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=18417；ffprobe=1920x1080@60.0fps，300 帧；实测吞吐≈16.3 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "AzurIce__ranim",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "AzurIce__ranim/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 231 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "AzurIce__ranim",
+      "target": "sample.status",
+      "source": "_samples/AzurIce__ranim/meta.json",
+      "resolved": "_samples/AzurIce__ranim/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（124747 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Vincentwei1021__video-shotcraft",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-10-29（截至 2026-11-05 距今 7 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Vincentwei1021__video-shotcraft",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2026-07-19，stars=16586，更新至 2026-10-29",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Vincentwei1021__video-shotcraft",
+      "target": "scores.usability",
+      "source": "_samples/Vincentwei1021__video-shotcraft/meta.json",
+      "resolved": "_samples/Vincentwei1021__video-shotcraft/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=npx remotion render src/index.ts AiflPromo ...；total_ms=478000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Vincentwei1021__video-shotcraft",
+      "target": "scores.performance",
+      "source": "_samples/Vincentwei1021__video-shotcraft/meta.json",
+      "resolved": "_samples/Vincentwei1021__video-shotcraft/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=407870；ffprobe=1920x1080@30.0fps，1085 帧；实测吞吐≈2.7 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Vincentwei1021__video-shotcraft",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "Vincentwei1021__video-shotcraft/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 313 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Vincentwei1021__video-shotcraft",
+      "target": "sample.status",
+      "source": "_samples/Vincentwei1021__video-shotcraft/meta.json",
+      "resolved": "_samples/Vincentwei1021__video-shotcraft/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（20825626 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "welovemedia__ffmate",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-10-28（截至 2026-11-05 距今 8 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "welovemedia__ffmate",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2025-01-02，stars=601，更新至 2026-10-28",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "welovemedia__ffmate",
+      "target": "scores.usability",
+      "source": "_samples/welovemedia__ffmate/meta.json",
+      "resolved": "_samples/welovemedia__ffmate/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=& 'F:\\coding视频\\_env\\bin\\ffmate\\ffmate.exe' server --port 3010; POST http://127.0.0.1:3010/api/v1/tasks {name:'ffmate-enc；total_ms=120196",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "welovemedia__ffmate",
+      "target": "scores.performance",
+      "source": "_samples/welovemedia__ffmate/meta.json",
+      "resolved": "_samples/welovemedia__ffmate/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=2282；ffprobe=1280x720@30.0fps，120 帧；实测吞吐≈52.6 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "welovemedia__ffmate",
+      "target": "scores.windows",
+      "source": "_samples/welovemedia__ffmate/meta.json",
+      "resolved": "_samples/welovemedia__ffmate/meta.json",
+      "kind": "workspace",
+      "quote": "走 REST 队列：ffmate.exe server 起服务，POST /api/v1/tasks 提交 ffmpeg 合成任务（lavfi testsrc2 4 秒 + NVENC），任务状态 DONE_SUCCESSFUL，纯任务耗时 2.282s。踩坑：Windows 下输出路径含中文会被解码成 'F:\\coding??'，ffmate 建目录失败导致首个任务 DONE_ERROR，改为先输出到 F:\\ffmate_tmp 再复",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "welovemedia__ffmate",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "welovemedia__ffmate/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 208 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "welovemedia__ffmate",
+      "target": "sample.status",
+      "source": "_samples/welovemedia__ffmate/meta.json",
+      "resolved": "_samples/welovemedia__ffmate/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（1367868 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "asciinema__asciinema",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-10-27（截至 2026-11-05 距今 9 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "asciinema__asciinema",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2011-11-21，stars=17934，更新至 2026-10-27",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "asciinema__asciinema",
+      "target": "scores.usability",
+      "source": "_samples/asciinema__asciinema/meta.json",
+      "resolved": "_samples/asciinema__asciinema/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=生成 cast v2（真实 PowerShell 输出）→ agg 1.9 Windows 二进制 → GIF → ffmpeg mp4；total_ms=180000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "asciinema__asciinema",
+      "target": "scores.performance",
+      "source": "_samples/asciinema__asciinema/meta.json",
+      "resolved": "_samples/asciinema__asciinema/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=180000；ffprobe=1008x780@100.0fps，1153 帧；实测吞吐≈6.4 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "asciinema__asciinema",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "asciinema__asciinema/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 178 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "asciinema__asciinema",
+      "target": "sample.status",
+      "source": "_samples/asciinema__asciinema/meta.json",
+      "resolved": "_samples/asciinema__asciinema/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（198326 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "asciinema__agg",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-10-27（截至 2026-11-05 距今 9 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "asciinema__agg",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2022-07-29，stars=1743，更新至 2026-10-27",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "asciinema__agg",
+      "target": "scores.usability",
+      "source": "_samples/asciinema__agg/meta.json",
+      "resolved": "_samples/asciinema__agg/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=& 'F:\\coding视频\\_env\\bin\\agg\\agg.exe' --fps-cap 60 --idle-time-limit 0.1 --last-frame-duration 0.1 --theme asciinema samp；total_ms=21352",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "asciinema__agg",
+      "target": "scores.performance",
+      "source": "_samples/asciinema__agg/meta.json",
+      "resolved": "_samples/asciinema__agg/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=21352；ffprobe=1207x731@60.0fps，181 帧；实测吞吐≈8.5 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "asciinema__agg",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "asciinema__agg/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 135 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "asciinema__agg",
+      "target": "sample.status",
+      "source": "_samples/asciinema__agg/meta.json",
+      "resolved": "_samples/asciinema__agg/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.gif（139690 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "iart-ai__motion-skills",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-10-25（截至 2026-11-05 距今 11 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "iart-ai__motion-skills",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2026-06-22，stars=1187，更新至 2026-10-25",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "iart-ai__motion-skills",
+      "target": "scores.usability",
+      "source": "_samples/iart-ai__motion-skills/meta.json",
+      "resolved": "_samples/iart-ai__motion-skills/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=node F:\\coding视频\\_samples\\iart-ai__motion-skills\\capture.mjs  （Playwright 打开仓库 demo，GSAP globalTimeline.time(t) 逐帧 seek ；total_ms=79526",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "iart-ai__motion-skills",
+      "target": "scores.performance",
+      "source": "_samples/iart-ai__motion-skills/meta.json",
+      "resolved": "_samples/iart-ai__motion-skills/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=1466；ffprobe=1280x720@30.0fps，180 帧；实测吞吐≈122.8 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "iart-ai__motion-skills",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "iart-ai__motion-skills/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 71 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "iart-ai__motion-skills",
+      "target": "sample.status",
+      "source": "_samples/iart-ai__motion-skills/meta.json",
+      "resolved": "_samples/iart-ai__motion-skills/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（786618 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "maloyan__manim-web",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-10-25（截至 2026-11-05 距今 11 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "maloyan__manim-web",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2026-01-29，stars=510，更新至 2026-10-25",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "maloyan__manim-web",
+      "target": "scores.usability",
+      "source": "_samples/maloyan__manim-web/meta.json",
+      "resolved": "_samples/maloyan__manim-web/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=npx vite build --config vite.browser.config.ts ; node F:\\coding视频\\_samples\\maloyan__manim-web\\capture.mjs  （页面 import di；total_ms=43237",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "maloyan__manim-web",
+      "target": "scores.performance",
+      "source": "_samples/maloyan__manim-web/meta.json",
+      "resolved": "_samples/maloyan__manim-web/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=43237；ffprobe=1280x720@33.33fps，90 帧；实测吞吐≈2.1 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "maloyan__manim-web",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "maloyan__manim-web/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 228 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "maloyan__manim-web",
+      "target": "sample.status",
+      "source": "_samples/maloyan__manim-web/meta.json",
+      "resolved": "_samples/maloyan__manim-web/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.gif（412805 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "LBEILC__Multiplane",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-10-25（截至 2026-11-05 距今 11 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "LBEILC__Multiplane",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2026-10-11，stars=147，更新至 2026-10-25",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "LBEILC__Multiplane",
+      "target": "scores.usability",
+      "source": "_samples/LBEILC__Multiplane/meta.json",
+      "resolved": "_samples/LBEILC__Multiplane/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=npx multiplane render examples/animation.html --out F:\\coding视频\\_samples\\LBEILC__Multiplane\\sample.mp4 --duration 2 --fp；total_ms=384245",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "LBEILC__Multiplane",
+      "target": "scores.performance",
+      "source": "_samples/LBEILC__Multiplane/meta.json",
+      "resolved": "_samples/LBEILC__Multiplane/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=258562；ffprobe=1280x720@30.0fps，60 帧；实测吞吐≈0.2 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "LBEILC__Multiplane",
+      "target": "scores.docs",
+      "source": "README.en.md",
+      "resolved": "LBEILC__Multiplane/README.en.md",
+      "kind": "repo",
+      "quote": "README.en.md 共 338 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "LBEILC__Multiplane",
+      "target": "sample.status",
+      "source": "_samples/LBEILC__Multiplane/meta.json",
+      "resolved": "_samples/LBEILC__Multiplane/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（59102 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "SkyeShark__eidoverse-video",
+      "target": "cons[0]",
+      "source": "_samples/SkyeShark__eidoverse-video/meta.json",
+      "resolved": "_samples/SkyeShark__eidoverse-video/meta.json",
+      "kind": "workspace",
+      "quote": "本批唯一走原生 WebGPU 的仓库，Windows + RTX 4060 可跑：doctor 报 hardware 适配器（vendor=4318 device=10464，computeReadback passed），渲染端 Deno + three.js TSL，编码 h264_nvenc。bootstrap 首次拉 deno npm 依赖 785505ms（three/three-vrm/satori/rapier/@resvg 等，缓存到 F:\\coding视频\\",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "SkyeShark__eidoverse-video",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-10-19（截至 2026-11-05 距今 17 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "SkyeShark__eidoverse-video",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2026-07-06，stars=117，更新至 2026-10-19",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "SkyeShark__eidoverse-video",
+      "target": "scores.usability",
+      "source": "_samples/SkyeShark__eidoverse-video/meta.json",
+      "resolved": "_samples/SkyeShark__eidoverse-video/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=. F:\\coding视频\\env.ps1; $env:PATH='F:\\coding视频\\_env\\deno;'+$env:PATH; $env:DENO_DIR='F:\\coding视频\\_env\\deno_cache'; python；total_ms=258385",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "SkyeShark__eidoverse-video",
+      "target": "scores.performance",
+      "source": "_samples/SkyeShark__eidoverse-video/meta.json",
+      "resolved": "_samples/SkyeShark__eidoverse-video/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=258385；ffprobe=1280x720@30.0fps，300 帧；实测吞吐≈1.2 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "SkyeShark__eidoverse-video",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "SkyeShark__eidoverse-video/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 286 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "SkyeShark__eidoverse-video",
+      "target": "sample.status",
+      "source": "_samples/SkyeShark__eidoverse-video/meta.json",
+      "resolved": "_samples/SkyeShark__eidoverse-video/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（7924137 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Matheart__manim-physics",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-10-15（截至 2026-11-05 距今 21 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Matheart__manim-physics",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2021-06-29，stars=412，更新至 2026-10-15",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Matheart__manim-physics",
+      "target": "scores.usability",
+      "source": "_samples/Matheart__manim-physics/meta.json",
+      "resolved": "_samples/Matheart__manim-physics/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=F:\\coding视频\\_env\\py\\Scripts\\python.exe -m manim -qm scene.py SpaceScene；total_ms=13503",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Matheart__manim-physics",
+      "target": "scores.performance",
+      "source": "_samples/Matheart__manim-physics/meta.json",
+      "resolved": "_samples/Matheart__manim-physics/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=13503；ffprobe=1280x720@30.0fps，201 帧；实测吞吐≈14.9 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Matheart__manim-physics",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "Matheart__manim-physics/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 20 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Matheart__manim-physics",
+      "target": "sample.status",
+      "source": "_samples/Matheart__manim-physics/meta.json",
+      "resolved": "_samples/Matheart__manim-physics/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（178747 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "simonw__shot-scraper",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-10-14（截至 2026-11-05 距今 22 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "simonw__shot-scraper",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2022-03-08，stars=2602，更新至 2026-10-14",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "simonw__shot-scraper",
+      "target": "scores.usability",
+      "source": "_samples/simonw__shot-scraper/meta.json",
+      "resolved": "_samples/simonw__shot-scraper/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=F:\\coding视频\\_env\\py\\Scripts\\python.exe -m shot_scraper storyboard storyboard.yml ; ffmpeg -i sample.webm -c:v h264_nvenc；total_ms=136114",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "simonw__shot-scraper",
+      "target": "scores.performance",
+      "source": "_samples/simonw__shot-scraper/meta.json",
+      "resolved": "_samples/simonw__shot-scraper/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=131043；ffprobe=1280x720@25.0fps，255 帧；实测吞吐≈1.9 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "simonw__shot-scraper",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "simonw__shot-scraper/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 47 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "simonw__shot-scraper",
+      "target": "sample.status",
+      "source": "_samples/simonw__shot-scraper/meta.json",
+      "resolved": "_samples/simonw__shot-scraper/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（257848 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "spite__ccapture.js",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-10-13（截至 2026-11-05 距今 23 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "spite__ccapture.js",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2012-09-03，stars=3780，更新至 2026-10-13",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "spite__ccapture.js",
+      "target": "scores.usability",
+      "source": "_samples/spite__ccapture.js/meta.json",
+      "resolved": "_samples/spite__ccapture.js/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=node F:\\coding视频\\_samples\\spite__ccapture.js\\capture.mjs  （Playwright 打开 demo.html，页面内 CCapture 调用仓库 src/index.js 录 canv；total_ms=3460",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "spite__ccapture.js",
+      "target": "scores.performance",
+      "source": "_samples/spite__ccapture.js/meta.json",
+      "resolved": "_samples/spite__ccapture.js/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=3460；ffprobe=1280x720@30.0fps，120 帧；实测吞吐≈34.7 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "spite__ccapture.js",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "spite__ccapture.js/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 644 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "spite__ccapture.js",
+      "target": "sample.status",
+      "source": "_samples/spite__ccapture.js/meta.json",
+      "resolved": "_samples/spite__ccapture.js/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（683946 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "cth9191__animate",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-10-05（截至 2026-11-05 距今 31 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "cth9191__animate",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2026-10-04，stars=1467，更新至 2026-10-05",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "cth9191__animate",
+      "target": "scores.usability",
+      "source": "_samples/cth9191__animate/meta.json",
+      "resolved": "_samples/cth9191__animate/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=node F:\\coding视频\\cth9191__animate\\plugins\\animate\\skills\\animate\\tools\\export.mjs pieces/math-demo  （复制仓库自带 math 风格 demo；total_ms=41900",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "cth9191__animate",
+      "target": "scores.performance",
+      "source": "_samples/cth9191__animate/meta.json",
+      "resolved": "_samples/cth9191__animate/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=21800；ffprobe=1080x1920@24.0fps，144 帧；实测吞吐≈6.6 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "cth9191__animate",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "cth9191__animate/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 107 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "cth9191__animate",
+      "target": "sample.status",
+      "source": "_samples/cth9191__animate/meta.json",
+      "resolved": "_samples/cth9191__animate/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（912171 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "leonid-shevtsov__headless",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-09-30（截至 2026-11-05 距今 36 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "leonid-shevtsov__headless",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2010-08-06，stars=969，更新至 2026-09-30",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "leonid-shevtsov__headless",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "leonid-shevtsov__headless/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 202 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "3b1b__videos",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-09-29（截至 2026-11-05 距今 37 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "3b1b__videos",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2020-12-31，stars=11457，更新至 2026-09-29",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "3b1b__videos",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "3b1b__videos/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 91 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "dmnsgn__canvas-record",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-09-17（截至 2026-11-05 距今 49 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "dmnsgn__canvas-record",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2019-06-18，stars=433，更新至 2026-09-17",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "dmnsgn__canvas-record",
+      "target": "scores.usability",
+      "source": "_samples/dmnsgn__canvas-record/meta.json",
+      "resolved": "_samples/dmnsgn__canvas-record/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=node F:\\coding视频\\_samples\\dmnsgn__canvas-record\\capture.mjs  （Playwright 打开 demo.html，new Recorder(ctx,{extension:'mp4',；total_ms=29526",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "dmnsgn__canvas-record",
+      "target": "scores.performance",
+      "source": "_samples/dmnsgn__canvas-record/meta.json",
+      "resolved": "_samples/dmnsgn__canvas-record/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=29526；ffprobe=1280x720@30.0fps，120 帧；实测吞吐≈4.1 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "dmnsgn__canvas-record",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "dmnsgn__canvas-record/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 795 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "dmnsgn__canvas-record",
+      "target": "sample.status",
+      "source": "_samples/dmnsgn__canvas-record/meta.json",
+      "resolved": "_samples/dmnsgn__canvas-record/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（2450214 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ybouane__VideoFlow",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-09-16（截至 2026-11-05 距今 50 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ybouane__VideoFlow",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2026-03-30，stars=170，更新至 2026-09-16",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ybouane__VideoFlow",
+      "target": "scores.usability",
+      "source": "_samples/ybouane__VideoFlow/meta.json",
+      "resolved": "_samples/ybouane__VideoFlow/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=node examples/01-basic-text.ts ; ffmpeg -i 01-basic-text.mp4 -vf scale=1280:720 -c:v h264_nvenc -preset p5 -cq 23 -pix_f；total_ms=294370",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ybouane__VideoFlow",
+      "target": "scores.performance",
+      "source": "_samples/ybouane__VideoFlow/meta.json",
+      "resolved": "_samples/ybouane__VideoFlow/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=294370；ffprobe=1280x720@30.0fps，93 帧；实测吞吐≈0.3 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ybouane__VideoFlow",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "ybouane__VideoFlow/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 256 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ybouane__VideoFlow",
+      "target": "sample.status",
+      "source": "_samples/ybouane__VideoFlow/meta.json",
+      "resolved": "_samples/ybouane__VideoFlow/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（163607 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "av__remotion-bits",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-09-15（截至 2026-11-05 距今 51 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "av__remotion-bits",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2026-01-23，stars=508，更新至 2026-09-15",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "av__remotion-bits",
+      "target": "scores.usability",
+      "source": "_samples/av__remotion-bits/meta.json",
+      "resolved": "_samples/av__remotion-bits/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=npx remotion render demo/src/entry-lite.tsx MatrixRain F:\\coding视频\\_samples\\av__remotion-bits\\raw1080.mp4 --gl=vulkan ; ；total_ms=92892",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "av__remotion-bits",
+      "target": "scores.performance",
+      "source": "_samples/av__remotion-bits/meta.json",
+      "resolved": "_samples/av__remotion-bits/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=86892；ffprobe=1280x720@30.0fps，150 帧；实测吞吐≈1.7 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "av__remotion-bits",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "av__remotion-bits/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 272 行；examples 目录=有；LICENSE 文件=无",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "av__remotion-bits",
+      "target": "sample.status",
+      "source": "_samples/av__remotion-bits/meta.json",
+      "resolved": "_samples/av__remotion-bits/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（3750734 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "bangtutorial__bang-motion",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-09-15（截至 2026-11-05 距今 51 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "bangtutorial__bang-motion",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2026-09-05，stars=1025，更新至 2026-09-15",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "bangtutorial__bang-motion",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "bangtutorial__bang-motion/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 321 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "UnMolDeQuimica__manim-Chemistry",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-09-11（截至 2026-11-05 距今 55 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "UnMolDeQuimica__manim-Chemistry",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2023-04-29，stars=95，更新至 2026-09-11",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "UnMolDeQuimica__manim-Chemistry",
+      "target": "scores.usability",
+      "source": "_samples/UnMolDeQuimica__manim-Chemistry/meta.json",
+      "resolved": "_samples/UnMolDeQuimica__manim-Chemistry/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=python -m manim -qm -r 1280,720 --fps 30 _samples\\UnMolDeQuimica__manim-Chemistry\\sample_scene.py ChemDemo；total_ms=12929",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "UnMolDeQuimica__manim-Chemistry",
+      "target": "scores.performance",
+      "source": "_samples/UnMolDeQuimica__manim-Chemistry/meta.json",
+      "resolved": "_samples/UnMolDeQuimica__manim-Chemistry/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=7200；ffprobe=1280x720@30.0fps，150 帧；实测吞吐≈20.8 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "UnMolDeQuimica__manim-Chemistry",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "UnMolDeQuimica__manim-Chemistry/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 350 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "UnMolDeQuimica__manim-Chemistry",
+      "target": "sample.status",
+      "source": "_samples/UnMolDeQuimica__manim-Chemistry/meta.json",
+      "resolved": "_samples/UnMolDeQuimica__manim-Chemistry/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（165265 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "3b1b__manim",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-09-09（截至 2026-11-05 距今 57 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "3b1b__manim",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2015-03-22，stars=96097，更新至 2026-09-09",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "3b1b__manim",
+      "target": "scores.usability",
+      "source": "_samples/3b1b__manim/meta.json",
+      "resolved": "_samples/3b1b__manim/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=manimgl example_scenes.py TextExample -w -m --video_dir _samples\\3b1b__manim --file_name sample.mp4；total_ms=56710",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "3b1b__manim",
+      "target": "scores.performance",
+      "source": "_samples/3b1b__manim/meta.json",
+      "resolved": "_samples/3b1b__manim/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=56600；ffprobe=1280x720@30.0fps，360 帧；实测吞吐≈6.4 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "3b1b__manim",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "3b1b__manim/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 188 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "3b1b__manim",
+      "target": "sample.status",
+      "source": "_samples/3b1b__manim/meta.json",
+      "resolved": "_samples/3b1b__manim/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（164483 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "codedbytahir__motionforge",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-08-29（截至 2026-11-05 距今 68 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "codedbytahir__motionforge",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2026-02-14，stars=97，更新至 2026-08-29",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "codedbytahir__motionforge",
+      "target": "scores.usability",
+      "source": "_samples/codedbytahir__motionforge/meta.json",
+      "resolved": "_samples/codedbytahir__motionforge/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=最小 Vite 宿主：导入仓库 src/lib/remotion 的 Player + KineticTypography/LiquidText，Playwright 键盘逐帧（Home/ArrowRight）+ 截图 300 帧 → ff；total_ms=2400000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "codedbytahir__motionforge",
+      "target": "scores.performance",
+      "source": "_samples/codedbytahir__motionforge/meta.json",
+      "resolved": "_samples/codedbytahir__motionforge/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=2400000；ffprobe=880x532@30.0fps，300 帧；实测吞吐≈0.1 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "codedbytahir__motionforge",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "codedbytahir__motionforge/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 84 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "codedbytahir__motionforge",
+      "target": "sample.status",
+      "source": "_samples/codedbytahir__motionforge/meta.json",
+      "resolved": "_samples/codedbytahir__motionforge/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（72243 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Zulko__moviepy",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-08-26（截至 2026-11-05 距今 71 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Zulko__moviepy",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2013-08-12，stars=15104，更新至 2026-08-26",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Zulko__moviepy",
+      "target": "scores.usability",
+      "source": "_samples/Zulko__moviepy/meta.json",
+      "resolved": "_samples/Zulko__moviepy/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=python _samples\\Zulko__moviepy\\sample_run.py；total_ms=55776",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Zulko__moviepy",
+      "target": "scores.performance",
+      "source": "_samples/Zulko__moviepy/meta.json",
+      "resolved": "_samples/Zulko__moviepy/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=36182；ffprobe=1280x720@30.0fps，90 帧；实测吞吐≈2.5 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Zulko__moviepy",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "Zulko__moviepy/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 87 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "Zulko__moviepy",
+      "target": "sample.status",
+      "source": "_samples/Zulko__moviepy/meta.json",
+      "resolved": "_samples/Zulko__moviepy/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（229467 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "showlab__Code2Video",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-08-24（截至 2026-11-05 距今 73 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "showlab__Code2Video",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2025-09-29，stars=2236，更新至 2026-08-24",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "showlab__Code2Video",
+      "target": "scores.usability",
+      "source": "_samples/showlab__Code2Video/meta.json",
+      "resolved": "_samples/showlab__Code2Video/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=未执行（缺少 API 凭据）；total_ms=0",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "showlab__Code2Video",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "showlab__Code2Video/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 360 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "JazonJiao__Manim.js",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-08-22（截至 2026-11-05 距今 75 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "JazonJiao__Manim.js",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2018-10-31，stars=454，更新至 2026-08-22",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "JazonJiao__Manim.js",
+      "target": "scores.usability",
+      "source": "_samples/JazonJiao__Manim.js/meta.json",
+      "resolved": "_samples/JazonJiao__Manim.js/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=node _samples\\JazonJiao__Manim.js\\capture.js 'http://127.0.0.1:8848/Graph%20Algorithms/graph.html' 9000；total_ms=38647",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "JazonJiao__Manim.js",
+      "target": "scores.performance",
+      "source": "_samples/JazonJiao__Manim.js/meta.json",
+      "resolved": "_samples/JazonJiao__Manim.js/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=9000；ffprobe=1280x720@30.0fps，325 帧；实测吞吐≈36.1 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "JazonJiao__Manim.js",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "JazonJiao__Manim.js/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 51 行；examples 目录=无；LICENSE 文件=无",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "JazonJiao__Manim.js",
+      "target": "sample.status",
+      "source": "_samples/JazonJiao__Manim.js/meta.json",
+      "resolved": "_samples/JazonJiao__Manim.js/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（136488 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "midrender__revideo",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-07-15（截至 2026-11-05 距今 113 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "midrender__revideo",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2024-03-11，stars=4174，更新至 2026-07-15",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "midrender__revideo",
+      "target": "scores.usability",
+      "source": "_samples/midrender__revideo/meta.json",
+      "resolved": "_samples/midrender__revideo/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=node _samples\\midrender__revideo\\render_ffmpeg.js（cwd=packages\\template，导出器 @revideo/core/ffmpeg）；total_ms=10852",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "midrender__revideo",
+      "target": "scores.performance",
+      "source": "_samples/midrender__revideo/meta.json",
+      "resolved": "_samples/midrender__revideo/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=8400；ffprobe=1080x1080@30.0fps，223 帧；实测吞吐≈26.5 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "midrender__revideo",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "midrender__revideo/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 107 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "midrender__revideo",
+      "target": "sample.status",
+      "source": "_samples/midrender__revideo/meta.json",
+      "resolved": "_samples/midrender__revideo/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（999909 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "F4bbi__manim-dsa",
+      "target": "cons[1]",
+      "source": "package.json / pyproject.toml / Cargo.toml",
+      "resolved": "package.json / pyproject.toml / Cargo.toml",
+      "kind": "repo",
+      "quote": "pyproject.toml 中出现依赖 MIT",
+      "reason": "来源文件不存在"
+    },
+    {
+      "id": "F4bbi__manim-dsa",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-07-13（截至 2026-11-05 距今 115 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "F4bbi__manim-dsa",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2024-08-30，stars=91，更新至 2026-07-13",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "F4bbi__manim-dsa",
+      "target": "scores.usability",
+      "source": "_samples/F4bbi__manim-dsa/meta.json",
+      "resolved": "_samples/F4bbi__manim-dsa/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=python -m manim -qm -r 1280,720 --fps 30 _samples\\F4bbi__manim-dsa\\sample_scene.py DsaDemo；total_ms=28848",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "F4bbi__manim-dsa",
+      "target": "scores.performance",
+      "source": "_samples/F4bbi__manim-dsa/meta.json",
+      "resolved": "_samples/F4bbi__manim-dsa/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=21000；ffprobe=1280x720@30.0fps，162 帧；实测吞吐≈7.7 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "F4bbi__manim-dsa",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "F4bbi__manim-dsa/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 125 行；examples 目录=无；LICENSE 文件=无",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "F4bbi__manim-dsa",
+      "target": "sample.status",
+      "source": "_samples/F4bbi__manim-dsa/meta.json",
+      "resolved": "_samples/F4bbi__manim-dsa/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（98898 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "motion-canvas__motion-canvas",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-07-02（截至 2026-11-05 距今 126 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "motion-canvas__motion-canvas",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2022-08-03，stars=19676，更新至 2026-07-02",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "motion-canvas__motion-canvas",
+      "target": "scores.usability",
+      "source": "_samples/motion-canvas__motion-canvas/meta.json",
+      "resolved": "_samples/motion-canvas__motion-canvas/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=自建最小工程 _tmp/mc_work（@motion-canvas/core+2d）：vite dev + Playwright 逐帧 stage.render → 120 PNG → ffmpeg；total_ms=900000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "motion-canvas__motion-canvas",
+      "target": "scores.performance",
+      "source": "_samples/motion-canvas__motion-canvas/meta.json",
+      "resolved": "_samples/motion-canvas__motion-canvas/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=900000；ffprobe=960x540@30.0fps，120 帧；实测吞吐≈0.1 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "motion-canvas__motion-canvas",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "motion-canvas__motion-canvas/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 136 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "motion-canvas__motion-canvas",
+      "target": "sample.status",
+      "source": "_samples/motion-canvas__motion-canvas/meta.json",
+      "resolved": "_samples/motion-canvas__motion-canvas/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（57264 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "openvideodev__react-video-editor",
+      "target": "cons[0]",
+      "source": "_reports/samples_part3.md",
+      "resolved": "_reports/samples_part3.md",
+      "kind": "workspace",
+      "quote": "- 最终失败：`dmtrKovalenko/fframes`（MSVC STL 符号）、`openvideodev/react-video-editor`（Studio 初始化不收敛）。",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "openvideodev__react-video-editor",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-06-30（截至 2026-11-05 距今 128 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "openvideodev__react-video-editor",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2024-08-02，stars=1830，更新至 2026-06-30",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "openvideodev__react-video-editor",
+      "target": "scores.windows",
+      "source": "_samples/openvideodev__react-video-editor/meta.json",
+      "resolved": "_samples/openvideodev__react-video-editor/meta.json",
+      "kind": "workspace",
+      "quote": "本仓库未在 Windows 实测（broken）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "openvideodev__react-video-editor",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "openvideodev__react-video-editor/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 101 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "mowshon__moviego",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-06-22（截至 2026-11-05 距今 136 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "mowshon__moviego",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2022-04-18，stars=303，更新至 2026-06-22",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "mowshon__moviego",
+      "target": "scores.usability",
+      "source": "_samples/mowshon__moviego/meta.json",
+      "resolved": "_samples/mowshon__moviego/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=go run .（_samples\\mowshon__moviego，用本地 go1.25.0 + moviego v2 合成）；total_ms=262547",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "mowshon__moviego",
+      "target": "scores.performance",
+      "source": "_samples/mowshon__moviego/meta.json",
+      "resolved": "_samples/mowshon__moviego/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=4569；ffprobe=1280x720@30.0fps，150 帧；实测吞吐≈32.8 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "mowshon__moviego",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "mowshon__moviego/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 723 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "mowshon__moviego",
+      "target": "sample.status",
+      "source": "_samples/mowshon__moviego/meta.json",
+      "resolved": "_samples/mowshon__moviego/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（1491829 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "nexu-io__html-video",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-06-21（截至 2026-11-05 距今 137 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "nexu-io__html-video",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2026-05-27，stars=4803，更新至 2026-06-21",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "nexu-io__html-video",
+      "target": "scores.usability",
+      "source": "_samples/nexu-io__html-video/meta.json",
+      "resolved": "_samples/nexu-io__html-video/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=node packages\\cli\\dist\\bin.js --cwd _samples\\nexu-io__html-video project-render proj_2ae81db3-c1f --output sample.mp4（模板；total_ms=56790",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "nexu-io__html-video",
+      "target": "scores.performance",
+      "source": "_samples/nexu-io__html-video/meta.json",
+      "resolved": "_samples/nexu-io__html-video/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=55000；ffprobe=1920x1080@60.0fps，1690 帧；实测吞吐≈30.7 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "nexu-io__html-video",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "nexu-io__html-video/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 289 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "nexu-io__html-video",
+      "target": "sample.status",
+      "source": "_samples/nexu-io__html-video/meta.json",
+      "resolved": "_samples/nexu-io__html-video/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（555635 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ManimCommunity__manim-voiceover",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-06-15（截至 2026-11-05 距今 143 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ManimCommunity__manim-voiceover",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2022-10-13，stars=326，更新至 2026-06-15",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ManimCommunity__manim-voiceover",
+      "target": "scores.usability",
+      "source": "_samples/ManimCommunity__manim-voiceover/meta.json",
+      "resolved": "_samples/ManimCommunity__manim-voiceover/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=python -m manim -qm -r 1280,720 --fps 30 _samples\\ManimCommunity__manim-voiceover\\sample_scene.py VoiceoverDemo；total_ms=63035",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ManimCommunity__manim-voiceover",
+      "target": "scores.performance",
+      "source": "_samples/ManimCommunity__manim-voiceover/meta.json",
+      "resolved": "_samples/ManimCommunity__manim-voiceover/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=58000；ffprobe=1280x720@30.0fps，336 帧；实测吞吐≈5.8 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ManimCommunity__manim-voiceover",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "ManimCommunity__manim-voiceover/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 46 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "ManimCommunity__manim-voiceover",
+      "target": "sample.status",
+      "source": "_samples/ManimCommunity__manim-voiceover/meta.json",
+      "resolved": "_samples/ManimCommunity__manim-voiceover/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（269163 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "krassowski__jupyter-manim",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-04-13（截至 2026-11-05 距今 206 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "krassowski__jupyter-manim",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2019-05-22，stars=198，更新至 2026-04-13",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "krassowski__jupyter-manim",
+      "target": "scores.usability",
+      "source": "_samples/krassowski__jupyter-manim/meta.json",
+      "resolved": "_samples/krassowski__jupyter-manim/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=未执行（后端不兼容）；total_ms=0",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "krassowski__jupyter-manim",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "krassowski__jupyter-manim/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 92 行；examples 目录=无；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "transitive-bullshit__ffmpeg-concat",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-01-24（截至 2026-11-05 距今 285 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "transitive-bullshit__ffmpeg-concat",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2018-04-04，stars=991，更新至 2026-01-24",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "transitive-bullshit__ffmpeg-concat",
+      "target": "scores.usability",
+      "source": "_samples/transitive-bullshit__ffmpeg-concat/meta.json",
+      "resolved": "_samples/transitive-bullshit__ffmpeg-concat/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=node lib\\cli.js -o sample.mp4 -t circleopen -d 700 media\\0.mp4 media\\1.mp4 media\\2.mp4；total_ms=10766",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "transitive-bullshit__ffmpeg-concat",
+      "target": "scores.performance",
+      "source": "_samples/transitive-bullshit__ffmpeg-concat/meta.json",
+      "resolved": "_samples/transitive-bullshit__ffmpeg-concat/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=10145；ffprobe=640x360@25.0fps，266 帧；实测吞吐≈26.2 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "transitive-bullshit__ffmpeg-concat",
+      "target": "scores.docs",
+      "source": "readme.md",
+      "resolved": "transitive-bullshit__ffmpeg-concat/readme.md",
+      "kind": "repo",
+      "quote": "readme.md 共 267 行；examples 目录=无；LICENSE 文件=无",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "transitive-bullshit__ffmpeg-concat",
+      "target": "sample.status",
+      "source": "_samples/transitive-bullshit__ffmpeg-concat/meta.json",
+      "resolved": "_samples/transitive-bullshit__ffmpeg-concat/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（848143 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "h2non__videoshow",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2026-01-21（截至 2026-11-05 距今 288 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "h2non__videoshow",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2015-02-07，stars=903，更新至 2026-01-21",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "h2non__videoshow",
+      "target": "scores.usability",
+      "source": "_samples/h2non__videoshow/meta.json",
+      "resolved": "_samples/h2non__videoshow/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=node _samples\\h2non__videoshow\\sample_run.js（videoshow API 合成 5 张图）；total_ms=14991",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "h2non__videoshow",
+      "target": "scores.performance",
+      "source": "_samples/h2non__videoshow/meta.json",
+      "resolved": "_samples/h2non__videoshow/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=14781；ffprobe=1280x720@30.0fps，300 帧；实测吞吐≈20.3 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "h2non__videoshow",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "h2non__videoshow/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 343 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "h2non__videoshow",
+      "target": "sample.status",
+      "source": "_samples/h2non__videoshow/meta.json",
+      "resolved": "_samples/h2non__videoshow/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（2515896 字节）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "mifi__editly",
+      "target": "scores.activity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "pushed_at=2025-05-12（截至 2026-11-05 距今 542 天）",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "mifi__editly",
+      "target": "scores.maturity",
+      "source": "manifest.json",
+      "resolved": "manifest.json",
+      "kind": "workspace",
+      "quote": "created_at=2020-04-15，stars=5579，更新至 2025-05-12",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "mifi__editly",
+      "target": "scores.usability",
+      "source": "_samples/mifi__editly/meta.json",
+      "resolved": "_samples/mifi__editly/meta.json",
+      "kind": "workspace",
+      "quote": "cmd=F:\\coding视频\\_env\\node20\\node.exe node_modules\\tsx\\dist\\cli.mjs src\\cli.ts examples\\gradients.json5 --out sample.mp4（node；total_ms=1200000",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "mifi__editly",
+      "target": "scores.performance",
+      "source": "_samples/mifi__editly/meta.json",
+      "resolved": "_samples/mifi__editly/meta.json",
+      "kind": "workspace",
+      "quote": "render_ms=1200000；ffprobe=640x640@25.0fps，91 帧；实测吞吐≈0.1 fps",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "mifi__editly",
+      "target": "scores.docs",
+      "source": "README.md",
+      "resolved": "mifi__editly/README.md",
+      "kind": "repo",
+      "quote": "README.md 共 475 行；examples 目录=有；LICENSE 文件=有",
+      "reason": "引文未逐字命中"
+    },
+    {
+      "id": "mifi__editly",
+      "target": "sample.status",
+      "source": "_samples/mifi__editly/meta.json",
+      "resolved": "_samples/mifi__editly/meta.json",
+      "kind": "workspace",
+      "quote": "status=success；产物 sample.mp4（123115 字节）",
+      "reason": "引文未逐字命中"
+    }
+  ]
+}

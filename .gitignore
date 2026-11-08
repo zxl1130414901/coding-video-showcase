@@ -26,3 +26,8 @@
 !/_samples/**/features.json
 !/_samples/**/meta.json
 !/_samples/**/demo-brief.md
+
+# 复核脚本与结果：只放行 evidence 引文逐字校验两份文件
+!/_reports/
+!/_reports/verify_evidence_quotes.mjs
+!/_reports/evidence_quotes_check.json
